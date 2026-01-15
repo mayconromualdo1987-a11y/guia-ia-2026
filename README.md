@@ -3,58 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="AGUARDANDO_CODIGO" />
-    
-    <title>Mundo das IAs | O Guia Profissional 2026</title>
+    <title>Mundo das IAs | Guia 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <div class="max-w-6xl mx-auto px-4 py-12">
         <header class="text-center mb-16">
             <h1 class="text-5xl font-extrabold mb-4 text-blue-600">Mundo das IAs</h1>
-            <p class="text-xl text-slate-600">Diretório atualizado das melhores inteligências artificiais para sua profissão.</p>
+            <p class="text-xl text-slate-600">As melhores ferramentas para automatizar seu trabalho.</p>
         </header>
-
-        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
-
-        <footer class="mt-20 py-8 border-t text-center text-slate-500">
-            <p>&copy; 2026 Mundo das IAs - Renda Automática com Tecnologia</p>
-            <div class="mt-2">
-                <a href="#" class="hover:underline">Privacidade</a> | 
-                <a href="#" class="hover:underline">Sobre Nós</a>
-            </div>
-        </footer>
+        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+            <p id="loading-msg" class="col-span-full text-lg text-slate-400">Carregando diretório de inteligências...</p>
+        </div>
     </div>
 
     <script>
-        // Substitua pelo seu link CSV quando quiser atualizar
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+
+        function parseCSV(text) {
+            // Esta função ignora vírgulas problemáticas
+            const lines = text.split(/\r?\n/);
+            return lines.map(line => {
+                const result = [];
+                let current = '';
+                let inQuotes = false;
+                for (let char of line) {
+                    if (char === '"') inQuotes = !inQuotes;
+                    else if (char === ',' && !inQuotes) {
+                        result.push(current);
+                        current = '';
+                    } else current += char;
+                }
+                result.push(current);
+                return result;
+            });
+        }
 
         async function carregarIAs() {
             try {
                 const response = await fetch(urlCSV);
-                const data = await response.text();
-                const linhas = data.split('\n').slice(1);
+                const text = await response.text();
+                const data = parseCSV(text).slice(1); // Pula cabeçalho
                 const container = document.getElementById('cards-container');
-                container.innerHTML = ""; // Limpa antes de carregar
+                
+                if (data.length === 0) throw new Error("Sem dados");
+                container.innerHTML = ""; 
 
-                linhas.forEach(linha => {
-                    const colunas = linha.split(',');
-                    if (colunas.length >= 4) {
-                        const [profissao, nome, desc, link] = colunas;
+                data.forEach(col => {
+                    if (col.length >= 4 && col[1].trim() !== "") {
+                        const [profissao, nome, desc, link] = col;
                         container.innerHTML += `
-                            <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200 hover:scale-105 transition-transform duration-300">
-                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase italic">${profissao}</span>
-                                <h3 class="text-2xl font-bold mt-4 text-slate-800">${nome}</h3>
-                                <p class="text-slate-600 mt-2 mb-6 h-12 overflow-hidden">${desc}</p>
-                                <a href="${link}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl block text-center font-bold shadow-lg transition">Experimentar IA</a>
+                            <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200 hover:scale-105 transition-transform duration-300 flex flex-col justify-between text-left">
+                                <div>
+                                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase">${profissao}</span>
+                                    <h3 class="text-2xl font-bold mt-4 text-slate-800">${nome}</h3>
+                                    <p class="text-slate-600 mt-2 mb-6 line-clamp-3">${desc}</p>
+                                </div>
+                                <a href="${link}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl block text-center font-bold shadow-lg transition mt-auto">Acessar IA</a>
                             </div>
                         `;
                     }
                 });
             } catch (e) {
-                console.error("Erro ao carregar os dados:", e);
+                document.getElementById('loading-msg').innerText = "Erro ao carregar dados. Verifique se a planilha está publicada.";
             }
         }
         carregarIAs();
