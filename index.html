@@ -197,3 +197,12 @@
     </script>
 </body>
 </html>
+
+// Registrar o Service Worker para habilitar o PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+            .then(reg => console.log('SW registrado!', reg))
+            .catch(err => console.error('Erro no SW', err));
+    });
+}
