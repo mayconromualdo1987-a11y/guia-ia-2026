@@ -1,33 +1,21 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Neural Hub</title>
-    
-    <meta name="google-site-verification" content="WqUCrS42Jss7Y22FFmSwzLNrxS9UBBBa1gjD7ma-E0w" />
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
-
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23030712%22/><path d=%22M30 30 L70 30 L70 70 L30 70 Z%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
+    <base target="_top">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #030712; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--dark); }
-        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--purple), var(--cyan)); border-radius: 10px; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; margin: 0; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
         .bg-glow { position: fixed; inset: 0; background: radial-gradient(circle at 10% 10%, rgba(112,0,255,0.08) 0%, transparent 40%), radial-gradient(circle at 90% 90%, rgba(0,242,255,0.05) 0%, transparent 40%); z-index: -1; }
-        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; position: relative; border-radius: 24px; overflow: hidden; }
+        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; overflow: hidden; transition: 0.4s; position: relative; }
         .cyber-card:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 0 25px rgba(0,242,255,0.15); }
-        .lang-btn { opacity: 0.4; transition: 0.3s; cursor: pointer; filter: grayscale(1); width: 20px; height: 14px; object-fit: cover; border-radius: 2px; }
-        .lang-btn.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); border: 1px solid var(--cyan); }
-        .share-overlay { position: absolute; top: 0; right: -50px; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); transition: 0.3s; padding: 10px; border-bottom-left-radius: 15px; display: flex; flex-direction: column; gap: 10px; }
+        .lang-btn { opacity: 0.4; transition: 0.3s; cursor: pointer; filter: grayscale(1); width: 22px; height: 15px; border-radius: 2px; }
+        .lang-btn.active { opacity: 1; filter: grayscale(0); border: 1px solid var(--cyan); transform: scale(1.1); }
+        .share-overlay { position: absolute; top: 10px; right: -50px; background: rgba(0,0,0,0.8); padding: 8px; border-radius: 12px 0 0 12px; transition: 0.3s; display: flex; flex-direction: column; gap: 10px; z-index: 10; }
         .cyber-card:hover .share-overlay { right: 0; }
-        /* Estilo para o Ad nativo injetado */
-        .ad-card { border: 1px dashed rgba(112,0,255,0.3); background: rgba(112,0,255,0.05); }
     </style>
 </head>
 <body>
@@ -35,271 +23,116 @@
     
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-50 px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-4 cursor-pointer group" onclick="window.location.reload()">
-                <div class="relative w-9 h-9 flex items-center justify-center">
-                    <div class="absolute inset-0 border-2 border-cyan-400 rotate-45 group-hover:rotate-180 transition-all duration-700"></div>
-                    <span class="text-cyan-400 font-black text-sm logo-font">M</span>
-                </div>
-                <div class="hidden md:flex flex-col leading-none logo-font">
-                    <span class="text-white text-lg font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
-                    <span class="text-cyan-400 text-[8px] font-bold tracking-[0.3em] uppercase">Neural Hub</span>
-                </div>
+            <div class="flex items-center gap-4">
+                <div class="text-white logo-font font-black tracking-tighter">MUNDO DAS IA'S</div>
             </div>
-            
-            <div class="flex items-center gap-6">
-                <div class="flex gap-4 font-bold uppercase tracking-widest text-[10px]">
-                    <button onclick="openTab('cursos')" class="text-cyan-400 hover:text-white transition">Academy</button>
-                    <div class="flex items-center gap-3 ml-2 border-l border-white/10 pl-4">
-                        <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="switchLang('pt-BR')">
-                        <img src="https://flagcdn.com/w40/us.png" class="lang-btn" id="btn-en" onclick="switchLang('en')">
-                        <img src="https://flagcdn.com/w40/es.png" class="lang-btn" id="btn-es" onclick="switchLang('es')">
-                    </div>
+            <div class="flex items-center gap-4">
+                <button onclick="openTab('cursos')" class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Academy</button>
+                <div class="flex gap-2 border-l border-white/10 pl-4">
+                    <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="switchLang('pt-BR')">
+                    <img src="https://flagcdn.com/w40/us.png" class="lang-btn" id="btn-en" onclick="switchLang('en')">
+                    <img src="https://flagcdn.com/w40/es.png" class="lang-btn" id="btn-es" onclick="switchLang('es')">
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="pt-40 pb-20 max-w-7xl mx-auto px-6">
-        <header class="text-center mb-16">
-            <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase tracking-tight logo-font" id="hero-title"></h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium" id="hero-desc"></p>
+    <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl md:text-7xl font-black mb-4 logo-font uppercase" id="hero-title"></h1>
+            <p class="text-slate-400 text-lg" id="hero-desc"></p>
         </header>
 
-        <div class="mb-12 text-center min-h-[90px] bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <section class="p-4 rounded-3xl mb-12 bg-white/5 border border-white/5 backdrop-blur-md">
-            <div class="flex flex-col lg:flex-row gap-4 items-center">
-                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 transition-all text-sm font-bold uppercase tracking-widest">
-                <div class="flex flex-grow gap-2 overflow-x-auto no-scrollbar py-2" id="filter-container"></div>
-                <select id="sortOrder" onchange="filterAndSort()" class="w-full lg:w-auto bg-black/60 border border-cyan-400/30 px-6 py-3 rounded-2xl text-cyan-400 text-[10px] font-bold uppercase outline-none appearance-none cursor-pointer pr-10"></select>
-            </div>
-        </section>
-
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-
-        <section class="mt-24 p-8 rounded-3xl bg-gradient-to-br from-purple-900/10 to-cyan-900/10 border border-cyan-500/10">
-            <div class="flex items-center gap-4 mb-8">
-                <div class="w-2 h-2 bg-red-500 animate-pulse rounded-full"></div>
-                <h3 class="font-bold uppercase tracking-[0.4em] text-xs text-cyan-400 logo-font" id="news-title"></h3>
-            </div>
-            <div id="news-feed" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </section>
     </main>
 
-    <footer class="py-16 text-center border-t border-white/5">
-        <div class="logo-font text-[10px] font-bold opacity-30 tracking-[0.5em] mb-8 text-white uppercase">MUNDO DAS IA'S — <span id="current-year"></span></div>
-        <div class="flex flex-wrap justify-center gap-8 text-[9px] text-slate-500 uppercase font-black tracking-[0.2em]">
-            <button onclick="openTab('termos')" id="f-terms"></button>
-            <button onclick="openTab('privacidade')" id="f-privacy"></button>
-            <button onclick="openTab('institucional')" id="f-about"></button>
-            <button onclick="openTab('sugestoes')" id="f-suggest"></button>
-        </div>
+    <footer class="py-10 text-center border-t border-white/5 opacity-50 text-[10px] logo-font uppercase tracking-widest">
+        MUNDO DAS IA'S &copy; <span id="current-year"></span>
     </footer>
 
-    <div id="mainModal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-xl p-4 md:p-12 overflow-y-auto" onclick="closeTab()">
-        <div class="max-w-4xl mx-auto bg-[#0a0f1d] p-8 md:p-16 border border-cyan-400/20 rounded-[40px] relative" onclick="event.stopPropagation()">
-            <div id="modalBody" class="text-slate-400 text-sm leading-relaxed prose prose-invert max-w-none"></div>
-            <button onclick="closeTab()" class="mt-12 w-full py-5 border border-cyan-400/20 text-cyan-400 font-bold rounded-2xl uppercase tracking-widest text-[10px] hover:bg-cyan-400 hover:text-black transition-all logo-font" id="btn-close"></button>
+    <div id="mainModal" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-xl p-6 flex items-center justify-center">
+        <div class="max-w-2xl w-full bg-[#0a0f1d] p-8 border border-cyan-400/20 rounded-[32px]">
+            <div id="modalBody" class="text-slate-300"></div>
+            <button onclick="closeTab()" class="mt-8 w-full py-4 border border-cyan-400/20 text-cyan-400 font-bold rounded-xl uppercase tracking-widest text-[10px]">Fechar</button>
         </div>
     </div>
 
     <script>
+        // Dados fixos e atemporais para evitar erros de carregamento
         const i18n = {
             'pt-BR': {
-                heroTitle: 'A Nova Era da <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Inteligência.</span>',
-                heroDesc: "Arsenal tecnológico sincronizado para alta performance.",
-                search: "BUSCAR NO ARSENAL...", optRel: "Relevância", optNew: "Mais Recentes", optHits: "Mais Acessados",
-                all: "TUDO", access: "ACESSAR", close: "FECHAR TERMINAL", newsTitle: "Transmissão Neural",
-                fTerms: "Termos", fPrivacy: "Privacidade", fAbout: "Institucional", fSuggest: "Sugestões",
-                shareText: "Olha essa IA que encontrei no Mundo das IA's!",
-                institucional: `<h2 class="text-cyan-400 logo-font text-2xl mb-6">Iniciativa Mundo das IA's</h2><p>Curadoria técnica de elite para profissionais em busca de produtividade tecnológica.</p>`,
-                termos: `<h2>Termos</h2><p>Conteúdo atemporal e informativo.</p>`,
-                privacidade: `<h2>Privacidade</h2><p>LGPD/GDPR compliant.</p>`,
-                sugestoes: `<h2>Sugestões</h2><p>contato@mundodasias.com.br</p>`
+                title: 'Nova Era <span class="text-cyan-400">Neural</span>',
+                desc: 'Arsenal tecnológico de alta performance.',
+                share: 'Olha essa IA que encontrei no Mundo das IA\'s!',
+                access: 'Acessar'
             },
             'en': {
-                heroTitle: 'The New Era of <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Intelligence.</span>',
-                heroDesc: "Technological arsenal synchronized for high performance.",
-                search: "SEARCH ARSENAL...", optRel: "Relevance", optNew: "Latest", optHits: "Most Accessed",
-                all: "ALL", access: "ACCESS", close: "CLOSE TERMINAL", newsTitle: "Neural Broadcast",
-                fTerms: "Terms", fPrivacy: "Privacy", fAbout: "Institutional", fSuggest: "Suggestions",
-                shareText: "Check out this AI I found on AI World!",
-                institucional: `<h2>AI World Initiative</h2><p>Elite technical curation.</p>`,
-                termos: `<h2>Terms</h2><p>Evergreen informational content.</p>`,
-                privacidade: `<h2>Privacy</h2><p>GDPR compliant.</p>`,
-                sugestoes: `<h2>Suggestions</h2><p>contact@mundodasias.com.br</p>`
+                title: 'New <span class="text-cyan-400">Neural</span> Era',
+                desc: 'High-performance technological arsenal.',
+                share: 'Check out this AI I found on AI World!',
+                access: 'Access'
             },
             'es': {
-                heroTitle: 'La Nueva Era de la <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Inteligencia.</span>',
-                heroDesc: "Arsenal tecnológico sincronizado para alto rendimiento.",
-                search: "BUSCAR EN EL ARSENAL...", optRel: "Relevancia", optNew: "Más Recientes", optHits: "Más Visitados",
-                all: "TODO", access: "ACCEDER", close: "CERRAR TERMINAL", newsTitle: "Transmisión Neural",
-                fTerms: "Términos", fPrivacy: "Privacidad", fAbout: "Institucional", fSuggest: "Sugerencias",
-                shareText: "¡Mira esta IA que encontré en el Mundo de las IA!",
-                institucional: `<h2>Iniciativa Mundo de las IA</h2><p>Curaduría técnica de élite.</p>`,
-                termos: `<h2>Términos</h2><p>Contenido informativo atemporal.</p>`,
-                privacidade: `<h2>Privacidad</h2><p>LGPD/GDPR.</p>`,
-                sugestoes: `<h2>Sugerencias</h2><p>contacto@mundodasias.com.br</p>`
+                title: 'Nueva Era <span class="text-cyan-400">Neural</span>',
+                desc: 'Arsenal tecnológico de alto rendimiento.',
+                share: '¡Mira esta IA que encontré en el Mundo de las IA!',
+                access: 'Acceder'
             }
         };
 
-        let currentLang = navigator.language.startsWith('pt') ? 'pt-BR' : (navigator.language.startsWith('es') ? 'es' : 'en');
-        let todasIAs = [];
-        let catAtiva = "TUDO";
+        let currentLang = 'pt-BR';
+        
+        // Simulação de dados (Substituir pela sua planilha depois)
+        const mockData = [
+            {nome: "ChatGPT", cat: "Texto", desc: "Líder em modelos de linguagem.", link: "https://chatgpt.com", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400"},
+            {nome: "Midjourney", cat: "Imagem", desc: "Geração de imagens artísticas.", link: "https://midjourney.com", img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=400"}
+        ];
 
         function switchLang(lang) {
             currentLang = lang;
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`btn-${lang.split('-')[0].toLowerCase()}`).classList.add('active');
+            document.getElementById('btn-' + lang.split('-')[0].toLowerCase()).classList.add('active');
             updateUI();
         }
 
         function updateUI() {
             const t = i18n[currentLang];
-            document.getElementById('hero-title').innerHTML = t.heroTitle;
-            document.getElementById('hero-desc').innerText = t.heroDesc;
-            document.getElementById('iaSearch').placeholder = t.search;
-            document.getElementById('news-title').innerText = t.newsTitle;
-            document.getElementById('f-terms').innerText = t.fTerms;
-            document.getElementById('f-privacy').innerText = t.fPrivacy;
-            document.getElementById('f-about').innerText = t.fAbout;
-            document.getElementById('f-suggest').innerText = t.fSuggest;
-            document.getElementById('btn-close').innerText = t.close;
+            document.getElementById('hero-title').innerHTML = t.title;
+            document.getElementById('hero-desc').innerText = t.desc;
             document.getElementById('current-year').innerText = new Date().getFullYear();
-            const sort = document.getElementById('sortOrder');
-            sort.innerHTML = `<option value="relevancia">${t.optRel}</option><option value="recentes">${t.optNew}</option><option value="acessos">${t.optHits}</option>`;
-            renderFilters();
-            filterAndSort();
+            renderCards();
         }
 
-        const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
-
-        async function init() {
-            try {
-                const res = await fetch(urlCSV);
-                const data = await res.text();
-                const rows = data.split(/\r?\n/).slice(1);
-                todasIAs = rows.map((row, index) => {
-                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if(!col[1] || col[0].trim() === "OFFLINE") return null;
-                    return {
-                        id: index,
-                        cat: col[0].replace(/"/g, '').trim(),
-                        nome: col[1].replace(/"/g, '').trim(),
-                        desc: col[2].replace(/"/g, '').trim(),
-                        link: col[3].replace(/"/g, '').trim(),
-                        img: col[4]?.replace(/"/g, '').trim() || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500",
-                        hits: Math.floor(Math.random() * 5000) + 1000,
-                        rating: (Math.random() * (5.0 - 4.5) + 4.5).toFixed(1)
-                    };
-                }).filter(ia => ia !== null);
-                updateUI();
-                fetchNews();
-            } catch(e) { console.error("Neural Error"); }
-        }
-
-        function filterAndSort() {
-            const searchTerm = document.getElementById('iaSearch').value.toLowerCase();
-            const order = document.getElementById('sortOrder').value;
-            const t = i18n[currentLang];
-            let filtradas = todasIAs.filter(ia => {
-                const matchCat = (catAtiva === t.all || catAtiva === "TUDO" || ia.cat === catAtiva);
-                const matchSearch = ia.nome.toLowerCase().includes(searchTerm) || ia.desc.toLowerCase().includes(searchTerm);
-                return matchCat && matchSearch;
-            });
-            if(order === "recentes") filtradas.sort((a,b) => b.id - a.id);
-            else if(order === "acessos") filtradas.sort((a,b) => b.hits - a.hits);
-            else filtradas.sort((a,b) => 0.5 - Math.random());
-            renderCards(filtradas);
-        }
-
-        function renderCards(lista) {
-            const t = i18n[currentLang];
+        function renderCards() {
             const grid = document.getElementById('ia-grid');
-            grid.innerHTML = '';
-
-            lista.forEach((ia, index) => {
-                const shareMsg = encodeURIComponent(`${t.shareText}\n🚀 ${ia.nome}: ${ia.link}`);
-                const cardHtml = `
-                <div class="cyber-card flex flex-col h-full group">
-                    <div class="h-44 overflow-hidden relative">
-                        <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
-                        <span class="absolute top-4 left-4 bg-cyan-400 text-black text-[8px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">${ia.cat}</span>
-                        <div class="share-overlay">
-                            <a href="https://api.whatsapp.com/send?text=${shareMsg}" target="_blank">
-                                <svg class="w-5 h-5 fill-green-500 hover:scale-110 transition" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.499-5.688-1.447l-6.308 1.655zm6.357-3.872l.363.216c1.52.905 3.284 1.381 5.085 1.382 5.563 0 10.088-4.525 10.091-10.087.001-2.696-1.048-5.231-2.954-7.14-1.907-1.908-4.443-2.955-7.137-2.956-5.562 0-10.09 4.526-10.092 10.088-.001 1.874.52 3.703 1.503 5.304l.237.389-.997 3.642 3.733-.979z"/></svg>
-                            </a>
-                            <a href="https://t.me/share/url?url=${ia.link}&text=${shareMsg}" target="_blank">
-                                <svg class="w-5 h-5 fill-sky-500 hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 7.021l-2.317 10.92c-.171.776-.632.966-1.282.603l-3.526-2.598-1.701 1.637c-.188.188-.346.346-.711.346l.253-3.588 6.53-5.899c.284-.253-.062-.394-.44-.143l-8.072 5.081-3.477-1.088c-.756-.237-.773-.756.158-1.116l13.59-5.239c.629-.237 1.18.14 1.002.876z"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-white font-bold uppercase text-sm mb-2 logo-font tracking-tight">${ia.nome}</h4>
-                            <div class="flex items-center gap-1 text-cyan-400">
-                                <span class="text-[10px] font-bold">${ia.rating}</span>
-                                <svg class="w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                            </div>
-                        </div>
-                        <p class="text-slate-400 text-[11px] mb-6 flex-grow line-clamp-3 leading-relaxed">${ia.desc}</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[9px] text-slate-600 font-bold uppercase">${ia.hits.toLocaleString()} USERS</span>
-                            <a href="${ia.link}" target="_blank" class="px-6 py-2 border border-cyan-400/20 text-cyan-400 font-bold text-[9px] uppercase rounded-lg hover:bg-cyan-400 hover:text-black transition-all logo-font">${t.access}</a>
-                        </div>
-                    </div>
-                </div>`;
-                
-                grid.innerHTML += cardHtml;
-
-                // INJEÇÃO DE ANÚNCIO A CADA 8 CARDS
-                if ((index + 1) % 8 === 0) {
-                    grid.innerHTML += `
-                    <div class="cyber-card ad-card flex flex-col h-full items-center justify-center p-6 text-center">
-                        <span class="text-[8px] text-purple-400 font-bold mb-4 uppercase tracking-[0.3em]">Patrocinado</span>
-                        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO"></ins>
-                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                    </div>`;
-                }
-            });
-        }
-
-        function renderFilters() {
             const t = i18n[currentLang];
-            const cats = [t.all, ...new Set(todasIAs.map(ia => ia.cat))];
-            document.getElementById('filter-container').innerHTML = cats.map(c => `
-                <button class="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-slate-500 hover:text-cyan-400 transition-all uppercase whitespace-nowrap" onclick="setCat('${c}')">${c}</button>
-            `).join('');
-        }
-
-        function setCat(c) { catAtiva = c; filterAndSort(); }
-
-        async function fetchNews() {
-            try {
-                const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.technologyreview.com/topic/artificial-intelligence/feed/');
-                const data = await res.json();
-                document.getElementById('news-feed').innerHTML = data.items.slice(0, 4).map(item => `
-                    <a href="${item.link}" target="_blank" class="p-5 bg-black/40 border border-white/5 rounded-2xl hover:border-cyan-400/30 transition-all flex flex-col">
-                        <span class="text-[9px] text-purple-400 font-bold uppercase tracking-widest">${new Date(item.pubDate).toLocaleDateString(currentLang)}</span>
-                        <h5 class="text-white text-xs font-bold mt-2 logo-font line-clamp-2">${item.title}</h5>
-                    </a>
-                `).join('');
-            } catch(e) {}
+            grid.innerHTML = mockData.map(ia => {
+                const msg = encodeURIComponent(t.share + "\n" + ia.nome + ": " + ia.link);
+                return '<div class="cyber-card">' +
+                    '<div class="h-40 overflow-hidden relative">' +
+                        '<img src="' + ia.img + '" class="w-full h-full object-cover">' +
+                        '<div class="share-overlay">' +
+                            '<a href="https://api.whatsapp.com/send?text=' + msg + '" target="_blank">W</a>' +
+                            '<a href="https://t.me/share/url?url=' + ia.link + '&text=' + msg + '" target="_blank">T</a>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="p-5">' +
+                        '<h4 class="logo-font text-white uppercase text-sm mb-2">' + ia.nome + '</h4>' +
+                        '<p class="text-slate-400 text-xs mb-4">' + ia.desc + '</p>' +
+                        '<a href="' + ia.link + '" target="_blank" class="text-cyan-400 text-[10px] font-bold uppercase">' + t.access + '</a>' +
+                    '</div>' +
+                '</div>';
+            }).join('');
         }
 
         function openTab(type) {
-            const body = document.getElementById('modalBody');
-            if(type === 'cursos') {
-                body.innerHTML = `<h2 class="text-cyan-400 logo-font text-2xl mb-8">Academy</h2><div class="grid gap-4">${[{n: "Google GenAI", l: "https://www.cloudskillsboost.google/paths/118"},{n: "Harvard AI", l: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python"},{n: "NVIDIA", l: "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-FX-07+V1"}].map(c => `<div class="p-6 bg-white/5 rounded-2xl flex justify-between items-center"><div><h4 class="font-bold text-white uppercase text-sm">${c.n}</h4></div><a href="${c.l}" target="_blank" class="text-cyan-400 font-bold text-[10px] border border-cyan-400/20 px-4 py-2 rounded-lg">START</a></div>`).join('')}</div>`;
-            } else body.innerHTML = i18n[currentLang][type];
+            document.getElementById('modalBody').innerHTML = '<h2 class="logo-font text-cyan-400 text-xl mb-4">Academy</h2><p>Conteúdo atemporal em desenvolvimento.</p>';
             document.getElementById('mainModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
         }
-        function closeTab() { document.getElementById('mainModal').classList.add('hidden'); document.body.style.overflow = 'auto'; }
-        init();
+
+        function closeTab() { document.getElementById('mainModal').classList.add('hidden'); }
+
+        updateUI();
     </script>
 </body>
 </html>
