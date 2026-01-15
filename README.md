@@ -29,7 +29,7 @@
 
     <script>
         // Substitua pelo seu link CSV quando quiser atualizar
-        const urlCSV = "COLE_AQUI_SEU_LINK_CSV_DA_PLANILHA";
+        const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
 
         async function carregarIAs() {
             try {
