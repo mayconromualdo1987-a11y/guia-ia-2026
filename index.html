@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | O Portal da Inteligência Artificial</title>
+    <title>Mundo das IAs | Autoridade em Curadoria e Automação Inteligente</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        :root { --accent: #3b82f6; --dark-bg: #020617; }
-        body { background-color: var(--dark-bg); color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .section-card { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 32px; overflow: hidden; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .section-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.3); }
+        :root { --accent: #3b82f6; --dark: #020617; }
+        body { background-color: var(--dark); color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(15, 23, 42, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 28px; overflow: hidden; transition: 0.4s ease; }
+        .card-ia:hover { border-color: var(--accent); transform: translateY(-8px); box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.25); }
+        .legal-text h2 { color: white; font-weight: 800; text-transform: uppercase; margin-top: 2rem; margin-bottom: 1rem; font-size: 1.5rem; }
+        .legal-text p { margin-bottom: 1.2rem; line-height: 1.8; color: #94a3b8; }
         
-        /* Modal Style */
-        .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.95); align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: #0f172a; border: 1px solid #1e293b; max-width: 900px; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 24px; padding: 40px; }
+        /* Modal */
+        #modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.98); align-items: center; justify-content: center; padding: 20px; }
+        .modal-inner { background: #0f172a; border: 1px solid #1e293b; max-width: 1000px; width: 100%; max-height: 90vh; overflow-y: auto; border-radius: 32px; padding: 50px; }
     </style>
 </head>
 <body class="antialiased">
@@ -25,14 +27,14 @@
     <nav class="fixed top-0 w-full z-50 glass px-6 py-5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 text-2xl font-black italic tracking-tighter">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-lg"></div>
+                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-lg shadow-blue-500/30"></div>
                 <span>MUNDO DAS<span class="text-blue-500 uppercase"> IAs</span></span>
             </a>
-            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <a href="#institucional" class="hover:text-blue-400 transition">Sobre Nós</a>
-                <a href="#portal" class="hover:text-blue-400 transition">Explorar Hub</a>
-                <a href="#radar" class="hover:text-blue-400 transition">Radar Tech</a>
-                <a href="#privacidade" class="hover:text-blue-400 transition">Legal</a>
+            <div class="hidden md:flex gap-10 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                <a href="#institucional" class="hover:text-blue-400 transition">Institucional</a>
+                <a href="#portal" class="hover:text-blue-400 transition">Hub de Tecnologias</a>
+                <a href="#radar" class="hover:text-blue-400 transition">Análises e Notícias</a>
+                <a href="#contato" class="hover:text-blue-400 transition">Contato</a>
             </div>
         </div>
     </nav>
@@ -40,35 +42,53 @@
     <main class="pt-40 max-w-7xl mx-auto px-6">
         
         <section id="institucional" class="mb-32">
-            <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="grid lg:grid-cols-2 gap-20 items-start">
                 <div>
-                    <h2 class="text-5xl font-extrabold uppercase italic tracking-tighter mb-8 leading-tight">Mundo das IAs:<br><span class="text-blue-500">Autoridade em Automação</span></h2>
-                    <p class="text-slate-400 leading-relaxed mb-10 text-lg">
-                        O <strong>Mundo das IAs</strong> é o ecossistema definitivo para a descoberta e aplicação de ferramentas inteligentes. Democratizamos o acesso à alta tecnologia para gerar eficiência operacional e renda.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                        <div class="p-4 bg-slate-900/40 rounded-2xl border border-white/5">
-                            <h4 class="text-blue-500 font-black text-[9px] mb-2 uppercase">Missão</h4>
-                            <p class="text-[10px] text-slate-500">Lucratividade através da IA.</p>
+                    <h2 class="text-5xl font-extrabold uppercase italic tracking-tighter mb-8 leading-[1.1]">
+                        Transformando a Complexidade em <span class="text-blue-500">Eficiência Operacional</span>
+                    </h2>
+                    <div class="space-y-6 text-slate-400 text-lg leading-relaxed text-justify">
+                        <p>
+                            Bem-vindo ao <strong>Mundo das IAs</strong>, o portal de referência para a nova era da inteligência aplicada. Em um cenário onde milhares de ferramentas surgem diariamente, nossa missão é atuar como o filtro definitivo para líderes, empreendedores e entusiastas de tecnologia.
+                        </p>
+                        <p>
+                            Não somos apenas um diretório; somos uma curadoria técnica focada em <strong>ROI (Retorno sobre Investimento)</strong> e produtividade. Nossa equipe analisa cada algoritmo e plataforma sob a ótica da estabilidade, escalabilidade e facilidade de implementação no mercado brasileiro.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                        <div class="p-8 bg-slate-900/50 rounded-3xl border border-white/5">
+                            <h4 class="text-blue-500 font-black uppercase text-[10px] mb-4 tracking-widest">Nossa Missão</h4>
+                            <p class="text-[11px] leading-relaxed">Democratizar o acesso às ferramentas de IA mais potentes do mundo, simplificando sua aplicação no dia a dia dos negócios.</p>
                         </div>
-                        <div class="p-4 bg-slate-900/40 rounded-2xl border border-white/5">
-                            <h4 class="text-purple-500 font-black text-[9px] mb-2 uppercase">Visão</h4>
-                            <p class="text-[10px] text-slate-500">Maior hub tech da AL.</p>
+                        <div class="p-8 bg-slate-900/50 rounded-3xl border border-white/5">
+                            <h4 class="text-purple-500 font-black uppercase text-[10px] mb-4 tracking-widest">Nossa Visão</h4>
+                            <p class="text-[11px] leading-relaxed">Consolidar-se como o maior hub de inteligência artificial da América Latina, sendo o elo entre a inovação global e o mercado local.</p>
                         </div>
-                        <div class="p-4 bg-slate-900/40 rounded-2xl border border-white/5">
-                            <h4 class="text-green-500 font-black text-[9px] mb-2 uppercase">Valores</h4>
-                            <p class="text-[10px] text-slate-500">Ética e Inovação real.</p>
+                        <div class="p-8 bg-slate-900/50 rounded-3xl border border-white/5">
+                            <h4 class="text-green-500 font-black uppercase text-[10px] mb-4 tracking-widest">Nossos Valores</h4>
+                            <p class="text-[11px] leading-relaxed">Transparência absoluta, rigor técnico na curadoria e compromisso inegociável com a ética no uso da IA.</p>
                         </div>
                     </div>
                 </div>
-                <div class="bg-slate-900 p-10 rounded-[40px] border border-white/10 italic text-slate-400 text-sm border-l-4 border-l-blue-600">
-                    "No Mundo das IAs, cada plataforma listada passa por um critério de análise técnica. Buscamos utilidade e estabilidade para os nossos usuários."
+                <div class="sticky top-40 bg-gradient-to-br from-slate-900 to-slate-950 p-12 rounded-[40px] border border-white/10">
+                    <h3 class="text-2xl font-bold mb-6 uppercase italic text-white">Por que confiar em nossa curadoria?</h3>
+                    <p class="text-slate-400 text-sm leading-loose mb-8">
+                        Diferente de portais automatizados, o Mundo das IAs utiliza um processo de validação híbrido. Analisamos a documentação da API, o tempo de resposta e a segurança de dados de cada plataforma listada. Quando você acessa uma tecnologia através do nosso hub, você está acessando uma ferramenta que foi pré-aprovada por especialistas em automação.
+                    </p>
+                    <div class="flex items-center gap-4 py-6 border-t border-white/5">
+                        <div class="w-12 h-12 bg-blue-600/20 rounded-full flex items-center justify-center text-blue-500 font-black">AI</div>
+                        <div>
+                            <p class="text-white text-xs font-black uppercase">Conselho Editorial Mundo das IAs</p>
+                            <p class="text-slate-500 text-[10px]">Especialistas em IA & Machine Learning</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="portal" class="mb-32">
-            <h2 class="text-2xl font-black uppercase italic mb-10 tracking-widest border-b border-white/5 pb-4">Hub Mundo das <span class="text-blue-500">IAs</span></h2>
+            <h2 class="text-3xl font-black uppercase italic mb-12 tracking-widest border-l-4 border-blue-600 pl-6">Diretório Especializado</h2>
             <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
                 </div>
         </section>
@@ -76,49 +96,50 @@
         <section id="radar" class="mb-32">
             <h2 class="text-3xl font-black mb-12 uppercase italic text-center tracking-tighter">Radar Mundo das <span class="text-blue-500">IAs</span> 2026</h2>
             <div class="grid md:grid-cols-3 gap-10">
-                <article class="section-card p-8 bg-slate-950/40">
-                    <span class="text-blue-500 text-[10px] font-black mb-4 block">Inovação</span>
-                    <h4 class="text-lg font-bold mb-4 uppercase">IA e a Indústria Autônoma</h4>
-                    <p class="text-xs text-slate-500 mb-8 leading-relaxed">O papel dos agentes inteligentes na criação de fábricas que operam 24/7 sem intervenção.</p>
-                    <a href="https://openai.com/news" target="_blank" class="text-blue-400 text-[10px] font-black uppercase tracking-widest hover:underline">Ver Documentação →</a>
+                <article class="card-ia p-10 bg-slate-950/40 border-t-2 border-t-blue-600">
+                    <h4 class="text-xl font-bold mb-4 uppercase">IA e o Futuro do Trabalho</h4>
+                    <p class="text-sm text-slate-500 mb-8 leading-relaxed italic">Análise profunda sobre como a IA Generativa está criando novos cargos técnicos e aumentando a eficiência em 35% nos setores administrativos.</p>
+                    <a href="https://openai.com/news" target="_blank" class="text-blue-400 font-black uppercase text-[10px] tracking-widest hover:underline">Ler Estudo Técnico →</a>
                 </article>
-                <article class="section-card p-8 bg-slate-950/40">
-                    <span class="text-purple-500 text-[10px] font-black mb-4 block">Tendência</span>
-                    <h4 class="text-lg font-bold mb-4 uppercase">Privacidade em Primeiro Lugar</h4>
-                    <p class="text-xs text-slate-500 mb-8 leading-relaxed">A migração do mercado para IAs locais que garantem 100% de sigilo industrial.</p>
-                    <a href="https://www.wired.com" target="_blank" class="text-purple-400 text-[10px] font-black uppercase tracking-widest hover:underline">Análise Wired →</a>
+                <article class="card-ia p-10 bg-slate-950/40 border-t-2 border-t-purple-600">
+                    <h4 class="text-xl font-bold mb-4 uppercase">Soberania e Privacidade</h4>
+                    <p class="text-sm text-slate-500 mb-8 leading-relaxed italic">O movimento global de empresas adotando infraestruturas de IA locais para proteger segredos industriais e propriedade intelectual em 2026.</p>
+                    <a href="https://www.wired.com" target="_blank" class="text-purple-400 font-black uppercase text-[10px] tracking-widest hover:underline">Ver Reportagem Wired →</a>
                 </article>
-                <article class="section-card p-8 bg-slate-950/40">
-                    <span class="text-green-500 text-[10px] font-black mb-4 block">Curiosidade</span>
-                    <h4 class="text-lg font-bold mb-4 uppercase">IAs que Criam Hardware</h4>
-                    <p class="text-xs text-slate-500 mb-8 leading-relaxed">Como algoritmos estão desenhando a nova geração de chips semicondutores.</p>
-                    <a href="https://techcrunch.com" target="_blank" class="text-green-400 text-[10px] font-black uppercase tracking-widest hover:underline">Explorar TechCrunch →</a>
+                <article class="card-ia p-10 bg-slate-950/40 border-t-2 border-t-green-600">
+                    <h4 class="text-xl font-bold mb-4 uppercase">Processamento Neural</h4>
+                    <p class="text-sm text-slate-500 mb-8 leading-relaxed italic">Novas descobertas em computação quântica aplicadas a redes neurais sugerem que modelos futuros serão 1000x mais eficientes energeticamente.</p>
+                    <a href="https://techcrunch.com" target="_blank" class="text-green-400 font-black uppercase text-[10px] tracking-widest hover:underline">Explorar na TechCrunch →</a>
                 </article>
             </div>
         </section>
     </main>
 
-    <footer id="privacidade" class="py-24 border-t border-white/5 bg-slate-950/80 text-center">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-wrap justify-center gap-12 mb-12">
-                <button onclick="openLegal('privacidade')" class="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-500 transition">Política de Privacidade</button>
-                <button onclick="openLegal('termos')" class="text-[10px] font-black uppercase tracking-widest text-slate-500 hover:text-blue-500 transition">Termos de Uso</button>
+    <footer id="contato" class="py-24 border-t border-white/5 bg-slate-950/80">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex flex-wrap justify-center gap-12 mb-16">
+                <button onclick="openLegal('privacidade')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-500">Política de Privacidade</button>
+                <button onclick="openLegal('termos')" class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-500">Termos de Serviço</button>
+                <a href="mailto:contato@mundodasias.com.br" class="text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-blue-500">Central de Ajuda</a>
             </div>
-            <p class="text-[10px] font-black text-slate-700 uppercase tracking-[0.6em] mb-4 italic">© 2026 MUNDO DAS IAs | HUB DE AUTOMAÇÃO</p>
+            <p class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-4 italic">© 2026 MUNDO DAS IAs | A Autoridade em Inteligência Artificial</p>
+            <p class="text-[9px] text-slate-800 max-w-4xl mx-auto leading-relaxed">
+                As análises, recomendações e diretórios do Mundo das IAs são fruto de pesquisa independente. Não somos responsáveis pela garantia de softwares de terceiros. Nosso compromisso é com a transparência e a precisão técnica.
+            </p>
         </div>
     </footer>
 
-    <div id="legalModal" class="modal" onclick="this.style.display='none'">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div id="legalBody" class="text-sm text-slate-400 leading-relaxed"></div>
-            <button onclick="document.getElementById('legalModal').style.display='none'" class="mt-8 w-full py-4 bg-blue-600 rounded-xl font-black text-[10px] tracking-widest text-white">Fechar</button>
+    <div id="modal" onclick="this.style.display='none'">
+        <div class="modal-inner" onclick="event.stopPropagation()">
+            <div id="modalContent" class="legal-text"></div>
+            <button onclick="document.getElementById('modal').style.display='none'" class="mt-12 w-full py-5 bg-blue-600 rounded-2xl font-black uppercase text-[10px] tracking-[0.2em] text-white">Fechar Documento</button>
         </div>
     </div>
 
     <script>
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
         
-        async function fetchIAs() {
+        async function loadIAs() {
             try {
                 const r = await fetch(urlCSV);
                 const d = await r.text();
@@ -126,39 +147,48 @@
                 document.getElementById('ia-grid').innerHTML = rows.map(row => {
                     const c = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!c[1]) return '';
-                    
-                    // Lógica da Imagem: Pega a coluna 5, se falhar usa placeholder profissional
-                    const imgUrl = (c[4] && c[4].includes('http')) ? c[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80";
-
+                    const imgUrl = (c[4] && c[4].includes('http')) ? c[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600";
                     return `
-                        <div class="section-card flex flex-col h-full">
-                            <div class="h-44 w-full overflow-hidden relative">
-                                <img src="${imgUrl}" class="w-full h-full object-cover opacity-80 hover:opacity-100 transition duration-500" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80'">
+                        <div class="card-ia flex flex-col h-full">
+                            <div class="h-44 w-full relative overflow-hidden">
+                                <img src="${imgUrl}" class="w-full h-full object-cover opacity-80" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
                                 <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
                             </div>
                             <div class="p-8 pt-4 flex flex-col flex-grow">
                                 <span class="text-blue-500 text-[8px] font-black uppercase mb-2 tracking-widest">${c[0]?.replace(/"/g, '')}</span>
                                 <h4 class="text-lg font-extrabold mb-3 uppercase tracking-tighter">${c[1].replace(/"/g, '')}</h4>
                                 <p class="text-slate-500 text-[11px] mb-8 italic line-clamp-2">"${c[2]?.replace(/"/g, '')}"</p>
-                                <a href="${c[3]?.replace(/"/g, '')}" target="_blank" class="mt-auto block text-center py-4 bg-blue-600/10 border border-blue-500/20 rounded-2xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">Acessar IA</a>
+                                <a href="${c[3]?.replace(/"/g, '')}" target="_blank" class="mt-auto block text-center py-4 bg-blue-600/10 border border-blue-500/20 rounded-2xl text-[9px] font-black uppercase hover:bg-blue-600 transition-all">Explorar Tecnologia</a>
                             </div>
                         </div>
                     `;
                 }).join('');
-            } catch(e) { console.error("Erro no Mundo das IAs"); }
+            } catch(e) { console.error("Erro ao sincronizar com o Mundo das IAs"); }
         }
 
         const legalData = {
-            privacidade: `<h2 class="text-2xl font-black text-white mb-6 uppercase">Privacidade | Mundo das IAs</h2><p>Coletamos dados analíticos para melhorar sua experiência. Respeitamos a LGPD e o sigilo de informações.</p>`,
-            termos: `<h2 class="text-2xl font-black text-white mb-6 uppercase">Termos | Mundo das IAs</h2><p>Este hub é informativo. Não nos responsabilizamos pelo desempenho de ferramentas de terceiros.</p>`
+            privacidade: `
+                <h2>Política de Privacidade</h2>
+                <p>O <strong>Mundo das IAs</strong> tem como compromisso inabalável a segurança dos dados de seus usuários. Esta política visa esclarecer como as informações são processadas dentro do nosso hub de curadoria técnica.</p>
+                <p><strong>1. Coleta de Dados Analíticos:</strong> Coletamos apenas informações anônimas de navegação para entender as tendências de interesse tecnológico. Isso inclui tempo de permanência em categorias e taxa de cliques em ferramentas, tudo processado de forma a garantir que nenhum indivíduo seja identificado.</p>
+                <p><strong>2. Cookies e Publicidade:</strong> Utilizamos sistemas de parceiros como o Google AdSense. Esses parceiros podem utilizar cookies para exibir anúncios que sejam relevantes ao seu perfil de interesse tecnológico. Você pode optar por desativar essa personalização a qualquer momento através das configurações do seu navegador.</p>
+                <p><strong>3. Links Externos:</strong> O Mundo das IAs atua como um portal de curadoria. Ao clicar em "Acessar Tecnologia", você será redirecionado para sites de terceiros. Recomendamos a leitura das políticas de privacidade desses respectivos desenvolvedores.</p>
+            `,
+            termos: `
+                <h2>Termos de Serviço</h2>
+                <p>Ao utilizar o portal <strong>Mundo das IAs</strong>, você concorda em seguir os termos aqui estabelecidos, projetados para manter a integridade e a qualidade técnica do nosso hub.</p>
+                <p><strong>1. Propriedade da Curadoria:</strong> A seleção, classificação e os textos institucionais aqui presentes são de propriedade do Mundo das IAs. É proibido o uso de técnicas de extração automática de dados (scraping) para replicar nossa base de dados sem autorização expressa.</p>
+                <p><strong>2. Isenção de Responsabilidade:</strong> Não garantimos o funcionamento ininterrupto de softwares de terceiros listados em nosso diretório. Nossa função é informativa e curatorial; a implementação técnica e os resultados gerados por essas ferramentas são de responsabilidade exclusiva de seus desenvolvedores.</p>
+                <p><strong>3. Atualização de Conteúdo:</strong> Reservamo-nos o direito de atualizar ou remover ferramentas de nossa base sempre que os padrões técnicos de qualidade exigidos por nossa equipe editorial não forem mais atendidos.</p>
+            `
         };
 
-        function openLegal(type) {
-            document.getElementById('legalBody').innerHTML = legalData[type];
-            document.getElementById('legalModal').style.display = 'flex';
+        function openLegal(t) {
+            document.getElementById('modalContent').innerHTML = legalData[t];
+            document.getElementById('modal').style.display = 'flex';
         }
 
-        fetchIAs();
+        loadIAs();
     </script>
 </body>
 </html>
