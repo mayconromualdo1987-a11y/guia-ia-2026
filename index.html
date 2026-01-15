@@ -26,6 +26,8 @@
         .lang-btn.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); border: 1px solid var(--cyan); }
         .share-overlay { position: absolute; top: 0; right: -50px; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); transition: 0.3s; padding: 10px; border-bottom-left-radius: 15px; display: flex; flex-direction: column; gap: 10px; }
         .cyber-card:hover .share-overlay { right: 0; }
+        /* Estilo para o Ad nativo injetado */
+        .ad-card { border: 1px dashed rgba(112,0,255,0.3); background: rgba(112,0,255,0.05); }
     </style>
 </head>
 <body>
@@ -40,7 +42,7 @@
                 </div>
                 <div class="hidden md:flex flex-col leading-none logo-font">
                     <span class="text-white text-lg font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
-                    <span class="text-cyan-400 text-[8px] font-bold tracking-[0.3em] uppercase">Neural Hub 2026</span>
+                    <span class="text-cyan-400 text-[8px] font-bold tracking-[0.3em] uppercase">Neural Hub</span>
                 </div>
             </div>
             
@@ -62,6 +64,11 @@
             <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase tracking-tight logo-font" id="hero-title"></h1>
             <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium" id="hero-desc"></p>
         </header>
+
+        <div class="mb-12 text-center min-h-[90px] bg-white/5 rounded-2xl flex items-center justify-center overflow-hidden">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
 
         <section class="p-4 rounded-3xl mb-12 bg-white/5 border border-white/5 backdrop-blur-md">
             <div class="flex flex-col lg:flex-row gap-4 items-center">
@@ -108,8 +115,8 @@
                 all: "TUDO", access: "ACESSAR", close: "FECHAR TERMINAL", newsTitle: "Transmissão Neural",
                 fTerms: "Termos", fPrivacy: "Privacidade", fAbout: "Institucional", fSuggest: "Sugestões",
                 shareText: "Olha essa IA que encontrei no Mundo das IA's!",
-                institucional: `<h2 class="text-cyan-400 logo-font text-2xl mb-6">Iniciativa Mundo das IA's</h2><p>Curadoria técnica de elite para profissionais em 2026.</p>`,
-                termos: `<h2>Termos</h2><p>Conteúdo informativo.</p>`,
+                institucional: `<h2 class="text-cyan-400 logo-font text-2xl mb-6">Iniciativa Mundo das IA's</h2><p>Curadoria técnica de elite para profissionais em busca de produtividade tecnológica.</p>`,
+                termos: `<h2>Termos</h2><p>Conteúdo atemporal e informativo.</p>`,
                 privacidade: `<h2>Privacidade</h2><p>LGPD/GDPR compliant.</p>`,
                 sugestoes: `<h2>Sugestões</h2><p>contato@mundodasias.com.br</p>`
             },
@@ -121,7 +128,7 @@
                 fTerms: "Terms", fPrivacy: "Privacy", fAbout: "Institutional", fSuggest: "Suggestions",
                 shareText: "Check out this AI I found on AI World!",
                 institucional: `<h2>AI World Initiative</h2><p>Elite technical curation.</p>`,
-                termos: `<h2>Terms</h2><p>Informational only.</p>`,
+                termos: `<h2>Terms</h2><p>Evergreen informational content.</p>`,
                 privacidade: `<h2>Privacy</h2><p>GDPR compliant.</p>`,
                 sugestoes: `<h2>Suggestions</h2><p>contact@mundodasias.com.br</p>`
             },
@@ -133,7 +140,7 @@
                 fTerms: "Términos", fPrivacy: "Privacidad", fAbout: "Institucional", fSuggest: "Sugerencias",
                 shareText: "¡Mira esta IA que encontré en el Mundo de las IA!",
                 institucional: `<h2>Iniciativa Mundo de las IA</h2><p>Curaduría técnica de élite.</p>`,
-                termos: `<h2>Términos</h2><p>Contenido informativo.</p>`,
+                termos: `<h2>Términos</h2><p>Contenido informativo atemporal.</p>`,
                 privacidade: `<h2>Privacidad</h2><p>LGPD/GDPR.</p>`,
                 sugestoes: `<h2>Sugerencias</h2><p>contacto@mundodasias.com.br</p>`
             }
@@ -211,19 +218,21 @@
 
         function renderCards(lista) {
             const t = i18n[currentLang];
-            document.getElementById('ia-grid').innerHTML = lista.map(ia => {
+            const grid = document.getElementById('ia-grid');
+            grid.innerHTML = '';
+
+            lista.forEach((ia, index) => {
                 const shareMsg = encodeURIComponent(`${t.shareText}\n🚀 ${ia.nome}: ${ia.link}`);
-                return `
+                const cardHtml = `
                 <div class="cyber-card flex flex-col h-full group">
                     <div class="h-44 overflow-hidden relative">
                         <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110">
                         <span class="absolute top-4 left-4 bg-cyan-400 text-black text-[8px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">${ia.cat}</span>
-                        
                         <div class="share-overlay">
-                            <a href="https://api.whatsapp.com/send?text=${shareMsg}" target="_blank" title="WhatsApp">
+                            <a href="https://api.whatsapp.com/send?text=${shareMsg}" target="_blank">
                                 <svg class="w-5 h-5 fill-green-500 hover:scale-110 transition" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.412-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.499-5.688-1.447l-6.308 1.655zm6.357-3.872l.363.216c1.52.905 3.284 1.381 5.085 1.382 5.563 0 10.088-4.525 10.091-10.087.001-2.696-1.048-5.231-2.954-7.14-1.907-1.908-4.443-2.955-7.137-2.956-5.562 0-10.09 4.526-10.092 10.088-.001 1.874.52 3.703 1.503 5.304l.237.389-.997 3.642 3.733-.979z"/></svg>
                             </a>
-                            <a href="https://t.me/share/url?url=${ia.link}&text=${shareMsg}" target="_blank" title="Telegram">
+                            <a href="https://t.me/share/url?url=${ia.link}&text=${shareMsg}" target="_blank">
                                 <svg class="w-5 h-5 fill-sky-500 hover:scale-110 transition" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 7.021l-2.317 10.92c-.171.776-.632.966-1.282.603l-3.526-2.598-1.701 1.637c-.188.188-.346.346-.711.346l.253-3.588 6.53-5.899c.284-.253-.062-.394-.44-.143l-8.072 5.081-3.477-1.088c-.756-.237-.773-.756.158-1.116l13.59-5.239c.629-.237 1.18.14 1.002.876z"/></svg>
                             </a>
                         </div>
@@ -243,7 +252,19 @@
                         </div>
                     </div>
                 </div>`;
-            }).join('');
+                
+                grid.innerHTML += cardHtml;
+
+                // INJEÇÃO DE ANÚNCIO A CADA 8 CARDS
+                if ((index + 1) % 8 === 0) {
+                    grid.innerHTML += `
+                    <div class="cyber-card ad-card flex flex-col h-full items-center justify-center p-6 text-center">
+                        <span class="text-[8px] text-purple-400 font-bold mb-4 uppercase tracking-[0.3em]">Patrocinado</span>
+                        <ins class="adsbygoogle" style="display:block" data-ad-format="fluid" data-ad-layout-key="-fb+5w+4e-db+86" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>`;
+                }
+            });
         }
 
         function renderFilters() {
@@ -272,7 +293,7 @@
         function openTab(type) {
             const body = document.getElementById('modalBody');
             if(type === 'cursos') {
-                body.innerHTML = `<h2 class="text-cyan-400 logo-font text-2xl mb-8">Academy</h2><div class="grid gap-4">${[{n: "Google GenAI", l: "https://www.cloudskillsboost.google/paths/118"},{n: "Harvard AI", l: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python"},{n: "NVIDIA", l: "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-FX-07+V1"}].map(c => `<div class="p-6 bg-white/5 rounded-2xl flex justify-between items-center"><div><h4 class="font-bold text-white uppercase text-sm">${c.n}</h4></div><a href="${c.l}" target="_blank" class="text-cyan-400 font-bold text-[10px] border border-cyan-400/20 px-4 py-2 rounded-lg">GO</a></div>`).join('')}</div>`;
+                body.innerHTML = `<h2 class="text-cyan-400 logo-font text-2xl mb-8">Academy</h2><div class="grid gap-4">${[{n: "Google GenAI", l: "https://www.cloudskillsboost.google/paths/118"},{n: "Harvard AI", l: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python"},{n: "NVIDIA", l: "https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-FX-07+V1"}].map(c => `<div class="p-6 bg-white/5 rounded-2xl flex justify-between items-center"><div><h4 class="font-bold text-white uppercase text-sm">${c.n}</h4></div><a href="${c.l}" target="_blank" class="text-cyan-400 font-bold text-[10px] border border-cyan-400/20 px-4 py-2 rounded-lg">START</a></div>`).join('')}</div>`;
             } else body.innerHTML = i18n[currentLang][type];
             document.getElementById('mainModal').classList.remove('hidden');
             document.body.style.overflow = 'hidden';
