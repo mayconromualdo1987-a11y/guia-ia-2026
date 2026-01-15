@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | O Hub de Inteligência Operacional</title>
+    <title>Mundo das IAs | Inteligência e Operações</title>
 
     <link rel="icon" type="image/png" href="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png">
 
@@ -14,16 +14,26 @@
         :root { --accent: #3b82f6; }
         body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         
-        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .card-ia { transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .card-ia:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(30, 41, 59, 0.5); }
+        /* Ajuste de Glassmorphism e Transição */
+        .glass { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .card-ia { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .card-ia:hover { transform: translateY(-8px); border-color: var(--accent); background: rgba(30, 41, 59, 0.6); }
         
-        .active-filter { background: var(--accent) !important; color: white !important; border-color: transparent !important; }
+        /* Botão Ativo */
+        .active-filter { background: var(--accent) !important; color: white !important; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
         
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Correção da barra de filtros para não travar a rolagem */
+        .filter-scroll { 
+            display: flex; 
+            gap: 12px; 
+            overflow-x: auto; 
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .filter-scroll::-webkit-scrollbar { height: 4px; }
+        .filter-scroll::-webkit-scrollbar-thumb { background: rgba(59, 130, 246, 0.3); border-radius: 10px; }
 
-        .academy-banner { background: linear-gradient(135deg, #1e293b 0%, #020617 100%); border: 1px solid rgba(59, 130, 246, 0.2); }
+        .banner-academy { background: linear-gradient(135deg, #0f172a 0%, #020617 100%); border: 1px solid rgba(59, 130, 246, 0.1); }
     </style>
 </head>
 <body class="antialiased">
@@ -32,65 +42,73 @@
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex flex-col md:flex-row items-center gap-6">
                 
-                <button onclick="resetSite()" class="flex items-center gap-3 text-2xl font-black tracking-tighter flex-shrink-0 group">
-                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" alt="Mundo IAs" class="w-10 h-10 rounded-lg group-hover:scale-110 transition duration-300">
+                <button onclick="window.location.reload()" class="flex items-center gap-3 text-2xl font-black tracking-tighter flex-shrink-0 group">
+                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" alt="Mundo IAs" class="w-10 h-10 rounded-lg group-hover:rotate-6 transition duration-300">
                     <span>MUNDO<span class="text-blue-500">IAs</span></span>
                 </button>
 
                 <div class="flex-grow w-full max-w-2xl relative">
-                    <input type="text" id="searchInput" placeholder="Pesquisar IAs, Logística, WMS, Automação..." 
-                    class="w-full bg-slate-900/50 border border-white/10 p-3 pl-5 rounded-2xl outline-none text-white focus:border-blue-500 transition-all text-sm">
+                    <input type="text" id="searchInput" placeholder="Pesquisar por Categoria ou Nome..." 
+                    class="w-full bg-slate-900/80 border border-white/10 p-3 pl-5 rounded-2xl outline-none text-white focus:border-blue-500 transition-all text-sm">
                 </div>
 
-                <div class="hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                    <a href="#noticias" class="hover:text-blue-500 transition">Tendências</a>
+                <div class="hidden lg:flex items-center gap-8 text-[11px] font-black uppercase tracking-widest text-slate-400">
+                    <a href="#ia-grid" class="hover:text-blue-500 transition">Ferramentas</a>
                     <a href="#academy" class="hover:text-blue-500 transition">Academy</a>
+                    <a href="#noticias" class="hover:text-blue-500 transition">Tendências</a>
                 </div>
             </div>
 
-            <div id="filter-container" class="mt-4 flex gap-2 overflow-x-auto no-scrollbar pb-2"></div>
+            <div id="filter-container" class="filter-scroll mt-6">
+                </div>
         </div>
     </nav>
 
-    <main class="pt-48 md:pt-40 max-w-7xl mx-auto px-6">
+    <main class="pt-52 md:pt-44 max-w-7xl mx-auto px-6">
         
-        <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"></div>
-
-        <section id="academy" class="mb-24 academy-banner p-10 rounded-[40px] flex flex-col md:flex-row items-center justify-between gap-8">
-            <div class="max-w-xl">
-                <div class="bg-blue-500/10 text-blue-400 text-[9px] font-black px-3 py-1 rounded-full w-fit mb-6 uppercase tracking-widest">Conhecimento Estratégico</div>
-                <h2 class="text-3xl md:text-5xl font-black mb-4 leading-tight">MUNDO IAs <br><span class="text-blue-500">ACADEMY</span></h2>
-                <p class="text-slate-400 mb-8 text-lg">Tutoriais e insights exclusivos sobre a implementação de Inteligência Artificial em fluxos de Logística, ERPs e automação de processos.</p>
-                <button class="bg-white text-black px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl shadow-white/5">
-                    Acessar Cursos Web
-                </button>
-            </div>
-            <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-56 rounded-[3rem] border-8 border-slate-900/50 shadow-2xl opacity-90">
+        <section id="ia-grid" class="scroll-mt-48 mb-24">
+            <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
         </section>
 
-        <section id="noticias" class="mb-24 pt-12 border-t border-white/5">
-            <h2 class="text-3xl font-bold mb-10 tracking-tighter uppercase">Radar <span class="text-blue-500">Tech 2026</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="#" class="glass p-8 rounded-[32px] hover:border-blue-500 transition group">
-                    <h3 class="text-xl font-bold mb-4 group-hover:text-blue-400 transition">IAs Generativas no Supply Chain</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Como os novos modelos estão otimizando rotas e reduzindo custos operacionais em tempo real.</p>
+        <section id="academy" class="scroll-mt-48 mb-24 banner-academy p-8 md:p-14 rounded-[40px] flex flex-col md:flex-row items-center justify-between gap-12">
+            <div class="max-w-xl text-center md:text-left">
+                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4 block">Exclusivo Mundo IAs</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-none">ACADEMY<br><span class="text-slate-500 text-3xl md:text-4xl font-light">CONHECIMENTO WEB</span></h2>
+                <p class="text-slate-400 mb-10 text-lg leading-relaxed">Domine as ferramentas que estão transformando a logística e a automação industrial através de cursos e workshops integrados.</p>
+                <a href="#noticias" class="inline-block bg-white text-black px-10 py-5 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-600 hover:text-white transition-all">
+                    Explorar Conteúdo
                 </a>
-                <div class="glass p-8 rounded-[32px] border-green-500/20">
-                    <h3 class="text-xl font-bold mb-4">Automação de WMS</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">Integregando ChatGPT e agentes inteligentes dentro do seu sistema de armazém.</p>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-blue-500 rounded-[3rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="relative w-64 rounded-[3rem] border-8 border-slate-900 shadow-2xl">
+            </div>
+        </section>
+
+        <section id="noticias" class="scroll-mt-48 mb-24 pt-12 border-t border-white/5">
+            <h2 class="text-3xl font-black mb-12 tracking-tighter uppercase">Radar <span class="text-blue-500 italic">2026</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+                <div class="glass p-8 rounded-[35px] border-l-4 border-l-blue-600">
+                    <h3 class="text-xl font-bold mb-4">IAs no Supply Chain</h3>
+                    <p class="text-slate-500 text-sm italic leading-relaxed">Modelos preditivos agora integrados diretamente via navegador para análise de demanda.</p>
                 </div>
-                <div class="glass p-8 rounded-[32px]">
-                    <h3 class="text-xl font-bold mb-4">O Futuro dos ERPs</h3>
-                    <p class="text-slate-500 text-sm leading-relaxed">A transição para interfaces de voz e predição de demanda assistida por IA.</p>
+                <div class="glass p-8 rounded-[35px] border-l-4 border-l-purple-600">
+                    <h3 class="text-xl font-bold mb-4">Integração ERP</h3>
+                    <p class="text-slate-500 text-sm italic leading-relaxed">Como conectar agentes inteligentes ao seu banco de dados operacional com segurança.</p>
+                </div>
+                <div class="glass p-8 rounded-[35px] border-l-4 border-l-green-600">
+                    <h3 class="text-xl font-bold mb-4">Mundo IAs Blog</h3>
+                    <p class="text-slate-500 text-sm italic leading-relaxed">Novos tutoriais semanais sobre automação de processos repetitivos.</p>
                 </div>
             </div>
         </section>
 
     </main>
 
-    <footer class="py-12 border-t border-white/5 text-center">
-        <div class="text-slate-600 text-[10px] font-black uppercase tracking-[0.5em]">
-            © 2026 MUNDO DAS IAs | Inteligência para Operações Reais
+    <footer class="py-16 border-t border-white/5 text-center">
+        <div class="text-slate-700 text-[10px] font-black uppercase tracking-[0.5em]">
+            Mundo das IAs | O Futuro é Operacional e Inteligente
         </div>
     </footer>
 
@@ -119,13 +137,13 @@
                 renderFilters();
                 updateDisplay();
                 document.getElementById('searchInput').addEventListener('input', updateDisplay);
-            } catch (err) { console.error(err); }
+            } catch (err) { console.error("Falha ao carregar dados:", err); }
         }
 
         function renderFilters() {
             const cats = ['Todos', ...new Set(todasIAs.map(ia => ia.cat))];
             document.getElementById('filter-container').innerHTML = cats.map(c => `
-                <button onclick="setFilter('${c}', this)" class="filter-btn px-5 py-2.5 rounded-xl border border-white/10 text-[9px] font-black uppercase tracking-widest whitespace-nowrap transition-all hover:bg-white/5 ${c === 'Todos' ? 'active-filter' : ''}">
+                <button onclick="setFilter('${c}', this)" class="filter-btn px-6 py-3 rounded-2xl border border-white/5 text-[10px] font-black uppercase tracking-widest whitespace-nowrap transition-all ${c === 'Todos' ? 'active-filter' : 'bg-slate-900/50 hover:bg-slate-800'}">
                     ${c}
                 </button>
             `).join('');
@@ -136,20 +154,14 @@
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
             btn.classList.add('active-filter');
             updateDisplay();
-        }
-
-        function resetSite() {
-            document.getElementById('searchInput').value = '';
-            categoriaAtiva = 'Todos';
-            renderFilters();
-            updateDisplay();
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            // Scroll suave para o grid após filtrar
+            document.getElementById('ia-grid').scrollIntoView({ behavior: 'smooth' });
         }
 
         function updateDisplay() {
             const b = document.getElementById('searchInput').value.toLowerCase();
             const filtradas = todasIAs.filter(ia => {
-                const mBusca = ia.nome.toLowerCase().includes(b) || ia.desc.toLowerCase().includes(b);
+                const mBusca = ia.nome.toLowerCase().includes(b) || ia.cat.toLowerCase().includes(b);
                 const mCat = categoriaAtiva === 'Todos' || ia.cat === categoriaAtiva;
                 return mBusca && mCat;
             });
@@ -157,16 +169,25 @@
         }
 
         function renderCards(lista) {
-            document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="glass card-ia rounded-[32px] overflow-hidden flex flex-col h-full">
-                    <div class="h-44 overflow-hidden relative bg-slate-900">
-                        <img src="${ia.img}" class="w-full h-full object-cover opacity-50 hover:opacity-100 transition duration-700 scale-105 hover:scale-100">
-                        <span class="absolute top-5 left-5 bg-blue-600 px-3 py-1 rounded-lg text-[8px] font-black uppercase tracking-tighter">${ia.cat}</span>
+            const container = document.getElementById('cards-container');
+            if (lista.length === 0) {
+                container.innerHTML = `<div class="col-span-full py-20 text-center text-slate-600 font-bold uppercase tracking-widest">Nenhuma IA encontrada nesta categoria.</div>`;
+                return;
+            }
+            container.innerHTML = lista.map(ia => `
+                <div class="glass card-ia rounded-[35px] overflow-hidden flex flex-col h-full">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover opacity-60 hover:opacity-100 transition duration-500">
+                        <div class="absolute top-5 left-5 bg-blue-600/90 backdrop-blur-md px-4 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-tighter text-white">
+                            ${ia.cat}
+                        </div>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow">
+                    <div class="p-8 flex flex-col flex-grow">
                         <h3 class="text-xl font-extrabold mb-3 text-white leading-tight">${ia.nome}</h3>
                         <p class="text-slate-400 text-xs leading-relaxed mb-8 italic">"${ia.desc}"</p>
-                        <a href="${ia.link}" target="_blank" class="mt-auto block w-full text-center py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:border-transparent transition-all duration-300">Acessar Web</a>
+                        <a href="${ia.link}" target="_blank" class="mt-auto block w-full text-center py-4 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:border-transparent transition-all">
+                            Acessar Plataforma
+                        </a>
                     </div>
                 </div>
             `).join('');
