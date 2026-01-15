@@ -3,99 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | Curadoria Profissional de Inteligência Artificial</title>
-    
-    <meta name="description" content="O maior portal de ferramentas de IA para Logística, Automação e Produtividade. Encontre soluções para otimizar seu negócio.">
+    <title>Mundo das IAs | O Hub de Automação e Inteligência</title>
     
     <link rel="icon" type="image/png" href="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        :root { --blue-primary: #3b82f6; --dark-bg: #020617; }
-        body { background-color: var(--dark-bg); color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        :root { --blue-glow: rgba(59, 130, 246, 0.5); }
+        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         
-        /* Filtros: Acessibilidade Total (Correção da Bagunça) */
+        .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        
+        /* Filtros Acessíveis - Correção de Navegação */
         .filter-scroll { 
-            display: flex; gap: 12px; overflow-x: auto; padding: 10px 0 20px 0;
-            scrollbar-width: thin; scrollbar-color: #1e293b transparent;
+            display: flex; gap: 12px; overflow-x: auto; padding: 10px 0;
+            -webkit-overflow-scrolling: touch;
         }
-        .filter-scroll::-webkit-scrollbar { height: 6px; }
+        .filter-scroll::-webkit-scrollbar { height: 4px; }
         .filter-scroll::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
         
-        .active-filter { background: var(--blue-primary) !important; color: white !important; font-weight: 800; border: none !important; }
+        .active-filter { background: #3b82f6 !important; color: white !important; border: none !important; }
 
-        /* Cards de IA: Layout Profissional */
-        .card-ia { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s ease; }
-        .card-ia:hover { border-color: var(--blue-primary); transform: translateY(-5px); background: rgba(30, 41, 59, 0.8); }
+        .card-ia { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); transition: 0.3s; }
+        .card-ia:hover { border-color: #3b82f6; transform: translateY(-5px); }
         
-        /* Ad Placement */
-        .ad-slot { background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); text-align: center; color: #475569; padding: 20px; border-radius: 20px; font-size: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .section-anchor { scroll-margin-top: 180px; }
+        .legal-text { color: #94a3b8; font-size: 0.85rem; line-height: 1.6; }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 bg-[#020617]/95 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 py-5">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-                <a href="/" class="flex items-center gap-3 text-2xl font-black tracking-tighter">
-                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" alt="Mundo IAs" class="w-10 h-10 rounded-xl shadow-lg shadow-blue-500/20">
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="#" class="flex items-center gap-3 text-2xl font-black tracking-tighter">
+                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-9 h-9">
                     <span>MUNDO<span class="text-blue-500">IAs</span></span>
                 </a>
 
-                <div class="w-full max-w-xl">
-                    <input type="text" id="searchInput" placeholder="O que você deseja automatizar hoje?" 
-                    class="w-full bg-slate-900 border border-white/10 p-3.5 px-6 rounded-2xl outline-none focus:border-blue-500 text-sm transition-all shadow-inner">
+                <div class="w-full max-w-lg">
+                    <input type="text" id="searchInput" placeholder="Pesquisar tecnologia..." 
+                    class="w-full bg-slate-900/80 border border-white/10 p-2.5 px-5 rounded-xl outline-none focus:border-blue-500 text-sm transition-all">
                 </div>
 
-                <div class="flex items-center gap-6 text-[11px] font-black uppercase tracking-widest text-slate-400">
-                    <a href="#ferramentas" class="hover:text-blue-500 transition">Portal</a>
+                <div class="flex items-center gap-5 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                    <a href="#portal" class="hover:text-blue-500 transition">Portal</a>
                     <a href="#academy" class="hover:text-blue-500 transition">Academy</a>
-                    <a href="#politicas" class="hover:text-blue-500 transition">Sobre</a>
+                    <a href="#sobre" class="hover:text-blue-500 transition">Sobre</a>
                 </div>
             </div>
 
-            <div id="filter-container" class="filter-scroll mt-6">
-                </div>
+            <div id="filter-container" class="filter-scroll mt-4"></div>
         </div>
     </nav>
 
-    <main class="pt-64 md:pt-56 max-w-7xl mx-auto px-6">
+    <main class="pt-56 md:pt-48 max-w-7xl mx-auto px-6">
         
-        <div class="ad-slot mb-12">Publicidade Recomendada</div>
+        <section id="portal" class="section-anchor mb-24">
+            <h2 class="text-xl font-black mb-8 uppercase tracking-tighter border-l-4 border-blue-500 pl-4">Curadoria de Inteligência</h2>
+            <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </section>
 
-        <div class="mb-10 flex items-center justify-between border-b border-white/5 pb-4">
-            <h1 class="text-2xl font-black uppercase tracking-tighter" id="categoryTitle">Todas as Tecnologias</h1>
-            <span class="text-slate-500 text-[10px] font-bold" id="itemCount">Carregando...</span>
-        </div>
-
-        <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-24">
-            </div>
-
-        <section id="academy" class="mb-24 p-12 rounded-[40px] bg-gradient-to-br from-blue-900/20 to-transparent border border-blue-500/20">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-black mb-6 italic leading-none uppercase">Mundo IAs<br>Academy</h2>
-                    <p class="text-slate-400 text-lg leading-relaxed mb-8">Conteúdo técnico de alto valor para implementação de IA em logística, WMS e ERP. Estratégias validadas para automação empresarial.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <button class="bg-blue-600 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 transition">Ler Artigos</button>
-                        <button class="bg-white/5 border border-white/10 px-8 py-4 rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-white/10 transition">Ver Tutoriais</button>
-                    </div>
+        <section id="academy" class="section-anchor mb-24 p-10 rounded-[40px] bg-slate-900/40 border border-white/5">
+            <h2 class="text-3xl font-black mb-6 uppercase italic">Mundo IAs Academy</h2>
+            <p class="text-slate-400 max-w-2xl mb-6">Aprenda a conectar as ferramentas listadas no seu ERP ou WMS. Nossos tutoriais focam em aplicação prática para gerar ROI imediato através da automação.</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="p-6 bg-black/20 rounded-2xl border border-white/5 hover:border-blue-500/50 transition">
+                    <h4 class="font-bold mb-2">Automação WMS</h4>
+                    <p class="text-xs text-slate-500">Como usar visão computacional para inventários.</p>
                 </div>
-                <div class="ad-slot h-64 flex items-center justify-center">Espaço para Native Ad</div>
+                <div class="p-6 bg-black/20 rounded-2xl border border-white/5 hover:border-blue-500/50 transition">
+                    <h4 class="font-bold mb-2">Agentes de Voz</h4>
+                    <p class="text-xs text-slate-500">Implementação de IA no atendimento logístico.</p>
+                </div>
+                <div class="p-6 bg-black/20 rounded-2xl border border-white/5 hover:border-blue-500/50 transition">
+                    <h4 class="font-bold mb-2">Prompt Engineering</h4>
+                    <p class="text-xs text-slate-500">Comandos avançados para análise de dados.</p>
+                </div>
             </div>
         </section>
 
-        <section id="politicas" class="mb-24 text-slate-500 text-xs leading-relaxed max-w-4xl mx-auto text-center">
-            <p>O Mundo das IAs é uma plataforma de curadoria independente. Todas as ferramentas listadas passam por análise de utilidade operacional para o mercado brasileiro. Nosso objetivo é democratizar o acesso à inteligência artificial de alta performance.</p>
-            <div class="mt-6 flex justify-center gap-6 font-bold uppercase tracking-widest text-[10px]">
-                <a href="#" class="hover:text-white">Privacidade</a>
-                <a href="#" class="hover:text-white">Termos de Uso</a>
-                <a href="#" class="hover:text-white">Anuncie Conosco</a>
+        <section id="sobre" class="section-anchor mb-24 grid md:grid-cols-2 gap-12 border-t border-white/5 pt-12">
+            <div>
+                <h3 class="text-lg font-black uppercase mb-4 text-blue-500">Sobre o Projeto</h3>
+                <p class="legal-text italic">"O Mundo das IAs nasceu para filtrar o ruído tecnológico e entregar apenas o que funciona para a operação real. Nossa missão é ser a ponte entre a inteligência generativa e a produtividade industrial."</p>
+                <h3 class="text-lg font-black uppercase mt-8 mb-4 text-blue-500">Anuncie Conosco</h3>
+                <p class="legal-text">Alcance um público qualificado de gestores, desenvolvedores e entusiastas de automação. Entre em contato para opções de Native Ads e Banners Estratégicos.</p>
+            </div>
+            <div id="privacidade" class="bg-slate-900/20 p-8 rounded-3xl border border-white/5">
+                <h3 class="text-lg font-black uppercase mb-4">Privacidade e Termos</h3>
+                <p class="legal-text mb-4">Este site utiliza cookies para melhorar a experiência de navegação e coletar métricas anônimas de acesso via Google Analytics.</p>
+                <p class="legal-text">Ao acessar o portal, você concorda com a nossa política de transparência de dados. Não coletamos informações pessoais sem o seu consentimento explícito.</p>
             </div>
         </section>
 
     </main>
+
+    <footer class="py-12 border-t border-white/5 text-center">
+        <div class="flex flex-wrap justify-center gap-8 mb-8 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <a href="#portal" class="hover:text-white">Portal</a>
+            <a href="#academy" class="hover:text-white">Academy</a>
+            <a href="#sobre" class="hover:text-white">Sobre</a>
+            <a href="#privacidade" class="hover:text-white">Privacidade</a>
+            <a href="#privacidade" class="hover:text-white">Termos de Uso</a>
+        </div>
+        <p class="text-[9px] text-slate-700 tracking-[0.4em] uppercase">© 2026 Mundo das IAs | Autoridade Técnica</p>
+    </footer>
 
     <script>
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
@@ -122,13 +136,13 @@
                 renderFilters();
                 updateDisplay();
                 document.getElementById('searchInput').addEventListener('input', updateDisplay);
-            } catch (err) { console.error("Erro na carga de dados"); }
+            } catch (err) { console.error("Erro na carga"); }
         }
 
         function renderFilters() {
             const cats = ['Todos', ...new Set(todasIAs.map(ia => ia.cat))];
             document.getElementById('filter-container').innerHTML = cats.map(c => `
-                <button onclick="setFilter('${c}', this)" class="filter-btn px-6 py-3 rounded-2xl border border-white/5 text-[10px] font-black uppercase tracking-widest whitespace-nowrap bg-slate-900 hover:bg-slate-800 transition-all ${c === 'Todos' ? 'active-filter' : ''}">
+                <button onclick="setFilter('${c}', this)" class="filter-btn px-5 py-2 rounded-xl border border-white/5 text-[9px] font-black uppercase tracking-widest bg-slate-900/50 transition-all ${c === 'Todos' ? 'active-filter' : ''}">
                     ${c}
                 </button>
             `).join('');
@@ -138,35 +152,30 @@
             categoriaAtiva = cat;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
             btn.classList.add('active-filter');
-            document.getElementById('categoryTitle').innerText = cat === 'Todos' ? 'Todas as Tecnologias' : cat;
             updateDisplay();
         }
 
         function updateDisplay() {
             const b = document.getElementById('searchInput').value.toLowerCase();
             const filtradas = todasIAs.filter(ia => {
-                const mBusca = ia.nome.toLowerCase().includes(b) || ia.desc.toLowerCase().includes(b);
-                const mCat = categoriaAtiva === 'Todos' || ia.cat === categoriaAtiva;
-                return mBusca && mCat;
+                const matchBusca = ia.nome.toLowerCase().includes(b) || ia.desc.toLowerCase().includes(b);
+                const matchCat = categoriaAtiva === 'Todos' || ia.cat === categoriaAtiva;
+                return matchBusca && matchCat;
             });
-            document.getElementById('itemCount').innerText = `${filtradas.length} Ferramentas Encontradas`;
             renderCards(filtradas);
         }
 
         function renderCards(lista) {
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="card-ia rounded-[32px] overflow-hidden flex flex-col h-full group">
-                    <div class="h-44 overflow-hidden relative">
-                        <img src="${ia.img}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition duration-700">
-                        <span class="absolute top-4 left-4 bg-blue-600 px-3 py-1 rounded-lg text-[9px] font-black uppercase">${ia.cat}</span>
+                <div class="card-ia rounded-3xl overflow-hidden flex flex-col h-full group">
+                    <div class="h-40 overflow-hidden relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition duration-500">
                     </div>
-                    <div class="p-7 flex flex-col flex-grow">
-                        <h3 class="text-xl font-extrabold mb-3 group-hover:text-blue-400 transition">${ia.nome}</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-8 line-clamp-3 italic">"${ia.desc}"</p>
-                        
-                        <a href="${ia.link}" target="_blank" rel="noopener noreferrer" 
-                           class="mt-auto block w-full text-center py-4 bg-blue-600/10 border border-blue-500/20 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all shadow-xl">
-                           Visitar Tecnologia
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-lg font-bold mb-3">${ia.nome}</h3>
+                        <p class="text-slate-400 text-[11px] leading-relaxed mb-6 line-clamp-3">"${ia.desc}"</p>
+                        <a href="${ia.link}" target="_blank" class="mt-auto block w-full text-center py-3 bg-blue-600/10 border border-blue-500/30 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
+                            Acessar IA
                         </a>
                     </div>
                 </div>
