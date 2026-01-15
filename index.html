@@ -1,367 +1,222 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     
-
     <title>Mundo das IAs | O Guia Estratégico de Inteligência Artificial 2026</title>
-
     <meta name="description" content="A maior curadoria técnica de IA do Brasil. Central de ferramentas para automação, logística e produtividade.">
-
     <link rel="canonical" href="https://mundodasias.com.br" />
-
     
-
     <meta name="google-site-verification" content="WqUCrS42Jss7Y22FFmSwzLNrxS9UBBBa1gjD7ma-E0w" />
-
-
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
 
-
-
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Lexend:wght@500;700&display=swap" rel="stylesheet">
     
-
     <style>
-
-        :root { --neon: #3b82f6; --bg: #020617; }
-
-        body { background: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-
-        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
-
+        :root { 
+            --accent: #0ea5e9; 
+            --accent-hover: #38bdf8;
+            --bg-deep: #020617; 
+            --card-surface: #0f172a;
+        }
         
+        body { 
+            background-color: var(--bg-deep); 
+            color: #f1f5f9; 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+        }
 
-        .glass-nav { background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(59, 130, 246, 0.1); }
+        h1, h2, h3 { font-family: 'Lexend', sans-serif; letter-spacing: -0.02em; }
 
-        
+        /* HEADER PREMIUM */
+        .premium-nav { 
+            background: rgba(2, 6, 23, 0.8); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        }
 
-        .filter-wrapper { display: flex; overflow-x: auto; padding: 10px 0; gap: 10px; scrollbar-width: none; }
+        /* CARD DESIGNER ATUALIZADO */
+        .ia-card { 
+            background: var(--card-surface); 
+            border: 1px solid rgba(255, 255, 255, 0.03); 
+            border-radius: 20px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
 
-        .filter-wrapper::-webkit-scrollbar { display: none; }
+        .ia-card:hover { 
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
 
-        
+        .img-zoom { 
+            height: 160px; 
+            overflow: hidden; 
+            position: relative;
+        }
 
-        .filter-chip { flex: 0 0 auto; padding: 10px 24px; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 100px; color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .img-zoom img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s ease;
+            filter: grayscale(20%);
+        }
 
-        .filter-chip.active { background: var(--neon); color: white; border-color: var(--neon); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
+        .ia-card:hover .img-zoom img { 
+            transform: scale(1.1); 
+            filter: grayscale(0%);
+        }
 
+        /* FILTROS CYBER */
+        .chip { 
+            padding: 8px 20px; 
+            background: rgba(30, 41, 59, 0.5); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 99px; 
+            font-size: 12px; 
+            font-weight: 600; 
+            white-space: nowrap;
+            transition: 0.3s;
+        }
 
+        .chip.active { 
+            background: var(--accent); 
+            border-color: var(--accent);
+            color: white;
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.4);
+        }
 
-        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-
-        .card-ia:hover { border-color: var(--neon); transform: translateY(-8px); box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8); }
-
-        
-
-        .img-box { height: 180px; overflow: hidden; position: relative; }
-
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.8; }
-
-        .card-ia:hover .img-box img { transform: scale(1.1); opacity: 1; }
-
-
-
-        .success-toast { position: fixed; bottom: 30px; right: 30px; background: #10b981; color: white; padding: 16px 32px; border-radius: 16px; font-weight: 800; text-transform: uppercase; font-size: 12px; display: none; z-index: 200; }
-
+        /* SCROLLBAR CUSTOM */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
     </style>
-
 </head>
-
 <body class="antialiased">
 
-
-
-    <nav class="fixed top-0 w-full z-50 glass-nav px-8 py-5">
-
+    <nav class="fixed top-0 w-full z-50 premium-nav px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-
-            <a href="#" class="flex items-center gap-3 text-2xl font-black italic tracking-tighter">
-
-                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)]"></div>
-
-                MUNDO DAS <span class="text-blue-500 uppercase">IAs</span>
-
+            <a href="#" class="text-xl font-bold tracking-tight flex items-center gap-2">
+                <span class="w-6 h-6 bg-sky-500 rounded-md"></span>
+                MUNDO DAS <span class="text-sky-500">IAs</span>
             </a>
-
-            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
-
-                <a href="#institucional" class="hover:text-white transition">Institucional</a>
-
-                <a href="#portal" class="hover:text-white transition">Diretório</a>
-
-                <button onclick="openLegal('privacidade')" class="hover:text-white uppercase">Privacidade</button>
-
+            <div class="hidden md:flex gap-8 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <a href="#portal" class="hover:text-sky-400 transition">Diretório</a>
+                <a href="#cursos" class="hover:text-sky-400 transition">Cursos</a>
+                <button onclick="openModal('privacidade')" class="hover:text-white">Privacidade</button>
             </div>
-
         </div>
-
     </nav>
 
+    <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+        <header class="mb-20 text-center md:text-left">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">
+                Arsenal de <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-600">Inteligência.</span>
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl leading-relaxed">
+                Curadoria estratégica das ferramentas que estão definindo o mercado em 2026. 
+                Sincronizado com a base de dados global para produtividade extrema.
+            </p>
+        </header>
 
-
-    <main class="pt-44 max-w-7xl mx-auto px-6">
-
-        <section id="institucional" class="mb-32">
-
-            <div class="max-w-4xl">
-
-                <h1 class="text-6xl md:text-8xl font-black mb-10 leading-[0.9] italic uppercase">A Inteligência <br><span class="text-blue-500">Curada.</span></h1>
-
-                <p class="text-slate-400 text-xl leading-relaxed mb-8 text-justify border-l-2 border-blue-600 pl-8">
-
-                    O <strong>Mundo das IAs</strong> é uma plataforma unificada de curadoria tecnológica. Nosso foco é reunir as inteligências artificiais mais potentes do mercado em um único lugar, eliminando a fragmentação e entregando soluções prontas para automação e produtividade.
-
-                </p>
-
+        <section id="portal" class="mb-12">
+            <div class="flex flex-col lg:flex-row gap-6 items-center justify-between bg-slate-900/40 p-6 rounded-3xl border border-white/5">
+                <div class="w-full lg:w-1/3">
+                    <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="Filtrar por nome ou função..." 
+                    class="w-full bg-slate-950 border border-white/10 px-6 py-3 rounded-xl focus:ring-2 focus:ring-sky-500 outline-none text-sm transition-all">
+                </div>
+                <div id="filter-container" class="flex gap-3 overflow-x-auto w-full lg:w-2/3 no-scrollbar pb-2">
+                    </div>
             </div>
-
         </section>
 
-
-
-        <section id="portal" class="mb-40">
-
-            <div class="flex flex-col md:flex-row items-end justify-between gap-8 mb-16 border-b border-white/5 pb-10">
-
-                <div class="w-full md:w-1/2">
-
-                    <h2 class="text-3xl font-black uppercase italic mb-6 tracking-tighter">Explorar Arsenal de IAs</h2>
-
-                    <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="Buscar ferramenta..." class="w-full bg-slate-900 border border-white/10 px-8 py-5 rounded-2xl focus:outline-none focus:border-blue-500 transition-all text-sm text-white">
-
-                </div>
-
-                <div id="filter-container" class="filter-wrapper w-full md:w-1/2"></div>
-
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             </div>
-
-            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                </div>
-
-        </section>
-
     </main>
 
-
-
-    <footer class="py-20 border-t border-white/5 text-center">
-
-        <p class="text-[9px] font-black text-slate-700 uppercase tracking-[0.5em] mb-8">© 2026 MUNDO DAS IAs | CENTRAL DE INTELIGÊNCIA UNIFICADA</p>
-
-        <div class="flex justify-center gap-10">
-
-            <button onclick="openLegal('privacidade')" class="text-[10px] font-bold text-slate-500 hover:text-white uppercase tracking-widest">Privacidade</button>
-
-            <button onclick="openLegal('termos')" class="text-[10px] font-bold text-slate-500 hover:text-white uppercase tracking-widest">Termos de Uso</button>
-
-        </div>
-
+    <footer class="py-12 border-t border-white/5 text-center text-slate-500">
+        <p class="text-[10px] uppercase tracking-[0.3em] font-bold mb-4">© 2026 MUNDO DAS IAs | Automação e Inteligência</p>
     </footer>
 
-
-
-    <div id="legalModal" class="fixed inset-0 bg-black/95 z-[100] hidden items-center justify-center p-6" onclick="this.style.display='none'">
-
-        <div class="bg-slate-900 border border-white/10 max-w-2xl w-full p-10 rounded-[32px] overflow-y-auto max-h-[80vh]" onclick="event.stopPropagation()">
-
-            <div id="legalBody" class="text-slate-400 text-sm leading-relaxed space-y-4"></div>
-
-            <button onclick="document.getElementById('legalModal').style.display='none'" class="mt-8 w-full py-4 bg-blue-600 text-white font-black rounded-xl uppercase text-[10px]">Fechar</button>
-
-        </div>
-
-    </div>
-
-
-
     <script>
-
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
-
         let todasIAs = [];
-
-        let categoriaAtual = 'all';
-
-
+        let catAtiva = 'TUDO';
 
         async function init() {
-
             try {
-
                 const response = await fetch(urlCSV);
-
                 const data = await response.text();
-
                 const rows = data.split(/\r?\n/).slice(1);
-
+                
                 todasIAs = rows.map(row => {
-
-                    // Regex para lidar com vírgulas dentro de aspas no CSV
-
-                    const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-
-                    if(!columns[1]) return null;
-
+                    const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if(!cols[1]) return null;
                     return {
-
-                        cat: columns[0]?.replace(/"/g, '').trim(),
-
-                        nome: columns[1]?.replace(/"/g, '').trim(),
-
-                        desc: columns[2]?.replace(/"/g, '').trim(),
-
-                        link: columns[3]?.replace(/"/g, '').trim(),
-
-                        img: (columns[4] && columns[4].includes('http')) ? columns[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"
-
+                        cat: cols[0]?.replace(/"/g, '').trim(),
+                        nome: cols[1]?.replace(/"/g, '').trim(),
+                        desc: cols[2]?.replace(/"/g, '').trim(),
+                        link: cols[3]?.replace(/"/g, '').trim(),
+                        img: cols[4]?.replace(/"/g, '').trim() || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500"
                     };
-
-                }).filter(ia => ia !== null);
+                }).filter(i => i !== null);
 
                 renderFiltros();
-
                 renderCards(todasIAs);
-
-            } catch(e) { 
-
-                console.error("Erro ao carregar dados.");
-
-                document.getElementById('ia-grid').innerHTML = "<p class='text-center text-slate-500 col-span-full'>Erro ao conectar com a base de dados.</p>";
-
+            } catch (err) {
+                console.error("Erro na base de dados");
             }
-
         }
-
-
 
         function renderFiltros() {
-
             const cats = ['TUDO', ...new Set(todasIAs.map(ia => ia.cat))];
-
             document.getElementById('filter-container').innerHTML = cats.map(c => 
-
-                `<button class="filter-chip ${c === 'TUDO' ? 'active' : ''}" onclick="setCategory('${c}', this)">${c}</button>`
-
+                `<button class="chip ${c === catAtiva ? 'active' : ''}" onclick="setCategory('${c}')">${c}</button>`
             ).join('');
-
         }
 
-
-
-        function setCategory(cat, btn) {
-
-            categoriaAtual = (cat === 'TUDO') ? 'all' : cat;
-
-            document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
-
-            btn.classList.add('active');
-
+        function setCategory(cat) {
+            catAtiva = cat;
+            renderFiltros();
             filterIAs();
-
         }
-
-
 
         function filterIAs() {
-
             const term = document.getElementById('iaSearch').value.toLowerCase();
-
-            const filtered = todasIAs.filter(ia => {
-
-                const mC = categoriaAtual === 'all' || ia.cat === categoriaAtual;
-
-                const mS = ia.nome.toLowerCase().includes(term) || ia.desc.toLowerCase().includes(term);
-
-                return mC && mS;
-
+            const filtradas = todasIAs.filter(ia => {
+                const matchCat = catAtiva === 'TUDO' || ia.cat === catAtiva;
+                const matchTerm = ia.nome.toLowerCase().includes(term) || ia.desc.toLowerCase().includes(term);
+                return matchCat && matchTerm;
             });
-
-            renderCards(filtered);
-
+            renderCards(filtradas);
         }
-
-
 
         function renderCards(lista) {
-
             const grid = document.getElementById('ia-grid');
-
-            if(lista.length === 0) {
-
-                grid.innerHTML = "<p class='text-center text-slate-500 col-span-full'>Nenhuma ferramenta encontrada.</p>";
-
-                return;
-
-            }
-
             grid.innerHTML = lista.map(ia => `
-
-                <div class="card-ia">
-
-                    <div class="img-box">
-
-                        <img src="${ia.img}" alt="${ia.nome}" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
-
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
-
+                <div class="ia-card">
+                    <div class="img-zoom">
+                        <img src="${ia.img}" alt="${ia.nome}" loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
                     </div>
-
-                    <div class="p-6 flex flex-col flex-grow">
-
-                        <span class="text-blue-500 text-[8px] font-bold uppercase tracking-widest mb-2">${ia.cat}</span>
-
-                        <h4 class="text-lg font-bold text-white mb-2 uppercase tracking-tighter">${ia.nome}</h4>
-
-                        <p class="text-slate-500 text-[10px] mb-6 italic leading-relaxed line-clamp-3">${ia.desc}</p>
-
-                        <a href="${ia.link}" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center py-3 bg-blue-600/10 border border-blue-600/20 rounded-xl text-[9px] font-black uppercase hover:bg-blue-600 hover:text-white transition-all">Acessar IA</a>
-
+                    <div class="p-6">
+                        <span class="text-[9px] font-extrabold text-sky-500 uppercase tracking-widest">${ia.cat}</span>
+                        <h3 class="text-lg font-bold mt-1 mb-2 text-white">${ia.nome}</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6 line-clamp-3">${ia.desc}</p>
+                        <a href="${ia.link}" target="_blank" class="block w-full text-center py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase hover:bg-sky-600 hover:border-sky-600 transition-all">Ver Detalhes</a>
                     </div>
-
                 </div>
-
             `).join('');
-
         }
-
-
-
-        const juridico = {
-
-            privacidade: `<h2 class="text-xl font-bold text-white">Política de Privacidade</h2><p>O Mundo das IAs utiliza cookies para melhorar a experiência do usuário e exibir anúncios via Google AdSense. Não coletamos dados pessoais sensíveis sem consentimento expresso. Ao navegar, você concorda com nossos termos de uso.</p>`,
-
-            termos: `<h2 class="text-xl font-bold text-white">Termos de Uso</h2><p>Este site é um diretório informativo. Não nos responsabilizamos pelo conteúdo ou funcionamento das ferramentas de terceiros listadas. O uso das tecnologias aqui apresentadas é de inteira responsabilidade do usuário.</p>`
-
-        };
-
-
-
-        function openLegal(t) {
-
-            document.getElementById('legalBody').innerHTML = juridico[t];
-
-            document.getElementById('legalModal').style.display = 'flex';
-
-        }
-
-
 
         init();
-
     </script>
-
 </body>
-
 </html>
