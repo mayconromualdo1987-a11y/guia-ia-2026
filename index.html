@@ -4,13 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo das IAs | Inteligência, Logística e Automação</title>
-    
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#020617">
-    <link rel="manifest" href="manifest.json">
-    
-    <link rel="apple-touch-icon" href="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png">
+
     <link rel="icon" type="image/png" href="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,16 +14,21 @@
         :root { --accent: #3b82f6; }
         body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
         
-        /* Scrollbar Invisível mas funcional */
-        ::-webkit-scrollbar { width: 4px; }
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #020617; }
         ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
 
         .glass { background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .card-ia { transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.05); }
         .card-ia:hover { transform: translateY(-5px); border-color: var(--accent); background: rgba(30, 41, 59, 0.5); }
+        
         .active-filter { background: var(--accent) !important; color: white !important; border-color: transparent !important; }
-        .app-gradient { background: linear-gradient(135deg, #1e293b 0%, #020617 100%); border: 1px solid rgba(59, 130, 246, 0.2); }
+        
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .banner-gradient { background: linear-gradient(135deg, #1e293b 0%, #020617 100%); border: 1px solid rgba(59, 130, 246, 0.2); }
     </style>
 </head>
 <body class="antialiased">
@@ -39,7 +38,7 @@
             <div class="flex flex-col md:flex-row items-center gap-6">
                 
                 <button onclick="resetSite()" class="flex items-center gap-3 text-2xl font-black tracking-tighter flex-shrink-0 group">
-                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-10 h-10 rounded-lg group-hover:scale-110 transition duration-300">
+                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" alt="Logo" class="w-10 h-10 rounded-lg group-hover:scale-110 transition duration-300">
                     <span>MUNDO<span class="text-blue-500">IAs</span></span>
                 </button>
 
@@ -49,8 +48,8 @@
                 </div>
 
                 <div class="hidden lg:flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    <a href="#noticias" class="hover:text-blue-500 transition">Tendências</a>
-                    <a href="#app" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">App Mobile</a>
+                    <a href="#noticias" class="hover:text-blue-500 transition">Tendências 2026</a>
+                    <a href="#academy" class="hover:text-blue-500 transition">Academy</a>
                 </div>
             </div>
 
@@ -64,61 +63,58 @@
         <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
             </div>
 
-        <section id="app" class="mb-24 app-gradient p-10 rounded-[40px] flex flex-col md:flex-row items-center justify-between gap-8">
+        <section id="academy" class="mb-24 banner-gradient p-10 rounded-[40px] flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="max-w-xl">
-                <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter italic">Mundo IAs no seu Bolso</h2>
-                <p class="text-slate-400 mb-8 leading-relaxed">Acesse o portal diretamente da sua tela de início no Android ou iOS. Tenha a curadoria de tecnologia e logística sempre à mão.</p>
-                <button id="installBtn" onclick="installApp()" class="bg-blue-600 px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">
-                    Instalar Aplicativo Agora
+                <span class="text-blue-500 text-[10px] font-black uppercase tracking-[0.2em] mb-4 block">Formação Profissional</span>
+                <h2 class="text-3xl md:text-5xl font-black mb-4 leading-tight uppercase italic">Mundo IAs <br>Academy</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed text-lg">Aprenda a implementar agentes de inteligência artificial em fluxos de Logística e Supply Chain com nossos tutoriais exclusivos para membros.</p>
+                <button class="bg-blue-600 px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">
+                    Explorar Conteúdo Gratuito
                 </button>
             </div>
-            <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-48 rounded-[3rem] border-4 border-slate-800 shadow-2xl">
+            <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-48 rounded-[3rem] border-4 border-slate-800 shadow-2xl opacity-80">
         </section>
 
         <section id="noticias" class="mb-24 pt-12 border-t border-white/5">
-            <h2 class="text-3xl font-bold mb-10">Central de <span class="text-blue-500">Inteligência Operacional</span></h2>
+            <h2 class="text-3xl font-bold mb-10 tracking-tighter">CENTRAL DE <span class="text-blue-500">INTELIGÊNCIA OPERACIONAL</span></h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
                 <a href="https://techcrunch.com" target="_blank" class="glass p-6 rounded-3xl hover:border-blue-500 transition group">
-                    <span class="text-blue-500 text-[10px] font-bold uppercase">Logística 2026</span>
-                    <h3 class="text-lg font-bold mt-2">O impacto das IAs Generativas no Supply Chain global.</h3>
-                    <p class="text-slate-500 text-xs mt-3">Leia as principais manchetes do setor de tecnologia.</p>
+                    <span class="text-blue-500 text-[10px] font-bold uppercase">Logística</span>
+                    <h3 class="text-lg font-bold mt-2 leading-tight group-hover:text-blue-400 transition">O impacto das IAs Generativas no Supply Chain global em 2026.</h3>
+                    <p class="text-slate-500 text-xs mt-4">Acompanhe as últimas manchetes dos principais portais de tecnologia do mundo.</p>
                 </a>
-                <div id="academy" class="glass p-6 rounded-3xl border-green-500/20">
-                    <span class="text-green-500 text-[10px] font-bold uppercase">Academy</span>
-                    <h3 class="text-lg font-bold mt-2">Tutorial: Automatizando seu WMS com agentes inteligentes.</h3>
-                    <button class="mt-4 text-xs font-bold text-white border-b border-green-500">Ver guia completo</button>
-                </div>
-                <div class="glass p-6 rounded-3xl">
-                    <span class="text-purple-500 text-[10px] font-bold uppercase">Tendência</span>
-                    <h3 class="text-lg font-bold mt-2">ERPs de nova geração e a integração com indicadores preditivos.</h3>
+
+                <a href="https://www.wired.com" target="_blank" class="glass p-6 rounded-3xl hover:border-purple-500 transition group">
+                    <span class="text-purple-500 text-[10px] font-bold uppercase">Tendência Tech</span>
+                    <h3 class="text-lg font-bold mt-2 leading-tight group-hover:text-purple-400 transition">ERPs de nova geração e a integração total com agentes autônomos.</h3>
+                    <p class="text-slate-500 text-xs mt-4">Saiba como a arquitetura de software está mudando para receber IAs nativas.</p>
+                </a>
+
+                <div class="glass p-6 rounded-3xl border-green-500/20 bg-green-500/5">
+                    <span class="text-green-500 text-[10px] font-bold uppercase">Mundo IAs Blog</span>
+                    <h3 class="text-lg font-bold mt-2 leading-tight italic">"Tutorial: Automatizando seu inventário WMS com visão computacional."</h3>
+                    <button class="mt-6 text-[10px] font-black uppercase text-white border-b-2 border-green-500 pb-1">Ler Artigo Completo</button>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="py-12 border-t border-white/5 text-center text-slate-600 text-[10px] font-bold uppercase tracking-[0.3em]">
-        Mundo das IAs &copy; 2026 | Tecnologia e Autoridade
+    <footer class="py-12 border-t border-white/5 text-center">
+        <div class="flex justify-center items-center gap-3 mb-6">
+            <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-6 h-6 rounded opacity-50">
+            <span class="text-xl font-black tracking-tighter text-slate-500">MUNDO<span class="text-slate-700">IAs</span></span>
+        </div>
+        <div class="text-slate-600 text-[10px] font-bold uppercase tracking-[0.4em]">
+            © 2026 | Autoridade em Tecnologia e Automação
+        </div>
     </footer>
 
     <script>
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
         let todasIAs = [];
         let categoriaAtiva = 'Todos';
-        let deferredPrompt;
-
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-        });
-
-        async function installApp() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt = null;
-            } else {
-                alert("Para instalar: No Chrome, clique em 'Instalar Aplicativo'. No iPhone, clique em 'Compartilhar' e 'Adicionar à Tela de Início'.");
-            }
-        }
 
         async function init() {
             try {
@@ -140,7 +136,7 @@
                 renderFilters();
                 updateDisplay();
                 document.getElementById('searchInput').addEventListener('input', updateDisplay);
-            } catch (err) { console.error(err); }
+            } catch (err) { console.error("Erro ao carregar banco de dados:", err); }
         }
 
         function renderFilters() {
@@ -178,16 +174,21 @@
         }
 
         function renderCards(lista) {
-            document.getElementById('ia-grid').innerHTML = lista.map(ia => `
+            const grid = document.getElementById('ia-grid');
+            if(lista.length === 0) {
+                grid.innerHTML = `<div class="col-span-full py-20 text-center text-slate-500 italic">Nenhum resultado encontrado.</div>`;
+                return;
+            }
+            grid.innerHTML = lista.map(ia => `
                 <div class="glass card-ia rounded-3xl overflow-hidden flex flex-col h-full group">
                     <div class="h-40 overflow-hidden relative bg-slate-800">
                         <img src="${ia.img}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-500">
                         <span class="absolute top-4 left-4 bg-blue-600/80 backdrop-blur-md px-3 py-1 rounded-lg text-[8px] font-black uppercase">${ia.cat}</span>
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-lg font-bold mb-2 text-white leading-tight">${ia.nome}</h3>
+                        <h3 class="text-lg font-bold mb-2 text-white leading-tight group-hover:text-blue-400 transition">${ia.nome}</h3>
                         <p class="text-slate-400 text-[11px] leading-relaxed mb-6 line-clamp-3 italic">"${ia.desc}"</p>
-                        <a href="${ia.link}" target="_blank" class="mt-auto block w-full text-center py-3 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 transition">Acessar</a>
+                        <a href="${ia.link}" target="_blank" class="mt-auto block w-full text-center py-3 bg-white/5 border border-white/10 rounded-xl text-[9px] font-black uppercase tracking-widest hover:bg-blue-600 hover:border-transparent transition">Acessar Tecnologia</a>
                     </div>
                 </div>
             `).join('');
@@ -197,12 +198,3 @@
     </script>
 </body>
 </html>
-
-// Registrar o Service Worker para habilitar o PWA
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
-            .then(reg => console.log('SW registrado!', reg))
-            .catch(err => console.error('Erro no SW', err));
-    });
-}
