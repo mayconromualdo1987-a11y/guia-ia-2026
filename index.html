@@ -28,12 +28,13 @@
         .filter-chip { flex: 0 0 auto; padding: 10px 24px; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 100px; color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .filter-chip.active { background: var(--neon); color: white; border-color: var(--neon); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
 
-        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); overflow: hidden; display: flex; flex-direction: column; height: 100%; }
+        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); overflow: hidden; display: flex; flex-direction: column; height: 100%; position: relative; }
         .card-ia:hover { border-color: var(--neon); transform: translateY(-8px); box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8); }
         
-        .img-box { height: 180px; overflow: hidden; position: relative; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.8; }
-        .card-ia:hover .img-box img { transform: scale(1.1); opacity: 1; }
+        /* UPGRADE: VIDEO BOX */
+        .img-box { height: 180px; overflow: hidden; position: relative; background: #000; }
+        .img-box video, .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.6; }
+        .card-ia:hover .img-box video, .card-ia:hover .img-box img { transform: scale(1.1); opacity: 1; }
 
         .success-toast { position: fixed; bottom: 30px; right: 30px; background: #10b981; color: white; padding: 16px 32px; border-radius: 16px; font-weight: 800; text-transform: uppercase; font-size: 12px; display: none; z-index: 200; }
     </style>
@@ -59,7 +60,7 @@
             <div class="max-w-4xl">
                 <h1 class="text-6xl md:text-8xl font-black mb-10 leading-[0.9] italic uppercase">A Inteligência <br><span class="text-blue-500">Curada.</span></h1>
                 <p class="text-slate-400 text-xl leading-relaxed mb-8 text-justify border-l-2 border-blue-600 pl-8">
-                    O <strong>Mundo das IAs</strong> é uma plataforma unificada de curadoria tecnológica. Nosso foco é reunir as inteligências artificiais mais potentes do mercado em um único lugar, eliminando a fragmentação e entregando soluções prontas para automação e produtividade.
+                    O <strong>Mundo das IAs</strong> é uma plataforma unificada de curadoria tecnológica. Nosso foco é reunir as inteligências artificiais mais potentes do mercado em um único lugar, entregando soluções prontas para automação e produtividade.
                 </p>
             </div>
         </section>
@@ -72,8 +73,7 @@
                 </div>
                 <div id="filter-container" class="filter-wrapper w-full md:w-1/2"></div>
             </div>
-            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                </div>
+            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
         </section>
     </main>
 
@@ -97,21 +97,28 @@
         let todasIAs = [];
         let categoriaAtual = 'all';
 
+        // Vídeos padrão para cada categoria se a planilha não tiver link de vídeo
+        const videoDefaults = {
+            "default": "https://cdn.pixabay.com/video/2023/04/14/158860-817658253_tiny.mp4",
+            "Video Maker": "https://cdn.pixabay.com/video/2021/04/12/70796-537443152_tiny.mp4",
+            "Artes Visuais": "https://cdn.pixabay.com/video/2022/10/24/136181-763445831_tiny.mp4"
+        };
+
         async function init() {
             try {
                 const response = await fetch(urlCSV);
                 const data = await response.text();
                 const rows = data.split(/\r?\n/).slice(1);
                 todasIAs = rows.map(row => {
-                    // Regex para lidar com vírgulas dentro de aspas no CSV
                     const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!columns[1]) return null;
+                    const cat = columns[0]?.replace(/"/g, '').trim();
                     return {
-                        cat: columns[0]?.replace(/"/g, '').trim(),
+                        cat: cat,
                         nome: columns[1]?.replace(/"/g, '').trim(),
                         desc: columns[2]?.replace(/"/g, '').trim(),
                         link: columns[3]?.replace(/"/g, '').trim(),
-                        img: (columns[4] && columns[4].includes('http')) ? columns[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"
+                        media: (columns[4] && columns[4].includes('http')) ? columns[4].replace(/"/g, '').trim() : videoDefaults[cat] || videoDefaults.default
                     };
                 }).filter(ia => ia !== null);
                 renderFiltros();
@@ -122,6 +129,38 @@
             }
         }
 
+        function renderCards(lista) {
+            const grid = document.getElementById('ia-grid');
+            if(lista.length === 0) {
+                grid.innerHTML = "<p class='text-center text-slate-500 col-span-full'>Nenhuma ferramenta encontrada.</p>";
+                return;
+            }
+            grid.innerHTML = lista.map(ia => {
+                // Checa se o link na Coluna E é vídeo ou imagem
+                const isVideo = ia.media.includes('.mp4') || ia.media.includes('pixabay');
+                
+                return `
+                <div class="card-ia">
+                    <div class="img-box">
+                        ${isVideo ? 
+                            `<video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400">
+                                <source src="${ia.media}" type="video/mp4">
+                             </video>` : 
+                            `<img src="${ia.media}" alt="${ia.nome}">`
+                        }
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/20 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <span class="text-blue-500 text-[8px] font-bold uppercase tracking-widest mb-2">${ia.cat}</span>
+                        <h4 class="text-lg font-bold text-white mb-2 uppercase tracking-tighter">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[10px] mb-6 italic leading-relaxed line-clamp-3">${ia.desc}</p>
+                        <a href="${ia.link}" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center py-3 bg-blue-600/10 border border-blue-600/20 rounded-xl text-[9px] font-black uppercase hover:bg-blue-600 hover:text-white transition-all">Acessar IA</a>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        // --- MANTIDAS FUNÇÕES DE FILTRO E MODAL ---
         function renderFiltros() {
             const cats = ['TUDO', ...new Set(todasIAs.map(ia => ia.cat))];
             document.getElementById('filter-container').innerHTML = cats.map(c => 
@@ -146,31 +185,9 @@
             renderCards(filtered);
         }
 
-        function renderCards(lista) {
-            const grid = document.getElementById('ia-grid');
-            if(lista.length === 0) {
-                grid.innerHTML = "<p class='text-center text-slate-500 col-span-full'>Nenhuma ferramenta encontrada.</p>";
-                return;
-            }
-            grid.innerHTML = lista.map(ia => `
-                <div class="card-ia">
-                    <div class="img-box">
-                        <img src="${ia.img}" alt="${ia.nome}" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <span class="text-blue-500 text-[8px] font-bold uppercase tracking-widest mb-2">${ia.cat}</span>
-                        <h4 class="text-lg font-bold text-white mb-2 uppercase tracking-tighter">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[10px] mb-6 italic leading-relaxed line-clamp-3">${ia.desc}</p>
-                        <a href="${ia.link}" target="_blank" rel="noopener noreferrer" class="mt-auto block text-center py-3 bg-blue-600/10 border border-blue-600/20 rounded-xl text-[9px] font-black uppercase hover:bg-blue-600 hover:text-white transition-all">Acessar IA</a>
-                    </div>
-                </div>
-            `).join('');
-        }
-
         const juridico = {
-            privacidade: `<h2 class="text-xl font-bold text-white">Política de Privacidade</h2><p>O Mundo das IAs utiliza cookies para melhorar a experiência do usuário e exibir anúncios via Google AdSense. Não coletamos dados pessoais sensíveis sem consentimento expresso. Ao navegar, você concorda com nossos termos de uso.</p>`,
-            termos: `<h2 class="text-xl font-bold text-white">Termos de Uso</h2><p>Este site é um diretório informativo. Não nos responsabilizamos pelo conteúdo ou funcionamento das ferramentas de terceiros listadas. O uso das tecnologias aqui apresentadas é de inteira responsabilidade do usuário.</p>`
+            privacidade: `<h2 class="text-xl font-bold text-white">Política de Privacidade</h2><p>O Mundo das IAs utiliza cookies para exibir anúncios via Google AdSense. Não coletamos dados sensíveis.</p>`,
+            termos: `<h2 class="text-xl font-bold text-white">Termos de Uso</h2><p>Este site é um diretório informativo sobre IAs.</p>`
         };
 
         function openLegal(t) {
