@@ -3,110 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | O Hub de Autoridade em Inteligência Artificial</title>
+    <title>Mundo das IAs | O Futuro da Inteligência</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --accent: #3b82f6; --bg: #020617; }
-        body { background-color: var(--bg); color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass-nav { background: rgba(15, 23, 42, 0.98); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow: hidden; }
-        .card-ia:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 20px 40px -20px rgba(59, 130, 246, 0.3); }
+        :root { --neon: #60a5fa; --neon-purple: #a855f7; --dark: #020617; }
+        body { 
+            background: radial-gradient(circle at 50% 0%, #1e293b 0%, #020617 100%);
+            color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden;
+        }
+        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
         
-        /* Filtros */
-        .filter-btn { padding: 8px 20px; border-radius: 12px; font-size: 11px; font-weight: 800; text-transform: uppercase; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); background: rgba(255,255,255,0.02); color: #64748b; }
-        .filter-btn.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+        .glass-nav { background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         
-        /* Modal Jurídico */
-        .legal-modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.96); align-items: center; justify-content: center; padding: 20px; }
-        .modal-box { background: #0f172a; border: 1px solid #1e293b; max-width: 850px; width: 100%; max-height: 85vh; overflow-y: auto; border-radius: 28px; padding: 45px; position: relative; }
-        .legal-content h2 { color: white; font-weight: 800; text-transform: uppercase; font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); padding-left: 1rem; }
-        .legal-content p { margin-bottom: 1.2rem; line-height: 1.8; color: #94a3b8; text-align: justify; }
+        /* Card Futurista */
+        .card-ia { 
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 30px;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); position: relative;
+        }
+        .card-ia:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--neon);
+            box-shadow: 0 0 40px -10px rgba(96, 165, 250, 0.3);
+        }
+        .card-ia::after {
+            content: ''; position: absolute; inset: 0; border-radius: 30px;
+            background: linear-gradient(45deg, transparent, rgba(96, 165, 250, 0.1), transparent);
+            opacity: 0; transition: 0.5s;
+        }
+        .card-ia:hover::after { opacity: 1; }
+
+        .filter-btn {
+            background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 24px; border-radius: 100px; font-size: 11px; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.4s;
+        }
+        .filter-btn.active { background: var(--neon); color: black; box-shadow: 0 0 20px rgba(96, 165, 250, 0.5); }
+
+        input { background: rgba(30, 41, 59, 0.5) !important; border: 1px solid rgba(255, 255, 255, 0.1) !important; }
+        input:focus { border-color: var(--neon) !important; box-shadow: 0 0 15px rgba(96, 165, 250, 0.2); }
+        
+        .glow-text { text-shadow: 0 0 20px rgba(96, 165, 250, 0.5); }
+        .video-container { aspect-ratio: 16/9; border-radius: 20px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full z-50 glass-nav px-6 py-5">
+    <nav class="fixed top-0 w-full z-50 glass-nav px-8 py-6">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="#" class="flex items-center gap-3 text-2xl font-black italic tracking-tighter">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-lg"></div>
-                MUNDO DAS <span class="text-blue-500">IAs</span>
+            <a href="#" class="flex items-center gap-4 text-2xl font-black italic tracking-tighter">
+                <div class="w-10 h-10 bg-blue-600 rounded-2xl shadow-[0_0_20px_rgba(37,99,235,0.6)] flex items-center justify-center">
+                    <span class="text-white text-xs">M</span>
+                </div>
+                <span>MUNDO DAS<span class="text-blue-500 uppercase glow-text"> IAs</span></span>
             </a>
-            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <a href="#sobre" class="hover:text-white transition">Sobre Nós</a>
-                <a href="#portal" class="hover:text-white transition">Hub de IAs</a>
-                <a href="#radar" class="hover:text-white transition">Radar</a>
-                <button onclick="openLegal('privacidade')" class="hover:text-white transition uppercase font-bold">Privacidade</button>
+            <div class="hidden lg:flex gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400">
+                <a href="#portal" class="hover:text-blue-400 transition">Explorar</a>
+                <a href="#videos" class="hover:text-blue-400 transition">Conteúdo</a>
+                <a href="#sugestoes" class="hover:text-blue-400 transition">Sugestões</a>
+                <button onclick="openLegal('privacidade')" class="hover:text-white transition">Jurídico</button>
             </div>
         </div>
     </nav>
 
-    <main class="pt-40 max-w-7xl mx-auto px-6">
+    <main class="pt-52 max-w-7xl mx-auto px-8">
         
-        <section id="sobre" class="mb-32">
-            <div class="max-w-3xl">
-                <h1 class="text-5xl font-extrabold uppercase italic tracking-tighter mb-8 leading-tight">Autoridade em <span class="text-blue-500">Inteligência Aplicada.</span></h1>
-                <p class="text-slate-400 text-lg leading-relaxed text-justify">
-                    O <strong>Mundo das IAs</strong> é o filtro definitivo para a nova era tecnológica. Selecionamos, testamos e validamos ferramentas que geram impacto real na produtividade e no lucro.
-                </p>
-            </div>
+        <section class="mb-40 text-center">
+            <span class="text-blue-500 font-black text-[10px] uppercase tracking-[0.5em] mb-6 block">Sincronizando com o futuro</span>
+            <h1 class="text-6xl md:text-8xl font-black mb-10 tracking-tighter leading-none">
+                DESBRAVE O <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600">MULTIVERSO IA</span>
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed mb-12">
+                Curadoria técnica de alta fidelidade para quem não aceita o comum. No Mundo das IAs, a tecnologia encontra a utilidade.
+            </p>
         </section>
 
-        <section id="portal" class="mb-32">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 border-b border-white/5 pb-8">
-                <div>
-                    <h2 class="text-2xl font-black uppercase italic mb-6 tracking-widest border-l-4 border-blue-600 pl-4">Diretório Global</h2>
-                    <div class="relative w-full md:w-80">
-                        <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="Buscar ferramenta..." class="w-full bg-slate-900 border border-white/10 rounded-xl px-5 py-3 text-sm focus:outline-none focus:border-blue-500 transition">
+        <section id="portal" class="mb-40">
+            <div class="flex flex-col gap-10 mb-16">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <h2 class="text-3xl font-bold italic uppercase tracking-tighter border-l-4 border-blue-500 pl-6">Diretório Neural</h2>
+                    <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="Qual inteligência você busca?" class="w-full md:w-96 px-6 py-4 rounded-2xl text-sm focus:outline-none transition-all">
+                </div>
+                <div id="filter-container" class="flex flex-wrap gap-4 justify-center">
                     </div>
-                </div>
-                <div id="filter-container" class="flex flex-wrap gap-3">
-                    <button class="filter-btn active" onclick="setCategory('all')">Todas</button>
-                </div>
             </div>
 
-            <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 </div>
         </section>
 
-        <section id="radar" class="mb-32">
-            <h2 class="text-3xl font-black mb-12 uppercase italic text-center tracking-tighter">Radar Mundo das <span class="text-blue-500">IAs</span></h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <article class="p-8 border border-white/5 rounded-3xl bg-slate-900/30">
-                    <h4 class="text-xl font-bold mb-4 uppercase text-blue-500">Agentes de Execução</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-6">A transição das IAs de chat para robôs que executam tarefas autônomas de back-office.</p>
-                    <a href="https://openai.com/news" target="_blank" class="text-white text-[9px] font-black uppercase tracking-widest bg-blue-600 px-4 py-2 rounded-lg inline-block">Ler Notícia</a>
-                </article>
-                <article class="p-8 border border-white/5 rounded-3xl bg-slate-900/30">
-                    <h4 class="text-xl font-bold mb-4 uppercase text-purple-500">Privacidade Local</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-6">O boom das LLMs rodando localmente para evitar o compartilhamento de dados críticos.</p>
-                    <a href="https://www.wired.com" target="_blank" class="text-white text-[9px] font-black uppercase tracking-widest bg-purple-600 px-4 py-2 rounded-lg inline-block">Ver Wired</a>
-                </article>
-                <article class="p-8 border border-white/5 rounded-3xl bg-slate-900/30">
-                    <h4 class="text-xl font-bold mb-4 uppercase text-green-500">Chips Generativos</h4>
-                    <p class="text-xs text-slate-500 leading-relaxed mb-6">Como os novos semicondutores estão barateando o custo da IA para o usuário final.</p>
-                    <a href="https://techcrunch.com" target="_blank" class="text-white text-[9px] font-black uppercase tracking-widest bg-green-600 px-4 py-2 rounded-lg inline-block">Ver TechCrunch</a>
-                </article>
+        <section id="videos" class="mb-40">
+            <h2 class="text-3xl font-bold italic uppercase mb-16 text-center tracking-widest">Masterclass <span class="text-blue-500">IA</span></h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="video-container">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/aircAruvnKk" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/5S-Z_vshvQ8" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="sugestoes" class="mb-40">
+            <div class="card-ia p-12 bg-gradient-to-br from-blue-900/20 to-transparent text-center border-blue-500/20">
+                <h2 class="text-3xl font-black mb-6 uppercase italic">Tem uma IA para sugerir?</h2>
+                <p class="text-slate-400 mb-10 text-sm max-w-xl mx-auto">Colabore com a expansão do nosso ecossistema. Analisamos cada ferramenta enviada pela comunidade.</p>
+                <div class="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
+                    <input type="text" placeholder="Nome da IA ou Link" class="flex-grow px-6 py-4 rounded-2xl focus:outline-none">
+                    <button class="bg-blue-600 hover:bg-blue-500 text-white font-black px-10 py-4 rounded-2xl transition uppercase text-xs tracking-widest">Enviar Proposta</button>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-24 border-t border-white/5 bg-slate-950/80 text-center">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-wrap justify-center gap-12 mb-10">
-                <button onclick="openLegal('privacidade')" class="text-[10px] font-black uppercase text-slate-500 hover:text-white transition">Privacidade</button>
-                <button onclick="openLegal('termos')" class="text-[10px] font-black uppercase text-slate-500 hover:text-white transition">Termos</button>
+    <footer class="py-24 border-t border-white/5 bg-slate-950/80">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <div class="flex flex-wrap justify-center gap-12 mb-12">
+                <button onclick="openLegal('privacidade')" class="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition">Privacidade</button>
+                <button onclick="openLegal('termos')" class="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition">Termos</button>
+                <a href="mailto:contato@mundodasias.com.br" class="text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:text-white transition">Suporte</a>
             </div>
-            <p class="text-[10px] font-black text-slate-700 uppercase tracking-[0.4em] mb-4 italic">© 2026 MUNDO DAS IAs | A Autoridade em Inteligência Artificial</p>
+            <p class="text-[10px] font-black text-slate-700 uppercase tracking-[0.5em] mb-4 italic">© 2026 MUNDO DAS IAs | SYNCING INTELLIGENCE</p>
         </div>
     </footer>
 
-    <div id="legalModal" class="legal-modal" onclick="this.style.display='none'">
+    <div id="legalModal" class="legal-modal flex" style="display: none;" onclick="this.style.display='none'">
         <div class="modal-box" onclick="event.stopPropagation()">
             <div id="legalBody" class="legal-content"></div>
-            <button onclick="document.getElementById('legalModal').style.display='none'" class="mt-10 w-full py-4 bg-blue-600 text-white font-black uppercase rounded-xl">Fechar</button>
+            <button onclick="document.getElementById('legalModal').style.display='none'" class="mt-12 w-full py-5 bg-blue-600 text-white font-black rounded-2xl uppercase text-[10px] tracking-widest">Fechar Documento</button>
         </div>
     </div>
 
@@ -115,7 +142,7 @@
         let todasIAs = [];
         let categoriaAtual = 'all';
 
-        async function fetchIAs() {
+        async function init() {
             try {
                 const r = await fetch(urlCSV);
                 const d = await r.text();
@@ -135,15 +162,14 @@
 
                 renderFiltros();
                 renderCards(todasIAs);
-            } catch(e) { console.error("Erro no Hub"); }
+            } catch(e) { console.error("Neural Connection Failed"); }
         }
 
         function renderFiltros() {
             const cats = ['all', ...new Set(todasIAs.map(ia => ia.cat))];
-            const container = document.getElementById('filter-container');
-            container.innerHTML = cats.map(c => `
+            document.getElementById('filter-container').innerHTML = cats.map(c => `
                 <button class="filter-btn ${c === 'all' ? 'active' : ''}" onclick="setCategory('${c}', this)">
-                    ${c === 'all' ? 'Todas' : c}
+                    ${c === 'all' ? 'Tudo' : c}
                 </button>
             `).join('');
         }
@@ -151,40 +177,40 @@
         function setCategory(cat, btn) {
             categoriaAtual = cat;
             document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            if(btn) btn.classList.add('active');
+            btn.classList.add('active');
             filterIAs();
         }
 
         function filterIAs() {
-            const termo = document.getElementById('iaSearch').value.toLowerCase();
-            const filtradas = todasIAs.filter(ia => {
-                const matchesCat = categoriaAtual === 'all' || ia.cat === categoriaAtual;
-                const matchesBusca = ia.nome.toLowerCase().includes(termo) || ia.desc.toLowerCase().includes(termo);
-                return matchesCat && matchesBusca;
+            const t = document.getElementById('iaSearch').value.toLowerCase();
+            const filtered = todasIAs.filter(ia => {
+                const mC = categoriaAtual === 'all' || ia.cat === categoriaAtual;
+                const mS = ia.nome.toLowerCase().includes(t) || ia.desc.toLowerCase().includes(t);
+                return mC && mS;
             });
-            renderCards(filtradas);
+            renderCards(filtered);
         }
 
         function renderCards(lista) {
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="card-ia flex flex-col h-full">
-                    <div class="h-44 w-full relative overflow-hidden bg-slate-800">
-                        <img src="${ia.img}" class="w-full h-full object-cover opacity-70" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
+                <div class="card-ia flex flex-col h-full group">
+                    <div class="h-56 w-full relative overflow-hidden bg-slate-900 rounded-t-[30px]">
+                        <img src="${ia.img}" class="w-full h-full object-cover transition duration-700 group-hover:scale-110 opacity-60" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent"></div>
                     </div>
-                    <div class="p-8 pt-4 flex flex-col flex-grow">
-                        <span class="text-blue-500 text-[8px] font-black uppercase tracking-widest mb-3">${ia.cat}</span>
-                        <h4 class="text-lg font-extrabold mb-4 uppercase tracking-tighter">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] mb-8 leading-relaxed italic line-clamp-2">"${ia.desc}"</p>
-                        <a href="${ia.link}" target="_blank" class="mt-auto block text-center py-4 bg-blue-600/5 border border-blue-500/20 rounded-2xl text-[9px] font-black uppercase text-blue-400 hover:bg-blue-600 hover:text-white transition-all">Acessar</a>
+                    <div class="p-8 pt-2 flex flex-col flex-grow relative">
+                        <span class="text-blue-500 text-[8px] font-black uppercase tracking-[0.3em] mb-4">${ia.cat}</span>
+                        <h4 class="text-xl font-bold mb-4 uppercase tracking-tighter text-white">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] mb-8 italic line-clamp-2 leading-relaxed">"${ia.desc}"</p>
+                        <a href="${ia.link}" target="_blank" class="mt-auto block text-center py-4 bg-white/5 border border-white/10 rounded-2xl text-[9px] font-black uppercase tracking-[0.2em] hover:bg-blue-600 hover:text-white transition-all duration-500">Acessar Sistema</a>
                     </div>
                 </div>
             `).join('');
         }
 
         const juridico = {
-            privacidade: `<h2>Política de Privacidade</h2><p>O <strong>Mundo das IAs</strong> opera sob as diretrizes da LGPD brasileira. Utilizamos cookies do Google AdSense para fornecer anúncios personalizados. Você pode gerenciar sua privacidade nas configurações de anúncios do Google.</p>`,
-            termos: `<h2>Termos de Uso</h2><p>A curadoria do Mundo das IAs é informativa. Não garantimos resultados de softwares de terceiros. O uso deste portal implica na aceitação destes termos técnicos.</p>`
+            privacidade: `<h2>Privacidade</h2><p>O <strong>Mundo das IAs</strong> opera com transparência absoluta. Utilizamos cookies do Google AdSense para otimizar anúncios relevantes. Você pode gerenciar suas preferências via Google Privacy Settings.</p>`,
+            termos: `<h2>Termos de Uso</h2><p>Este hub é informativo. Não nos responsabilizamos por perdas técnicas em softwares de terceiros. O uso deste portal implica aceitação plena de nossa política editorial.</p>`
         };
 
         function openLegal(t) {
@@ -192,7 +218,7 @@
             document.getElementById('legalModal').style.display = 'flex';
         }
 
-        fetchIAs();
+        init();
     </script>
 </body>
 </html>
