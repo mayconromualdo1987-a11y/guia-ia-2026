@@ -3,71 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Mundo das IAs | O Guia Definitivo 2026</title>
-    <meta name="description" content="Encontre as melhores ferramentas de IA para aumentar sua produtividade. Guia atualizado para profissionais de todas as áreas.">
-    <meta property="og:title" content="Mundo das IAs | O Guia Definitivo 2026">
-    <meta property="og:description" content="Automatize seu trabalho com as melhores Inteligências Artificiais do mercado.">
-    <meta property="og:url" content="https://www.mundodasias.com.br">
-    <meta property="og:type" content="website">
-
+    <title>Mundo das IAs | O Portal da Inteligência Artificial</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; }
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
-    <div class="max-w-6xl mx-auto px-4 py-12">
-        <header class="text-center mb-16">
-            <h1 class="text-5xl font-extrabold mb-4 text-blue-600 italic">Mundo das IAs</h1>
-            <p class="text-xl text-slate-600">As melhores ferramentas para automatizar seu trabalho.</p>
+<body>
+    <div class="fixed top-0 left-0 w-full h-full -z-10 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 py-16">
+        <header class="text-center mb-20">
+            <h1 class="text-6xl font-black mb-6 gradient-text italic">Mundo das IAs</h1>
+            <p class="text-xl text-slate-400 max-w-2xl mx-auto">Explore o futuro hoje. O maior diretório de ferramentas de Inteligência Artificial para elevar sua produtividade ao nível máximo.</p>
         </header>
 
-        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-            <p class="col-span-full text-slate-400">Carregando ferramentas...</p>
-        </div>
+        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            </div>
 
-        <footer class="mt-20 py-8 border-t text-center text-slate-500">
-            <p>&copy; 2026 Mundo das IAs - Todos os direitos reservados</p>
-            <div class="mt-2 text-sm">
-                <a href="#" onclick="alert('Esta página segue as normas da LGPD. Seus dados não são coletados. Os links externos são de responsabilidade de seus respectivos desenvolvedores.')" class="hover:underline">Privacidade e Termos</a>
+        <footer class="mt-32 py-10 border-t border-white/10 text-center text-slate-500">
+            <p>&copy; 2026 Mundo das IAs - Tecnologia e Inovação</p>
+            <div class="mt-4">
+                <a href="#" onclick="alert('Políticas de Privacidade ativas.')" class="hover:text-blue-400 transition">Privacidade</a> | 
+                <a href="#" class="hover:text-blue-400 transition">Sobre o Projeto</a>
             </div>
         </footer>
     </div>
 
     <script>
-        // Link da sua planilha que já está funcionando
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
 
         async function carregarIAs() {
             try {
                 const response = await fetch(urlCSV);
                 const data = await response.text();
-                
-                // Limpa o container e divide as linhas
                 const container = document.getElementById('cards-container');
                 container.innerHTML = "";
                 
-                // Pula o cabeçalho e filtra linhas vazias
                 const linhas = data.split('\n').slice(1);
 
                 linhas.forEach(linha => {
-                    // Regex para lidar com vírgulas dentro de aspas (caso você use na planilha)
                     const colunas = linha.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     
                     if (colunas.length >= 4 && colunas[1].trim() !== "") {
-                        const [profissao, nome, desc, link] = colunas;
+                        const [profissao, nome, desc, link, img] = colunas;
+                        const imagemFinal = (img && img.trim() !== "") ? img.replace(/"/g, '') : "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=80";
+
                         container.innerHTML += `
-                            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-xl hover:scale-105 transition duration-300 flex flex-col justify-between text-left">
-                                <div>
-                                    <span class="bg-blue-100 text-blue-700 text-[10px] font-black px-3 py-1 rounded-full uppercase italic">${profissao.replace(/"/g, '')}</span>
-                                    <h3 class="text-2xl font-bold mt-4 text-slate-800">${nome.replace(/"/g, '')}</h3>
-                                    <p class="text-slate-500 mt-2 mb-6 h-12 overflow-hidden">${desc.replace(/"/g, '')}</p>
+                            <div class="glass-card rounded-3xl overflow-hidden hover:scale-[1.03] transition-all duration-500 group">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="${imagemFinal}" alt="${nome}" class="w-full h-full object-cover group-hover:scale-110 transition-duration-700 opacity-80 group-hover:opacity-100">
                                 </div>
-                                <a href="${link.trim().replace(/"/g, '')}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl block text-center font-bold shadow-lg transition">Acessar IA</a>
+                                <div class="p-8">
+                                    <span class="text-blue-400 text-xs font-bold tracking-widest uppercase">${profissao.replace(/"/g, '')}</span>
+                                    <h3 class="text-2xl font-bold mt-2 mb-4 text-white">${nome.replace(/"/g, '')}</h3>
+                                    <p class="text-slate-400 text-sm leading-relaxed mb-8 line-clamp-3">${desc.replace(/"/g, '')}</p>
+                                    <a href="${link.trim().replace(/"/g, '')}" target="_blank" class="block w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-center font-bold text-white shadow-lg shadow-blue-900/20 transition-all">Explorar Ferramenta</a>
+                                </div>
                             </div>
                         `;
                     }
                 });
             } catch (error) {
-                console.error("Erro ao carregar:", error);
+                console.error("Erro:", error);
             }
         }
         carregarIAs();
