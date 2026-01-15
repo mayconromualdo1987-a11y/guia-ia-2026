@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Mundo das IA's | O Arsenal Definitivo de Inteligência Artificial</title>
-    <meta name="description" content="Portal definitivo de IA: Curadoria de ferramentas, automação, cursos gratuitos e tecnologia de ponta.">
+    <meta name="description" content="Portal definitivo de IA: Curadoria técnica, automação, cursos gratuitos e tecnologia de ponta.">
     <link rel="canonical" href="https://mundodasias.com.br" />
     <meta name="google-site-verification" content="WqUCrS42Jss7Y22FFmSwzLNrxS9UBBBa1gjD7ma-E0w" />
 
@@ -22,7 +22,6 @@
             --card-bg: rgba(15, 23, 42, 0.6);
         }
         
-        /* SCROLLBAR CUSTOMIZADA */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--dark-bg); }
         ::-webkit-scrollbar-thumb { 
@@ -30,14 +29,12 @@
             border-radius: 10px;
             border: 2px solid var(--dark-bg);
         }
-        ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
 
         body { 
             background: var(--dark-bg); 
             color: #e2e8f0; 
             font-family: 'Rajdhani', sans-serif; 
             scroll-behavior: smooth;
-            overflow-x: hidden;
         }
 
         h1, h2, .logo { font-family: 'Orbitron', sans-serif; }
@@ -55,12 +52,6 @@
             backdrop-filter: blur(12px); 
             border-bottom: 1px solid rgba(0, 242, 255, 0.2);
             z-index: 100;
-        }
-
-        .search-container {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
         }
 
         .filter-btn {
@@ -94,10 +85,7 @@
             border-color: var(--cyan);
             background: rgba(15, 23, 42, 0.8);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
         }
-
-        .img-overlay { background: linear-gradient(to top, var(--dark-bg), transparent); }
 
         #mainModal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; padding: 20px; overflow-y: auto; }
         .modal-tech { 
@@ -109,10 +97,15 @@
             border-radius: 24px;
         }
 
-        .prose h2 { color: var(--cyan); font-family: 'Orbitron'; font-size: 1.5rem; margin-top: 1.5rem; border-left: 4px solid var(--cyan); padding-left: 15px; }
-        .prose h4 { color: white; font-weight: 700; margin-top: 20px; text-transform: uppercase; letter-spacing: 1px; }
-        .course-item { background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 15px; transition: 0.3s; }
-        .course-item:hover { border-color: var(--cyan); background: rgba(0,242,255,0.02); }
+        .course-item { 
+            background: rgba(255,255,255,0.03); 
+            padding: 24px; 
+            border-radius: 12px; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            margin-bottom: 16px; 
+            transition: 0.3s; 
+        }
+        .course-item:hover { border-color: var(--cyan); background: rgba(0,242,255,0.04); }
     </style>
 </head>
 <body class="antialiased">
@@ -125,7 +118,7 @@
                 <span class="text-white">MUNDO DAS</span> <span class="text-cyan-400">IA'S</span>
             </div>
             <div class="flex gap-6 font-bold uppercase tracking-widest text-[10px]">
-                <button onclick="openTab('cursos')" class="text-cyan-400 hover:text-white transition shadow-[0_0_10px_rgba(0,242,255,0.2)]">Academy</button>
+                <button onclick="openTab('cursos')" class="text-cyan-400 hover:text-white transition">Academy</button>
                 <button onclick="openTab('privacidade')" class="text-slate-400 hover:text-white transition">Privacidade</button>
             </div>
         </div>
@@ -137,30 +130,19 @@
                 A Nova Era da <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">Inteligência.</span>
             </h1>
             <p class="text-slate-400 text-lg max-w-2xl mx-auto font-medium">
-                Curadoria técnica das ferramentas que moldam o futuro. Sincronize sua produtividade com o arsenal tecnológico mais avançado.
+                Curadoria técnica das ferramentas que moldam o futuro. Sincronize sua produtividade agora.
             </p>
         </header>
 
-        <section class="search-container p-4 rounded-2xl mb-16">
+        <section class="p-4 rounded-2xl mb-16 bg-white/5 border border-white/5">
             <div class="flex flex-col lg:flex-row gap-4">
-                <div class="relative flex-grow">
-                    <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="BUSCAR FERRAMENTA NO ARSENAL..." 
-                    class="w-full bg-black/40 border border-white/10 px-6 py-3 rounded-xl text-cyan-400 outline-none focus:border-cyan-400/50 transition-all font-semibold text-sm">
-                </div>
+                <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="BUSCAR FERRAMENTA NO ARSENAL..." 
+                class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-xl text-cyan-400 outline-none focus:border-cyan-400/50 transition-all font-semibold text-sm">
                 <div id="filter-container" class="flex gap-2 overflow-x-auto no-scrollbar pb-1"></div>
             </div>
             <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-16"></div>
         </section>
     </main>
-
-    <footer class="py-10 text-center border-t border-white/5">
-        <div class="logo text-sm font-bold opacity-30 tracking-[0.4em] mb-4">MUNDO DAS IA'S</div>
-        <div class="flex justify-center gap-6 text-[10px] text-slate-500 uppercase font-bold tracking-widest">
-            <button onclick="openTab('termos')" class="hover:text-white">Termos de Uso</button>
-            <span>•</span>
-            <button onclick="openTab('privacidade')" class="hover:text-white">Política de Dados</button>
-        </div>
-    </footer>
 
     <div id="mainModal" onclick="closeTab()">
         <div class="modal-tech" onclick="event.stopPropagation()">
@@ -191,7 +173,7 @@
                 }).filter(ia => ia !== null);
                 renderFilters();
                 renderCards(todasIAs);
-            } catch(e) { console.error("Erro na carga de dados."); }
+            } catch(e) { console.error("Erro na carga."); }
         }
 
         function renderCards(lista) {
@@ -199,14 +181,13 @@
             grid.innerHTML = lista.map(ia => `
                 <div class="cyber-card flex flex-col h-full overflow-hidden">
                     <div class="relative h-40 overflow-hidden">
-                        <img src="${ia.img}" class="w-full h-full object-cover transition-transform duration-700 hover:scale-110" loading="lazy">
-                        <div class="absolute inset-0 img-overlay"></div>
-                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1 rounded-full text-[9px] font-bold text-cyan-400 uppercase tracking-widest">${ia.cat}</span>
+                        <img src="${ia.img}" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-bold text-cyan-400 uppercase">${ia.cat}</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow">
-                        <h4 class="text-lg font-bold text-white mb-3 uppercase tracking-tight">${ia.nome}</h4>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-6 flex-grow line-clamp-3">${ia.desc}</p>
-                        <a href="${ia.link}" target="_blank" class="block w-full text-center py-3 border border-cyan-400/30 text-cyan-400 font-bold text-[10px] uppercase tracking-widest rounded-lg hover:bg-cyan-400 hover:text-black transition-all">Explorar</a>
+                        <h4 class="text-lg font-bold text-white mb-3 uppercase">${ia.nome}</h4>
+                        <p class="text-slate-400 text-xs mb-6 flex-grow line-clamp-3">${ia.desc}</p>
+                        <a href="${ia.link}" target="_blank" class="block w-full text-center py-3 border border-cyan-400/30 text-cyan-400 font-bold text-[10px] uppercase rounded-lg hover:bg-cyan-400 hover:text-black transition-all">Explorar</a>
                     </div>
                 </div>
             `).join('');
@@ -214,9 +195,7 @@
 
         function renderFilters() {
             const cats = ['TUDO', ...new Set(todasIAs.map(ia => ia.cat))];
-            document.getElementById('filter-container').innerHTML = cats.map(c => 
-                `<button class="filter-btn rounded-lg" onclick="filterCat('${c}', this)">${c}</button>`
-            ).join('');
+            document.getElementById('filter-container').innerHTML = cats.map(c => `<button class="filter-btn rounded-lg" onclick="filterCat('${c}', this)">${c}</button>`).join('');
         }
 
         function filterCat(c, el) {
@@ -231,55 +210,34 @@
         }
 
         const juridico = {
-            privacidade: `
-                <h2>Política de Privacidade</h2>
-                <p>O <strong>Mundo das IA's</strong> opera com transparência absoluta.</p>
-                <p><strong>Cookies e Publicidade:</strong> Utilizamos tecnologias do Google AdSense para prover anúncios personalizados. O Google e seus parceiros utilizam cookies para coletar dados de navegação anonimizados para otimizar sua experiência publicitária.</p>
-                <p>Gerencie suas preferências nas configurações de anúncios da sua conta Google.</p>
-            `,
-            termos: `
-                <h2>Termos de Uso</h2>
-                <p>Este portal é uma central de curadoria tecnológica independente.</p>
-                <p><strong>Responsabilidade:</strong> Não garantimos a integridade de ferramentas externas. O acesso e uso de qualquer software listado aqui é por conta e risco do usuário, conforme os termos originais de cada fabricante.</p>
-            `,
+            privacidade: `<h2>Privacidade</h2><p>Processamos dados em conformidade com o Google AdSense. Cookies são usados para personalização de anúncios.</p>`,
+            termos: `<h2>Termos</h2><p>Este é um portal de curadoria informativa. O uso das ferramentas é de responsabilidade do usuário.</p>`,
             cursos: `
-                <h2>Mundo IA Academy</h2>
-                <p class="mb-6">Sincronize seu conhecimento com as certificações mais requisitadas pelas Big Techs:</p>
-                
+                <h2 style="color:#00f2ff; font-family:Orbitron; margin-bottom:20px;">Mundo IA Academy</h2>
                 <div class="course-item">
-                    <h4>1. Google Cloud Generative AI</h4>
-                    <p>Trilha completa sobre modelos de linguagem e IA generativa direto do Google.</p>
-                    <a href="https://www.cloudskillsboost.google/course_templates/539" target="_blank" class="text-cyan-400 font-bold underline">Iniciar Missão</a>
+                    <h4 style="color:white; text-transform:uppercase;">1. Google Cloud Generative AI</h4>
+                    <p>Trilha oficial sobre LLMs e IA generativa.</p>
+                    <a href="https://www.cloudskillsboost.google/course_templates/539" target="_blank" style="color:#00f2ff;">Iniciar Missão</a>
                 </div>
-
                 <div class="course-item">
-                    <h4>2. CS50's Introduction to AI (Harvard)</h4>
-                    <p>O curso mais famoso do mundo sobre lógica e inteligência artificial com Python.</p>
-                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="text-cyan-400 font-bold underline">Iniciar Missão</a>
+                    <h4 style="color:white; text-transform:uppercase;">2. Harvard CS50: Intro to AI</h4>
+                    <p>Lógica de IA com Python direto de Harvard.</p>
+                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" style="color:#00f2ff;">Iniciar Missão</a>
                 </div>
-
                 <div class="course-item">
-                    <h4>3. NVIDIA Deep Learning Institute</h4>
-                    <p>Treinamentos técnicos focados em visão computacional e processamento de dados.</p>
-                    <a href="https://www.nvidia.com/pt-br/training/" target="_blank" class="text-cyan-400 font-bold underline">Iniciar Missão</a>
+                    <h4 style="color:white; text-transform:uppercase;">3. NVIDIA Deep Learning Fundamentals</h4>
+                    <p>Treinamento técnico em redes neurais.</p>
+                    <a href="https://www.nvidia.com/en-us/training/online/" target="_blank" style="color:#00f2ff;">Iniciar Missão</a>
                 </div>
-
                 <div class="course-item">
-                    <h4>4. IBM: AI Foundations</h4>
-                    <p>Fundamentos teóricos e práticos para entender o impacto da IA no mercado corporativo.</p>
-                    <a href="https://www.edx.org/course/artificial-intelligence-and-generative-ai-for-everyone" target="_blank" class="text-cyan-400 font-bold underline">Iniciar Missão</a>
+                    <h4 style="color:white; text-transform:uppercase;">4. IBM SkillsBuild: AI Essentials</h4>
+                    <p>Certificação gratuita da IBM focada em IA para o trabalho e ética.</p>
+                    <a href="https://skillsbuild.org/students/course-catalog/digital-technologies/artificial-intelligence" target="_blank" style="color:#00f2ff;">Iniciar Missão</a>
                 </div>
-
                 <div class="course-item">
-                    <h4>5. AWS Academy: Machine Learning</h4>
-                    <p>Aprenda a criar e implantar modelos de ML na nuvem da Amazon.</p>
-                    <a href="https://aws.amazon.com/pt/training/digital/machine-learning-foundations/" target="_blank" class="text-cyan-400 font-bold underline">Iniciar Missão</a>
-                </div>
-
-                <div class="course-item">
-                    <h4>6. Elements of AI</h4>
-                    <p>Certificação europeia gratuita que ensina o "como" e o "porquê" da IA.</p>
-                    <a href="https://www.elementsofai.com" target="_blank" class="text-cyan-400 font-bold underline">Iniciar Missão</a>
+                    <h4 style="color:white; text-transform:uppercase;">5. AWS Educate: Machine Learning Intro</h4>
+                    <p>Portal da Amazon com cursos gratuitos para iniciantes em nuvem e ML.</p>
+                    <a href="https://aws.amazon.com/pt/education/aws-educate/" target="_blank" style="color:#00f2ff;">Iniciar Missão</a>
                 </div>
             `
         };
@@ -288,9 +246,7 @@
             document.getElementById('modalBody').innerHTML = juridico[type];
             document.getElementById('mainModal').style.display = 'block';
         }
-
         function closeTab() { document.getElementById('mainModal').style.display = 'none'; }
-
         init();
     </script>
 </body>
