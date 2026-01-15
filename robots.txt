@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Caminho do Sitemap para otimizar a indexação
+Sitemap: https://mundodasias.com.br/sitemap.xml
