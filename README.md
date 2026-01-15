@@ -18,7 +18,7 @@
     </div>
 
     <script>
-        const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+        const urlCSV = "https://docs.google.com/spreadsheets/d/1JWFx-YfcyHPvsbI9RYO6YGUfHlS37TmoB6jcyYVzRFo/edit?usp=sharing";
 
         function parseCSV(text) {
             // Esta função ignora vírgulas problemáticas
