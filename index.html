@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | O Portal da Autoridade</title>
+    <title>Mundo das IAs | Consultoria e Curadoria Tecnológica</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -11,121 +11,143 @@
     <style>
         :root { --neon: #3b82f6; --bg: #020617; }
         body { background: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
         
-        .glass-nav { background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(59, 130, 246, 0.2); }
+        .glass-nav { background: rgba(2, 6, 23, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(59, 130, 246, 0.1); }
         
-        /* Filtros Slim */
+        /* Navegação de Categorias */
         .filter-wrapper { display: flex; overflow-x: auto; padding: 10px 0; gap: 10px; scrollbar-width: none; }
         .filter-wrapper::-webkit-scrollbar { display: none; }
-        .filter-chip { flex: 0 0 auto; padding: 8px 20px; background: #0f172a; border: 1px solid #1e293b; border-radius: 100px; color: #64748b; font-size: 11px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .filter-chip.active { background: var(--neon); color: white; border-color: var(--neon); box-shadow: 0 0 15px rgba(59, 130, 246, 0.4); }
+        .filter-chip { flex: 0 0 auto; padding: 10px 24px; background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 100px; color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .filter-chip.active { background: var(--neon); color: white; border-color: var(--neon); box-shadow: 0 0 20px rgba(59, 130, 246, 0.3); }
 
-        /* Card com Vida e Brilho */
-        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); overflow: hidden; display: flex; flex-direction: column; position: relative; }
-        .card-ia:hover { border-color: var(--neon); transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7); }
-        .card-ia::before { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.05), transparent); transform: translateX(-100%); transition: 0.6s; }
-        .card-ia:hover::before { transform: translateX(100%); }
-
-        .img-box { height: 180px; overflow: hidden; position: relative; background: #1e293b; }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.7; }
+        /* Card de IA Premium */
+        .card-ia { background: #0f172a; border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 24px; transition: 0.5s cubic-bezier(0.2, 1, 0.3, 1); overflow: hidden; display: flex; flex-direction: column; }
+        .card-ia:hover { border-color: var(--neon); transform: translateY(-8px); box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8); }
+        .img-box { height: 200px; overflow: hidden; position: relative; }
+        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.8; }
         .card-ia:hover .img-box img { transform: scale(1.1); opacity: 1; }
 
-        /* Vídeos Wall */
-        .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; border-radius: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-        .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        /* Seção Educativa Estilizada */
+        .edu-card { background: linear-gradient(145deg, #0f172a, #020617); border: 1px solid rgba(255,255,255,0.03); padding: 40px; border-radius: 32px; transition: 0.4s; }
+        .edu-card:hover { border-color: rgba(59, 130, 246, 0.3); background: linear-gradient(145deg, #131c31, #020617); }
 
-        .inst-section { background: linear-gradient(to right, rgba(15, 23, 42, 0.5), transparent); border-left: 4px solid var(--neon); padding: 30px; border-radius: 0 24px 24px 0; }
+        /* Botão de Sugestão Ativo */
+        .btn-send { background: var(--neon); transition: 0.4s; position: relative; overflow: hidden; }
+        .btn-send:active { transform: scale(0.95); }
+        
+        .success-toast { position: fixed; bottom: 30px; right: 30px; background: #10b981; color: white; padding: 16px 32px; border-radius: 16px; font-weight: 800; text-transform: uppercase; font-size: 12px; display: none; z-index: 200; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4); }
     </style>
 </head>
 <body class="antialiased">
 
+    <div id="toast" class="success-toast">Sugestão Enviada com Sucesso!</div>
+
     <nav class="fixed top-0 w-full z-50 glass-nav px-8 py-5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <a href="#" class="flex items-center gap-3 text-2xl font-black italic tracking-tighter">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.6)]"></div>
+                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-[0_0_20px_rgba(37,99,235,0.4)]"></div>
                 MUNDO DAS <span class="text-blue-500 uppercase">IAs</span>
             </a>
-            <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                <a href="#portal" class="hover:text-blue-400 transition">Hub</a>
+            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-400">
                 <a href="#institucional" class="hover:text-blue-400 transition">Institucional</a>
-                <a href="#videos" class="hover:text-blue-400 transition">Masterclass</a>
-                <button onclick="openLegal('privacidade')" class="hover:text-white">Privacidade</button>
+                <a href="#portal" class="hover:text-blue-400 transition">Diretório</a>
+                <a href="#educativo" class="hover:text-blue-400 transition">Educação</a>
+                <button onclick="openLegal('privacidade')" class="hover:text-white uppercase">Privacidade</button>
             </div>
         </div>
     </nav>
 
     <main class="pt-40 max-w-7xl mx-auto px-6">
         
-        <section id="institucional" class="mb-32 grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-                <h1 class="text-6xl font-black mb-8 leading-none italic uppercase">Curadoria <br><span class="text-blue-500">Inteligente.</span></h1>
-                <div class="inst-section mb-8">
-                    <h3 class="text-white font-bold uppercase mb-2">Nossa Missão</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed text-justify">Selecionar o que há de mais disruptivo no universo das IAs para acelerar o intelecto humano e a eficiência operacional.</p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="p-6 bg-slate-900/50 rounded-2xl border border-white/5">
-                        <h4 class="text-blue-500 font-bold uppercase text-[10px] mb-2">Visão</h4>
-                        <p class="text-slate-500 text-[11px]">Ser o maior ecossistema de aprendizado e busca de IAs do país.</p>
+        <section id="institucional" class="mb-40">
+            <div class="max-w-4xl">
+                <h1 class="text-6xl md:text-8xl font-black mb-10 leading-[0.9] italic uppercase">A Inteligência <br><span class="text-blue-500">Curada.</span></h1>
+                <p class="text-slate-400 text-xl leading-relaxed mb-16 text-justify border-l-2 border-blue-600 pl-8">
+                    O <strong>Mundo das IAs</strong> não é apenas um repositório; é um ecossistema de inteligência aplicada. Nossa governança editorial foca no E-E-A-T (Experiência, Especialidade, Autoridade e Confiança), garantindo que cada ferramenta listada passe por um rigoroso crivo de utilidade técnica e segurança da informação.
+                </p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-white font-bold uppercase text-xs mb-4 tracking-widest">Missão</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed text-justify">Mitigar o ruído tecnológico e entregar clareza operacional através de curadoria estratégica de IA.</p>
                     </div>
-                    <div class="p-6 bg-slate-900/50 rounded-2xl border border-white/5">
-                        <h4 class="text-blue-500 font-bold uppercase text-[10px] mb-2">Valores</h4>
-                        <p class="text-slate-500 text-[11px]">Ética algorítmica, transparência e inovação contínua.</p>
+                    <div>
+                        <h4 class="text-white font-bold uppercase text-xs mb-4 tracking-widest">Visão</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed text-justify">Consolidar-se como o principal hub de referência em automação inteligente da América Latina.</p>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold uppercase text-xs mb-4 tracking-widest">Valores</h4>
+                        <p class="text-slate-500 text-sm leading-relaxed text-justify">Excelência técnica, ética no desenvolvimento algorítmico e transparência radical.</p>
                     </div>
                 </div>
-            </div>
-            <div class="relative">
-                <div class="absolute -inset-4 bg-blue-500/10 blur-3xl rounded-full"></div>
-                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800" class="relative rounded-[40px] border border-white/10 shadow-2xl" alt="AI Context">
             </div>
         </section>
 
-        <section id="portal" class="mb-32">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-12">
-                <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="Buscar IA (Ex: ChatGPT, Gemini...)" class="w-full md:w-96 bg-slate-900 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none transition-all">
-                <div id="filter-container" class="filter-wrapper w-full md:w-auto md:max-w-2xl">
+        <section id="portal" class="mb-40">
+            <div class="flex flex-col md:flex-row items-end justify-between gap-8 mb-16 border-b border-white/5 pb-10">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-3xl font-black uppercase italic mb-6 tracking-tighter">Explorar o Ecossistema</h2>
+                    <input type="text" id="iaSearch" onkeyup="filterIAs()" placeholder="Buscar por nome ou funcionalidade..." class="w-full bg-slate-900 border border-white/10 px-8 py-5 rounded-2xl focus:outline-none focus:border-blue-500 transition-all text-sm">
+                </div>
+                <div id="filter-container" class="filter-wrapper w-full md:w-1/2">
                     </div>
             </div>
             <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 </div>
         </section>
 
-        <section id="videos" class="mb-32">
-            <h2 class="text-3xl font-black uppercase italic mb-12 border-l-4 border-blue-500 pl-6">Conteúdo Educativo</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/WXuK6gekU1Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <section id="educativo" class="mb-40">
+            <h2 class="text-4xl font-black uppercase italic mb-16 text-center tracking-widest">Masterclass <span class="text-blue-500">Textual</span></h2>
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="edu-card">
+                    <span class="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-4 block">Módulo 01</span>
+                    <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-tighter">O que são LLMs e Modelos de Difusão?</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed text-justify mb-6">
+                        As <strong>Large Language Models (LLMs)</strong>, como o GPT-4 e o Gemini, são redes neurais treinadas em volumes massivos de dados textuais para prever o próximo token em uma sequência. Já os <strong>Modelos de Difusão</strong> (Midjourney, Sora) funcionam adicionando ruído gaussiano a imagens e aprendendo a reverter esse processo, criando conteúdo visual inédito a partir do puro vácuo digital.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed text-justify">
+                        Entender essa distinção é vital para empresas que buscam implementar fluxos de trabalho que envolvam tanto o processamento de linguagem natural quanto a geração sintética de mídia.
+                    </p>
                 </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/81rZpZ_lVf0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="edu-card">
+                    <span class="text-blue-500 text-[10px] font-black uppercase tracking-widest mb-4 block">Módulo 02</span>
+                    <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-tighter">IA Agêntica: O Próximo Nível</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed text-justify mb-6">
+                        Diferente das IAs tradicionais de "pergunta e resposta", as <strong>IAs Agênticas</strong> possuem a capacidade de planejar, usar ferramentas externas e executar tarefas complexas de forma autônoma. Um agente de IA pode pesquisar na web, escrever um relatório, formatar uma planilha e enviar um e-mail sem intervenção humana constante.
+                    </p>
+                    <p class="text-slate-400 text-sm leading-relaxed text-justify">
+                        No Mundo das IAs, priorizamos a listagem dessas ferramentas agênticas, pois elas representam o maior ganho de ROI (Retorno sobre Investimento) para o profissional moderno.
+                    </p>
                 </div>
             </div>
         </section>
 
-        <section class="mb-32">
+        <section class="mb-40">
             <div class="p-16 bg-gradient-to-br from-blue-600/10 to-transparent border border-blue-500/20 rounded-[48px] text-center">
-                <h2 class="text-3xl font-black mb-6 uppercase italic tracking-tighter">Sugira uma Nova IA</h2>
-                <div class="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
-                    <input type="text" placeholder="Nome ou Link da IA" class="flex-grow bg-slate-950 border border-white/10 px-8 py-5 rounded-3xl">
-                    <button class="bg-blue-600 hover:bg-blue-500 text-white font-black px-12 py-5 rounded-3xl uppercase text-xs">Sugerir</button>
-                </div>
+                <h2 class="text-3xl font-black mb-4 uppercase italic">Sugira uma Ferramenta</h2>
+                <p class="text-slate-500 mb-10 max-w-xl mx-auto italic text-sm">Nossa equipe técnica analisará a documentação da IA sugerida para possível inclusão no diretório.</p>
+                <form id="suggestionForm" onsubmit="sendSuggestion(event)" class="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
+                    <input type="text" id="suggestionInput" required placeholder="Nome ou URL da IA para análise" class="flex-grow bg-slate-950 border border-white/10 px-8 py-5 rounded-3xl focus:border-blue-500 transition outline-none text-sm">
+                    <button type="submit" class="btn-send bg-blue-600 hover:bg-blue-500 text-white font-black px-12 py-5 rounded-3xl uppercase text-xs tracking-widest">Enviar Proposta</button>
+                </form>
             </div>
         </section>
     </main>
 
-    <footer class="py-20 border-t border-white/5 text-center">
-        <p class="text-[9px] font-black text-slate-700 uppercase tracking-[0.5em] mb-4">MUNDO DAS IAs © 2026</p>
-        <div class="flex justify-center gap-8">
-            <button onclick="openLegal('privacidade')" class="text-[10px] text-slate-500 hover:text-white uppercase font-bold">Privacidade</button>
-            <button onclick="openLegal('termos')" class="text-[10px] text-slate-500 hover:text-white uppercase font-bold">Termos</button>
+    <footer class="py-20 border-t border-white/5 bg-slate-950/80 text-center">
+        <div class="max-w-7xl mx-auto px-6">
+            <p class="text-[9px] font-black text-slate-700 uppercase tracking-[0.5em] mb-8">© 2026 MUNDO DAS IAs | SYNCING THE FUTURE</p>
+            <div class="flex justify-center gap-10">
+                <button onclick="openLegal('privacidade')" class="text-[10px] font-bold text-slate-500 hover:text-white uppercase tracking-widest">Privacidade</button>
+                <button onclick="openLegal('termos')" class="text-[10px] font-bold text-slate-500 hover:text-white uppercase tracking-widest">Termos de Uso</button>
+            </div>
         </div>
     </footer>
 
-    <div id="legalModal" class="fixed inset-0 bg-black/95 z-[100] hidden items-center justify-center p-6" onclick="this.style.display='none'">
-        <div class="bg-slate-900 border border-white/10 max-w-2xl w-full p-10 rounded-[32px]" onclick="event.stopPropagation()">
-            <div id="legalBody" class="text-slate-400 text-sm leading-relaxed space-y-4"></div>
-            <button onclick="document.getElementById('legalModal').style.display='none'" class="mt-8 w-full py-4 bg-blue-600 text-white font-black rounded-2xl uppercase text-xs">Fechar</button>
+    <div id="legalModal" class="fixed inset-0 bg-black/98 z-[100] hidden items-center justify-center p-6" onclick="this.style.display='none'">
+        <div class="bg-slate-900 border border-white/10 max-w-2xl w-full p-12 rounded-[40px] shadow-2xl" onclick="event.stopPropagation()">
+            <div id="legalBody" class="text-slate-400 text-sm leading-relaxed space-y-6"></div>
+            <button onclick="document.getElementById('legalModal').style.display='none'" class="mt-12 w-full py-5 bg-blue-600 text-white font-black rounded-2xl uppercase text-[10px] tracking-widest">Fechar</button>
         </div>
     </div>
 
@@ -143,19 +165,18 @@
                 todasIAs = rows.map(row => {
                     const columns = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!columns[1]) return null;
-                    const rawImg = columns[4]?.replace(/"/g, '').trim();
                     return {
                         cat: columns[0]?.replace(/"/g, '').trim(),
                         nome: columns[1]?.replace(/"/g, '').trim(),
                         desc: columns[2]?.replace(/"/g, '').trim(),
                         link: columns[3]?.replace(/"/g, '').trim(),
-                        img: (rawImg && rawImg.startsWith('http')) ? rawImg : "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600"
+                        img: (columns[4] && columns[4].includes('http')) ? columns[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"
                     };
                 }).filter(ia => ia !== null);
 
                 renderFiltros();
                 renderCards(todasIAs);
-            } catch(e) { console.error("Falha no carregamento."); }
+            } catch(e) { console.error("Database connection failed."); }
         }
 
         function renderFiltros() {
@@ -189,19 +210,30 @@
                         <img src="${ia.img}" alt="${ia.nome}" loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <span class="text-blue-500 text-[9px] font-bold uppercase mb-2">${ia.cat}</span>
-                        <h4 class="text-lg font-bold text-white mb-3 tracking-tighter">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] mb-6 italic line-clamp-2">"${ia.desc}"</p>
-                        <a href="${ia.link}" target="_blank" class="mt-auto block text-center py-3 bg-white/5 border border-white/10 rounded-xl text-[10px] font-black uppercase hover:bg-blue-600 transition">Acessar IA</a>
+                    <div class="p-8 pt-4 flex flex-col flex-grow">
+                        <span class="text-blue-500 text-[8px] font-bold uppercase tracking-widest mb-3">${ia.cat}</span>
+                        <h4 class="text-lg font-bold text-white mb-3 uppercase tracking-tighter">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[10px] mb-8 italic line-clamp-2 leading-relaxed">"${ia.desc}"</p>
+                        <a href="${ia.link}" target="_blank" class="mt-auto block text-center py-4 bg-white/5 border border-white/10 rounded-2xl text-[9px] font-black uppercase hover:bg-blue-600 transition">Acessar Plataforma</a>
                     </div>
                 </div>
             `).join('');
         }
 
+        function sendSuggestion(e) {
+            e.preventDefault();
+            const input = document.getElementById('suggestionInput');
+            if(input.value) {
+                const toast = document.getElementById('toast');
+                toast.style.display = 'block';
+                input.value = '';
+                setTimeout(() => { toast.style.display = 'none'; }, 3000);
+            }
+        }
+
         const juridico = {
-            privacidade: `<h2 class="text-xl font-bold text-white uppercase">Privacidade</h2><p>O Mundo das IAs utiliza cookies para melhorar sua experiência e exibir anúncios personalizados via Google AdSense.</p>`,
-            termos: `<h2 class="text-xl font-bold text-white uppercase">Termos</h2><p>As informações aqui contidas são para fins educacionais e de pesquisa técnica.</p>`
+            privacidade: `<h2 class="text-2xl font-black text-white uppercase italic mb-6 border-l-4 border-blue-600 pl-4">Política de Privacidade</h2><p>O <strong>Mundo das IAs</strong> protege sua privacidade conforme a LGPD. Utilizamos cookies para personalização de anúncios via Google AdSense.</p>`,
+            termos: `<h2 class="text-2xl font-black text-white uppercase italic mb-6 border-l-4 border-blue-600 pl-4">Termos de Uso</h2><p>As informações aqui apresentadas são de cunho educativo. Não nos responsabilizamos por perdas técnicas em softwares de terceiros.</p>`
         };
 
         function openLegal(t) {
