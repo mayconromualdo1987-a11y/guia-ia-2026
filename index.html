@@ -3,102 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | O Hub de Inteligência Operacional</title>
+    <title>Mundo das IAs | Portal de Autoridade</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #3b82f6; --logistics: #10b981; }
-        body { background-color: #020617; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .sidebar-link:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
-        .active-link { background: #2563eb; color: white !important; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+        body { background-color: #020617; color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .nav-link { position: relative; transition: all 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #3b82f6; transition: 0.3s; }
+        .nav-link:hover::after { width: 100%; }
         .card-ia { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .card-ia:hover { transform: translateY(-8px); border-color: var(--accent); }
-        .news-ticker { animation: ticker 30s linear infinite; }
-        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+        .card-ia:hover { transform: translateY(-10px); border-color: #3b82f6; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5); }
+        .active-filter { background: #2563eb !important; color: white !important; border-color: transparent !important; }
+        .section-fade { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="antialiased flex overflow-x-hidden">
+<body class="antialiased">
 
-    <aside class="hidden lg:flex flex-col w-72 h-screen glass fixed left-0 top-0 z-50 p-6">
-        <div class="text-2xl font-black mb-10 tracking-tighter text-blue-500">MUNDO IAs</div>
-        
-        <nav class="space-y-2 flex-grow">
-            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Navegação Principal</p>
-            <a href="#hero" class="sidebar-link flex items-center p-3 rounded-xl transition text-sm font-semibold">🏠 Dashboard Home</a>
-            <a href="#diretorio" class="sidebar-link flex items-center p-3 rounded-xl transition text-sm font-semibold">🔍 Diretório de IAs</a>
-            <a href="#news" class="sidebar-link flex items-center p-3 rounded-xl transition text-sm font-semibold">🌍 Portal Global News</a>
-            
-            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-8 mb-4">Setores Críticos</p>
-            <button onclick="filterByTag('Logística')" class="w-full text-left sidebar-link p-3 rounded-xl transition text-sm">📦 Logística & Transportes</button>
-            <button onclick="filterByTag('Supply Chain')" class="w-full text-left sidebar-link p-3 rounded-xl transition text-sm">⛓️ Supply Chain & WMS</button>
-            <button onclick="filterByTag('Gestão')" class="w-full text-left sidebar-link p-3 rounded-xl transition text-sm">📊 ERP & Indicadores</button>
-        </nav>
-
-        <div class="mt-auto p-4 bg-blue-600/10 rounded-2xl border border-blue-500/20">
-            <p class="text-xs font-bold text-blue-400">Academy 2026</p>
-            <p class="text-[10px] text-slate-400 mt-1">Aprenda a criar automações Logísticas.</p>
-        </div>
-    </aside>
-
-    <main class="flex-grow lg:ml-72 min-h-screen">
-        
-        <div class="w-full bg-blue-600 py-2 overflow-hidden whitespace-nowrap z-40 relative">
-            <div class="news-ticker inline-block text-[10px] font-bold uppercase tracking-widest text-white">
-                ⚠️ URGENTE: Cadeia de suprimentos global adota IA Quântica para predição de rotas --- Portos de Santos e Rotterdam integram WMS autônomo --- ERPs de nova geração eliminam 90% das tarefas manuais de inventário --- 
+    <nav class="fixed top-0 w-full z-50 glass border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-2xl font-black tracking-tighter hover:opacity-80 transition">
+                MUNDO<span class="text-blue-500">IAs</span>
+            </button>
+            <div class="hidden md:flex gap-8 items-center text-[11px] font-bold uppercase tracking-widest">
+                <a href="#diretorio" class="nav-link">Explorar</a>
+                <a href="#noticias" class="nav-link">Tendências</a>
+                <a href="#academy" class="nav-link">Automação</a>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden sm:inline text-[10px] text-blue-400 font-bold bg-blue-400/10 px-3 py-1 rounded-full uppercase">Update Jan 2026</span>
             </div>
         </div>
+    </nav>
 
-        <section id="hero" class="p-8 md:p-20 text-center lg:text-left bg-gradient-to-b from-blue-900/10 to-transparent">
-            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none">A Mente por trás da <br><span class="text-blue-500">Sua Operação.</span></h1>
-            <p class="text-xl text-slate-400 max-w-3xl leading-relaxed">O diretório definitivo focado em eficiência real. De Supply Chain preditivo a WMS inteligente — filtramos o futuro para você implementar hoje.</p>
-        </section>
+    <div class="pt-24"></div>
 
-        <section id="diretorio" class="px-8 mb-12">
-            <div class="glass p-6 rounded-[32px] flex flex-col md:flex-row gap-6 items-center border-white/10 shadow-2xl">
-                <input type="text" id="searchInput" placeholder="Busque por 'WMS', 'TMS' ou 'ERP'..." class="bg-slate-900/50 border border-white/5 p-4 rounded-2xl w-full md:w-1/3 outline-none focus:border-blue-500 transition">
-                <div id="filterContainer" class="flex flex-wrap gap-2">
-                    </div>
+    <header class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <h1 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none">
+            Curadoria Humana. <br><span class="text-blue-500">Potência Artificial.</span>
+        </h1>
+        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+            Filtramos o ruído para entregar as melhores ferramentas de produtividade, logística e supply chain do mercado.
+        </p>
+    </header>
+
+    <section id="diretorio" class="sticky top-[72px] z-40 py-4 glass border-y border-white/5 mb-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div id="filter-buttons" class="flex gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 no-scrollbar">
+                </div>
+            <div class="relative w-full md:w-80">
+                <input type="text" id="searchInput" placeholder="Buscar por nome ou setor..." 
+                class="w-full bg-white/5 border border-white/10 px-5 py-2 rounded-full text-sm focus:border-blue-500 outline-none transition">
+            </div>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-6">
+        <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 section-fade">
+            </div>
+
+        <hr class="border-white/5 mb-24">
+        
+        <section id="noticias" class="mb-24 section-fade">
+            <h2 class="text-4xl font-bold mb-12 flex items-center gap-4">
+                <span class="w-12 h-1 bg-blue-500"></span> 
+                Tendências do Mercado
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass p-8 rounded-3xl border-l-4 border-blue-500">
+                    <p class="text-xs font-bold text-blue-500 mb-2">LOGÍSTICA</p>
+                    <h3 class="text-xl font-bold mb-4">IAs em WMS reduzem perdas em 30%</h3>
+                    <p class="text-slate-400 text-sm">Novos modelos preditivos permitem que centros de distribuição antecipem picos de demanda com 99% de precisão.</p>
+                </div>
+                <div class="glass p-8 rounded-3xl border-l-4 border-purple-500">
+                    <p class="text-xs font-bold text-purple-500 mb-2">TRANSPORTES</p>
+                    <h3 class="text-xl font-bold mb-4">Roteirização Autônoma 2026</h3>
+                    <p class="text-slate-400 text-sm">O fim dos atrasos: como a IA está eliminando gargalos urbanos em tempo real usando dados de satélite.</p>
+                </div>
+                <div id="academy" class="glass p-8 rounded-3xl border-l-4 border-green-500">
+                    <p class="text-xs font-bold text-green-500 mb-2">AUTOMAÇÃO</p>
+                    <h3 class="text-xl font-bold mb-4">Aprenda a conectar seu ERP</h3>
+                    <p class="text-slate-400 text-sm">Tutorial rápido de como integrar ferramentas de IA para gerar relatórios de gestão automáticos via WhatsApp.</p>
+                </div>
             </div>
         </section>
-
-        <section class="px-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" id="ia-grid">
-            </section>
-
-        <section id="news" class="p-8 mt-24">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-4xl font-black">Portal de Tendências</h2>
-                    <p class="text-slate-500">As manchetes que estão movendo o mercado em 2026.</p>
-                </div>
-                <div class="hidden md:block h-px bg-white/10 flex-grow mx-10 mb-4"></div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="glass p-8 rounded-[40px] hover:bg-slate-900/40 transition">
-                    <span class="text-blue-500 font-bold text-xs uppercase">Supply Chain Strategy</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-4">Como a IA reduziu o Lead Time global em 15% neste trimestre?</h3>
-                    <p class="text-slate-400 mb-6 text-sm">A integração de dados de satélite com algoritmos de TMS preditivo permitiu que frotas evitassem gargalos climáticos antes mesmo deles ocorrerem...</p>
-                    <a href="#" class="text-white font-bold text-xs border-b border-blue-500 pb-1">LER ARTIGO COMPLETO</a>
-                </div>
-                <div class="glass p-8 rounded-[40px] hover:bg-slate-900/40 transition">
-                    <span class="text-green-500 font-bold text-xs uppercase">Tecnologia ERP</span>
-                    <h3 class="text-2xl font-bold mt-4 mb-4">O Fim do ERP Tradicional: Bem-vindo ao ERP Autónomo</h3>
-                    <p class="text-slate-400 mb-6 text-sm">Esqueça o preenchimento de planilhas. Em 2026, os ERPs tomam decisões de compra baseadas em demanda real, sem necessidade de aprovação humana para itens de giro...</p>
-                    <a href="#" class="text-white font-bold text-xs border-b border-green-500 pb-1">LER ARTIGO COMPLETO</a>
-                </div>
-            </div>
-        </section>
-
-        <footer class="p-20 mt-20 border-t border-white/5 text-center text-slate-600">
-            <p class="font-bold text-slate-400">MUNDO DAS IAs &copy; 2026</p>
-            <p class="text-xs mt-2 uppercase tracking-[0.3em]">Operações | Logística | Inteligência</p>
-        </footer>
     </main>
+
+    <footer class="py-12 glass border-t border-white/5 text-center text-slate-500 text-xs">
+        <p class="font-bold uppercase tracking-[0.2em] mb-4">Mundo das IAs &copy; 2026</p>
+        <div class="flex justify-center gap-6">
+            <a href="#" class="hover:text-white transition">Privacidade</a>
+            <a href="#" class="hover:text-white transition">Contato</a>
+            <a href="#" class="hover:text-white transition">Anunciar</a>
+        </div>
+    </footer>
 
     <script>
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
         let todasIAs = [];
+        let categoriaAtiva = 'Todos';
 
         async function init() {
             try {
@@ -113,49 +117,56 @@
                         nome: col[1]?.replace(/"/g, '').trim(),
                         desc: col[2]?.replace(/"/g, '').trim(),
                         link: col[3]?.replace(/"/g, '').trim(),
-                        img: col[4] ? col[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600"
+                        img: col[4] ? col[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"
                     };
                 }).filter(ia => ia.nome);
 
-                renderCards(todasIAs);
                 renderFilters();
-                document.getElementById('searchInput').addEventListener('input', filterContent);
+                updateDisplay();
+                document.getElementById('searchInput').addEventListener('input', updateDisplay);
             } catch (err) { console.error(err); }
         }
 
         function renderFilters() {
-            const cats = ['Todos', 'Logística', 'Supply Chain', 'Gestão', 'Marketing', 'Designer'];
-            document.getElementById('filterContainer').innerHTML = cats.map(c => 
-                `<button onclick="filterByTag('${c}')" class="px-4 py-2 rounded-xl border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:bg-blue-600 transition">${c}</button>`
-            ).join('');
+            const cats = ['Todos', ...new Set(todasIAs.map(ia => ia.cat))];
+            document.getElementById('filter-buttons').innerHTML = cats.map(c => `
+                <button onclick="setFilter('${c}', this)" class="filter-btn px-4 py-2 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-widest whitespace-nowrap transition-all hover:bg-white/5 ${c === 'Todos' ? 'active-filter' : ''}">
+                    ${c}
+                </button>
+            `).join('');
         }
 
-        function filterByTag(tag) {
-            const filtradas = tag === 'Todos' ? todasIAs : todasIAs.filter(ia => ia.cat.includes(tag) || tag === ia.cat);
-            renderCards(filtradas);
-            window.scrollTo({ top: document.getElementById('diretorio').offsetTop - 100, behavior: 'smooth' });
+        function setFilter(cat, btn) {
+            categoriaAtiva = cat;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active-filter'));
+            btn.classList.add('active-filter');
+            updateDisplay();
         }
 
-        function filterContent() {
-            const b = document.getElementById('searchInput').value.toLowerCase();
-            const filtradas = todasIAs.filter(ia => ia.nome.toLowerCase().includes(b) || ia.desc.toLowerCase().includes(b) || ia.cat.toLowerCase().includes(b));
+        function updateDisplay() {
+            const busca = document.getElementById('searchInput').value.toLowerCase();
+            const filtradas = todasIAs.filter(ia => {
+                const matchBusca = ia.nome.toLowerCase().includes(busca) || ia.desc.toLowerCase().includes(busca);
+                const matchCat = categoriaAtiva === 'Todos' || ia.cat === categoriaAtiva;
+                return matchBusca && matchCat;
+            });
             renderCards(filtradas);
         }
 
         function renderCards(lista) {
-            document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="glass card-ia rounded-[2.5rem] overflow-hidden flex flex-col h-full group">
-                    <div class="h-52 relative overflow-hidden">
-                        <img src="${ia.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent"></div>
-                        <span class="absolute top-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase text-white">${ia.cat}</span>
+            const container = document.getElementById('ia-grid');
+            container.innerHTML = lista.map(ia => `
+                <div class="glass card-ia rounded-[32px] overflow-hidden flex flex-col h-full border-white/5">
+                    <div class="h-48 relative overflow-hidden bg-slate-800">
+                        <img src="${ia.img}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                        <span class="absolute top-4 left-4 bg-blue-600 px-3 py-1 rounded-full text-[9px] font-black uppercase">${ia.cat}</span>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold mb-3 text-white">${ia.nome}</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
-                            <span class="text-blue-400 font-bold">Por que usar?</span> ${ia.desc}
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2 text-white">${ia.nome}</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6 line-clamp-3">
+                            <span class="text-blue-500 font-bold tracking-tighter">INSIGHT:</span> ${ia.desc}
                         </p>
-                        <a href="${ia.link}" target="_blank" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-center text-xs font-bold uppercase tracking-widest hover:bg-blue-600 hover:border-transparent transition">Desbloquear Poder</a>
+                        <a href="${ia.link}" target="_blank" class="mt-auto w-full py-3 bg-white/5 border border-white/10 rounded-xl text-center text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 transition">Explorar IA</a>
                     </div>
                 </div>
             `).join('');
