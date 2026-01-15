@@ -3,147 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IAs | Autoridade em Inteligência Artificial e Automação</title>
+    <title>Mundo das IAs | O Hub de Inteligência Operacional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #2563eb; --gold: #fbbf24; }
-        body { background-color: #020617; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .gradient-gold { background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .tab-btn.active { border-bottom: 3px solid var(--accent); color: white; font-weight: 800; }
-        .card-news:hover { transform: scale(1.02); border-color: rgba(37, 99, 235, 0.3); }
-        .academy-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
+        :root { --accent: #3b82f6; --logistics: #10b981; }
+        body { background-color: #020617; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .sidebar-link:hover { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .active-link { background: #2563eb; color: white !important; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); }
+        .card-ia { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card-ia:hover { transform: translateY(-8px); border-color: var(--accent); }
+        .news-ticker { animation: ticker 30s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased flex overflow-x-hidden">
 
-    <nav class="glass sticky top-0 z-50 px-8 py-5">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">M</div>
-                <span class="text-xl font-black tracking-tighter">MUNDO DAS IAs</span>
-            </div>
-            <div class="hidden lg:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                <button onclick="switchSection('diretorio')" class="tab-btn active hover:text-white transition">Ferramentas</button>
-                <button onclick="switchSection('news')" class="tab-btn hover:text-white transition">Insights & Notícias</button>
-                <button onclick="switchSection('academy')" class="tab-btn hover:text-white transition">Academy (Aprenda)</button>
-                <button onclick="switchSection('trends')" class="tab-btn hover:text-white transition">Tendências 2026</button>
-            </div>
-        </div>
-    </nav>
-
-    <main class="max-w-7xl mx-auto px-6 pt-16">
+    <aside class="hidden lg:flex flex-col w-72 h-screen glass fixed left-0 top-0 z-50 p-6">
+        <div class="text-2xl font-black mb-10 tracking-tighter text-blue-500">MUNDO IAs</div>
         
-        <div id="section-diretorio" class="content-section">
-            <div class="mb-16">
-                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Nossa curadoria selecionou as ferramentas que vão <span class="text-blue-500">dobrar sua produtividade.</span></h1>
-                <p class="text-xl text-slate-400 max-w-3xl leading-relaxed">Não listamos tudo, listamos o que funciona. Testamos e validamos cada IA para garantir que você tenha acesso apenas ao estado da arte da tecnologia atual.</p>
-                
-                <div class="mt-12 flex flex-wrap gap-4">
-                    <input type="text" id="searchInput" placeholder="O que você quer resolver hoje?" class="bg-white/5 border border-white/10 p-5 rounded-2xl w-full md:w-96 focus:ring-2 focus:ring-blue-600 outline-none">
-                    <div id="categoryTags" class="flex flex-wrap gap-2 items-center"></div>
-                </div>
-            </div>
-            <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-        </div>
+        <nav class="space-y-2 flex-grow">
+            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-4">Navegação Principal</p>
+            <a href="#hero" class="sidebar-link flex items-center p-3 rounded-xl transition text-sm font-semibold">🏠 Dashboard Home</a>
+            <a href="#diretorio" class="sidebar-link flex items-center p-3 rounded-xl transition text-sm font-semibold">🔍 Diretório de IAs</a>
+            <a href="#news" class="sidebar-link flex items-center p-3 rounded-xl transition text-sm font-semibold">🌍 Portal Global News</a>
+            
+            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-8 mb-4">Setores Críticos</p>
+            <button onclick="filterByTag('Logística')" class="w-full text-left sidebar-link p-3 rounded-xl transition text-sm">📦 Logística & Transportes</button>
+            <button onclick="filterByTag('Supply Chain')" class="w-full text-left sidebar-link p-3 rounded-xl transition text-sm">⛓️ Supply Chain & WMS</button>
+            <button onclick="filterByTag('Gestão')" class="w-full text-left sidebar-link p-3 rounded-xl transition text-sm">📊 ERP & Indicadores</button>
+        </nav>
 
-        <div id="section-news" class="content-section hidden">
-            <h2 class="text-4xl font-black mb-12">Portal de Notícias <span class="text-blue-500">Global Tech</span></h2>
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-                <div class="lg:col-span-2 glass p-8 rounded-[40px] border-blue-500/20">
-                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" class="w-full h-80 object-cover rounded-3xl mb-6">
-                    <span class="bg-red-600 px-3 py-1 rounded text-[10px] font-bold">URGENTE</span>
-                    <h3 class="text-3xl font-bold mt-4 mb-4">OpenAI anuncia integração neural via dispositivos vestíveis</h3>
-                    <p class="text-slate-400 leading-relaxed mb-6">Em um movimento histórico no início de 2026, a tecnologia de processamento de linguagem atingiu a integração total com hardware de baixo consumo, permitindo que IAs acompanhem o usuário em tempo real sem latência...</p>
-                    <div class="flex gap-4 items-center">
-                        <span class="text-sm font-bold">Fonte: TechCrunch</span>
-                        <span class="text-slate-600">|</span>
-                        <span class="text-sm text-slate-500">15 de Jan, 2026</span>
-                    </div>
-                </div>
-                <div class="space-y-6">
-                    <div class="glass p-6 rounded-3xl card-news transition">
-                        <h4 class="font-bold mb-2">Google Gemini 3.0 supera humanos em testes de lógica complexa</h4>
-                        <p class="text-xs text-slate-500">MIT Technology Review</p>
-                    </div>
-                    <div class="glass p-6 rounded-3xl card-news transition">
-                        <h4 class="font-bold mb-2">Nvidia lança chips voltados exclusivamente para automação doméstica</h4>
-                        <p class="text-xs text-slate-500">The Verge</p>
-                    </div>
-                    <div class="glass p-6 rounded-3xl card-news transition">
-                        <h4 class="font-bold mb-2">Apple Intelligence expande para todo o ecossistema europeu</h4>
-                        <p class="text-xs text-slate-500">Bloomberg Tech</p>
-                    </div>
-                </div>
+        <div class="mt-auto p-4 bg-blue-600/10 rounded-2xl border border-blue-500/20">
+            <p class="text-xs font-bold text-blue-400">Academy 2026</p>
+            <p class="text-[10px] text-slate-400 mt-1">Aprenda a criar automações Logísticas.</p>
+        </div>
+    </aside>
+
+    <main class="flex-grow lg:ml-72 min-h-screen">
+        
+        <div class="w-full bg-blue-600 py-2 overflow-hidden whitespace-nowrap z-40 relative">
+            <div class="news-ticker inline-block text-[10px] font-bold uppercase tracking-widest text-white">
+                ⚠️ URGENTE: Cadeia de suprimentos global adota IA Quântica para predição de rotas --- Portos de Santos e Rotterdam integram WMS autônomo --- ERPs de nova geração eliminam 90% das tarefas manuais de inventário --- 
             </div>
         </div>
 
-        <div id="section-academy" class="content-section hidden">
-            <div class="academy-gradient p-12 rounded-[50px] text-center mb-12 border border-white/10">
-                <h2 class="text-5xl font-black mb-4">Mundo das IAs <span class="gradient-gold">Academy</span></h2>
-                <p class="text-xl text-indigo-200">Não basta usar a IA, você precisa saber como conectá-las.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-blue-600 rounded-xl mb-6 flex items-center justify-center font-bold">01</div>
-                    <h3 class="text-2xl font-bold mb-4">Automação de E-mails sem código</h3>
-                    <p class="text-slate-400 mb-6">Aprenda a conectar o **Make.com** com o **ChatGPT** para responder leads de forma personalizada enquanto você dorme.</p>
-                    <button class="text-blue-400 font-bold hover:underline">Ver Passo a Passo →</button>
-                </div>
-                <div class="glass p-8 rounded-3xl">
-                    <div class="w-12 h-12 bg-purple-600 rounded-xl mb-6 flex items-center justify-center font-bold">02</div>
-                    <h3 class="text-2xl font-bold mb-4">Criação de Agentes no n8n</h3>
-                    <p class="text-slate-400 mb-6">Como estruturar um fluxo de trabalho onde a IA pesquisa o mercado e te envia um relatório pronto no Slack toda manhã.</p>
-                    <button class="text-purple-400 font-bold hover:underline">Ver Passo a Passo →</button>
-                </div>
-            </div>
-        </div>
+        <section id="hero" class="p-8 md:p-20 text-center lg:text-left bg-gradient-to-b from-blue-900/10 to-transparent">
+            <h1 class="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-none">A Mente por trás da <br><span class="text-blue-500">Sua Operação.</span></h1>
+            <p class="text-xl text-slate-400 max-w-3xl leading-relaxed">O diretório definitivo focado em eficiência real. De Supply Chain preditivo a WMS inteligente — filtramos o futuro para você implementar hoje.</p>
+        </section>
 
-        <div id="section-trends" class="content-section hidden">
-            <h2 class="text-4xl font-black mb-12 text-center">O que está por vir em <span class="gradient-gold">2026</span></h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-slate-900 p-8 rounded-3xl border border-white/5">
-                    <h5 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Curiosidade #01</h5>
-                    <p class="text-lg">Até o final de 2026, estima-se que 40% de todo o tráfego da web será gerado por IAs conversando com outras IAs.</p>
+        <section id="diretorio" class="px-8 mb-12">
+            <div class="glass p-6 rounded-[32px] flex flex-col md:flex-row gap-6 items-center border-white/10 shadow-2xl">
+                <input type="text" id="searchInput" placeholder="Busque por 'WMS', 'TMS' ou 'ERP'..." class="bg-slate-900/50 border border-white/5 p-4 rounded-2xl w-full md:w-1/3 outline-none focus:border-blue-500 transition">
+                <div id="filterContainer" class="flex flex-wrap gap-2">
+                    </div>
+            </div>
+        </section>
+
+        <section class="px-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" id="ia-grid">
+            </section>
+
+        <section id="news" class="p-8 mt-24">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-black">Portal de Tendências</h2>
+                    <p class="text-slate-500">As manchetes que estão movendo o mercado em 2026.</p>
                 </div>
-                <div class="bg-slate-900 p-8 rounded-3xl border border-white/5">
-                    <h5 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Curiosidade #02</h5>
-                    <p class="text-lg">O termo "Prompt Engineer" está sendo substituído por "AI Architect", focando em infraestrutura e não apenas em perguntas.</p>
+                <div class="hidden md:block h-px bg-white/10 flex-grow mx-10 mb-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass p-8 rounded-[40px] hover:bg-slate-900/40 transition">
+                    <span class="text-blue-500 font-bold text-xs uppercase">Supply Chain Strategy</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-4">Como a IA reduziu o Lead Time global em 15% neste trimestre?</h3>
+                    <p class="text-slate-400 mb-6 text-sm">A integração de dados de satélite com algoritmos de TMS preditivo permitiu que frotas evitassem gargalos climáticos antes mesmo deles ocorrerem...</p>
+                    <a href="#" class="text-white font-bold text-xs border-b border-blue-500 pb-1">LER ARTIGO COMPLETO</a>
                 </div>
-                <div class="bg-slate-900 p-8 rounded-3xl border border-white/5">
-                    <h5 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Curiosidade #03</h5>
-                    <p class="text-lg">A primeira música gerada por IA a ganhar um Grammy de "Composição Original" está prevista para esta temporada.</p>
+                <div class="glass p-8 rounded-[40px] hover:bg-slate-900/40 transition">
+                    <span class="text-green-500 font-bold text-xs uppercase">Tecnologia ERP</span>
+                    <h3 class="text-2xl font-bold mt-4 mb-4">O Fim do ERP Tradicional: Bem-vindo ao ERP Autónomo</h3>
+                    <p class="text-slate-400 mb-6 text-sm">Esqueça o preenchimento de planilhas. Em 2026, os ERPs tomam decisões de compra baseadas em demanda real, sem necessidade de aprovação humana para itens de giro...</p>
+                    <a href="#" class="text-white font-bold text-xs border-b border-green-500 pb-1">LER ARTIGO COMPLETO</a>
                 </div>
             </div>
-        </div>
+        </section>
 
+        <footer class="p-20 mt-20 border-t border-white/5 text-center text-slate-600">
+            <p class="font-bold text-slate-400">MUNDO DAS IAs &copy; 2026</p>
+            <p class="text-xs mt-2 uppercase tracking-[0.3em]">Operações | Logística | Inteligência</p>
+        </footer>
     </main>
-
-    <footer class="mt-32 border-t border-white/5 py-20 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div>
-                <div class="text-2xl font-black mb-6">MUNDO DAS IAs</div>
-                <p class="text-slate-500 text-sm leading-relaxed">O hub definitivo para profissionais que buscam a vanguarda tecnológica. Curadoria séria, notícias em tempo real e educação prática.</p>
-            </div>
-            <div>
-                <h5 class="font-bold mb-6 text-white">PORTAIS PARCEIROS</h5>
-                <ul class="text-slate-400 text-sm space-y-3">
-                    <li><a href="#" class="hover:text-blue-500 transition">MIT Technology Review</a></li>
-                    <li><a href="#" class="hover:text-blue-500 transition">AI Daily News</a></li>
-                    <li><a href="#" class="hover:text-blue-500 transition">Wired AI Hub</a></li>
-                </ul>
-            </div>
-            <div>
-                <h5 class="font-bold mb-6 text-white">CONTATO & SUPORTE</h5>
-                <p class="text-slate-400 text-sm">contato@mundodasias.com.br</p>
-                <div class="mt-6 flex gap-4">
-                    <div class="w-8 h-8 bg-white/5 rounded-full"></div>
-                    <div class="w-8 h-8 bg-white/5 rounded-full"></div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script>
         const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
@@ -162,54 +113,49 @@
                         nome: col[1]?.replace(/"/g, '').trim(),
                         desc: col[2]?.replace(/"/g, '').trim(),
                         link: col[3]?.replace(/"/g, '').trim(),
-                        img: col[4] ? col[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600"
+                        img: col[4] ? col[4].replace(/"/g, '').trim() : "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600"
                     };
                 }).filter(ia => ia.nome);
 
                 renderCards(todasIAs);
-                renderCategoryTags();
+                renderFilters();
                 document.getElementById('searchInput').addEventListener('input', filterContent);
             } catch (err) { console.error(err); }
         }
 
-        function switchSection(sectionId) {
-            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('section-' + sectionId).classList.remove('hidden');
-            event.target.classList.add('active');
-            window.scrollTo(0,0);
-        }
-
-        function renderCategoryTags() {
-            const cats = ['Todos', ...new Set(todasIAs.map(ia => ia.cat))];
-            document.getElementById('categoryTags').innerHTML = cats.map(c => 
-                `<button onclick="filterByTag('${c}')" class="text-[10px] font-bold border border-white/10 px-4 py-2 rounded-full hover:bg-white hover:text-black transition uppercase tracking-widest">${c}</button>`
+        function renderFilters() {
+            const cats = ['Todos', 'Logística', 'Supply Chain', 'Gestão', 'Marketing', 'Designer'];
+            document.getElementById('filterContainer').innerHTML = cats.map(c => 
+                `<button onclick="filterByTag('${c}')" class="px-4 py-2 rounded-xl border border-white/10 text-[10px] font-bold uppercase tracking-widest hover:bg-blue-600 transition">${c}</button>`
             ).join('');
         }
 
-        function filterContent() {
-            const busca = document.getElementById('searchInput').value.toLowerCase();
-            const filtradas = todasIAs.filter(ia => ia.nome.toLowerCase().includes(busca) || ia.desc.toLowerCase().includes(busca));
+        function filterByTag(tag) {
+            const filtradas = tag === 'Todos' ? todasIAs : todasIAs.filter(ia => ia.cat.includes(tag) || tag === ia.cat);
             renderCards(filtradas);
+            window.scrollTo({ top: document.getElementById('diretorio').offsetTop - 100, behavior: 'smooth' });
         }
 
-        function filterByTag(tag) {
-            const filtradas = tag === 'Todos' ? todasIAs : todasIAs.filter(ia => ia.cat === tag);
+        function filterContent() {
+            const b = document.getElementById('searchInput').value.toLowerCase();
+            const filtradas = todasIAs.filter(ia => ia.nome.toLowerCase().includes(b) || ia.desc.toLowerCase().includes(b) || ia.cat.toLowerCase().includes(b));
             renderCards(filtradas);
         }
 
         function renderCards(lista) {
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="glass rounded-[40px] overflow-hidden group hover:bg-slate-900 transition-all duration-500 border-white/5">
-                    <div class="h-60 overflow-hidden relative">
+                <div class="glass card-ia rounded-[2.5rem] overflow-hidden flex flex-col h-full group">
+                    <div class="h-52 relative overflow-hidden">
                         <img src="${ia.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80"></div>
-                        <span class="absolute top-6 left-6 bg-blue-600 px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-tighter">${ia.cat}</span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] to-transparent"></div>
+                        <span class="absolute top-6 right-6 bg-white/10 backdrop-blur-md border border-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase text-white">${ia.cat}</span>
                     </div>
-                    <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-3 text-white">${ia.nome}</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3 italic">"${ia.desc}"</p>
-                        <a href="${ia.link}" target="_blank" class="block w-full text-center py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-blue-600 transition">Acessar Inteligência</a>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-3 text-white">${ia.nome}</h3>
+                        <p class="text-slate-400 text-xs leading-relaxed mb-6 flex-grow line-clamp-3">
+                            <span class="text-blue-400 font-bold">Por que usar?</span> ${ia.desc}
+                        </p>
+                        <a href="${ia.link}" target="_blank" class="w-full py-4 bg-white/5 border border-white/10 rounded-2xl text-center text-xs font-bold uppercase tracking-widest hover:bg-blue-600 hover:border-transparent transition">Desbloquear Poder</a>
                     </div>
                 </div>
             `).join('');
