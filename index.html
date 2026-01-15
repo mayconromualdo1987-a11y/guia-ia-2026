@@ -3,97 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUNDO DAS IAs | Intelligence Portal 2026</title>
+    <title>Mundo das IAs | Autoridade em Inteligência Artificial e Automação</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #3b82f6; --bg: #050505; }
-        body { background-color: var(--bg); color: #e2e8f0; font-family: 'Inter', sans-serif; }
-        h1, h2, .font-heading { font-family: 'Space Grotesk', sans-serif; }
-        
-        .glass { background: rgba(20, 20, 20, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
-        .hero-gradient { background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%); }
-        
-        .tab-active { border-bottom: 2px solid var(--accent); color: var(--accent); }
-        .news-card:hover { border-color: var(--accent); transform: translateY(-4px); }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        
-        .line-clamp-custom { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+        :root { --accent: #2563eb; --gold: #fbbf24; }
+        body { background-color: #020617; color: #f1f5f9; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(14px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gradient-gold { background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .tab-btn.active { border-bottom: 3px solid var(--accent); color: white; font-weight: 800; }
+        .card-news:hover { transform: scale(1.02); border-color: rgba(37, 99, 235, 0.3); }
+        .academy-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="glass sticky top-0 z-50 px-6 py-4 mb-8">
+    <nav class="glass sticky top-0 z-50 px-8 py-5">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-bold font-heading tracking-tighter text-white">MUNDO<span class="text-blue-500">IAs</span></div>
-            <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest">
-                <button onclick="switchTab('diretorio')" class="tab-nav tab-active" id="btn-diretorio">Explorar IAs</button>
-                <button onclick="switchTab('noticias')" class="tab-nav" id="btn-noticias">Tendências 2026</button>
-                <button onclick="switchTab('curiosidades')" class="tab-nav" id="btn-curiosidades">Curiosidades</button>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">M</div>
+                <span class="text-xl font-black tracking-tighter">MUNDO DAS IAs</span>
             </div>
-            <div class="bg-blue-600 px-4 py-1 rounded text-[10px] font-bold animate-pulse uppercase">LIVE 2026</div>
+            <div class="hidden lg:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                <button onclick="switchSection('diretorio')" class="tab-btn active hover:text-white transition">Ferramentas</button>
+                <button onclick="switchSection('news')" class="tab-btn hover:text-white transition">Insights & Notícias</button>
+                <button onclick="switchSection('academy')" class="tab-btn hover:text-white transition">Academy (Aprenda)</button>
+                <button onclick="switchSection('trends')" class="tab-btn hover:text-white transition">Tendências 2026</button>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto px-6">
+    <main class="max-w-7xl mx-auto px-6 pt-16">
         
-        <section id="tab-diretorio" class="tab-content">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-7xl font-bold mb-4 text-white">O Futuro é Agora.</h2>
-                <p class="text-slate-400 max-w-xl mx-auto">Nossa inteligência curou as 120 melhores ferramentas para sua produtividade.</p>
+        <div id="section-diretorio" class="content-section">
+            <div class="mb-16">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 leading-tight">Nossa curadoria selecionou as ferramentas que vão <span class="text-blue-500">dobrar sua produtividade.</span></h1>
+                <p class="text-xl text-slate-400 max-w-3xl leading-relaxed">Não listamos tudo, listamos o que funciona. Testamos e validamos cada IA para garantir que você tenha acesso apenas ao estado da arte da tecnologia atual.</p>
                 
-                <div class="mt-10 flex flex-col md:flex-row gap-4 justify-center">
-                    <input type="text" id="mainSearch" placeholder="O que você deseja automatizar?" 
-                    class="bg-white/5 border border-white/10 px-6 py-4 rounded-full w-full md:w-96 focus:outline-none focus:border-blue-500 transition">
-                    <select id="catFilter" class="bg-white/5 border border-white/10 px-6 py-4 rounded-full focus:outline-none">
-                        <option value="Todos">Todas as Categorias</option>
-                    </select>
+                <div class="mt-12 flex flex-wrap gap-4">
+                    <input type="text" id="searchInput" placeholder="O que você quer resolver hoje?" class="bg-white/5 border border-white/10 p-5 rounded-2xl w-full md:w-96 focus:ring-2 focus:ring-blue-600 outline-none">
+                    <div id="categoryTags" class="flex flex-wrap gap-2 items-center"></div>
                 </div>
             </div>
+            <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
 
-            <div id="ia-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <div id="section-news" class="content-section hidden">
+            <h2 class="text-4xl font-black mb-12">Portal de Notícias <span class="text-blue-500">Global Tech</span></h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="lg:col-span-2 glass p-8 rounded-[40px] border-blue-500/20">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800" class="w-full h-80 object-cover rounded-3xl mb-6">
+                    <span class="bg-red-600 px-3 py-1 rounded text-[10px] font-bold">URGENTE</span>
+                    <h3 class="text-3xl font-bold mt-4 mb-4">OpenAI anuncia integração neural via dispositivos vestíveis</h3>
+                    <p class="text-slate-400 leading-relaxed mb-6">Em um movimento histórico no início de 2026, a tecnologia de processamento de linguagem atingiu a integração total com hardware de baixo consumo, permitindo que IAs acompanhem o usuário em tempo real sem latência...</p>
+                    <div class="flex gap-4 items-center">
+                        <span class="text-sm font-bold">Fonte: TechCrunch</span>
+                        <span class="text-slate-600">|</span>
+                        <span class="text-sm text-slate-500">15 de Jan, 2026</span>
+                    </div>
                 </div>
-        </section>
+                <div class="space-y-6">
+                    <div class="glass p-6 rounded-3xl card-news transition">
+                        <h4 class="font-bold mb-2">Google Gemini 3.0 supera humanos em testes de lógica complexa</h4>
+                        <p class="text-xs text-slate-500">MIT Technology Review</p>
+                    </div>
+                    <div class="glass p-6 rounded-3xl card-news transition">
+                        <h4 class="font-bold mb-2">Nvidia lança chips voltados exclusivamente para automação doméstica</h4>
+                        <p class="text-xs text-slate-500">The Verge</p>
+                    </div>
+                    <div class="glass p-6 rounded-3xl card-news transition">
+                        <h4 class="font-bold mb-2">Apple Intelligence expande para todo o ecossistema europeu</h4>
+                        <p class="text-xs text-slate-500">Bloomberg Tech</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <section id="tab-noticias" class="tab-content hidden">
-            <h2 class="text-4xl font-bold mb-12 text-center text-white">Setor de Tecnologia <span class="text-blue-500">2026</span></h2>
+        <div id="section-academy" class="content-section hidden">
+            <div class="academy-gradient p-12 rounded-[50px] text-center mb-12 border border-white/10">
+                <h2 class="text-5xl font-black mb-4">Mundo das IAs <span class="gradient-gold">Academy</span></h2>
+                <p class="text-xl text-indigo-200">Não basta usar a IA, você precisa saber como conectá-las.</p>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="glass p-8 rounded-3xl news-card transition-all duration-300">
-                    <span class="text-blue-500 text-xs font-bold uppercase tracking-widest">Destaque</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">A Ascensão dos Agentes Autônomos</h3>
-                    <p class="text-slate-400 leading-relaxed">Em 2026, as IAs deixaram de ser apenas "chatbots" para se tornarem agentes que executam tarefas complexas sozinhas, como organizar viagens inteiras e gerenciar finanças sem supervisão humana.</p>
+                <div class="glass p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl mb-6 flex items-center justify-center font-bold">01</div>
+                    <h3 class="text-2xl font-bold mb-4">Automação de E-mails sem código</h3>
+                    <p class="text-slate-400 mb-6">Aprenda a conectar o **Make.com** com o **ChatGPT** para responder leads de forma personalizada enquanto você dorme.</p>
+                    <button class="text-blue-400 font-bold hover:underline">Ver Passo a Passo →</button>
                 </div>
-                <div class="glass p-8 rounded-3xl news-card transition-all duration-300">
-                    <span class="text-purple-500 text-xs font-bold uppercase tracking-widest">Tendência</span>
-                    <h3 class="text-2xl font-bold mt-2 mb-4">IAs Biológicas e Computação Quântica</h3>
-                    <p class="text-slate-400 leading-relaxed">A integração entre modelos de linguagem e processadores quânticos permitiu que a descoberta de novos remédios fosse acelerada em 100x neste ano.</p>
+                <div class="glass p-8 rounded-3xl">
+                    <div class="w-12 h-12 bg-purple-600 rounded-xl mb-6 flex items-center justify-center font-bold">02</div>
+                    <h3 class="text-2xl font-bold mb-4">Criação de Agentes no n8n</h3>
+                    <p class="text-slate-400 mb-6">Como estruturar um fluxo de trabalho onde a IA pesquisa o mercado e te envia um relatório pronto no Slack toda manhã.</p>
+                    <button class="text-purple-400 font-bold hover:underline">Ver Passo a Passo →</button>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="tab-curiosidades" class="tab-content hidden">
-            <h2 class="text-4xl font-bold mb-12 text-center text-white">Você Sabia?</h2>
-            <div class="max-w-3xl mx-auto space-y-6">
-                <div class="glass p-6 rounded-2xl">
-                    <p class="italic text-lg">"A primeira IA a ser reconhecida como 'inventora' em um registro de patente oficial aconteceu no final de 2024, mudando as leis de copyright para sempre."</p>
+        <div id="section-trends" class="content-section hidden">
+            <h2 class="text-4xl font-black mb-12 text-center">O que está por vir em <span class="gradient-gold">2026</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-slate-900 p-8 rounded-3xl border border-white/5">
+                    <h5 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Curiosidade #01</h5>
+                    <p class="text-lg">Até o final de 2026, estima-se que 40% de todo o tráfego da web será gerado por IAs conversando com outras IAs.</p>
                 </div>
-                <div class="glass p-6 rounded-2xl">
-                    <p class="italic text-lg">"O treinamento do GPT-5 consumiu energia equivalente a uma cidade de médio porte por 3 meses."</p>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-white/5">
+                    <h5 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Curiosidade #02</h5>
+                    <p class="text-lg">O termo "Prompt Engineer" está sendo substituído por "AI Architect", focando em infraestrutura e não apenas em perguntas.</p>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-white/5">
+                    <h5 class="text-gold font-bold mb-4 uppercase text-xs tracking-widest">Curiosidade #03</h5>
+                    <p class="text-lg">A primeira música gerada por IA a ganhar um Grammy de "Composição Original" está prevista para esta temporada.</p>
                 </div>
             </div>
-        </section>
+        </div>
 
     </main>
 
-    <footer class="mt-40 border-t border-white/5 py-20 text-center">
-        <div class="text-slate-500 text-sm tracking-widest uppercase mb-4">Mundo das IAs &copy; 2026 - Tecnologia de Ponta</div>
-        <div class="flex justify-center gap-8 text-xs font-bold">
-            <a href="#" class="hover:text-blue-500 transition">SITEMAP</a>
-            <a href="#" class="hover:text-blue-500 transition">ADVERTISE</a>
-            <a href="#" class="hover:text-blue-500 transition">PRIVACY POLICY</a>
+    <footer class="mt-32 border-t border-white/5 py-20 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+                <div class="text-2xl font-black mb-6">MUNDO DAS IAs</div>
+                <p class="text-slate-500 text-sm leading-relaxed">O hub definitivo para profissionais que buscam a vanguarda tecnológica. Curadoria séria, notícias em tempo real e educação prática.</p>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-white">PORTAIS PARCEIROS</h5>
+                <ul class="text-slate-400 text-sm space-y-3">
+                    <li><a href="#" class="hover:text-blue-500 transition">MIT Technology Review</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">AI Daily News</a></li>
+                    <li><a href="#" class="hover:text-blue-500 transition">Wired AI Hub</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="font-bold mb-6 text-white">CONTATO & SUPORTE</h5>
+                <p class="text-slate-400 text-sm">contato@mundodasias.com.br</p>
+                <div class="mt-6 flex gap-4">
+                    <div class="w-8 h-8 bg-white/5 rounded-full"></div>
+                    <div class="w-8 h-8 bg-white/5 rounded-full"></div>
+                </div>
+            </div>
         </div>
     </footer>
 
@@ -118,57 +166,50 @@
                     };
                 }).filter(ia => ia.nome);
 
-                populateCategories();
                 renderCards(todasIAs);
-
-                document.getElementById('mainSearch').addEventListener('input', filterContent);
-                document.getElementById('catFilter').addEventListener('change', filterContent);
-            } catch (err) { console.error("Erro ao carregar:", err); }
+                renderCategoryTags();
+                document.getElementById('searchInput').addEventListener('input', filterContent);
+            } catch (err) { console.error(err); }
         }
 
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
-            document.querySelectorAll('.tab-nav').forEach(b => b.classList.remove('tab-active'));
-            document.getElementById('tab-' + tabId).classList.remove('hidden');
-            document.getElementById('btn-' + tabId).classList.add('tab-active');
+        function switchSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('section-' + sectionId).classList.remove('hidden');
+            event.target.classList.add('active');
+            window.scrollTo(0,0);
         }
 
-        function populateCategories() {
+        function renderCategoryTags() {
             const cats = ['Todos', ...new Set(todasIAs.map(ia => ia.cat))];
-            document.getElementById('catFilter').innerHTML = cats.map(c => `<option value="${c}">${c}</option>`).join('');
+            document.getElementById('categoryTags').innerHTML = cats.map(c => 
+                `<button onclick="filterByTag('${c}')" class="text-[10px] font-bold border border-white/10 px-4 py-2 rounded-full hover:bg-white hover:text-black transition uppercase tracking-widest">${c}</button>`
+            ).join('');
         }
 
         function filterContent() {
-            const busca = document.getElementById('mainSearch').value.toLowerCase();
-            const cat = document.getElementById('catFilter').value;
-            const filtradas = todasIAs.filter(ia => {
-                const matchBusca = ia.nome.toLowerCase().includes(busca) || ia.desc.toLowerCase().includes(busca);
-                const matchCat = cat === 'Todos' || ia.cat === cat;
-                return matchBusca && matchCat;
-            });
+            const busca = document.getElementById('searchInput').value.toLowerCase();
+            const filtradas = todasIAs.filter(ia => ia.nome.toLowerCase().includes(busca) || ia.desc.toLowerCase().includes(busca));
+            renderCards(filtradas);
+        }
+
+        function filterByTag(tag) {
+            const filtradas = tag === 'Todos' ? todasIAs : todasIAs.filter(ia => ia.cat === tag);
             renderCards(filtradas);
         }
 
         function renderCards(lista) {
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="glass rounded-[32px] overflow-hidden group hover:border-blue-500/30 transition-all duration-500">
-                    <div class="h-64 relative">
+                <div class="glass rounded-[40px] overflow-hidden group hover:bg-slate-900 transition-all duration-500 border-white/5">
+                    <div class="h-60 overflow-hidden relative">
                         <img src="${ia.img}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
-                        <span class="absolute bottom-6 left-6 bg-white/10 backdrop-blur-md px-4 py-1 rounded-full text-[10px] font-bold tracking-widest text-white uppercase border border-white/20">
-                            ${ia.cat}
-                        </span>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-80"></div>
+                        <span class="absolute top-6 left-6 bg-blue-600 px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-tighter">${ia.cat}</span>
                     </div>
                     <div class="p-8">
-                        <h3 class="text-2xl font-bold mb-4 text-white">${ia.nome}</h3>
-                        <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-custom">${ia.desc}</p>
-                        <div class="flex items-center justify-between mt-auto pt-6 border-t border-white/5">
-                            <a href="${ia.link}" target="_blank" class="text-blue-500 font-bold text-xs tracking-widest uppercase hover:text-white transition">Abrir Ferramenta</a>
-                            <div class="flex gap-2">
-                                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                                <span class="text-[9px] text-slate-500 font-bold uppercase">Verificada</span>
-                            </div>
-                        </div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">${ia.nome}</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6 line-clamp-3 italic">"${ia.desc}"</p>
+                        <a href="${ia.link}" target="_blank" class="block w-full text-center py-4 bg-white/5 border border-white/10 rounded-2xl font-bold hover:bg-blue-600 transition">Acessar Inteligência</a>
                     </div>
                 </div>
             `).join('');
