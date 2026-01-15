@@ -9,7 +9,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#020617">
     <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
+    
+    <link rel="apple-touch-icon" href="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -35,8 +37,10 @@
     <nav class="fixed top-0 w-full z-50 glass">
         <div class="max-w-7xl mx-auto px-6 py-4">
             <div class="flex flex-col md:flex-row items-center gap-6">
-                <button onclick="resetSite()" class="text-2xl font-black tracking-tighter flex-shrink-0">
-                    MUNDO<span class="text-blue-500">IAs</span>
+                
+                <button onclick="resetSite()" class="flex items-center gap-3 text-2xl font-black tracking-tighter flex-shrink-0 group">
+                    <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-10 h-10 rounded-lg group-hover:scale-110 transition duration-300">
+                    <span>MUNDO<span class="text-blue-500">IAs</span></span>
                 </button>
 
                 <div class="flex-grow w-full max-w-2xl relative">
@@ -62,13 +66,13 @@
 
         <section id="app" class="mb-24 app-gradient p-10 rounded-[40px] flex flex-col md:flex-row items-center justify-between gap-8">
             <div class="max-w-xl">
-                <h2 class="text-3xl font-black mb-4">Instale o Mundo das IAs</h2>
+                <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter italic">Mundo IAs no seu Bolso</h2>
                 <p class="text-slate-400 mb-8 leading-relaxed">Acesse o portal diretamente da sua tela de início no Android ou iOS. Tenha a curadoria de tecnologia e logística sempre à mão.</p>
                 <button id="installBtn" onclick="installApp()" class="bg-blue-600 px-8 py-4 rounded-2xl font-black uppercase text-xs tracking-widest hover:bg-blue-700 transition-all shadow-xl shadow-blue-500/20">
                     Instalar Aplicativo Agora
                 </button>
             </div>
-            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400" class="w-48 rounded-[3rem] border-4 border-slate-800 shadow-2xl">
+            <img src="https://i.ibb.co/L6S8z8v/mundo-ias-logo.png" class="w-48 rounded-[3rem] border-4 border-slate-800 shadow-2xl">
         </section>
 
         <section id="noticias" class="mb-24 pt-12 border-t border-white/5">
@@ -102,7 +106,6 @@
         let categoriaAtiva = 'Todos';
         let deferredPrompt;
 
-        // Lógica de Instalação do App
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
