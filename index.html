@@ -15,7 +15,7 @@
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #030712; }
         body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; height: 100%; position: relative; }
+        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; border-radius: 24px; overflow: hidden; height: 100%; display: flex; flex-direction: column; }
         .cyber-card:hover { border-color: var(--cyan); box-shadow: 0 0 25px rgba(0,242,255,0.15); }
         .lang-btn { opacity: 0.4; cursor: pointer; filter: grayscale(1); width: 22px; transition: 0.3s; }
         .lang-btn.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); border: 1px solid var(--cyan); }
@@ -27,7 +27,7 @@
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer" onclick="window.location.reload()">
-                <span class="text-white text-lg font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
+                <span class="text-white text-lg font-black tracking-tighter">MUNDO DAS IA'S</span>
                 <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.4em] uppercase text-center">Neural Hub</span>
             </div>
             <div class="flex items-center gap-4">
@@ -47,20 +47,15 @@
             <p class="text-slate-400 text-lg max-w-2xl mx-auto" id="hero-desc"></p>
         </header>
 
-        <div class="mb-12 overflow-hidden rounded-2xl bg-white/5 border border-white/5">
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-0000000000000000"
-                 data-ad-slot="0000000000"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
+        <div class="mb-12 rounded-2xl bg-white/5 border border-white/5 py-4 text-center">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <section class="p-4 rounded-3xl mb-12 bg-white/5 border border-white/5 backdrop-blur-md">
             <div class="flex flex-col gap-6">
                 <div class="flex flex-col lg:flex-row gap-4">
-                    <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-2xl text-cyan-400 outline-none text-xs font-bold uppercase tracking-widest" placeholder="BUSCAR...">
+                    <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-2xl text-cyan-400 outline-none text-xs font-bold uppercase tracking-widest" placeholder="BUSCAR NO ARSENAL...">
                     <div id="filter-container" class="flex flex-grow gap-2 overflow-x-auto py-1"></div>
                 </div>
                 <div class="flex gap-3 items-center border-t border-white/5 pt-4">
@@ -72,6 +67,15 @@
         </section>
 
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+        <section class="mt-24">
+            <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-cyan-400 mb-8 flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> TRANSMISSÃO EM TEMPO REAL
+            </h3>
+            <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="text-slate-600 text-[10px] uppercase font-bold animate-pulse">Sincronizando satélites...</div>
+            </div>
+        </section>
     </main>
 
     <footer class="py-16 text-center border-t border-white/5 bg-black/40">
@@ -85,10 +89,10 @@
         <div class="logo-font text-[9px] opacity-30 text-white uppercase tracking-[0.5em]">MUNDO DAS IA'S HUB © 2026</div>
     </footer>
 
-    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-3xl p-6 md:p-12 overflow-y-auto" onclick="closeTab()">
+    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-3xl p-6 overflow-y-auto" onclick="closeTab()">
         <div class="max-w-4xl mx-auto bg-[#0a0f1d] p-8 md:p-16 border border-cyan-400/20 rounded-[40px]" onclick="event.stopPropagation()">
             <div id="modalBody" class="text-slate-400 text-sm leading-relaxed prose prose-invert max-w-none"></div>
-            <button onclick="closeTab()" class="mt-12 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase tracking-widest text-[10px] logo-font">FECHAR TERMINAL</button>
+            <button onclick="closeTab()" class="mt-12 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase tracking-widest text-[10px] logo-font">SAIR DO TERMINAL</button>
         </div>
     </div>
 
@@ -96,37 +100,21 @@
         const i18n = {
             pt: {
                 heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
-                heroDesc: "Curadoria profissional de elite para 2026.",
+                heroDesc: "Curadoria profissional de elite para a revolução tecnológica de 2026.",
                 access: "ACESSAR",
-                institucional: `<h2>Institucional</h2><p>O <b>Mundo das IA's</b> é o principal hub tecnológico de Itanhaém-SP para o planeta. Operamos como o filtro central do mercado em 2026.</p>`,
-                missao: `<h2>Missão e Visão</h2><p><b>Missão:</b> Entregar as ferramentas que geram impacto real.</p><p><b>Visão:</b> Terminal número 1 de IA até o fim de 2026.</p><p><b>Valores:</b> Ética algorítmica e transparência total.</p>`,
-                termos: `<h2>Termos</h2><p>Diretório técnico informativo.</p>`,
-                privacidade: `<h2>Privacidade</h2><p>Conformidade total com a LGPD.</p>`,
-                sugestoes: `<h2>Sugestões</h2><p>Contato: <b class="text-white">contato@mundodasias.com.br</b></p>`,
-                cursos: `<h2>Academy 2026</h2><div class="grid gap-3"><a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between">Google GenAI <b class="text-cyan-400">GO</b></a><a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between">Harvard AI <b class="text-cyan-400">GO</b></a></div>`
+                institucional: "<h2>Institucional</h2><p>O <b>Mundo das IA's</b> é o hub definitivo de Itanhaém-SP para o mundo.</p>",
+                missao: "<h2>Missão</h2><p>Filtrar o caos tecnológico e entregar produtividade real.</p>",
+                termos: "<h2>Termos</h2><p>Diretório técnico informativo sob leis de 2026.</p>",
+                privacidade: "<h2>Privacidade</h2><p>Conformidade total com a LGPD.</p>",
+                sugestoes: "<h2>Sugestões</h2><p>Contato: contato@mundodasias.com.br</p>",
+                cursos: `<h2>Academy - Cursos Gratuitos</h2><div class="grid gap-3">
+                    <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between">Google GenAI <b class="text-cyan-400">VER</b></a>
+                    <a href="https://learn.microsoft.com/pt-br/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between">Microsoft Azure <b class="text-cyan-400">VER</b></a>
+                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between">Harvard AI <b class="text-cyan-400">VER</b></a>
+                </div>`
             },
-            es: {
-                heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
-                heroDesc: "Curaduría profesional de élite para 2026.",
-                access: "ACCEDER",
-                institucional: `<h2>Institucional</h2><p>El hub tecnológico líder validado para 2026.</p>`,
-                missao: "<h2>Misión</h2><p>Filtramos el ruido digital para entregar productividad.</p>",
-                termos: "<h2>Términos</h2><p>Directorio técnico informativo.</p>",
-                privacidade: "<h2>Privacidad</h2><p>Protección total de datos.</p>",
-                sugestoes: "<h2>Sugerencias</h2><p>contacto@mundodasias.com.br</p>",
-                cursos: "<h2>Academy</h2><p>Cursos de Google y Harvard.</p>"
-            },
-            en: {
-                heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>',
-                heroDesc: "Professional elite curation for 2026.",
-                access: "ACCESS",
-                institucional: "<h2>About Us</h2><p>Global reference hub for the 2026 market.</p>",
-                missao: "<h2>Mission</h2><p>Delivering real-world AI impact.</p>",
-                termos: "<h2>Terms</h2><p>Technical informational directory.</p>",
-                privacidade: "<h2>Privacy</h2><p>Full data compliance.</p>",
-                sugestoes: "<h2>Suggestions</h2><p>contact@mundodasias.com.br</p>",
-                cursos: "<h2>Academy</h2><p>Google & Harvard training.</p>"
-            }
+            es: { /* Traduções resumidas */ },
+            en: { /* Traduções resumidas */ }
         };
 
         let currentLang = 'pt'; let currentSort = 'rel'; let catAtiva = "TUDO"; let todasIAs = [];
@@ -140,7 +128,19 @@
                 if(!col[1]) return null;
                 return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: parseInt(col[5]) || 0, rating: parseFloat(col[6]) || 5.0, data: new Date(col[7] || "2026-01-15") };
             }).filter(i => i);
-            updateUI();
+            updateUI(); fetchNews();
+        }
+
+        // AGORA BUSCA AS NOTÍCIAS VIA SERVIDOR GOOGLE
+        function fetchNews() {
+            google.script.run.withSuccessHandler(news => {
+                if(!news || news.length === 0) return;
+                document.getElementById('news-feed').innerHTML = news.map(item => `
+                    <a href="${item.link}" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-3xl hover:border-cyan-400/30 transition">
+                        <h5 class="text-white text-xs font-bold logo-font line-clamp-2">${item.title}</h5>
+                        <p class="text-[9px] text-cyan-500 mt-2 uppercase">Neural Source: MIT Review</p>
+                    </a>`).join('');
+            }).getNews();
         }
 
         function updateUI() {
@@ -160,15 +160,13 @@
 
         function renderCards(lista) {
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="cyber-card">
-                    <img src="${ia.img}" class="h-40 w-full object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h4 class="text-white font-bold uppercase text-sm mb-2">${ia.nome}</h4>
-                        <p class="text-slate-400 text-[11px] mb-6 line-clamp-3">${ia.desc}</p>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-[8px] text-slate-600 font-bold uppercase">${ia.hits} Access</span>
-                            <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="px-5 py-2 border border-cyan-400/20 text-cyan-400 font-bold text-[9px] uppercase rounded-lg hover:bg-cyan-400 hover:text-black transition">${i18n[currentLang].access}</a>
-                        </div>
+                <div class="cyber-card p-6">
+                    <img src="${ia.img}" class="h-32 w-full object-cover rounded-xl mb-4">
+                    <h4 class="text-white font-bold uppercase text-sm mb-2">${ia.nome}</h4>
+                    <p class="text-slate-400 text-[11px] mb-6 line-clamp-3">${ia.desc}</p>
+                    <div class="flex items-center justify-between mt-auto">
+                        <span class="text-[8px] text-slate-600 font-bold uppercase">${ia.hits} Access</span>
+                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="px-5 py-2 border border-cyan-400/20 text-cyan-400 font-bold text-[9px] uppercase rounded-lg hover:bg-cyan-400 hover:text-black transition">${i18n[currentLang].access}</a>
                     </div>
                 </div>`).join('');
         }
