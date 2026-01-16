@@ -191,4 +191,12 @@
         }
 
         function setSort(s) { currentSort = s; document.querySelectorAll('.sort-pill').forEach(b => b.classList.toggle('active', b.id === 'sort-'+s)); filterAndSort(); }
-        function setCat(c) { catAtiva = c
+        function setCat(c) { catAtiva = c; filterAndSort(); }
+        function switchLang(l) { currentLang = l; document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === 'btn-'+l)); updateUI(); }
+        function openTab(t) { document.getElementById('modalBody').innerHTML = i18n[currentLang][t]; document.getElementById('mainModal').classList.remove('hidden'); }
+        function closeTab() { document.getElementById('mainModal').classList.add('hidden'); }
+        
+        init();
+    </script>
+</body>
+</html>
