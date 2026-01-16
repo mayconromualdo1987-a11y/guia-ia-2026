@@ -3,229 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Neural Hub 2026</title>
+    <title>Mundo das IA's | Arsenal Neural</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23030712%22/><path d=%22M30 30 L70 30 L70 70 L30 70 Z%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><path d=%22M30 50 L70 50 M50 30 L50 70%22 stroke=%22%237000ff%22 stroke-width=%228%22/></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        
-        .cyber-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
         
         .card-base { 
             background: rgba(15, 23, 42, 0.4); 
             border: 1px solid rgba(255, 255, 255, 0.05); 
-            border-radius: 20px; 
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
+            border-radius: 24px; 
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
         }
-        .card-base:hover { border-color: var(--cyan); box-shadow: 0 0 20px rgba(0, 242, 255, 0.1); }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
 
-        .news-tag { background: rgba(239, 68, 68, 0.1); color: #ef4444; font-size: 8px; font-weight: 900; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+        .btn-main { background: var(--cyan); color: black; font-weight: 900; font-size: 10px; padding: 12px 24px; border-radius: 12px; text-transform: uppercase; transition: 0.3s; }
+        .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.1); }
         
-        .lang-select { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--cyan); font-size: 10px; font-weight: bold; padding: 4px 8px; rounded: 8px; outline: none; cursor: pointer; }
-        
-        .btn-main { background: var(--cyan); color: black; font-weight: 900; font-size: 10px; padding: 10px 20px; border-radius: 10px; text-transform: uppercase; transition: 0.3s; }
-        .btn-main:hover { transform: scale(1.05); filter: brightness(1.1); box-shadow: 0 0 15px var(--cyan); }
+        .modal-active { display: flex !important; animation: fadeIn 0.3s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .rating-chip { background: rgba(0, 242, 255, 0.1); color: var(--cyan); font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(0, 242, 255, 0.2); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-3">
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-2xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer" onclick="window.location.reload()">
-                <h1 class="text-white text-lg font-black leading-none uppercase">MUNDO DAS IA'S</h1>
-                <span class="text-cyan-400 text-[7px] tracking-[0.4em] uppercase font-bold">Terminal 2026</span>
+                <h1 class="text-white text-xl font-black leading-none uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
+                <span class="text-slate-500 text-[8px] tracking-[0.4em] uppercase block font-bold">The Neural Hub</span>
             </div>
             <div class="flex items-center gap-6">
-                <select id="langSwitch" onchange="switchLang(this.value)" class="lang-select logo-font">
-                    <option value="pt">PT-BR</option>
-                    <option value="en">EN-US</option>
-                    <option value="es">ES-ES</option>
-                </select>
-                <button onclick="openTab('cursos')" class="btn-main">Academy</button>
-            </div>
-        </div>
-    </nav>
-
-    <main class="pt-28 pb-20 max-w-7xl mx-auto px-6">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center border-l-4 border-l-cyan-400">
-                <h2 class="text-4xl md:text-6xl font-black logo-font uppercase mb-4" id="hero-title">Neural <span class="text-cyan-400">Arsenal.</span></h2>
-                <p class="text-slate-400 text-lg" id="hero-desc">O diretório definitivo de inteligência artificial de 2026.</p>
-            </div>
-            
-            <div class="card-base p-6 overflow-hidden">
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="news-tag animate-pulse">Live Feed</span>
-                    <h3 class="logo-font text-[10px] text-white uppercase">Notícias</h3>
-                </div>
-                <div id="news-feed" class="space-y-4">
-                    </div>
-            </div>
-        </div>
-
-        <section class="card-base p-4 mb-12 border-white/10">
-            <div class="flex flex-col md:flex-row gap-4">
-                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-6 py-4 rounded-xl text-cyan-400 outline-none font-bold text-xs" placeholder="PESQUISAR FERRAMENTA...">
-                <div class="flex gap-2">
-                    <button onclick="setSort('rel')" id="sort-rel" class="btn-main bg-white/5 text-white border border-white/10 hover:bg-cyan-400 hover:text-black">Relevância</button>
-                    <button onclick="setSort('hits')" id="sort-hits" class="btn-main bg-white/5 text-white border border-white/10 hover:bg-cyan-400 hover:text-black">Acessos</button>
-                </div>
-            </div>
-            <div id="filter-container" class="flex gap-2 mt-4 overflow-x-auto pb-2 no-scrollbar"></div>
-        </section>
-
-        <div id="ia-grid" class="cyber-grid mb-20"></div>
-
-        <h3 class="logo-font text-white text-xs mb-8 uppercase tracking-[0.3em]">Cursos & Inovação 2026</h3>
-        <div id="cursos-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
-            </div>
-
-    </main>
-
-    <footer class="py-16 border-t border-white/5 bg-black/40 text-center px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                <button onclick="openTab('termos')" class="hover:text-white">Termos</button>
-                <button onclick="openTab('privacidade')" class="hover:text-white">Privacidade</button>
-                <button onclick="openTab('responsabilidade')" class="hover:text-white">Isenção</button>
-                <button onclick="openTab('institucional')" class="hover:text-white">Institucional</button>
-            </div>
-            <p class="logo-font text-[8px] opacity-30 text-white uppercase tracking-[0.5em]">Mundo das IA's © 2026</p>
-        </div>
-    </footer>
-
-    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-2xl p-6 flex items-center justify-center">
-        <div class="max-w-2xl w-full bg-[#0a101f] p-8 border border-cyan-400/20 rounded-[30px]">
-            <div id="modalBody" class="text-slate-400 text-sm prose prose-invert max-w-none"></div>
-            <button onclick="closeTab()" class="mt-8 w-full py-4 bg-cyan-400 text-black font-black rounded-xl uppercase text-[10px]">Fechar</button>
-        </div>
-    </div>
-
-    <script>
-        const i18n = {
-            pt: {
-                heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
-                heroDesc: "Curadoria de elite para ferramentas de Inteligência Artificial.",
-                termos: "<h2>Termos de Uso</h2><p>Este diretório é para fins informativos. O uso das ferramentas é de inteira responsabilidade do usuário.</p>",
-                privacidade: "<h2>Privacidade</h2><p>Utilizamos cookies para análise e publicidade personalizada (Google AdSense).</p>",
-                responsabilidade: "<h2>Responsabilidade</h2><p>O Mundo das IA's não garante a precisão absoluta das ferramentas de terceiros listadas.</p>",
-                institucional: "<h2>Institucional</h2><p>Filtramos o futuro para entregar produtividade real no mercado de 2026.</p>"
-            },
-            en: {
-                heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>',
-                heroDesc: "Elite curation for Artificial Intelligence tools.",
-                termos: "<h2>Terms</h2><p>Informational purposes only. User is responsible for tool usage.</p>",
-                privacidade: "<h2>Privacy</h2><p>We use cookies for analytics and personalized ads.</p>",
-                responsabilidade: "<h2>Disclaimer</h2><p>We do not guarantee absolute accuracy for third-party tools.</p>",
-                institucional: "<h2>About Us</h2><p>Filtering the future for real productivity in 2026.</p>"
-            }
-        };
-
-        let currentLang = 'pt';
-        let todasIAs = [];
-        let sortType = 'rel';
-
-        async function init() {
-            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
-            const res = await fetch(urlCSV);
-            const data = await res.text();
-            const rows = data.split(/\r?\n/).slice(1);
-            todasIAs = rows.map(row => {
-                const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                if(!col[1]) return null;
-                return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: parseInt(col[5]) || 0, rating: parseFloat(col[6]) || 5.0 };
-            }).filter(i => i);
-            
-            renderUI();
-            renderNews();
-            renderCursos();
-        }
-
-        function renderUI() {
-            document.getElementById('hero-title').innerHTML = i18n[currentLang].heroTitle;
-            document.getElementById('hero-desc').innerText = i18n[currentLang].heroDesc;
-            renderFilters();
-            filterAndSort();
-        }
-
-        function renderNews() {
-            const news = [
-                { t: "OpenAI GPT-6", d: "Novo marco em raciocínio lógico." },
-                { t: "Sora Global", d: "Geração de vídeo liberada para todos." },
-                { t: "NVIDIA 2026", d: "Nova arquitetura de GPUs neurais." }
-            ];
-            document.getElementById('news-feed').innerHTML = news.map(n => `
-                <div class="border-b border-white/5 pb-2">
-                    <h5 class="text-white text-[11px] font-bold uppercase">${n.t}</h5>
-                    <p class="text-slate-500 text-[10px]">${n.d}</p>
-                </div>
-            `).join('');
-        }
-
-        function renderCursos() {
-            const cursos = [
-                { t: "Google AI Essentials", l: "https://www.cloudskillsboost.google" },
-                { t: "Microsoft AI School", l: "https://ai.microsoft.com" },
-                { t: "NVIDIA Deep Learning", l: "https://www.nvidia.com/training" }
-            ];
-            document.getElementById('cursos-grid').innerHTML = cursos.map(c => `
-                <div class="card-base p-6 flex justify-between items-center group">
-                    <span class="text-white text-xs font-bold uppercase">${c.t}</span>
-                    <a href="${c.l}" target="_blank" class="text-cyan-400 font-bold text-[9px] border-b border-cyan-400 group-hover:text-white group-hover:border-white">ACESSAR</a>
-                </div>
-            `).join('');
-        }
-
-        function filterAndSort() {
-            const s = document.getElementById('iaSearch').value.toLowerCase();
-            let lista = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s));
-            
-            if(sortType === 'hits') lista.sort((a,b) => b.hits - a.hits);
-            else lista.sort((a,b) => b.rating - a.rating);
-
-            document.getElementById('ia-grid').innerHTML = lista.map(ia => {
-                const shareText = encodeURIComponent(`Confira ${ia.nome} no Mundo das IA's 2026!`);
-                return `
-                <div class="card-base flex flex-col group">
-                    <div class="h-40 overflow-hidden rounded-t-20 relative">
-                        <img src="${ia.img}" class="w-full h-full object-cover">
-                        <div class="absolute top-2 right-2 flex gap-1">
-                            <a href="https://wa.me/?text=${shareText}%20${ia.link}" target="_blank" class="bg-black/60 p-1 rounded hover:bg-green-500 transition"><img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" class="w-3 h-3 invert"></a>
-                            <a href="https://t.me/share/url?url=${ia.link}" target="_blank" class="bg-black/60 p-1 rounded hover:bg-blue-500 transition"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" class="w-3 h-3 invert"></a>
-                        </div>
-                    </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h4 class="text-white font-bold uppercase text-sm mb-2">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] mb-6 line-clamp-3">${ia.desc}</p>
-                        <div class="mt-auto flex justify-between items-center pt-4 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-slate-600">${ia.hits} Pulsos</span>
-                            <a href="${ia.link}" target="_blank" class="text-cyan-400 text-[10px] font-black hover:text-white transition">EXECUTAR</a>
-                        </div>
-                    </div>
-                </div>`;
-            }).join('');
-        }
-
-        function renderFilters() {
-            const cats = ["TUDO", ...new Set(todasIAs.map(ia => ia.cat.toUpperCase()))];
-            document.getElementById('filter-container').innerHTML = cats.map(c => `<button class="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-[9px] font-bold text-slate-500 hover:text-cyan-400" onclick="catAtiva='${c}'; filterAndSort()">${c}</button>`).join('');
-        }
-
-        function setSort(type) { sortType = type; filterAndSort(); }
-        function switchLang(l) { currentLang = l; renderUI(); }
-        function openTab(t) { document.getElementById('modalBody').innerHTML = i18n[currentLang][t]; document.getElementById('mainModal').classList.remove('hidden'); }
-        function closeTab() { document.getElementById('mainModal').classList.add('hidden'); }
-
-        init();
-    </script>
-</body>
-</html>
+                <select id="langSwitch" onchange="switchLang(this.value)" class="bg-transparent border border-
