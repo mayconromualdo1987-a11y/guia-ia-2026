@@ -11,113 +11,129 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --cyan: #00f2ff; --dark: #020617; }
-        body { background-color: var(--dark) !important; color: #e2e8f0; font-family: 'Rajdhani', sans-serif; margin: 0; }
+        :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
+        body { background-color: #020617 !important; color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .cyber-card { background: rgba(15,23,42,0.4); border: 1px solid rgba(0,242,255,0.05); border-radius: 24px; transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        .cyber-card:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 0 30px rgba(0,242,255,0.15); }
-        .btn-gradient { background: linear-gradient(90deg, #00f2ff, #7000ff); transition: 0.3s; }
-        .btn-gradient:hover { filter: brightness(1.2); box-shadow: 0 0 15px rgba(0,242,255,0.4); }
+        
+        /* Glassmorphism Cards */
+        .cyber-card { 
+            background: rgba(15, 23, 42, 0.4); 
+            border: 1px solid rgba(0, 242, 255, 0.05); 
+            border-radius: 24px; 
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+        }
+        .cyber-card:hover { 
+            border-color: var(--cyan); 
+            transform: translateY(-8px); 
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.1); 
+        }
+        
+        .btn-neural { 
+            background: linear-gradient(90deg, var(--cyan), var(--purple)); 
+            color: black; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-neural:hover { filter: brightness(1.2); box-shadow: 0 0 20px rgba(0, 242, 255, 0.4); }
+        
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body>
+<body class="bg-[#020617] pb-20">
 
-    <nav class="fixed top-0 w-full bg-[#020617]/90 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
+    <nav class="fixed top-0 w-full bg-[#020617]/90 backdrop-blur-2xl border-b border-white/5 z-[200] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer" onclick="window.location.reload()">
-                <span class="text-white text-xl font-black uppercase tracking-tighter">MUNDO DAS IA'S</span>
-                <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.4em] uppercase text-center">Neural Hub 2026</span>
+                <span class="text-white text-xl font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
+                <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.5em] uppercase text-center">Neural Hub</span>
             </div>
-            <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest">
-                <a href="#arsenal" class="hover:text-cyan-400 transition">Arsenal</a>
-                <a href="#academy" class="hover:text-cyan-400 transition">Academy</a>
-                <a href="#news" class="hover:text-cyan-400 transition">Live News</a>
+            <div class="hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+                <a href="#arsenal" class="hover:text-cyan-400">Arsenal</a>
+                <a href="#academy" class="hover:text-cyan-400">Academy</a>
+                <a href="#news" class="hover:text-cyan-400">Notícias</a>
+            </div>
+            <div class="flex items-center gap-3">
+                <img src="https://flagcdn.com/w40/br.png" class="w-5 h-3">
+                <img src="https://flagcdn.com/w40/us.png" class="w-5 h-3 opacity-20">
             </div>
         </div>
     </nav>
 
-    <section class="pt-40 pb-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-6xl md:text-8xl font-black mb-6 logo-font uppercase tracking-tighter leading-none">
-                SIMBIOSE <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">DIGITAL.</span>
-            </h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium">
-                A maior curadoria de Inteligência Artificial e capacitação técnica gratuita para o mercado de 2026.
-            </p>
-        </div>
-    </section>
+    <header class="pt-48 pb-20 px-6 text-center bg-[radial-gradient(circle_at_50%_50%,rgba(112,0,255,0.1),transparent_50%)]">
+        <h1 class="text-6xl md:text-8xl font-black logo-font uppercase tracking-tighter mb-6 leading-none">
+            ARSENAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">2026.</span>
+        </h1>
+        <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
+            A infraestrutura crítica para a sua revolução digital. Curadoria e certificação técnica gratuita.
+        </p>
+    </header>
 
-    <div class="max-w-7xl mx-auto px-6 mb-20 flex justify-center">
-        <div class="w-full max-w-[728px] min-h-[90px] bg-white/5 rounded-xl border border-white/5 flex items-center justify-center italic text-[10px] text-slate-600">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <div class="max-w-7xl mx-auto px-6 mb-20">
+        <div class="w-full max-w-[728px] mx-auto min-h-[90px] bg-white/5 border border-dashed border-white/10 flex items-center justify-center overflow-hidden">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-0000000000000000"
+                 data-ad-slot="0000000000"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>
 
     <main id="arsenal" class="max-w-7xl mx-auto px-6 mb-32">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-            <div>
-                <h2 class="text-3xl font-black logo-font uppercase tracking-tighter">Arsenal <span class="text-cyan-400">Neural</span></h2>
-                <p class="text-slate-500 text-sm uppercase tracking-widest font-bold">Ferramentas de Elite</p>
-            </div>
-            <input type="text" id="iaSearch" onkeyup="renderCards()" class="w-full md:w-1/3 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 font-bold uppercase text-[10px] tracking-widest" placeholder="BUSCAR FERRAMENTA...">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
+            <h2 class="text-3xl font-black logo-font uppercase">Mapeamento <span class="text-cyan-400 italic">Neural</span></h2>
+            <input type="text" id="iaSearch" onkeyup="renderCards()" class="w-full md:w-1/3 bg-white/5 border border-white/10 px-6 py-4 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 text-xs font-bold uppercase" placeholder="BUSCAR FERRAMENTA...">
         </div>
 
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="col-span-full text-center py-20 text-cyan-400 animate-pulse uppercase tracking-widest text-xs font-black">
+                Acessando Banco de Dados Itanhaém...
             </div>
+        </div>
     </main>
 
-    <section id="academy" class="bg-white/5 py-24 px-6 border-y border-white/5 mb-32">
+    <section id="academy" class="py-32 px-6 bg-white/[0.02] border-y border-white/5 mb-32">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-black logo-font uppercase mb-4">Neural <span class="text-cyan-400">Academy</span></h2>
-                <p class="text-slate-400 uppercase text-[10px] tracking-[0.4em] font-bold">Capacitação Gratuita 2026</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="cyber-card p-8 text-center">
-                    <div class="text-cyan-400 text-3xl mb-4 font-black">Google</div>
-                    <h4 class="text-white font-bold uppercase text-xs mb-4">Generative AI Learning Path</h4>
-                    <p class="text-slate-500 text-xs mb-8">Certificação oficial sobre modelos de linguagem e IA generativa.</p>
-                    <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="block w-full py-3 border border-cyan-400/30 text-cyan-400 rounded-xl font-bold text-[9px] hover:bg-cyan-400 hover:text-black transition">INICIAR AGORA</a>
+            <h2 class="text-4xl font-black logo-font uppercase text-center mb-16">Academy <span class="text-purple-500">2026</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="cyber-card p-10">
+                    <div class="text-white text-3xl font-black mb-4">GOOGLE</div>
+                    <p class="text-slate-500 text-xs mb-8">Especialização em IA Generativa para Profissionais.</p>
+                    <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="block w-full py-3 btn-neural rounded-xl text-[10px]">VER CURSO GRÁTIS</a>
                 </div>
-                <div class="cyber-card p-8 text-center">
-                    <div class="text-purple-400 text-3xl mb-4 font-black">Harvard</div>
-                    <h4 class="text-white font-bold uppercase text-xs mb-4">CS50's AI with Python</h4>
-                    <p class="text-slate-500 text-xs mb-8">Introdução acadêmica profunda aos algoritmos de IA moderna.</p>
-                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="block w-full py-3 border border-purple-400/30 text-purple-400 rounded-xl font-bold text-[9px] hover:bg-purple-400 hover:text-black transition">INICIAR AGORA</a>
+                <div class="cyber-card p-10">
+                    <div class="text-white text-3xl font-black mb-4">HARVARD</div>
+                    <p class="text-slate-500 text-xs mb-8">Introdução à Ciência da Computação com IA.</p>
+                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="block w-full py-3 btn-neural rounded-xl text-[10px]">VER CURSO GRÁTIS</a>
                 </div>
-                <div class="cyber-card p-8 text-center">
-                    <div class="text-green-400 text-3xl mb-4 font-black">NVIDIA</div>
-                    <h4 class="text-white font-bold uppercase text-xs mb-4">Deep Learning Institute</h4>
-                    <p class="text-slate-500 text-xs mb-8">Treinamento técnico sobre aceleração de IA via hardware e software.</p>
-                    <a href="https://www.nvidia.com/en-us/training/online/" target="_blank" class="block w-full py-3 border border-green-400/30 text-green-400 rounded-xl font-bold text-[9px] hover:bg-green-400 hover:text-black transition">INICIAR AGORA</a>
+                <div class="cyber-card p-10">
+                    <div class="text-white text-3xl font-black mb-4">NVIDIA</div>
+                    <p class="text-slate-500 text-xs mb-8">Treinamento em Deep Learning e Infraestrutura.</p>
+                    <a href="https://www.nvidia.com/en-us/training/online/" target="_blank" class="block w-full py-3 btn-neural rounded-xl text-[10px]">VER CURSO GRÁTIS</a>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="news" class="max-w-7xl mx-auto px-6 mb-32">
-        <div class="flex items-center gap-4 mb-12">
+        <div class="flex items-center gap-4 mb-10">
             <span class="w-3 h-3 bg-red-600 rounded-full animate-pulse"></span>
-            <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-white">LIVE TRANSMISSION: FUTURE 2026</h3>
+            <h3 class="font-bold uppercase tracking-[0.4em] text-[10px]">LIVE FEED: GLOBAL AI</h3>
         </div>
-        <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            </div>
+        <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </section>
 
-    <footer class="py-20 bg-black/50 border-t border-white/5 px-6 text-center">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex justify-center gap-8 text-[10px] font-bold uppercase tracking-widest text-slate-500 mb-10">
-                <a href="#" class="hover:text-white">Privacidade</a>
-                <a href="#" class="hover:text-white">Termos</a>
-                <a href="#" class="hover:text-white">Contato</a>
-            </div>
-            <p class="logo-font text-[9px] opacity-20 tracking-[0.5em] text-white uppercase">
-                MUNDO DAS IA'S HUB © 2026 | ITANHAÉM - SP
-            </p>
+    <footer class="text-center py-20 px-6 border-t border-white/5 opacity-50">
+        <div class="flex justify-center gap-8 text-[10px] font-black uppercase mb-8">
+            <a href="#" class="hover:text-cyan-400">Privacidade</a>
+            <a href="#" class="hover:text-cyan-400">Termos</a>
+            <a href="#" class="hover:text-cyan-400">Contato</a>
         </div>
+        <p class="text-[9px] logo-font tracking-[0.5em] uppercase">MUNDO DAS IA'S © 2026 | TERMINAL ITANHAÉM</p>
     </footer>
 
     <script>
@@ -129,14 +145,21 @@
                 const res = await fetch(urlCSV);
                 const data = await res.text();
                 const rows = data.split(/\r?\n/).slice(1);
+                
                 todasIAs = rows.map(row => {
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!col[1]) return null;
-                    return { nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", hits: col[5] || 0 };
+                    return { 
+                        nome: col[1], 
+                        desc: col[2], 
+                        link: col[3], 
+                        img: col[4] || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400" 
+                    };
                 }).filter(i => i);
+                
                 renderCards();
                 fetchNews();
-            } catch(e) { console.error("Neural Error."); }
+            } catch(e) { console.error("Sincronização Falhou."); }
         }
 
         function renderCards() {
@@ -146,13 +169,14 @@
             
             grid.innerHTML = filtradas.map(ia => `
                 <div class="cyber-card flex flex-col h-full group">
-                    <div class="relative overflow-hidden h-48 rounded-t-3xl">
-                        <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700">
+                    <div class="h-44 overflow-hidden rounded-t-[24px]">
+                        <img src="${ia.img}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                     <div class="p-8 flex flex-col flex-grow">
-                        <h4 class="text-white font-bold uppercase text-xs mb-3 tracking-widest">${ia.nome}</h4>
+                        <h4 class="text-white font-bold uppercase text-xs tracking-widest mb-4">${ia.nome}</h4>
                         <p class="text-slate-500 text-[11px] mb-8 leading-relaxed line-clamp-3">${ia.desc}</p>
-                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="mt-auto block w-full py-4 btn-gradient text-black text-center font-black text-[10px] uppercase rounded-xl">CONECTAR</a>
+                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" 
+                           class="mt-auto block w-full py-4 btn-neural text-center rounded-xl text-[10px]">ACESSAR SISTEMA</a>
                     </div>
                 </div>`).join('');
         }
