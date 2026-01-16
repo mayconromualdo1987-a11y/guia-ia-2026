@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Neural Hub 2026</title>
+    <title>Mundo das IA's | 2026</title>
     
-    <style>
-        body { background-color: #030712 !important; color: #e2e8f0; margin: 0; }
-        :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #030712; }
-        body { font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
-        .logo-font { font-family: 'Orbitron', sans-serif; }
-        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; border-radius: 24px; display: flex; flex-direction: column; height: 100%; }
-        .cyber-card:hover { border-color: var(--cyan); transform: translateY(-5px); }
-        .lang-btn { opacity: 0.4; cursor: pointer; width: 22px; transition: 0.3s; }
-        .lang-btn.active { opacity: 1; border: 1px solid var(--cyan); }
-    </style>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --cyan: #00f2ff; --dark: #030712; }
+        body { background-color: #030712 !important; color: #e2e8f0; font-family: 'Rajdhani', sans-serif; margin: 0; }
+        .logo-font { font-family: 'Orbitron', sans-serif; }
+        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); border-radius: 24px; transition: 0.4s; overflow: hidden; }
+        .cyber-card:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 0 20px rgba(0,242,255,0.1); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
 </head>
-<body>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-SEU_ID_AQUI" crossorigin="anonymous"></script>
+<body class="bg-[#030712]">
 
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer" onclick="window.location.reload()">
-                <span class="text-white text-lg font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
+                <span class="text-white text-lg font-black uppercase">MUNDO DAS IA'S</span>
                 <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.4em] uppercase text-center">Neural Hub</span>
             </div>
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-6">
                 <div class="flex gap-3 border-l border-white/10 pl-4">
-                    <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="switchLang('pt')">
-                    <img src="https://flagcdn.com/w40/us.png" class="lang-btn" id="btn-en" onclick="switchLang('en')">
+                    <img src="https://flagcdn.com/w40/br.png" class="w-5 h-3">
+                    <img src="https://flagcdn.com/w40/us.png" class="w-5 h-3 opacity-30">
                 </div>
             </div>
         </div>
@@ -39,14 +38,31 @@
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-7xl font-black mb-6 logo-font uppercase tracking-tight" id="hero-title">Arsenal <span class="text-cyan-400">Neural.</span></h1>
-            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto" id="hero-desc">Sincronizando banco de dados 2026...</p>
+            <h1 class="text-5xl md:text-8xl font-black mb-6 logo-font uppercase tracking-tighter">ARSENAL <span class="text-cyan-400">NEURAL.</span></h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto">Diretório de elite validado para o ecossistema de 2026.</p>
         </header>
 
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="my-12 flex justify-center">
+            <div style="min-height: 100px; width: 100%; max-width: 728px; background: rgba(255,255,255,0.02); border: 1px dashed rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-0000000000000000"
+                     data-ad-slot="0000000000"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
+        </div>
 
-        <section class="mt-24">
+        <section class="bg-white/5 p-4 rounded-[30px] border border-white/5 mb-12">
+            <input type="text" id="iaSearch" onkeyup="renderCards()" class="w-full bg-black/50 border border-white/10 px-6 py-4 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 text-xs font-bold uppercase tracking-widest" placeholder="BUSCAR NO SISTEMA...">
+        </section>
+
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="col-span-full text-center py-20 text-cyan-400 animate-pulse uppercase text-xs tracking-[0.5em]">Acessando Banco de Dados Neural...</div>
+        </div>
+
+        <section class="mt-24 border-t border-white/5 pt-16">
             <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-cyan-400 mb-8 flex items-center gap-3">
                 <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> TRANSMISSÃO LIVE 2026
             </h3>
@@ -54,16 +70,11 @@
         </section>
     </main>
 
-    <script>
-        // Use o mesmo código JavaScript que você já tem, garantindo que a função init() seja chamada no final.
-        // Adicionei apenas um pequeno ajuste para evitar erro caso o array venha vazio.
-        
-        const i18n = {
-            pt: { heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>', heroDesc: "Diretório definitivo de Inteligência Artificial. Validado para 2026.", access: "ACESSAR" },
-            en: { heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>', heroDesc: "Definitive AI Directory. Validated for 2026.", access: "ACCESS" }
-        };
+    <footer class="py-10 text-center border-t border-white/5 text-[9px] text-slate-600 uppercase tracking-[0.5em]">
+        MUNDO DAS IA'S HUB © 2026 | ITANHAÉM
+    </footer>
 
-        let currentLang = 'pt';
+    <script>
         let todasIAs = [];
 
         async function init() {
@@ -75,44 +86,41 @@
                 todasIAs = rows.map(row => {
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!col[1]) return null;
-                    return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: col[5] || 0, rating: col[6] || 5 };
+                    return { nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400", hits: col[5] || 0 };
                 }).filter(i => i);
-                updateUI();
+                renderCards();
                 fetchNews();
-            } catch(e) {
-                console.error("Erro na carga inicial");
-            }
+            } catch(e) { console.error("Erro fatal na carga."); }
         }
 
-        function updateUI() {
-            document.getElementById('hero-title').innerHTML = i18n[currentLang].heroTitle;
-            document.getElementById('hero-desc').innerText = i18n[currentLang].heroDesc;
-            renderCards(todasIAs);
-        }
-
-        function renderCards(lista) {
-            document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="cyber-card p-6">
-                    <img src="${ia.img}" class="h-40 w-full object-cover rounded-xl mb-4">
-                    <h4 class="text-white font-bold uppercase text-xs mb-2">${ia.nome}</h4>
-                    <p class="text-slate-400 text-[11px] mb-6 line-clamp-3">${ia.desc}</p>
-                    <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="mt-auto px-5 py-2 border border-cyan-400/20 text-cyan-400 text-center font-bold text-[9px] uppercase rounded-lg hover:bg-cyan-400 hover:text-black transition">${i18n[currentLang].access}</a>
-                </div>
-            `).join('');
+        function renderCards() {
+            const busca = document.getElementById('iaSearch').value.toLowerCase();
+            const grid = document.getElementById('ia-grid');
+            const filtradas = todasIAs.filter(ia => ia.nome.toLowerCase().includes(busca));
+            
+            grid.innerHTML = filtradas.map(ia => `
+                <div class="cyber-card flex flex-col h-full">
+                    <img src="${ia.img}" class="h-40 w-full object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h4 class="text-white font-bold uppercase text-xs mb-3 tracking-widest">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] mb-6 line-clamp-3">${ia.desc}</p>
+                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="mt-auto block w-full py-3 bg-cyan-400 text-black text-center font-black text-[9px] uppercase rounded-xl hover:bg-white transition">ACESSAR</a>
+                    </div>
+                </div>`).join('');
         }
 
         function fetchNews() {
             google.script.run.withSuccessHandler(news => {
                 if(!news) return;
                 document.getElementById('news-feed').innerHTML = news.map(item => `
-                    <div class="p-6 bg-white/5 border border-white/5 rounded-3xl">
-                        <h5 class="text-white text-xs font-bold">${item.title}</h5>
-                        <p class="text-[9px] text-cyan-500 mt-2 uppercase">Fonte: ${item.category}</p>
-                    </div>`).join('');
+                    <a href="${item.link}" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-3xl block hover:border-cyan-400 transition">
+                        <h5 class="text-white text-xs font-bold line-clamp-2">${item.title}</h5>
+                        <p class="text-[9px] text-cyan-500 mt-4 uppercase font-bold tracking-widest">${item.category}</p>
+                    </a>`).join('');
             }).getNews();
         }
 
-        init();
+        window.onload = init;
     </script>
 </body>
 </html>
