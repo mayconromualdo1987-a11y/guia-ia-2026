@@ -45,4 +45,210 @@
                 <span class="text-slate-500 text-[8px] tracking-[0.4em] uppercase block font-bold">The Neural Hub</span>
             </div>
             <div class="flex items-center gap-6">
-                <select id="langSwitch" onchange="switchLang(this.value)" class="bg-transparent border border-
+                <select id="langSwitch" onchange="switchLang(this.value)" class="bg-transparent border border-white/10 text-cyan-400 text-[10px] font-bold p-2 rounded-lg outline-none cursor-pointer">
+                    <option value="pt" class="bg-slate-900">PT-BR</option>
+                    <option value="en" class="bg-slate-900">EN-US</option>
+                </select>
+                <button onclick="openTab('cursos')" class="btn-main">Academy</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center bg-gradient-to-br from-cyan-500/5 to-transparent">
+                <h2 class="text-5xl md:text-7xl font-black logo-font uppercase mb-4" id="hero-title">Arsenal <span class="text-cyan-400">Neural.</span></h2>
+                <p class="text-slate-400 text-lg font-medium" id="hero-desc">Curadoria estratégica de ferramentas inteligentes para evolução profissional.</p>
+            </div>
+            
+            <div class="card-base p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
+                    <h3 class="logo-font text-[10px] text-white uppercase tracking-widest">Global Insights</h3>
+                </div>
+                <div id="news-feed" class="space-y-5">
+                    </div>
+            </div>
+        </div>
+
+        <section class="card-base p-6 mb-12 border-white/10">
+            <div class="flex flex-col md:flex-row gap-6">
+                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-8 py-5 rounded-2xl text-cyan-400 outline-none font-bold text-xs uppercase tracking-widest" placeholder="Buscar ferramenta no Arsenal...">
+                <div class="flex gap-4">
+                    <button onclick="setSort('rel')" id="sort-rel" class="px-6 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-cyan-400 hover:text-white transition">Relevância</button>
+                    <button onclick="setSort('hits')" id="sort-hits" class="px-6 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-slate-500 hover:text-cyan-400 transition">Acessos</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
+
+        <h3 class="logo-font text-white text-xs mb-8 uppercase tracking-[0.3em] flex items-center gap-4">
+            <span class="h-px bg-white/10 flex-grow"></span> ACADEMY & EDUCAÇÃO <span class="h-px bg-white/10 flex-grow"></span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            <a href="https://www.cloudskillsboost.google" target="_blank" class="card-base p-8 hover:border-purple-500 group transition-all">
+                <h4 class="text-white font-bold mb-2">Google Generative AI</h4>
+                <p class="text-slate-500 text-xs mb-4">Trilha completa sobre modelos de linguagem e IA generativa.</p>
+                <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">INICIAR CURSO →</span>
+            </a>
+            <a href="https://learn.microsoft.com/pt-br/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="card-base p-8 hover:border-purple-500 group transition-all">
+                <h4 class="text-white font-bold mb-2">Microsoft Azure AI</h4>
+                <p class="text-slate-500 text-xs mb-4">Fundamentos de IA na nuvem para desenvolvedores e negócios.</p>
+                <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">ACESSAR AGORA →</span>
+            </a>
+            <a href="https://www.nvidia.com/pt-br/training/" target="_blank" class="card-base p-8 hover:border-purple-500 group transition-all">
+                <h4 class="text-white font-bold mb-2">NVIDIA Learning</h4>
+                <p class="text-slate-500 text-xs mb-4">Deep Learning e computação de alta performance aplicada.</p>
+                <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">VER TREINOS →</span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="py-20 border-t border-white/5 bg-black/40 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-center">
+                <button onclick="openTab('termos')" class="hover:text-cyan-400">Termos</button>
+                <button onclick="openTab('privacidade')" class="hover:text-cyan-400">Privacidade</button>
+                <button onclick="openTab('sugestoes')" class="hover:text-cyan-400">Sugestões</button>
+                <button onclick="openTab('institucional')" class="hover:text-cyan-400">Sobre o Hub</button>
+            </div>
+            <p class="logo-font text-[9px] opacity-20 text-center text-white uppercase tracking-[1em]">Mundo das IA's | Atemporal</p>
+        </div>
+    </footer>
+
+    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-2xl p-6 items-center justify-center">
+        <div class="max-w-2xl w-full bg-[#0a101f] p-10 border border-cyan-400/20 rounded-[40px] shadow-2xl">
+            <div id="modalBody" class="text-slate-400 text-sm leading-relaxed max-w-none"></div>
+            <button onclick="closeTab()" class="mt-10 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase text-[10px] logo-font transition">FECHAR</button>
+        </div>
+    </div>
+
+    <script>
+        const i18n = {
+            pt: {
+                heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
+                heroDesc: "Curadoria profissional das melhores ferramentas de inteligência artificial do mercado.",
+                termos: "<h2>Termos de Uso</h2><p class='mt-4'>O Mundo das IA's é um diretório informativo. Não garantimos a disponibilidade ou gratuidade das ferramentas externas citadas.</p>",
+                privacidade: "<h2>Privacidade</h2><p class='mt-4'>Utilizamos cookies do Google AdSense para publicidade e análises anônimas de tráfego para melhorar sua experiência.</p>",
+                sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Tem uma nova ferramenta ou melhoria? Envie para nosso time técnico:<br><br><b class='text-cyan-400'>contato@mundodasias.com.br</b></p>",
+                institucional: "<h2>Sobre o Hub</h2><p class='mt-4'>Nascemos para simplificar o acesso à inteligência artificial, conectando usuários às tecnologias mais impactantes do mundo.</p>",
+                cursos: "<h2>Academy & Educação</h2><p class='mt-4 text-xs italic mb-6 uppercase tracking-widest'>Trilhas recomendadas por especialistas:</p><div class='grid gap-4'><a href='https://www.cloudskillsboost.google' target='_blank' class='p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between hover:bg-cyan-400/10 transition'>Google AI Path <span class='text-cyan-400'>→</span></a><a href='https://learn.microsoft.com' target='_blank' class='p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between hover:bg-cyan-400/10 transition'>Microsoft Learning <span class='text-cyan-400'>→</span></a><a href='https://www.nvidia.com/training' target='_blank' class='p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between hover:bg-cyan-400/10 transition'>NVIDIA Academy <span class='text-cyan-400'>→</span></a></div>"
+            },
+            en: {
+                heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>',
+                heroDesc: "Professional curation of the best AI tools on the market.",
+                termos: "<h2>Terms</h2><p class='mt-4'>We are an informational directory. External tools policies are their own responsibility.</p>",
+                privacidade: "<h2>Privacy</h2><p class='mt-4'>We use Google AdSense cookies for ads and anonymous traffic analytics.</p>",
+                sugestoes: "<h2>Suggestions</h2><p class='mt-4'>New AI tool in mind? Reach us at:<br><br><b class='text-cyan-400'>contact@mundodasias.com.br</b></p>",
+                institucional: "<h2>About Us</h2><p class='mt-4'>Simplifying access to AI by connecting users with world-class technology.</p>",
+                cursos: "<h2>Academy</h2><p class='mt-4'>Free courses from Google, Microsoft and NVIDIA.</p>"
+            }
+        };
+
+        let currentLang = 'pt';
+        let todasIAs = [];
+        let sortType = 'rel';
+
+        async function init() {
+            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+            try {
+                const res = await fetch(urlCSV);
+                const data = await res.text();
+                const rows = data.split(/\r?\n/).slice(1);
+                todasIAs = rows.map(row => {
+                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if(!col[1]) return null;
+                    return { 
+                        cat: col[0]?.replace(/"/g, '') || "Geral", 
+                        nome: col[1]?.replace(/"/g, ''), 
+                        desc: col[2]?.replace(/"/g, ''), 
+                        link: col[3]?.replace(/"/g, ''), 
+                        img: col[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", 
+                        hits: parseInt(col[5]) || Math.floor(Math.random() * 800) + 100, 
+                        rating: (4.4 + Math.random() * 0.6).toFixed(1)
+                    };
+                }).filter(i => i);
+                
+                updateUI();
+                renderNews();
+            } catch(e) { console.error("Erro na conexão neural."); }
+        }
+
+        function updateUI() {
+            document.getElementById('hero-title').innerHTML = i18n[currentLang].heroTitle;
+            document.getElementById('hero-desc').innerText = i18n[currentLang].heroDesc;
+            filterAndSort();
+        }
+
+        function renderNews() {
+            const news = [
+                { t: "Raciocínio Lógico", d: "Novas IAs focam em resolução de problemas complexos." },
+                { t: "Vídeos Realistas", d: "Modelos generativos atingem qualidade cinematográfica." },
+                { t: "Produtividade", d: "Agentes autônomos começam a dominar o fluxo de trabalho." }
+            ];
+            document.getElementById('news-feed').innerHTML = news.map(n => `
+                <div class="border-l border-white/10 pl-4 py-1">
+                    <h5 class="text-white text-[11px] font-bold uppercase mb-1">${n.t}</h5>
+                    <p class="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">${n.d}</p>
+                </div>
+            `).join('');
+        }
+
+        function filterAndSort() {
+            const s = document.getElementById('iaSearch').value.toLowerCase();
+            let lista = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s) || ia.desc.toLowerCase().includes(s));
+            
+            if(sortType === 'hits') lista.sort((a,b) => b.hits - a.hits);
+            else lista.sort((a,b) => b.rating - a.rating);
+
+            document.getElementById('ia-grid').innerHTML = lista.map(ia => {
+                const shareMsg = encodeURIComponent(`Recomendo esta IA: ${ia.nome} - ${ia.link}`);
+                return `
+                <div class="card-base flex flex-col h-full group">
+                    <div class="h-44 overflow-hidden rounded-t-[24px] relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                        <div class="absolute top-3 right-3 flex gap-2">
+                            <a href="https://wa.me/?text=${shareMsg}" target="_blank" class="bg-black/60 p-2 rounded-lg hover:bg-green-500 transition"><img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" class="w-3 h-3 invert"></a>
+                            <a href="https://t.me/share/url?url=${ia.link}" target="_blank" class="bg-black/60 p-2 rounded-lg hover:bg-blue-500 transition"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" class="w-3 h-3 invert"></a>
+                        </div>
+                        <div class="absolute bottom-3 left-3 rating-chip">★ ${ia.rating}</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <span class="text-[9px] font-bold text-cyan-400/50 uppercase mb-2 tracking-widest">${ia.cat}</span>
+                        <h4 class="text-white font-bold uppercase text-base mb-4 italic logo-font">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] mb-8 line-clamp-3 leading-relaxed">${ia.desc}</p>
+                        <div class="mt-auto flex justify-between items-center pt-6 border-t border-white/5">
+                            <span class="text-[9px] font-bold text-slate-700 uppercase">${ia.hits} Pulsos</span>
+                            <a href="${ia.link}" target="_blank" class="text-cyan-400 text-[10px] font-black hover:text-white transition tracking-widest uppercase">Executar</a>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        function setSort(type) { 
+            sortType = type; 
+            document.getElementById('sort-rel').classList.toggle('text-cyan-400', type === 'rel');
+            document.getElementById('sort-rel').classList.toggle('text-slate-500', type !== 'rel');
+            document.getElementById('sort-hits').classList.toggle('text-cyan-400', type === 'hits');
+            document.getElementById('sort-hits').classList.toggle('text-slate-500', type !== 'hits');
+            filterAndSort(); 
+        }
+
+        function switchLang(l) { currentLang = l; updateUI(); }
+
+        function openTab(t) { 
+            document.getElementById('modalBody').innerHTML = i18n[currentLang][t]; 
+            document.getElementById('mainModal').classList.add('modal-active'); 
+        }
+
+        function closeTab() { 
+            document.getElementById('mainModal').classList.remove('modal-active'); 
+        }
+
+        window.onload = init;
+    </script>
+</body>
+</html>
