@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo das IA's | Neural Hub 2026</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
-
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23030712%22/><path d=%22M30 30 L70 30 L70 70 L30 70 Z%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,20 +12,20 @@
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #030712; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
+        .bg-glow { position: fixed; inset: 0; background: radial-gradient(circle at 10% 10%, rgba(112,0,255,0.08) 0%, transparent 40%), radial-gradient(circle at 90% 90%, rgba(0,242,255,0.05) 0%, transparent 40%); z-index: -1; }
         .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; height: 100%; position: relative; }
-        .cyber-card:hover { border-color: var(--cyan); box-shadow: 0 0 25px rgba(0,242,255,0.15); }
+        .cyber-card:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 0 25px rgba(0,242,255,0.15); }
         .lang-btn { opacity: 0.4; cursor: pointer; filter: grayscale(1); width: 22px; transition: 0.3s; }
         .lang-btn.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); border: 1px solid var(--cyan); }
         .sort-pill { font-size: 9px; font-weight: 900; padding: 6px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; color: #64748b; text-transform: uppercase; }
         .sort-pill.active { background: var(--cyan); color: black; border-color: var(--cyan); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .course-link { display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 1rem; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .course-link:hover { background: rgba(0,242,255,0.1); border-color: var(--cyan); }
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
     <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer" onclick="window.location.reload()">
@@ -35,7 +33,7 @@
                 <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.4em] uppercase text-center">Neural Hub</span>
             </div>
             <div class="flex items-center gap-4">
-                <button onclick="openTab('cursos')" class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest">Academy</button>
+                <button onclick="openTab('cursos')" class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest hover:text-white">Academy</button>
                 <div class="flex gap-3 border-l border-white/10 pl-4">
                     <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="switchLang('pt')">
                     <img src="https://flagcdn.com/w40/es.png" class="lang-btn" id="btn-es" onclick="switchLang('es')">
@@ -47,19 +45,14 @@
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         <header class="text-center mb-12">
-            <h1 class="text-5xl md:text-7xl font-black mb-6 logo-font uppercase" id="hero-title"></h1>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto" id="hero-desc"></p>
+            <h1 class="text-4xl md:text-7xl font-black mb-6 logo-font uppercase tracking-tight" id="hero-title"></h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-medium" id="hero-desc"></p>
         </header>
-
-        <div class="mb-12 overflow-hidden rounded-2xl bg-white/5 border border-white/5 text-center py-4">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
 
         <section class="p-4 rounded-3xl mb-12 bg-white/5 border border-white/5 backdrop-blur-md">
             <div class="flex flex-col gap-6">
                 <div class="flex flex-col lg:flex-row gap-4">
-                    <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-2xl text-cyan-400 outline-none text-xs font-bold uppercase tracking-widest" placeholder="BUSCAR...">
+                    <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 transition-all text-xs font-bold uppercase tracking-widest" placeholder="BUSCAR...">
                     <div id="filter-container" class="flex flex-grow gap-2 overflow-x-auto no-scrollbar py-1"></div>
                 </div>
                 <div class="flex gap-3 items-center border-t border-white/5 pt-4">
@@ -71,6 +64,13 @@
         </section>
 
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+        <section class="mt-24">
+            <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-cyan-400 mb-8 flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> TRANSMISSÃO NEURAL
+            </h3>
+            <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </section>
     </main>
 
     <footer class="py-16 text-center border-t border-white/5 bg-black/40">
@@ -95,60 +95,36 @@
         const i18n = {
             pt: {
                 heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
-                heroDesc: "Curadoria profissional de elite para a revolução de 2026.",
-                access: "ACESSAR",
-                institucional: `<h2>Institucional</h2><p>O <b>Mundo das IA's</b> é o ecossistema definitivo para implementação de tecnologias inteligentes. Localizado em Itanhaém para o mundo.</p>`,
-                missao: `<h2>Missão e Visão</h2><p><b>Missão:</b> Filtrar o ruído tecnológico e entregar impacto real.</p><p><b>Visão:</b> O maior terminal de IA de 2026.</p>`,
-                termos: "<h2>Termos</h2><p>Diretório técnico informativo.</p>",
-                privacidade: "<h2>Privacidade</h2><p>Conformidade total com a LGPD.</p>",
-                sugestoes: "<h2>Sugestões</h2><p>Contato: contato@mundodasias.com.br</p>",
-                cursos: `
-                    <h2 class="text-cyan-400 logo-font text-2xl mb-8 uppercase">Academy - Cursos de Elite</h2>
-                    <div class="grid gap-4">
-                        <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="course-link"><span>Google Cloud: Fundamentos de GenAI</span> <b class="text-cyan-400">ACESSAR</b></a>
-                        <a href="https://learn.microsoft.com/pt-br/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="course-link"><span>Microsoft Azure: Iniciando com IA</span> <b class="text-cyan-400">ACESSAR</b></a>
-                        <a href="https://explore.skillbuilder.aws/learn/course/external/view/elearning/17006/introduction-to-generative-artificial-intelligence" target="_blank" class="course-link"><span>AWS: Introdução à IA Generativa</span> <b class="text-cyan-400">ACESSAR</b></a>
-                        <a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" class="course-link"><span>DeepLearning.AI: IA para Todos (Andrew Ng)</span> <b class="text-cyan-400">ACESSAR</b></a>
-                        <a href="https://cognitiveclass.ai/learn/artificial-intelligence" target="_blank" class="course-link"><span>IBM: IA Professional Learning</span> <b class="text-cyan-400">ACESSAR</b></a>
-                        <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="course-link"><span>Harvard: Introdução à IA com Python</span> <b class="text-cyan-400">ACESSAR</b></a>
-                    </div>
-                `
+                heroDesc: "Curadoria profissional de ferramentas de Inteligência Artificial para 2026.",
+                access: "ACESSAR", share: "Olha essa IA!",
+                institucional: `<h2>Institucional</h2><p>O <b>Mundo das IA's</b> é o principal hub de tecnologia de Itanhaém para o mundo. Operamos sob um regime de atemporalidade, onde cada ferramenta é validada para o mercado de 2026.</p>`,
+                missao: `<h2>Missão e Visão</h2><p><b>Missão:</b> Filtrar o ruído digital e entregar produtividade real através da IA.</p><p><b>Visão:</b> Ser o terminal de referência global em inteligência aumentada até o fim de 2026.</p><p><b>Valores:</b> Ética algorítmica e transparência radical.</p>`,
+                termos: `<h2>Termos de Uso</h2><p>Diretório técnico informativo. Não nos responsabilizamos pelo conteúdo de terceiros.</p>`,
+                privacidade: `<h2>Privacidade</h2><p>Conformidade total com a LGPD. Coletamos apenas métricas anônimas de cliques.</p>`,
+                sugestoes: `<h2>Sugestões</h2><p>Envie sua ferramenta para: <b class="text-white">contato@mundodasias.com.br</b></p>`,
+                cursos: `<h2>Academy 2026</h2><div class="grid gap-3"><a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">Google GenAI <b class="text-cyan-400">GO</b></a><a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/10 flex justify-between items-center">Harvard AI <b class="text-cyan-400">GO</b></a></div>`
             },
             es: {
                 heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
-                heroDesc: "Curaduría profesional de élite para la revolución de 2026.",
-                access: "ACCEDER",
-                institucional: `<h2>Institucional</h2><p>El ecosistema definitivo para tecnologías inteligentes.</p>`,
-                missao: "<h2>Misión</h2><p>Filtrar el ruido tecnológico y entregar impacto real.</p>",
+                heroDesc: "Curaduría profesional de herramientas de Inteligencia Artificial para 2026.",
+                access: "ACCEDER", share: "¡Mira esta IA!",
+                institucional: `<h2>Institucional</h2><p>El <b>Mundo de las IA's</b> es el principal centro tecnológico. Operamos bajo un régimen de atemporalidad validado para 2026.</p>`,
+                missao: `<h2>Misión y Visión</h2><p><b>Misión:</b> Filtrar el ruido digital y entregar productividad real a través de la IA.</p><p><b>Visión:</b> Ser el terminal de referencia global en 2026.</p>`,
                 termos: "<h2>Términos</h2><p>Directorio técnico informativo.</p>",
-                privacidade: "<h2>Privacidad</h2><p>Protección total de datos.</p>",
-                sugestoes: "<h2>Sugerencias</h2><p>contacto@mundodasias.com.br</p>",
-                cursos: `
-                    <h2 class="text-cyan-400 logo-font text-2xl mb-8 uppercase">Academy - Cursos de Élite</h2>
-                    <div class="grid gap-4">
-                        <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="course-link"><span>Google: Fundamentos de GenAI</span> <b class="text-cyan-400">IR</b></a>
-                        <a href="https://learn.microsoft.com/es-es/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="course-link"><span>Microsoft Azure: Iniciando con IA</span> <b class="text-cyan-400">IR</b></a>
-                        <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="course-link"><span>Harvard: IA con Python</span> <b class="text-cyan-400">IR</b></a>
-                    </div>
-                `
+                privacidade: "<h2>Privacidad</h2><p>Cumplimiento total de la protección de datos.</p>",
+                sugestoes: "<h2>Sugerencias</h2><p>Contacto: contacto@mundodasias.com.br</p>",
+                cursos: "<h2>Academy 2026</h2><p>Cursos de élite de Google y Harvard.</p>"
             },
             en: {
                 heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>',
-                heroDesc: "Professional elite curation for the 2026 revolution.",
-                access: "ACCESS",
-                institucional: "<h2>About Us</h2><p>Global reference hub for the 2026 AI market.</p>",
-                missao: "<h2>Mission</h2><p>Filtering noise to deliver real AI impact.</p>",
+                heroDesc: "Professional AI tool curation for the year 2026.",
+                access: "ACCESS", share: "Check this AI!",
+                institucional: "<h2>About Us</h2><p>AI World is the leading tech hub. We provide a validated arsenal for the 2026 market.</p>",
+                missao: "<h2>Mission & Vision</h2><p><b>Mission:</b> Filtering noise to deliver real AI productivity.</p><p><b>Vision:</b> The global reference terminal by 2026.</p>",
                 termos: "<h2>Terms</h2><p>Technical informational directory.</p>",
                 privacidade: "<h2>Privacy</h2><p>Full data compliance.</p>",
-                sugestoes: "<h2>Suggestions</h2><p>contact@mundodasias.com.br</p>",
-                cursos: `
-                    <h2 class="text-cyan-400 logo-font text-2xl mb-8 uppercase">Academy - Elite Training</h2>
-                    <div class="grid gap-4">
-                        <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="course-link"><span>Google: GenAI Foundations</span> <b class="text-cyan-400">GO</b></a>
-                        <a href="https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="course-link"><span>Microsoft Azure: AI Getting Started</span> <b class="text-cyan-400">GO</b></a>
-                        <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="course-link"><span>Harvard: AI with Python</span> <b class="text-cyan-400">GO</b></a>
-                    </div>
-                `
+                sugestoes: "<h2>Suggestions</h2><p>Contact: contact@mundodasias.com.br</p>",
+                cursos: "<h2>Academy 2026</h2><p>Elite courses from Google and Harvard.</p>"
             }
         };
 
@@ -161,9 +137,9 @@
             todasIAs = rows.map(row => {
                 const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                 if(!col[1]) return null;
-                return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: parseInt(col[5]) || 0, rating: parseFloat(col[6]) || 5.0, data: new Date(col[7] || "2026-01-15") };
+                return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: parseInt(col[5]) || 0, rating: parseFloat(col[6]) || 5.0, data: new Date(col[7] || "2026-01-01") };
             }).filter(i => i);
-            updateUI();
+            updateUI(); fetchNews();
         }
 
         function updateUI() {
@@ -194,6 +170,18 @@
                         </div>
                     </div>
                 </div>`).join('');
+        }
+
+        async function fetchNews() {
+            try {
+                const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.technologyreview.com/topic/artificial-intelligence/feed/');
+                const data = await res.json();
+                document.getElementById('news-feed').innerHTML = data.items.slice(0, 3).map(item => `
+                    <a href="${item.link}" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-3xl hover:border-cyan-400/30 transition">
+                        <h5 class="text-white text-xs font-bold logo-font line-clamp-2">${item.title}</h5>
+                        <p class="text-[9px] text-cyan-500 mt-2 uppercase">Neural Source: Tech Review</p>
+                    </a>`).join('');
+            } catch(e) {}
         }
 
         function renderFilters() {
