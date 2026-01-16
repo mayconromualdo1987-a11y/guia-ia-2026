@@ -3,167 +3,179 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Neural Hub 2026</title>
+    <title>Mundo das IA's 2026</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-0000000000000000" crossorigin="anonymous"></script>
 
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23030712%22/><path d=%22M30 30 L70 30 L70 70 L30 70 Z%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --cyan: #00f2ff; --dark: #030712; }
+        :root { --cyan: #00f2ff; --dark: #020617; }
         body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .cyber-card { background: rgba(15,23,42,0.4); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(12px); transition: 0.4s ease; border-radius: 32px; }
-        .cyber-card:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,242,255,0.1); }
-        .lang-btn { opacity: 0.4; cursor: pointer; width: 22px; transition: 0.3s; filter: grayscale(1); }
+        .cyber-card { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border-radius: 24px; transition: 0.3s; }
+        .cyber-card:hover { border-color: var(--cyan); box-shadow: 0 0 30px rgba(0, 242, 255, 0.15); transform: translateY(-5px); }
+        .lang-btn { opacity: 0.3; cursor: pointer; width: 24px; filter: grayscale(1); transition: 0.3s; }
         .lang-btn.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); }
+        .btn-sort.active { background: var(--cyan); color: black; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-200 selection:bg-cyan-500 selection:text-black">
+<body class="pb-20">
 
-    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
+    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font" onclick="window.location.reload()">
-                <span class="text-white text-xl font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
-                <span class="text-cyan-400 block text-[9px] font-bold tracking-[0.5em] text-center uppercase">Neural Hub</span>
+                <span class="text-white text-lg font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
+                <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.5em] text-center uppercase">Neural Hub</span>
             </div>
             <div class="flex items-center gap-6">
-                <button onclick="openTab('cursos')" class="text-[10px] font-black uppercase tracking-widest text-cyan-400 hover:text-white transition">Academy</button>
-                <div class="flex gap-3 border-l border-white/10 pl-4">
+                <button onclick="openTab('cursos')" class="text-[10px] font-bold uppercase tracking-widest text-cyan-400">Academy</button>
+                <div class="flex gap-4 border-l border-white/10 pl-4">
                     <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="switchLang('pt')">
+                    <img src="https://flagcdn.com/w40/es.png" class="lang-btn" id="btn-es" onclick="switchLang('es')">
                     <img src="https://flagcdn.com/w40/us.png" class="lang-btn" id="btn-en" onclick="switchLang('en')">
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="pt-40 pb-20 max-w-7xl mx-auto px-6">
+    <main class="pt-40 max-w-7xl mx-auto px-6">
         <header class="text-center mb-16">
             <h1 class="text-6xl md:text-8xl font-black mb-6 logo-font uppercase tracking-tighter" id="hero-title"></h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto font-medium" id="hero-desc"></p>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto" id="hero-desc"></p>
         </header>
 
-        <div class="mb-16 py-4 border-y border-white/5 text-center">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-0000000000000000" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
-            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-        </div>
-
-        <section class="mb-12 flex flex-col md:flex-row gap-4 items-center bg-white/5 p-3 rounded-[32px] border border-white/5">
-            <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full md:w-1/3 bg-black/40 border-none px-6 py-4 rounded-2xl text-cyan-400 outline-none text-xs font-bold uppercase" placeholder="BUSCAR ARSENAL...">
-            <div id="filter-container" class="flex gap-2 overflow-x-auto py-1 no-scrollbar"></div>
+        <section class="mb-12 space-y-6">
+            <div class="flex flex-col md:flex-row gap-4 bg-white/5 p-3 rounded-3xl border border-white/10">
+                <input type="text" id="iaSearch" onkeyup="renderAll()" class="flex-1 bg-black/40 border-none px-6 py-4 rounded-2xl text-cyan-400 outline-none text-xs font-bold uppercase tracking-widest" placeholder="BUSCAR...">
+                <div id="filter-container" class="flex gap-2 overflow-x-auto no-scrollbar py-2"></div>
+            </div>
+            
+            <div class="flex gap-3 items-center justify-center md:justify-start">
+                <button onclick="setSort('rating')" id="sort-rating" class="btn-sort active px-4 py-2 rounded-full text-[9px] font-bold uppercase border border-white/10 transition">Relevância</button>
+                <button onclick="setSort('hits')" id="sort-hits" class="btn-sort px-4 py-2 rounded-full text-[9px] font-bold uppercase border border-white/10 transition">Populares</button>
+                <button onclick="setSort('data')" id="sort-data" class="btn-sort px-4 py-2 rounded-full text-[9px] font-bold uppercase border border-white/10 transition">Recentes</button>
+            </div>
         </section>
 
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="col-span-full text-center py-20 animate-pulse text-slate-500 logo-font uppercase tracking-widest">Carregando Arsenal...</div>
+        </div>
 
         <section class="mt-32">
             <h3 class="logo-font text-[10px] tracking-[0.5em] text-cyan-400 mb-10 uppercase flex items-center gap-3">
-                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> Transmissão em Tempo Real
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span> <span id="news-label">Notícias</span>
             </h3>
-            <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 border border-white/5 rounded-3xl animate-pulse text-slate-700 font-bold uppercase text-[10px]">Sincronizando feed neural...</div>
-            </div>
+            <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
         </section>
     </main>
 
-    <footer class="py-20 text-center border-t border-white/5 bg-black/40">
-        <div class="flex flex-wrap justify-center gap-8 text-[9px] text-slate-500 uppercase font-black tracking-widest mb-8">
-            <button onclick="openTab('termos')">Termos</button>
-            <button onclick="openTab('privacidade')">Privacidade</button>
-            <button onclick="openTab('institucional')">Institucional</button>
-            <button onclick="openTab('sugestoes')">Sugestões</button>
+    <footer class="mt-20 py-20 border-t border-white/5 text-center">
+        <div class="flex justify-center gap-8 text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-10">
+            <button onclick="openTab('institucional')" id="f-inst"></button>
+            <button onclick="openTab('missao')" id="f-miss"></button>
+            <button onclick="openTab('termos')" id="f-term"></button>
         </div>
-        <div class="logo-font text-[9px] opacity-20 text-white uppercase tracking-[0.5em]">2026 © Neural Hub Itanhaém</div>
+        <p class="logo-font text-[9px] opacity-20 uppercase tracking-[1em]">2026 © Neural Hub Itanhaém</p>
     </footer>
 
-    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-3xl p-6 flex items-center justify-center" onclick="closeTab()">
-        <div class="max-w-3xl w-full bg-slate-900 p-10 md:p-16 border border-white/10 rounded-[40px] shadow-2xl" onclick="event.stopPropagation()">
-            <div id="modalBody" class="text-slate-400 text-sm leading-relaxed prose prose-invert max-w-none"></div>
-            <button onclick="closeTab()" class="mt-12 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase tracking-widest text-[10px] logo-font">SAIR DO TERMINAL</button>
+    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-3xl flex items-center justify-center p-6" onclick="closeTab()">
+        <div class="max-w-2xl w-full bg-slate-900 border border-white/10 rounded-[40px] p-10 relative" onclick="event.stopPropagation()">
+            <div id="modalBody" class="prose prose-invert max-w-none text-slate-400"></div>
         </div>
     </div>
 
     <script>
         const i18n = {
-            pt: {
-                heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
-                heroDesc: "Curadoria profissional de elite validada para a revolução tecnológica de 2026.",
-                access: "ACESSAR",
-                institucional: "<h2>Institucional</h2><p>O Mundo das IA's é o terminal central de inteligência de Itanhaém-SP para o planeta.</p>",
-                termos: "<h2>Termos</h2><p>Diretório técnico 2026.</p>",
-                privacidade: "<h2>Privacidade</h2><p>Conformidade total com a LGPD.</p>",
-                sugestoes: "<h2>Sugestões</h2><p>Envie sua IA: contato@mundodasias.com.br</p>",
-                cursos: `<h2>Academy 2026</h2><div class="grid gap-4 mt-6">
-                    <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="p-5 bg-white/5 rounded-2xl border border-white/5 flex justify-between hover:border-cyan-400 transition">Google GenAI <span class="text-cyan-400">→</span></a>
-                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="p-5 bg-white/5 rounded-2xl border border-white/5 flex justify-between hover:border-cyan-400 transition">Harvard AI <span class="text-cyan-400">→</span></a>
-                </div>`
-            },
-            en: { /* ... traduções ... */ }
+            pt: { heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>', heroDesc: 'Curadoria de elite 2026.', access: 'ACESSAR', share: 'Compartilhar', news: 'Transmissão em Tempo Real', inst: 'Institucional', miss: 'Missão', term: 'Termos' },
+            en: { heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>', heroDesc: 'Elite 2026 curation.', access: 'ACCESS', share: 'Share', news: 'Real-Time Feed', inst: 'About', miss: 'Mission', term: 'Terms' },
+            es: { heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>', heroDesc: 'Curaduría de élite 2026.', access: 'ACCEDER', share: 'Compartir', news: 'Transmisión en Vivo', inst: 'Institucional', miss: 'Misión', term: 'Términos' }
         };
 
-        let currentLang = 'pt'; let todasIAs = []; let catAtiva = "TUDO";
+        let currentLang = 'pt'; let todasIAs = []; let catAtiva = "TUDO"; let sortBy = "rating";
 
-        async function init() {
-            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
-            try {
-                const res = await fetch(urlCSV); const data = await res.text();
-                const rows = data.split(/\r?\n/).slice(1);
-                todasIAs = rows.map(row => {
-                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if(!col[1]) return null;
-                    return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: parseInt(col[5]) || 0 };
-                }).filter(i => i);
-                updateUI(); fetchNews();
-            } catch(e) { console.error("Falha no link neural."); }
+        function init() {
+            google.script.run.withSuccessHandler(data => {
+                todasIAs = data;
+                updateUI();
+                fetchNews();
+            }).getIAs();
         }
 
         function fetchNews() {
             google.script.run.withSuccessHandler(news => {
-                const container = document.getElementById('news-feed');
-                if(!news || news.length === 0) return;
-                container.innerHTML = news.map(item => `
-                    <a href="${item.link}" target="_blank" class="p-8 bg-white/5 border border-white/5 rounded-[32px] hover:border-cyan-400/40 transition-all flex flex-col justify-between group">
-                        <h4 class="text-white font-bold text-lg leading-snug group-hover:text-cyan-400 transition">${item.title}</h4>
-                        <span class="text-[9px] text-cyan-500 mt-6 font-black uppercase tracking-widest">${item.category} →</span>
+                document.getElementById('news-feed').innerHTML = news.map(n => `
+                    <a href="${n.link}" target="_blank" class="p-8 bg-white/5 border border-white/5 rounded-3xl hover:border-cyan-400/30 transition">
+                        <span class="text-[9px] text-cyan-500 font-bold mb-3 block">${n.category}</span>
+                        <h4 class="text-white font-bold leading-tight">${n.title}</h4>
                     </a>`).join('');
             }).getNews();
         }
 
         function updateUI() {
-            document.getElementById('hero-title').innerHTML = i18n[currentLang].heroTitle;
-            document.getElementById('hero-desc').innerText = i18n[currentLang].heroDesc;
-            renderFilters(); filterAndSort();
+            const lang = i18n[currentLang];
+            document.getElementById('hero-title').innerHTML = lang.heroTitle;
+            document.getElementById('hero-desc').innerText = lang.heroDesc;
+            document.getElementById('news-label').innerText = lang.news;
+            document.getElementById('f-inst').innerText = lang.inst;
+            document.getElementById('f-miss').innerText = lang.miss;
+            document.getElementById('f-term').innerText = lang.term;
+            renderFilters(); renderAll();
         }
 
-        function renderCards(lista) {
+        function renderAll() {
+            const search = document.getElementById('iaSearch').value.toLowerCase();
+            let lista = todasIAs.filter(ia => (catAtiva === "TUDO" || ia.cat.toUpperCase() === catAtiva) && ia.nome.toLowerCase().includes(search));
+            
+            lista.sort((a, b) => b[sortBy] - a[sortBy]);
+
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="cyber-card p-8 flex flex-col">
-                    <img src="${ia.img}" class="h-40 w-full object-cover rounded-2xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-                    <h4 class="text-white font-bold text-lg mb-2">${ia.nome}</h4>
-                    <p class="text-slate-500 text-xs mb-8 line-clamp-3">${ia.desc}</p>
-                    <div class="mt-auto flex items-center justify-between">
-                        <span class="text-[9px] font-black text-slate-700 uppercase tracking-widest">${ia.hits} ACCESS</span>
-                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="px-6 py-3 bg-cyan-400 text-black font-black text-[9px] uppercase rounded-xl hover:bg-white transition">${i18n[currentLang].access}</a>
+                <div class="cyber-card p-6 flex flex-col">
+                    <img src="${ia.img}" class="h-32 w-full object-cover rounded-xl mb-4 grayscale hover:grayscale-0 transition duration-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-white font-bold uppercase text-sm">${ia.nome}</h4>
+                        <span class="text-cyan-400 text-[10px] font-bold">★ ${ia.rating.toFixed(1)}</span>
+                    </div>
+                    <p class="text-slate-500 text-[11px] mb-6 line-clamp-2">${ia.desc}</p>
+                    <div class="mt-auto flex gap-2">
+                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="flex-1 text-center py-2 bg-cyan-400 text-black font-black text-[9px] uppercase rounded-lg hover:bg-white transition">${i18n[currentLang].access}</a>
+                        <button onclick="shareIA('${ia.nome}', '${ia.link}')" class="px-3 py-2 border border-white/10 rounded-lg hover:bg-white/10 transition">
+                            <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
                     </div>
                 </div>`).join('');
         }
 
         function renderFilters() {
             const cats = ["TUDO", ...new Set(todasIAs.map(ia => ia.cat.toUpperCase()))];
-            document.getElementById('filter-container').innerHTML = cats.map(c => `<button onclick="setCat('${c}')" class="px-6 py-3 rounded-full text-[9px] font-black uppercase tracking-widest transition-all ${catAtiva === c ? 'bg-cyan-400 text-black' : 'text-slate-500 hover:text-white'}">${c}</button>`).join('');
+            document.getElementById('filter-container').innerHTML = cats.map(c => `
+                <button onclick="setCat('${c}')" class="px-5 py-2 whitespace-nowrap rounded-full text-[9px] font-bold uppercase transition ${catAtiva === c ? 'bg-cyan-400 text-black' : 'text-slate-500 hover:text-white'}">
+                    ${c}
+                </button>`).join('');
         }
 
-        function setCat(c) { catAtiva = c; renderFilters(); filterAndSort(); }
-        function filterAndSort() {
-            const s = document.getElementById('iaSearch').value.toLowerCase();
-            const filtered = todasIAs.filter(ia => (catAtiva === "TUDO" || ia.cat.toUpperCase() === catAtiva) && ia.nome.toLowerCase().includes(s));
-            renderCards(filtered);
+        function setSort(s) { 
+            sortBy = s; 
+            document.querySelectorAll('.btn-sort').forEach(b => b.classList.remove('active'));
+            document.getElementById('sort-'+s).classList.add('active');
+            renderAll(); 
         }
-
-        function openTab(t) { document.getElementById('modalBody').innerHTML = i18n[currentLang][t]; document.getElementById('mainModal').classList.remove('hidden'); }
-        function closeTab() { document.getElementById('mainModal').classList.add('hidden'); }
+        
+        function setCat(c) { catAtiva = c; renderFilters(); renderAll(); }
         function switchLang(l) { currentLang = l; document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === 'btn-'+l)); updateUI(); }
+        function openTab(t) { document.getElementById('modalBody').innerHTML = i18n[currentLang][t] || "TERMINAL DATA..."; document.getElementById('mainModal').classList.remove('hidden'); }
+        function closeTab() { document.getElementById('mainModal').classList.add('hidden'); }
+        
+        function shareIA(nome, link) {
+            if (navigator.share) {
+                navigator.share({ title: nome, text: 'Veja esta IA no Mundo das IA\'s:', url: link });
+            } else {
+                alert('Link copiado: ' + link);
+            }
+        }
+
         init();
     </script>
 </body>
