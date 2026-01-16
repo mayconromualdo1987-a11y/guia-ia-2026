@@ -1,52 +1,225 @@
-<section class="mt-24 border-t border-white/5 pt-16">
-    <div class="flex items-center justify-between mb-10">
-        <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-cyan-400 flex items-center gap-3">
-            <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> 
-            LIVE FEED: TECH & FUTURE
-        </h3>
-        <span class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">Atualizado: 2026</span>
-    </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo das IA's | Arsenal Neural 2026</title>
     
-    <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/artificial-intelligence.png">
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+        .font-tech { font-family: 'Orbitron', sans-serif; }
+        
+        /* Layout Customization */
+        .glass { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .cyber-border { border: 1px solid var(--cyan); box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+        
+        .card-ia {
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+        }
+        .card-ia:hover { transform: translateY(-10px); border-color: var(--cyan); }
+
+        .btn-tech {
+            background: linear-gradient(90deg, var(--cyan), var(--purple));
+            color: black; font-weight: 900; text-transform: uppercase;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+            transition: 0.3s;
+        }
+        .btn-tech:hover { filter: brightness(1.2); box-shadow: 0 0 20px rgba(0, 242, 255, 0.5); }
+
+        .scrollbar-hidden::-webkit-scrollbar { display: none; }
+        .neon-text { text-shadow: 0 0 10px var(--cyan); }
+    </style>
+</head>
+<body class="antialiased pb-20">
+
+    <nav class="fixed top-0 w-full z-[100] glass border-b border-cyan-400/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="font-tech flex flex-col cursor-pointer" onclick="window.location.reload()">
+                <span class="text-white text-xl font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
+                <span class="text-cyan-400 text-[8px] tracking-[0.4em] uppercase font-bold">Neural Terminal 2026</span>
+            </div>
+
+            <div class="hidden lg:flex gap-8 items-center text-[10px] font-bold uppercase tracking-widest">
+                <a href="#institucional" class="hover:text-cyan-400">Sobre</a>
+                <a href="#arsenal" class="hover:text-cyan-400">Arsenal</a>
+                <a href="#academy" class="hover:text-cyan-400">Academy</a>
+                <div class="h-4 w-[1px] bg-white/10"></div>
+                <select id="langSelect" class="bg-transparent border-none text-cyan-400 outline-none cursor-pointer">
+                    <option value="pt" class="bg-slate-900">PT-BR</option>
+                    <option value="en" class="bg-slate-900">EN-US</option>
+                </select>
+            </div>
         </div>
-</section>
+    </nav>
 
-<script>
-    // FUNÇÃO DE BUSCA MULTICANAL
-    function fetchNews() {
-        const container = document.getElementById('news-feed');
-        container.innerHTML = `<div class="col-span-full text-center py-10 text-[9px] uppercase tracking-widest opacity-50">Sincronizando satélites...</div>`;
+    <header class="pt-40 pb-20 px-6 text-center bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.05),transparent_70%)]">
+        <h1 class="text-5xl md:text-8xl font-black font-tech uppercase mb-6 leading-none tracking-tighter">
+            ARSENAL <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">INFINITO.</span>
+        </h1>
+        <p class="max-w-2xl mx-auto text-slate-400 font-medium text-lg border-b border-white/5 pb-10">
+            A infraestrutura tecnológica definitiva de 2026. Sincronize seu fluxo de trabalho com modelos neurais de última geração.
+        </p>
+    </header>
 
-        google.script.run.withSuccessHandler(news => {
-            if(!news || news.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center text-red-500">Erro na conexão neural.</div>`;
-                return;
-            }
-            
-            container.innerHTML = news.map(item => `
-                <a href="${item.link}" target="_blank" class="group relative p-8 bg-slate-900/50 border border-white/5 rounded-[32px] hover:border-cyan-400/40 transition-all duration-500 overflow-hidden">
-                    <div class="absolute -inset-px bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    
-                    <div class="relative z-10 flex flex-col h-full">
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="text-lg">${item.icon}</span>
-                            <span class="text-[9px] font-black text-cyan-400 tracking-[0.2em] uppercase">${item.category}</span>
-                        </div>
+    <section id="institucional" class="max-w-7xl mx-auto px-6 mb-32">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="glass p-8 rounded-3xl border-l-4 border-cyan-400">
+                <h3 class="font-tech text-cyan-400 text-xs uppercase mb-4">01. Missão</h3>
+                <p class="text-slate-400 text-sm leading-relaxed italic text-justify">Democratizar o acesso às mais avançadas ferramentas de IA, capacitando indivíduos em Itanhaém e no mundo para a nova era digital de 2026.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl border-l-4 border-purple-500">
+                <h3 class="font-tech text-purple-500 text-xs uppercase mb-4">02. Visão</h3>
+                <p class="text-slate-400 text-sm leading-relaxed italic text-justify">Tornar-se o terminal de referência global para curadoria, educação e implementação de inteligência artificial aplicada até o fim desta década.</p>
+            </div>
+            <div class="glass p-8 rounded-3xl border-l-4 border-green-500">
+                <h3 class="font-tech text-green-500 text-xs uppercase mb-4">03. Valores</h3>
+                <p class="text-slate-400 text-sm leading-relaxed italic text-justify">Ética algorítmica, transparência total, inovação disruptiva e compromisso com o desenvolvimento humano em simbiose com a máquina.</p>
+            </div>
+        </div>
+    </section>
+
+    <main id="arsenal" class="max-w-7xl mx-auto px-6 mb-20">
+        <div class="flex flex-col lg:flex-row justify-between items-end gap-8 mb-12">
+            <div class="w-full lg:w-1/3">
+                <input type="text" id="iaSearch" onkeyup="renderizarIAs()" placeholder="PESQUISAR NO ARSENAL..." 
+                class="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-xl text-cyan-400 outline-none focus:border-cyan-400 font-bold text-[10px] tracking-widest uppercase">
+            </div>
+            <div class="flex gap-4 items-center">
+                <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Ordenar por:</span>
+                <select id="sortSelect" onchange="renderizarIAs()" class="bg-white/5 border border-white/10 text-white px-4 py-2 rounded-lg text-[10px] font-bold outline-none uppercase">
+                    <option value="relevancia" class="bg-slate-900">Relevância</option>
+                    <option value="acessos" class="bg-slate-900">Mais Acessados</option>
+                    <option value="recentes" class="bg-slate-900">Recentes (2026)</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            <div class="col-span-full text-center py-20 text-cyan-400 font-tech animate-pulse text-xs uppercase tracking-[1em]">Acessando Database Neural...</div>
+        </div>
+    </main>
+
+    <section class="max-w-7xl mx-auto px-6 mb-32">
+        <div class="flex items-center gap-4 mb-8">
+            <span class="w-2 h-2 bg-red-600 rounded-full animate-ping"></span>
+            <h3 class="font-tech text-white text-[10px] uppercase tracking-widest">Notícias Globais IA - Jan 2026</h3>
+        </div>
+        <div id="news-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-60">
+            </div>
+    </section>
+
+    <section id="academy" class="bg-white/[0.02] py-24 px-6 border-y border-white/5 mb-32">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-tech text-3xl uppercase mb-16">Neural <span class="text-cyan-400">Academy</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="modalCursos">
+                </div>
+        </div>
+    </section>
+
+    <footer class="max-w-7xl mx-auto px-6 py-20 border-t border-white/5 text-center">
+        <div class="flex flex-wrap justify-center gap-8 mb-12 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+            <button onclick="showModal('termos')" class="hover:text-white transition">Termos de Uso</button>
+            <button onclick="showModal('privacidade')" class="hover:text-white transition">Privacidade</button>
+            <button onclick="showModal('responsabilidade')" class="hover:text-white transition">Isenção</button>
+        </div>
+        <p class="font-tech text-[9px] text-slate-600 tracking-[0.8em] uppercase">MUNDO DAS IA'S © 2026 | TERMINAL ITANHAÉM</p>
+    </footer>
+
+    <div id="techModal" class="hidden fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/90 backdrop-blur-xl">
+        <div class="glass max-w-2xl w-full p-10 rounded-[40px] border-cyan-400/30">
+            <div id="modalContent" class="prose prose-invert max-w-none text-slate-400 text-sm leading-relaxed"></div>
+            <button onclick="hideModal()" class="btn-tech w-full py-4 mt-10 text-xs">Fechar Terminal</button>
+        </div>
+    </div>
+
+    <script>
+        let baseDados = [];
+
+        async function init() {
+            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+            try {
+                const res = await fetch(urlCSV);
+                const text = await res.text();
+                const rows = text.split(/\r?\n/).slice(1);
+                baseDados = rows.map(row => {
+                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    return {
+                        cat: col[0]?.replace(/"/g, ''),
+                        nome: col[1]?.replace(/"/g, ''),
+                        desc: col[2]?.replace(/"/g, ''),
+                        link: col[3]?.replace(/"/g, ''),
+                        img: col[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500",
+                        acessos: parseInt(col[5]) || 0,
+                        data: new Date() // Simulação para "Recentes"
+                    };
+                }).filter(ia => ia.nome);
+                
+                renderizarIAs();
+                renderizarCursos();
+                renderizarNoticias();
+            } catch(e) { console.error("Falha no Sincronismo 2026"); }
+        }
+
+        function renderizarIAs() {
+            const grid = document.getElementById('ia-grid');
+            const busca = document.getElementById('iaSearch').value.toLowerCase();
+            const ordenacao = document.getElementById('sortSelect').value;
+
+            let filtradas = baseDados.filter(ia => ia.nome.toLowerCase().includes(busca) || ia.desc.toLowerCase().includes(busca));
+
+            // Lógica de Ordenação
+            if(ordenacao === 'acessos') filtradas.sort((a,b) => b.acessos - a.acessos);
+            if(ordenacao === 'recentes') filtradas.reverse();
+
+            grid.innerHTML = filtradas.map(ia => `
+                <div class="glass card-ia flex flex-col h-full group">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                        <div class="absolute top-4 right-4 bg-black/60 px-3 py-1 rounded-full text-[8px] font-bold text-cyan-400">★ 4.9</div>
+                    </div>
+                    <div class="p-8 flex flex-col flex-grow">
+                        <span class="text-cyan-400 text-[9px] font-black uppercase mb-2 tracking-widest">${ia.cat}</span>
+                        <h4 class="text-white font-bold text-lg mb-4 uppercase italic">${ia.nome}</h4>
+                        <p class="text-slate-500 text-xs mb-10 leading-relaxed line-clamp-3">${ia.desc}</p>
                         
-                        <h4 class="text-white font-bold text-sm leading-relaxed mb-6 group-hover:text-cyan-400 transition-colors">
-                            ${item.title}
-                        </h4>
-                        
-                        <div class="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
-                            <span class="text-[8px] text-slate-600 font-bold">${item.date}</span>
-                            <span class="text-[9px] text-white font-black uppercase tracking-tighter group-hover:translate-x-1 transition-transform">Ler Transmissão →</span>
+                        <div class="mt-auto flex flex-col gap-4">
+                            <a href="${ia.link}" target="_blank" onclick="registrarClique('${ia.nome}')" class="btn-tech py-3 text-center text-[10px]">Acessar IA</a>
+                            <div class="flex justify-between items-center text-[9px] text-slate-600 font-bold uppercase">
+                                <span>${ia.acessos} PULSOS</span>
+                                <button onclick="compartilhar('${ia.nome}', '${ia.link}')" class="hover:text-cyan-400 transition">COMPARTILHAR</button>
+                            </div>
                         </div>
                     </div>
-                </a>
+                </div>
             `).join('');
-        }).getNews();
-    }
+        }
 
-    // Certifique-se de chamar fetchNews() no seu init() ou no final do script
-    fetchNews();
-</script>
+        function registrarClique(nome) {
+            google.script.run.registrarClique(nome);
+        }
+
+        function compartilhar(nome, link) {
+            if (navigator.share) {
+                navigator.share({ title: nome, url: link });
+            } else {
+                alert("Link copiado: " + link);
+            }
+        }
+
+        const dadosModal = {
+            privacidade: `<h2>Privacidade Neural 2026</h2><p>Processamos dados de cliques anônimos para otimização do arsenal. Utilizamos Google AdSense para veiculação de anúncios baseados em interesses. Seus dados de navegação são protegidos por criptografia de ponta a ponta.</p>`,
+            termos: `<h2>Termos de Uso</h2><p>O Mundo das IA's é um agregador informativo. O uso das ferramentas externas é de inteira responsabilidade do usuário final. Reservamo-nos o direito de atualizar o banco de dados conforme a evolução tecnológica.</p>`,
+            responsabilidade: `<h2>Isenção de Responsabilidade</h2><p>Não nos responsabilizamos por perdas de dados, erros de saída ou custos incorridos em plataformas de terceiros aqui listadas. Use as tecnologias de IA com discernimento ético e técnico.</p>`
+        };
+
+        function showModal(tipo) {
+            document.getElementById('modalContent').innerHTML = dadosModal
