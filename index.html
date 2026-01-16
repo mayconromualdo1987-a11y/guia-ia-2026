@@ -7,6 +7,8 @@
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
 
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><path d=%22M30 50 L70 50 M50 30 L50 70%22 stroke=%22%237000ff%22 stroke-width=%228%22/></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
@@ -20,22 +22,18 @@
             border: 1px solid rgba(255, 255, 255, 0.05); 
             border-radius: 24px; 
             backdrop-filter: blur(12px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
         }
-        .card-base:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.15); }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
 
-        .btn-main { background: var(--cyan); color: black; font-weight: 900; font-size: 10px; padding: 12px 24px; border-radius: 12px; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; width: 100%; }
-        .btn-main:hover { box-shadow: 0 0 25px var(--cyan); transform: scale(1.02); }
+        .btn-main { background: var(--cyan); color: black; font-weight: 900; font-size: 10px; padding: 12px 24px; border-radius: 12px; text-transform: uppercase; transition: 0.3s; }
+        .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.1); }
         
-        .input-neural { background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 12px; font-size: 11px; color: white; outline: none; width: 100%; transition: 0.3s; }
-        .input-neural:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0, 242, 255, 0.2); }
-
         .modal-active { display: flex !important; animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        
-        .share-btn { background: rgba(0,0,0,0.6); padding: 8px; border-radius: 10px; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
-        .share-btn:hover { background: var(--cyan); }
-        .share-btn:hover svg { fill: black; }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .rating-chip { background: rgba(0, 242, 255, 0.1); color: var(--cyan); font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(0, 242, 255, 0.2); }
     </style>
 </head>
 <body class="antialiased">
@@ -46,68 +44,110 @@
                 <h1 class="text-white text-xl font-black leading-none uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
                 <span class="text-slate-500 text-[8px] tracking-[0.4em] uppercase block font-bold">The Neural Hub</span>
             </div>
-            <button onclick="openTab('cursos')" class="btn-main !w-auto">Academy</button>
+            <div class="flex items-center gap-6">
+                <select id="langSwitch" onchange="switchLang(this.value)" class="bg-transparent border border-white/10 text-cyan-400 text-[10px] font-bold p-2 rounded-lg outline-none cursor-pointer">
+                    <option value="pt" class="bg-slate-900">PT-BR</option>
+                    <option value="en" class="bg-slate-900">EN-US</option>
+                </select>
+                <button onclick="openTab('cursos')" class="btn-main">Academy</button>
+            </div>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         
-        <section class="card-base p-8 bg-gradient-to-br from-cyan-900/20 to-transparent mb-12">
-            <h3 class="logo-font text-white text-lg uppercase mb-2 italic">Neural Insider</h3>
-            <p class="text-slate-400 text-xs mb-8 uppercase tracking-widest">Mapeamento de público para inteligência de mercado</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                <input type="text" id="insiderName" placeholder="NOME COMPLETO" class="input-neural">
-                <input type="email" id="insiderEmail" placeholder="SEU MELHOR E-MAIL" class="input-neural">
-                <input type="number" id="insiderAge" placeholder="IDADE" class="input-neural">
-                
-                <select id="insiderGender" class="input-neural">
-                    <option value="" disabled selected>GÊNERO</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Feminino">Feminino</option>
-                    <option value="Outro">Outro / Prefiro não dizer</option>
-                </select>
-                
-                <input type="text" id="insiderCity" placeholder="CIDADE / UF" class="input-neural">
-                
-                <select id="insiderArea" class="input-neural">
-                    <option value="" disabled selected>ÁREA DE ATUAÇÃO</option>
-                    <option value="Marketing">Marketing / Vendas</option>
-                    <option value="Design">Design / Artes</option>
-                    <option value="Dev">Programação / TI</option>
-                    <option value="Educação">Educação</option>
-                    <option value="Outros">Outros</option>
-                </select>
-
-                <div class="lg:col-span-2">
-                    <button onclick="saveLead()" class="btn-main h-full">Registrar no Arsenal</button>
-                </div>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center bg-gradient-to-br from-cyan-500/5 to-transparent">
+                <h2 class="text-5xl md:text-7xl font-black logo-font uppercase mb-4" id="hero-title">Arsenal <span class="text-cyan-400">Neural.</span></h2>
+                <p class="text-slate-400 text-lg font-medium" id="hero-desc">Curadoria estratégica de ferramentas inteligentes para evolução profissional.</p>
             </div>
-        </section>
+            
+            <div class="card-base p-8">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
+                    <h3 class="logo-font text-[10px] text-white uppercase tracking-widest">Global Insights</h3>
+                </div>
+                <div id="news-feed" class="space-y-5">
+                    </div>
+            </div>
+        </div>
 
         <section class="card-base p-6 mb-12 border-white/10">
             <div class="flex flex-col md:flex-row gap-6">
-                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-8 py-4 rounded-2xl text-cyan-400 outline-none font-bold text-xs uppercase tracking-widest" placeholder="Buscar ferramenta...">
-                <div class="flex gap-2 bg-black/20 p-1 rounded-xl">
-                    <button onclick="setSort('rel')" id="sort-rel" class="px-4 py-2 rounded-lg text-[9px] font-black uppercase transition-all duration-300">Avaliação</button>
-                    <button onclick="setSort('recent')" id="sort-recent" class="px-4 py-2 rounded-lg text-[9px] font-black uppercase transition-all duration-300">Recentes</button>
-                    <button onclick="setSort('hits')" id="sort-hits" class="px-4 py-2 rounded-lg text-[9px] font-black uppercase transition-all duration-300">Acessos</button>
+                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-8 py-5 rounded-2xl text-cyan-400 outline-none font-bold text-xs uppercase tracking-widest" placeholder="Buscar ferramenta no Arsenal...">
+                <div class="flex gap-4">
+                    <button onclick="setSort('rel')" id="sort-rel" class="px-6 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-cyan-400 hover:text-white transition">Relevância</button>
+                    <button onclick="setSort('hits')" id="sort-hits" class="px-6 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-slate-500 hover:text-cyan-400 transition">Acessos</button>
                 </div>
             </div>
         </section>
 
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
 
+        <h3 class="logo-font text-white text-xs mb-8 uppercase tracking-[0.3em] flex items-center gap-4">
+            <span class="h-px bg-white/10 flex-grow"></span> ACADEMY & EDUCAÇÃO <span class="h-px bg-white/10 flex-grow"></span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            <a href="https://www.cloudskillsboost.google" target="_blank" class="card-base p-8 hover:border-purple-500 group transition-all">
+                <h4 class="text-white font-bold mb-2">Google Generative AI</h4>
+                <p class="text-slate-500 text-xs mb-4">Trilha completa sobre modelos de linguagem e IA generativa.</p>
+                <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">INICIAR CURSO →</span>
+            </a>
+            <a href="https://learn.microsoft.com/pt-br/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="card-base p-8 hover:border-purple-500 group transition-all">
+                <h4 class="text-white font-bold mb-2">Microsoft Azure AI</h4>
+                <p class="text-slate-500 text-xs mb-4">Fundamentos de IA na nuvem para desenvolvedores e negócios.</p>
+                <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">ACESSAR AGORA →</span>
+            </a>
+            <a href="https://www.nvidia.com/pt-br/training/" target="_blank" class="card-base p-8 hover:border-purple-500 group transition-all">
+                <h4 class="text-white font-bold mb-2">NVIDIA Learning</h4>
+                <p class="text-slate-500 text-xs mb-4">Deep Learning e computação de alta performance aplicada.</p>
+                <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">VER TREINOS →</span>
+            </a>
+        </div>
     </main>
 
+    <footer class="py-20 border-t border-white/5 bg-black/40 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-[10px] font-bold uppercase tracking-widest text-slate-500 text-center">
+                <button onclick="openTab('termos')" class="hover:text-cyan-400">Termos</button>
+                <button onclick="openTab('privacidade')" class="hover:text-cyan-400">Privacidade</button>
+                <button onclick="openTab('sugestoes')" class="hover:text-cyan-400">Sugestões</button>
+                <button onclick="openTab('institucional')" class="hover:text-cyan-400">Sobre o Hub</button>
+            </div>
+            <p class="logo-font text-[9px] opacity-20 text-center text-white uppercase tracking-[1em]">Mundo das IA's | Atemporal</p>
+        </div>
+    </footer>
+
     <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-2xl p-6 items-center justify-center">
-        <div class="max-w-xl w-full bg-[#0a101f] p-10 border border-cyan-400/20 rounded-[40px] shadow-2xl">
-            <div id="modalBody" class="text-slate-400 text-sm leading-relaxed"></div>
-            <button onclick="closeTab()" class="mt-10 w-full py-4 bg-cyan-400 text-black font-black rounded-xl uppercase text-[10px] logo-font">Fechar</button>
+        <div class="max-w-2xl w-full bg-[#0a101f] p-10 border border-cyan-400/20 rounded-[40px] shadow-2xl">
+            <div id="modalBody" class="text-slate-400 text-sm leading-relaxed max-w-none"></div>
+            <button onclick="closeTab()" class="mt-10 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase text-[10px] logo-font transition">FECHAR</button>
         </div>
     </div>
 
     <script>
+        const i18n = {
+            pt: {
+                heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
+                heroDesc: "Curadoria profissional das melhores ferramentas de inteligência artificial do mercado.",
+                termos: "<h2>Termos de Uso</h2><p class='mt-4'>O Mundo das IA's é um diretório informativo. Não garantimos a disponibilidade ou gratuidade das ferramentas externas citadas.</p>",
+                privacidade: "<h2>Privacidade</h2><p class='mt-4'>Utilizamos cookies do Google AdSense para publicidade e análises anônimas de tráfego para melhorar sua experiência.</p>",
+                sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Tem uma nova ferramenta ou melhoria? Envie para nosso time técnico:<br><br><b class='text-cyan-400'>contato@mundodasias.com.br</b></p>",
+                institucional: "<h2>Sobre o Hub</h2><p class='mt-4'>Nascemos para simplificar o acesso à inteligência artificial, conectando usuários às tecnologias mais impactantes do mundo.</p>",
+                cursos: "<h2>Academy & Educação</h2><p class='mt-4 text-xs italic mb-6 uppercase tracking-widest'>Trilhas recomendadas por especialistas:</p><div class='grid gap-4'><a href='https://www.cloudskillsboost.google' target='_blank' class='p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between hover:bg-cyan-400/10 transition'>Google AI Path <span class='text-cyan-400'>→</span></a><a href='https://learn.microsoft.com' target='_blank' class='p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between hover:bg-cyan-400/10 transition'>Microsoft Learning <span class='text-cyan-400'>→</span></a><a href='https://www.nvidia.com/training' target='_blank' class='p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between hover:bg-cyan-400/10 transition'>NVIDIA Academy <span class='text-cyan-400'>→</span></a></div>"
+            },
+            en: {
+                heroTitle: 'Neural <span class="text-cyan-400">Arsenal.</span>',
+                heroDesc: "Professional curation of the best AI tools on the market.",
+                termos: "<h2>Terms</h2><p class='mt-4'>We are an informational directory. External tools policies are their own responsibility.</p>",
+                privacidade: "<h2>Privacy</h2><p class='mt-4'>We use Google AdSense cookies for ads and anonymous traffic analytics.</p>",
+                sugestoes: "<h2>Suggestions</h2><p class='mt-4'>New AI tool in mind? Reach us at:<br><br><b class='text-cyan-400'>contact@mundodasias.com.br</b></p>",
+                institucional: "<h2>About Us</h2><p class='mt-4'>Simplifying access to AI by connecting users with world-class technology.</p>",
+                cursos: "<h2>Academy</h2><p class='mt-4'>Free courses from Google, Microsoft and NVIDIA.</p>"
+            }
+        };
+
+        let currentLang = 'pt';
         let todasIAs = [];
         let sortType = 'rel';
 
@@ -117,22 +157,43 @@
                 const res = await fetch(urlCSV);
                 const data = await res.text();
                 const rows = data.split(/\r?\n/).slice(1);
-                todasIAs = rows.map((row, index) => {
+                todasIAs = rows.map(row => {
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!col[1]) return null;
                     return { 
-                        id: index,
                         cat: col[0]?.replace(/"/g, '') || "Geral", 
                         nome: col[1]?.replace(/"/g, ''), 
                         desc: col[2]?.replace(/"/g, ''), 
                         link: col[3]?.replace(/"/g, ''), 
                         img: col[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", 
                         hits: parseInt(col[5]) || Math.floor(Math.random() * 800) + 100, 
-                        rating: (4.1 + Math.random() * 0.8).toFixed(1)
+                        rating: (4.4 + Math.random() * 0.6).toFixed(1)
                     };
                 }).filter(i => i);
-                setSort('rel');
-            } catch(e) { console.error("Erro na Matrix."); }
+                
+                updateUI();
+                renderNews();
+            } catch(e) { console.error("Erro na conexão neural."); }
+        }
+
+        function updateUI() {
+            document.getElementById('hero-title').innerHTML = i18n[currentLang].heroTitle;
+            document.getElementById('hero-desc').innerText = i18n[currentLang].heroDesc;
+            filterAndSort();
+        }
+
+        function renderNews() {
+            const news = [
+                { t: "Raciocínio Lógico", d: "Novas IAs focam em resolução de problemas complexos." },
+                { t: "Vídeos Realistas", d: "Modelos generativos atingem qualidade cinematográfica." },
+                { t: "Produtividade", d: "Agentes autônomos começam a dominar o fluxo de trabalho." }
+            ];
+            document.getElementById('news-feed').innerHTML = news.map(n => `
+                <div class="border-l border-white/10 pl-4 py-1">
+                    <h5 class="text-white text-[11px] font-bold uppercase mb-1">${n.t}</h5>
+                    <p class="text-slate-500 text-[10px] uppercase font-bold tracking-tighter">${n.d}</p>
+                </div>
+            `).join('');
         }
 
         function filterAndSort() {
@@ -140,24 +201,19 @@
             let lista = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s) || ia.desc.toLowerCase().includes(s));
             
             if(sortType === 'hits') lista.sort((a,b) => b.hits - a.hits);
-            else if(sortType === 'recent') lista.sort((a,b) => b.id - a.id);
             else lista.sort((a,b) => b.rating - a.rating);
 
             document.getElementById('ia-grid').innerHTML = lista.map(ia => {
-                const shareText = encodeURIComponent(`Incrível! Encontrei esta IA no Arsenal: ${ia.nome} - ${ia.link}`);
+                const shareMsg = encodeURIComponent(`Recomendo esta IA: ${ia.nome} - ${ia.link}`);
                 return `
-                <div class="card-base flex flex-col h-full group overflow-hidden">
-                    <div class="h-44 overflow-hidden relative">
+                <div class="card-base flex flex-col h-full group">
+                    <div class="h-44 overflow-hidden rounded-t-[24px] relative">
                         <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-all">
-                            <a href="https://wa.me/?text=${shareText}" target="_blank" class="share-btn">
-                                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
-                            </a>
-                            <a href="https://t.me/share/url?url=${ia.link}&text=${shareText}" target="_blank" class="share-btn">
-                                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.91-1.27 4.85-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
-                            </a>
+                        <div class="absolute top-3 right-3 flex gap-2">
+                            <a href="https://wa.me/?text=${shareMsg}" target="_blank" class="bg-black/60 p-2 rounded-lg hover:bg-green-500 transition"><img src="https://cdn-icons-png.flaticon.com/128/733/733585.png" class="w-3 h-3 invert"></a>
+                            <a href="https://t.me/share/url?url=${ia.link}" target="_blank" class="bg-black/60 p-2 rounded-lg hover:bg-blue-500 transition"><img src="https://cdn-icons-png.flaticon.com/128/2111/2111646.png" class="w-3 h-3 invert"></a>
                         </div>
-                        <div class="absolute bottom-3 left-3 bg-cyan-400 text-black text-[9px] font-black px-2 py-1 rounded">★ ${ia.rating}</div>
+                        <div class="absolute bottom-3 left-3 rating-chip">★ ${ia.rating}</div>
                     </div>
                     <div class="p-8 flex flex-col flex-grow">
                         <span class="text-[9px] font-bold text-cyan-400/50 uppercase mb-2 tracking-widest">${ia.cat}</span>
@@ -174,44 +230,23 @@
 
         function setSort(type) { 
             sortType = type; 
-            ['rel', 'recent', 'hits'].forEach(t => {
-                const btn = document.getElementById(`sort-${t}`);
-                btn.classList.toggle('bg-cyan-400', type === t);
-                btn.classList.toggle('text-black', type === t);
-                btn.classList.toggle('text-slate-500', type !== t);
-            });
+            document.getElementById('sort-rel').classList.toggle('text-cyan-400', type === 'rel');
+            document.getElementById('sort-rel').classList.toggle('text-slate-500', type !== 'rel');
+            document.getElementById('sort-hits').classList.toggle('text-cyan-400', type === 'hits');
+            document.getElementById('sort-hits').classList.toggle('text-slate-500', type !== 'hits');
             filterAndSort(); 
         }
 
-        function saveLead() {
-            const fields = {
-                name: document.getElementById('insiderName').value,
-                email: document.getElementById('insiderEmail').value,
-                age: document.getElementById('insiderAge').value,
-                gender: document.getElementById('insiderGender').value,
-                city: document.getElementById('insiderCity').value,
-                area: document.getElementById('insiderArea').value
-            };
-
-            if(Object.values(fields).every(v => v !== "")) {
-                alert(`Obrigado, ${fields.name}! Sua participação de ${fields.city} foi registrada.`);
-                Object.keys(fields).forEach(id => {
-                    const el = document.getElementById('insider' + id.charAt(0).toUpperCase() + id.slice(1));
-                    if(el) el.value = "";
-                });
-            } else {
-                alert('Por favor, preencha todos os campos do Neural Insider.');
-            }
-        }
+        function switchLang(l) { currentLang = l; updateUI(); }
 
         function openTab(t) { 
-            const content = {
-                cursos: "<h2>Academy</h2><p class='mt-4 italic'>Trilhas estratégicas para o seu desenvolvimento profissional:</p><div class='grid gap-3 mt-6'><a href='https://www.cloudskillsboost.google' target='_blank' class='p-5 bg-white/5 border border-white/5 rounded-xl block hover:bg-cyan-400/10 transition'>Google AI Academy →</a><a href='https://learn.microsoft.com/pt-br/training/ai/' target='_blank' class='p-5 bg-white/5 border border-white/5 rounded-xl block hover:bg-cyan-400/10 transition'>Microsoft Learn AI →</a></div>"
-            };
-            document.getElementById('modalBody').innerHTML = content[t]; 
+            document.getElementById('modalBody').innerHTML = i18n[currentLang][t]; 
             document.getElementById('mainModal').classList.add('modal-active'); 
         }
-        function closeTab() { document.getElementById('mainModal').classList.remove('modal-active'); }
+
+        function closeTab() { 
+            document.getElementById('mainModal').classList.remove('modal-active'); 
+        }
 
         window.onload = init;
     </script>
