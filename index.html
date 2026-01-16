@@ -1,52 +1,194 @@
-<section class="mt-24 border-t border-white/5 pt-16">
-    <div class="flex items-center justify-between mb-10">
-        <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-cyan-400 flex items-center gap-3">
-            <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> 
-            LIVE FEED: TECH & FUTURE
-        </h3>
-        <span class="text-[9px] text-slate-500 font-bold uppercase tracking-widest">Atualizado: 2026</span>
-    </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo das IA's | Neural Hub 2026</title>
     
-    <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%23030712%22/><path d=%22M30 30 L70 30 L70 70 L30 70 Z%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --cyan: #00f2ff; --dark: #030712; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
+        .logo-font { font-family: 'Orbitron', sans-serif; }
+        .cyber-card { background: rgba(15,23,42,0.6); border: 1px solid rgba(255,255,255,0.05); transition: 0.4s; border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; height: 100%; }
+        .cyber-card:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 0 25px rgba(0,242,255,0.15); }
+        .lang-btn { opacity: 0.4; cursor: pointer; filter: grayscale(1); width: 22px; transition: 0.3s; }
+        .lang-btn.active { opacity: 1; filter: grayscale(0); transform: scale(1.2); }
+        .sort-pill { font-size: 9px; font-weight: 900; padding: 6px 14px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); color: #64748b; text-transform: uppercase; cursor: pointer; }
+        .sort-pill.active { background: var(--cyan); color: black; border-color: var(--cyan); }
+    </style>
+</head>
+<body class="pb-20">
+
+    <nav class="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="logo-font cursor-pointer" onclick="window.location.reload()">
+                <span class="text-white text-lg font-black tracking-tighter uppercase">MUNDO DAS IA'S</span>
+                <span class="text-cyan-400 block text-[8px] font-bold tracking-[0.4em] uppercase text-center">Neural Hub</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <button onclick="openTab('cursos')" class="text-cyan-400 font-bold text-[10px] uppercase tracking-widest hover:text-white transition">Academy</button>
+                <div class="flex gap-3 border-l border-white/10 pl-4">
+                    <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="switchLang('pt')">
+                    <img src="https://flagcdn.com/w40/es.png" class="lang-btn" id="btn-es" onclick="switchLang('es')">
+                    <img src="https://flagcdn.com/w40/us.png" class="lang-btn" id="btn-en" onclick="switchLang('en')">
+                </div>
+            </div>
         </div>
-</section>
+    </nav>
 
-<script>
-    // FUNÇÃO DE BUSCA MULTICANAL
-    function fetchNews() {
-        const container = document.getElementById('news-feed');
-        container.innerHTML = `<div class="col-span-full text-center py-10 text-[9px] uppercase tracking-widest opacity-50">Sincronizando satélites...</div>`;
+    <main class="pt-32 max-w-7xl mx-auto px-6">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-7xl font-black mb-6 logo-font uppercase tracking-tight" id="hero-title"></h1>
+            <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-medium" id="hero-desc"></p>
+        </header>
 
-        google.script.run.withSuccessHandler(news => {
-            if(!news || news.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center text-red-500">Erro na conexão neural.</div>`;
-                return;
-            }
+        <div class="my-10 text-center bg-white/5 p-4 rounded-xl border border-white/5">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="0000000000"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
+        <section class="p-4 rounded-3xl mb-12 bg-white/5 border border-white/5 backdrop-blur-md">
+            <div class="flex flex-col gap-6">
+                <div class="flex flex-col lg:flex-row gap-4">
+                    <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="w-full lg:w-1/3 bg-black/40 border border-white/10 px-6 py-3 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 transition-all text-xs font-bold uppercase" placeholder="BUSCAR...">
+                    <div id="filter-container" class="flex flex-grow gap-2 overflow-x-auto py-1 no-scrollbar"></div>
+                </div>
+                <div class="flex gap-3 items-center border-t border-white/5 pt-4">
+                    <button id="sort-rel" onclick="setSort('rel')" class="sort-pill active">Destaques</button>
+                    <button id="sort-recent" onclick="setSort('recent')" class="sort-pill">Novidades</button>
+                    <button id="sort-hits" onclick="setSort('hits')" class="sort-pill">Populares</button>
+                </div>
+            </div>
+        </section>
+
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 min-h-[400px]"></div>
+
+        <section class="mt-24 border-t border-white/5 pt-16">
+            <h3 class="font-bold uppercase tracking-[0.4em] text-[10px] text-cyan-400 mb-10 flex items-center gap-3">
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span> LIVE FEED: TECH & FUTURE 2026
+            </h3>
+            <div id="news-feed" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="col-span-full text-center py-10 text-[10px] uppercase opacity-50">Sincronizando satélites...</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-16 mt-20 text-center border-t border-white/5 bg-black/40">
+        <div class="flex flex-wrap justify-center gap-8 text-[9px] text-slate-500 uppercase font-black tracking-widest mb-8">
+            <button onclick="openTab('institucional')">Institucional</button>
+            <button onclick="openTab('missao')">Missão e Valores</button>
+            <button onclick="openTab('termos')">Termos</button>
+            <button onclick="openTab('privacidade')">Privacidade</button>
+            <button onclick="openTab('sugestoes')">Sugestões</button>
+        </div>
+        <div class="logo-font text-[9px] opacity-30 text-white tracking-[0.5em]">MUNDO DAS IA'S HUB © 2026 | ITANHAÉM</div>
+    </footer>
+
+    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-3xl p-6 flex items-center justify-center" onclick="closeTab()">
+        <div class="max-w-4xl w-full bg-[#0a0f1d] p-10 border border-white/10 rounded-[40px]" onclick="event.stopPropagation()">
+            <div id="modalBody" class="text-slate-400 text-sm prose prose-invert max-w-none leading-relaxed"></div>
+            <button onclick="closeTab()" class="mt-12 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase tracking-widest text-[10px] logo-font">VOLTAR</button>
+        </div>
+    </div>
+
+    <script>
+        const i18n = {
+            pt: {
+                heroTitle: 'Arsenal <span class="text-cyan-400">Neural.</span>',
+                heroDesc: "Curadoria de ferramentas de IA para profissionais de elite em 2026.",
+                access: "ACESSAR", shareText: "Veja esta IA no Mundo das IA's:",
+                institucional: `<h2>Institucional</h2><p>O Mundo das IA's é o hub central de inteligência de Itanhaém-SP. Operamos na fronteira da tecnologia 2026.</p>`,
+                missao: `<h2>Missão e Visão</h2><p><b>Missão:</b> Potencializar a produtividade humana com IA.</p><p><b>Visão:</b> Ser o maior terminal técnico do Brasil.</p>`,
+                termos: `<h2>Termos</h2><p>Uso informativo e técnico.</p>`,
+                privacidade: `<h2>Privacidade</h2><p>Seguimos a LGPD. Zero rastreamento pessoal.</p>`,
+                sugestoes: `<h2>Sugestões</h2><p>Envie para: contato@mundodasias.com.br</p>`,
+                cursos: `<h2>Academy 2026</h2><div class="grid gap-2">
+                    <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between">Google Cloud <b class="text-cyan-400">GO</b></a>
+                    <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between">Harvard AI <b class="text-cyan-400">GO</b></a>
+                    <a href="https://www.nvidia.com/en-us/training/online/" target="_blank" class="p-4 bg-white/5 rounded-xl border border-white/5 flex justify-between">NVIDIA Deep Learning <b class="text-cyan-400">GO</b></a>
+                </div>`
+            },
+            es: { /* Adicionar Traduções aqui conforme necessário */ },
+            en: { /* Adicionar Traduções aqui conforme necessário */ }
+        };
+
+        let currentLang = 'pt'; let currentSort = 'rel'; let catAtiva = "TUDO"; let todasIAs = [];
+
+        async function init() {
+            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+            try {
+                const res = await fetch(urlCSV); const data = await res.text();
+                const rows = data.split(/\r?\n/).slice(1);
+                todasIAs = rows.map(row => {
+                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if(!col[1]) return null;
+                    return { cat: col[0], nome: col[1], desc: col[2], link: col[3], img: col[4] || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", hits: parseInt(col[5]) || 0, rating: parseFloat(col[6]) || 5.0, data: new Date(col[7] || "2026-01-01") };
+                }).filter(i => i);
+                updateUI(); fetchNews();
+            } catch(e) { console.error("Falha no link neural."); }
+        }
+
+        function updateUI() {
+            document.getElementById('hero-title').innerHTML = i18n[currentLang].heroTitle;
+            document.getElementById('hero-desc').innerText = i18n[currentLang].heroDesc;
+            renderFilters(); filterAndSort();
+        }
+
+        function filterAndSort() {
+            const s = document.getElementById('iaSearch').value.toLowerCase();
+            let lista = todasIAs.filter(ia => (catAtiva === "TUDO" || ia.cat.toUpperCase() === catAtiva.toUpperCase()) && (ia.nome.toLowerCase().includes(s)));
+            if(currentSort === 'rel') lista.sort((a,b) => b.rating - a.rating);
+            if(currentSort === 'hits') lista.sort((a,b) => b.hits - a.hits);
+            if(currentSort === 'recent') lista.sort((a,b) => b.data - a.data);
             
-            container.innerHTML = news.map(item => `
-                <a href="${item.link}" target="_blank" class="group relative p-8 bg-slate-900/50 border border-white/5 rounded-[32px] hover:border-cyan-400/40 transition-all duration-500 overflow-hidden">
-                    <div class="absolute -inset-px bg-gradient-to-br from-cyan-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                    
-                    <div class="relative z-10 flex flex-col h-full">
-                        <div class="flex items-center gap-2 mb-6">
-                            <span class="text-lg">${item.icon}</span>
-                            <span class="text-[9px] font-black text-cyan-400 tracking-[0.2em] uppercase">${item.category}</span>
-                        </div>
-                        
-                        <h4 class="text-white font-bold text-sm leading-relaxed mb-6 group-hover:text-cyan-400 transition-colors">
-                            ${item.title}
-                        </h4>
-                        
-                        <div class="mt-auto flex items-center justify-between border-t border-white/5 pt-4">
-                            <span class="text-[8px] text-slate-600 font-bold">${item.date}</span>
-                            <span class="text-[9px] text-white font-black uppercase tracking-tighter group-hover:translate-x-1 transition-transform">Ler Transmissão →</span>
-                        </div>
+            document.getElementById('ia-grid').innerHTML = lista.map(ia => `
+                <div class="cyber-card p-6">
+                    <img src="${ia.img}" class="h-32 w-full object-cover rounded-xl mb-4 grayscale hover:grayscale-0 transition-all duration-500">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="text-white font-bold uppercase text-[10px] tracking-wider">${ia.nome}</h4>
+                        <span class="text-yellow-400 text-[9px]">★ ${ia.rating}</span>
                     </div>
-                </a>
-            `).join('');
-        }).getNews();
-    }
+                    <p class="text-slate-500 text-[11px] mb-6 line-clamp-3">${ia.desc}</p>
+                    <div class="mt-auto flex gap-2">
+                        <a href="${ia.link}" target="_blank" onclick="google.script.run.registrarClique('${ia.nome}')" class="flex-grow text-center py-2 bg-cyan-400 text-black font-black text-[9px] uppercase rounded-lg hover:bg-white transition">${i18n[currentLang].access}</a>
+                        <a href="https://wa.me/?text=${encodeURIComponent(ia.link)}" target="_blank" class="px-3 py-2 bg-white/5 rounded-lg border border-white/5 hover:border-green-500 transition">
+                            <svg class="w-3 h-3 fill-white" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.771-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.512-2.96-2.626-.087-.114-.708-.941-.708-1.795 0-.855.448-1.273.607-1.446.159-.173.346-.217.462-.217.116 0 .231.001.332.005.106.004.25-.039.391.33.145.369.505 1.229.548 1.316.044.086.072.188.014.304-.058.115-.087.188-.173.289l-.26.304c-.087.101-.177.211-.077.383.1.173.444.733.95 1.185.652.582 1.201.762 1.373.848.174.087.275.073.376-.044.101-.115.433-.505.548-.68.116-.174.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                        </a>
+                    </div>
+                </div>`).join('');
+        }
 
-    // Certifique-se de chamar fetchNews() no seu init() ou no final do script
-    fetchNews();
-</script>
+        function fetchNews() {
+            google.script.run.withSuccessHandler(news => {
+                const container = document.getElementById('news-feed');
+                if(!news || news.length === 0) return;
+                container.innerHTML = news.map(item => `
+                    <a href="${item.link}" target="_blank" class="p-6 bg-white/5 border border-white/5 rounded-3xl hover:border-cyan-400 transition-all flex flex-col justify-between group">
+                        <div>
+                            <span class="text-lg mb-2 block">${item.icon}</span>
+                            <span class="text-[9px] font-black text-cyan-400 uppercase tracking-widest">${item.category}</span>
+                            <h4 class="text-white font-bold text-xs mt-3 group-hover:text-cyan-400 transition">${item.title}</h4>
+                        </div>
+                        <span class="mt-4 text-[8px] text-slate-600 font-bold">${item.date}</span>
+                    </a>`).join('');
+            }).getNews();
+        }
+
+        function renderFilters() {
+            const cats = ["TUDO", ...new Set(todasIAs.map(ia => ia.cat.toUpperCase()))];
+            document.getElementById('filter-container').innerHTML = cats.map(c => `<button class="px-5 py-2 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-slate-500 hover:text-cyan-400 transition uppercase whitespace-nowrap" onclick="setCat('${c}')">${c}</button>`).join('');
+        }
+
+        function setSort(s) { currentSort = s; document.querySelectorAll('.sort-pill').forEach(b => b.classList.toggle('active', b.id === 'sort-'+s)); filterAndSort(); }
+        function setCat(c) { catAtiva = c
