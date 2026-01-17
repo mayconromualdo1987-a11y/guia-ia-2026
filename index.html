@@ -7,40 +7,45 @@
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%222%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
+
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--dark); color: #f8fafc; font-family: 'Rajdhani', sans-serif; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1rem; }
+        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(15px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1.25rem; }
         
-        .img-card { height: 160px; width: 100%; object-fit: cover; border-radius: 1rem 1rem 0 0; opacity: 0.8; transition: 0.5s; }
-        .group:hover .img-card { opacity: 1; transform: scale(1.03); }
+        /* Imagens Blindadas */
+        .img-card { height: 180px; width: 100%; object-fit: cover; border-radius: 1.25rem 1.25rem 0 0; opacity: 0.8; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .group:hover .img-card { opacity: 1; transform: scale(1.05); }
 
-        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 10px 18px; border-radius: 4px; transition: 0.3s; cursor: pointer; display: inline-block; text-align: center; }
-        .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); }
+        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 11px; padding: 12px 24px; border-radius: 6px; transition: 0.4s; cursor: pointer; text-align: center; border: none; letter-spacing: 1px; }
+        .btn-elite:hover { box-shadow: 0 0 25px var(--cyan); transform: translateY(-2px); }
 
-        .lang-btn { cursor: pointer; transition: 0.3s; height: 14px; width: 22px; object-fit: cover; opacity: 0.4; }
-        .lang-btn.active { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 3px; }
+        .lang-btn { cursor: pointer; transition: 0.3s; height: 16px; width: 24px; object-fit: cover; opacity: 0.4; border-radius: 2px; }
+        .lang-btn.active { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 4px; }
 
-        .share-icon { opacity: 0.5; transition: 0.3s; cursor: pointer; }
-        .share-icon:hover { opacity: 1; color: var(--cyan); transform: scale(1.1); }
+        .share-btn { color: #94a3b8; transition: 0.3s; font-size: 18px; }
+        .share-btn:hover { transform: scale(1.2); }
+        .share-wa:hover { color: #25d366; }
+        .share-tg:hover { color: #0088cc; }
     </style>
 </head>
-<body class="p-4 md:p-10">
+<body class="p-4 md:p-12">
 
-    <nav class="max-w-7xl mx-auto mb-10 flex justify-between items-center glass p-6">
-        <div class="logo-font text-2xl font-black">MUNDO DAS <span class="text-cyan-400">IA'S</span></div>
-        <div class="flex items-center gap-6">
-            <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[3px]">
-                <a href="#academy" data-t="nav_academy" class="hover:text-cyan-400">Academy</a>
-                <a href="#news" data-t="nav_news" class="hover:text-cyan-400">Trends</a>
-                <a href="#institucional" data-t="nav_inst" class="hover:text-cyan-400">Institucional</a>
+    <nav class="max-w-7xl mx-auto mb-12 flex justify-between items-center glass p-6 border-b border-cyan-400/20">
+        <div class="logo-font text-2xl font-black tracking-tighter uppercase">MUNDO DAS <span class="text-cyan-400">IA'S</span></div>
+        <div class="flex items-center gap-10">
+            <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-[4px]">
+                <a href="#academy" class="hover:text-cyan-400 transition-colors">Academy</a>
+                <a href="#trends" class="hover:text-cyan-400 transition-colors">Trends</a>
+                <a href="#institucional" class="hover:text-cyan-400 transition-colors">Institucional</a>
             </div>
-            <div class="flex gap-4 border-l border-white/10 pl-6">
+            <div class="flex gap-4 border-l border-white/10 pl-8">
                 <img src="https://flagcdn.com/br.svg" class="lang-btn active" onclick="changeLang('pt')" id="btn-pt">
                 <img src="https://flagcdn.com/us.svg" class="lang-btn" onclick="changeLang('en')" id="btn-en">
                 <img src="https://flagcdn.com/es.svg" class="lang-btn" onclick="changeLang('es')" id="btn-es">
@@ -49,99 +54,141 @@
     </nav>
 
     <main class="max-w-7xl mx-auto">
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <div class="glass p-12 border-l-4 border-l-cyan-500">
-                <h1 class="logo-font text-5xl mb-6 uppercase italic">Elite <span class="text-cyan-400">Neural.</span></h1>
-                <p class="text-slate-400 text-xl leading-relaxed" data-t="hero_desc">Filtramos o ruído para entregar apenas ferramentas de alta performance.</p>
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-20">
+            <div class="glass p-12 border-l-8 border-l-cyan-500 shadow-2xl shadow-cyan-900/10">
+                <h1 class="logo-font text-6xl mb-6 uppercase italic leading-none">Elite <br><span class="text-cyan-400">Sintética.</span></h1>
+                <p class="text-slate-400 text-xl leading-relaxed max-w-md" data-t="hero_desc">Curadoria técnica rigorosa e ferramentas de alta performance filtradas para o mercado global.</p>
             </div>
-            <div class="glass p-8 border-l-4 border-l-purple-600 bg-purple-900/5">
-                <h3 class="text-[10px] text-purple-400 font-black uppercase mb-4 tracking-widest">Núcleo Gemini 2026</h3>
-                <input type="text" id="aiQuery" class="w-full bg-black/50 border border-white/10 p-4 rounded text-sm text-cyan-400 outline-none mb-4" placeholder="...">
-                <button onclick="askGemini()" id="btn-ask" class="btn-elite w-full bg-purple-600 text-white" data-t="btn_consultar">Consultar Núcleo</button>
-                <div id="aiResponse" class="hidden mt-4 p-4 bg-black/60 text-xs italic text-slate-400 border border-white/5 rounded"></div>
+            <div class="glass p-10 border-l-8 border-l-purple-600 bg-gradient-to-br from-purple-900/10 to-transparent">
+                <h3 class="text-[11px] text-purple-400 font-black uppercase mb-6 tracking-widest">Consultor Gemini AI</h3>
+                <input type="text" id="aiQuery" class="w-full bg-black/60 border border-white/10 p-5 rounded-lg text-sm text-cyan-400 outline-none mb-6 focus:border-cyan-400" placeholder="...">
+                <button onclick="askGemini()" class="btn-elite w-full bg-purple-600 text-white" data-t="btn_consultar">Processar Requisição</button>
+                <div id="aiResponse" class="hidden mt-6 p-6 bg-black/80 text-xs italic text-slate-400 border border-white/5 rounded-lg leading-relaxed"></div>
             </div>
         </section>
 
-        <div class="mb-12">
-            <h3 class="text-[11px] font-black uppercase tracking-[5px] text-slate-500 mb-8" data-t="title_featured">Sistemas em Destaque</h3>
-            <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        <div class="mb-20">
+            <h3 class="text-[12px] font-black uppercase tracking-[8px] text-slate-500 mb-10 flex items-center gap-4">
+                <span class="h-px w-12 bg-slate-800"></span> <span data-t="title_featured">Sistemas em Destaque</span>
+            </h3>
+            <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-10"></div>
         </div>
 
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"></div>
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24"></div>
 
-        <section id="news" class="mb-24 py-16 border-t border-white/5">
-            <h3 class="logo-font text-2xl mb-12 uppercase tracking-[8px]" data-t="title_trends">Neural <span class="text-cyan-400">Trends</span></h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass p-8 border-b-4 border-cyan-500">
-                    <span class="text-cyan-400 text-[10px] font-bold uppercase" data-t="news_cat1">Notícias</span>
-                    <h4 class="text-white font-bold my-3 uppercase" data-t="news_t1">O Fim dos Prompts?</h4>
-                    <p class="text-slate-500 text-sm" data-t="news_d1">Novas IAs generativas de 2026 agora interpretam intenção cerebral direta através de interfaces neurais.</p>
+        <section id="trends" class="mb-32 py-20 border-t border-white/10">
+            <h3 class="logo-font text-3xl mb-16 text-center uppercase tracking-[15px]" data-t="title_trends">Neural <span class="text-cyan-400">Trends</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="glass p-10 group hover:border-cyan-400/50 transition">
+                    <div class="mb-6 flex justify-between items-center">
+                        <span class="text-cyan-400 text-[10px] font-black uppercase tracking-widest" data-t="news_cat1">Notícias</span>
+                        <i class="fa-solid fa-bolt text-cyan-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xl mb-4 leading-tight uppercase" data-t="news_t1">Interoperabilidade Neural</h4>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-t="news_d1">Empresas líderes anunciam o protocolo único de comunicação entre IAs generativas para 2026, eliminando silos de dados.</p>
+                    <a href="https://www.technologyreview.com/" target="_blank" class="btn-elite text-[10px] py-2 px-6">Ler Matéria</a>
                 </div>
-                <div class="glass p-8 border-b-4 border-purple-500">
-                    <span class="text-purple-400 text-[10px] font-bold uppercase" data-t="news_cat2">Curiosidades</span>
-                    <h4 class="text-white font-bold my-3 uppercase" data-t="news_t2">Consumo de Energia</h4>
-                    <p class="text-slate-500 text-sm" data-t="news_d2">Uma única consulta complexa em 2026 consome energia equivalente a carregar um smartphone por 48 horas.</p>
+                <div class="glass p-10 group hover:border-purple-400/50 transition">
+                    <div class="mb-6 flex justify-between items-center">
+                        <span class="text-purple-400 text-[10px] font-black uppercase tracking-widest" data-t="news_cat2">Curiosidades</span>
+                        <i class="fa-solid fa-microchip text-purple-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xl mb-4 leading-tight uppercase" data-t="news_t2">A Era do Pós-Silício</h4>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-t="news_d2">Novos modelos treinados em computadores biológicos reduzem o consumo de energia em 95% comparado às GPUs atuais.</p>
+                    <a href="https://www.nature.com/" target="_blank" class="btn-elite text-[10px] py-2 px-6">Investigar</a>
                 </div>
-                <div class="glass p-8 border-b-4 border-green-500">
-                    <span class="text-green-400 text-[10px] font-bold uppercase" data-t="news_cat3">Entretenimento</span>
-                    <h4 class="text-white font-bold my-3 uppercase" data-t="news_t3">Cinema Sintético</h4>
-                    <p class="text-slate-500 text-sm" data-t="news_d3">Primeiro longa-metragem 100% gerado por IA vence festival internacional em tempo real.</p>
+                <div class="glass p-10 group hover:border-green-400/50 transition">
+                    <div class="mb-6 flex justify-between items-center">
+                        <span class="text-green-400 text-[10px] font-black uppercase tracking-widest" data-t="news_cat3">Criatividade</span>
+                        <i class="fa-solid fa-masks-theater text-green-500"></i>
+                    </div>
+                    <h4 class="text-white font-bold text-xl mb-4 leading-tight uppercase" data-t="news_t3">Hollywood 2.0</h4>
+                    <p class="text-slate-500 text-sm mb-8 leading-relaxed" data-t="news_d3">O primeiro Oscar de 'Melhor Direção Digital' é entregue a uma entidade autônoma em festival internacional de cinema.</p>
+                    <a href="https://www.hollywoodreporter.com/" target="_blank" class="btn-elite text-[10px] py-2 px-6">Ver Mais</a>
                 </div>
             </div>
         </section>
 
-        <section id="academy" class="py-20 border-t border-white/5">
-            <h3 class="logo-font text-center text-3xl mb-12 uppercase tracking-[10px]">Neural <span class="text-cyan-400">Academy</span></h3>
-            <div id="academy-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
+        <section id="academy" class="py-24 border-t border-white/10 bg-gradient-to-b from-transparent to-blue-900/5">
+            <h3 class="logo-font text-center text-4xl mb-16 uppercase tracking-[20px]">NEURAL <span class="text-cyan-400">ACADEMY</span></h3>
+            <div id="academy-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"></div>
         </section>
 
-        <section id="institucional" class="grid grid-cols-1 md:grid-cols-3 gap-16 py-24 border-t border-white/5">
+        <section id="institucional" class="grid grid-cols-1 md:grid-cols-3 gap-20 py-32 border-t border-white/10">
             <div>
-                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6" data-t="inst_m">Missão</h4>
-                <p class="text-sm text-slate-400 leading-relaxed" data-t="inst_m_desc">Filtramos o ruído digital para entregar apenas a elite do desenvolvimento neural global.</p>
+                <h4 class="text-[12px] text-cyan-400 font-black uppercase tracking-[5px] mb-8" data-t="inst_m">Missão</h4>
+                <p class="text-slate-400 leading-relaxed font-medium" data-t="inst_m_desc">Fornecer a infraestrutura de conhecimento necessária para profissionais de elite navegarem na economia sintética.</p>
             </div>
             <div>
-                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6" data-t="inst_v">Visão</h4>
-                <p class="text-sm text-slate-400 leading-relaxed" data-t="inst_v_desc">Ser a maior ponte entre a complexidade algorítmica e a produtividade humana em 2026.</p>
+                <h4 class="text-[12px] text-cyan-400 font-black uppercase tracking-[5px] mb-8" data-t="inst_v">Visão</h4>
+                <p class="text-slate-400 leading-relaxed font-medium" data-t="inst_v_desc">Ser o nó central de referência global para filtragem de tecnologia neural autêntica e ética.</p>
             </div>
             <div>
-                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6" data-t="inst_va">Valores</h4>
-                <p class="text-sm text-slate-400 leading-relaxed" data-t="inst_va_desc">Transparência digital, ética algorítmica e curadoria técnica independente e rigorosa.</p>
+                <h4 class="text-[12px] text-cyan-400 font-black uppercase tracking-[5px] mb-8" data-t="inst_va">Valores</h4>
+                <p class="text-slate-400 leading-relaxed font-medium" data-t="inst_va_desc">Independência editorial, rigor técnico e transparência absoluta no gerenciamento de algoritmos.</p>
             </div>
         </section>
     </main>
 
-    <footer class="max-w-7xl mx-auto py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex gap-8 items-center">
-            <button onclick="toggleModal('m-priv')" class="text-[11px] font-bold uppercase text-slate-500 hover:text-cyan-400" data-t="foot_priv">Privacidade</button>
-            <span class="text-slate-800">|</span>
-            <span class="text-[11px] font-bold uppercase text-slate-500">Suporte: contato@mundodasias.com.br</span>
+    <footer class="max-w-7xl mx-auto py-16 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-10">
+        <div class="flex gap-12 items-center">
+            <button onclick="toggleModal('m-terms')" class="text-[11px] font-bold uppercase text-slate-500 hover:text-cyan-400 transition" data-t="foot_terms">Termos e Privacidade</button>
+            <span class="text-slate-800">/</span>
+            <span class="text-[11px] font-bold uppercase text-slate-400">Support: contato@mundodasias.com.br</span>
         </div>
-        <p class="logo-font text-[10px] opacity-30 tracking-[1em]">MUNDO DAS IA'S © 2026</p>
+        <p class="logo-font text-[11px] opacity-20 tracking-[1.2em]">MUNDO DAS IA'S © 2026</p>
     </footer>
 
-    <div id="m-priv" class="hidden fixed inset-0 bg-black/95 z-50 items-center justify-center p-6 backdrop-blur-md">
-        <div class="glass p-10 max-w-lg w-full">
-            <h3 class="logo-font text-cyan-400 mb-4 uppercase">Privacidade AdSense</h3>
-            <p class="text-sm text-slate-400 mb-8 leading-relaxed">Em conformidade com 2026, usamos cookies para anúncios personalizados. Dados sensíveis não são coletados.</p>
-            <button onclick="toggleModal('m-priv')" class="btn-elite w-full">Fechar</button>
+    <div id="m-terms" class="hidden fixed inset-0 bg-black/95 z-50 items-center justify-center p-6 backdrop-blur-2xl">
+        <div class="glass p-12 max-w-2xl w-full border-cyan-400/30 overflow-y-auto max-h-[85vh]">
+            <h3 class="logo-font text-cyan-400 text-2xl mb-8 uppercase italic">Termos e Privacidade</h3>
+            <div class="text-slate-400 space-y-6 text-sm leading-relaxed">
+                <p><strong>Uso de Conteúdo:</strong> Todo o material curado no Mundo das IA's serve para fins informativos. Implementações de automação são de risco e responsabilidade do usuário.</p>
+                <p><strong>AdSense & Cookies:</strong> Este site exibe anúncios e coleta dados não sensíveis através de cookies para otimizar sua experiência publicitária via rede Google.</p>
+                <p><strong>Ética 2026:</strong> Respeitamos as diretrizes globais de inteligência artificial autêntica.</p>
+            </div>
+            <button onclick="toggleModal('m-terms')" class="btn-elite w-full mt-10">Aceitar e Fechar</button>
         </div>
     </div>
 
     <script>
         const API_KEY = "SUA_CHAVE_AQUI";
         let rawData = [];
-        let currentLang = 'pt';
+        let curLang = 'pt';
 
         const i18n = {
             pt: {
-                nav_academy: "Academy", nav_news: "Trends", nav_inst: "Institucional", hero_desc: "Filtramos o ruído para entregar apenas ferramentas de alta performance.", btn_consultar: "Consultar Núcleo", title_featured: "Sistemas em Destaque", title_trends: "Neural Trends", news_cat1: "Notícias", news_t1: "O Fim dos Prompts?", news_d1: "Interpretam intenção cerebral direta em 2026.", news_cat2: "Curiosidades", news_t2: "Energia", news_d2: "Consumo equivalente a carregar um celular por 48h.", news_cat3: "Entretenimento", news_t3: "Cinema Sintético", news_d3: "Filmes gerados por IA vencem festivais.", inst_m: "Missão", inst_m_desc: "Filtramos o ruído digital para entregar apenas a elite global.", inst_v: "Visão", inst_v_desc: "Ponte entre a complexidade algorítmica e a produtividade.", inst_va: "Valores", inst_va_desc: "Transparência digital e ética algorítmica.", foot_priv: "Privacidade", btn_exec: "Executar", btn_acc: "Acessar", q_place: "O que deseja automatizar?"
+                hero_desc: "Curadoria técnica rigorosa e ferramentas de alta performance filtradas para o mercado global.",
+                btn_consultar: "Processar Requisição", title_featured: "Sistemas em Destaque", title_trends: "Neural Trends",
+                news_cat1: "Notícias", news_t1: "Interoperabilidade Neural", news_d1: "Protocolo único entre IAs para 2026 anunciado.",
+                news_cat2: "Curiosidades", news_t2: "A Era do Pós-Silício", news_d2: "Computadores biológicos reduzem consumo em 95%.",
+                news_cat3: "Criatividade", news_t3: "Hollywood 2.0", news_d3: "Entidade autônoma vence Oscar de direção.",
+                inst_m: "Missão", inst_m_desc: "Conhecimento para profissionais na economia sintética.",
+                inst_v: "Visão", inst_v_desc: "Referência global para filtragem de tecnologia neural.",
+                inst_va: "Valores", inst_va_desc: "Independência editorial e rigor técnico.",
+                foot_terms: "Termos e Privacidade", btn_exec: "Executar", btn_acc: "Acessar", q_place: "O que deseja automatizar hoje?"
             },
             en: {
-                nav_academy: "Academy", nav_news: "Trends", nav_inst: "Institutional", hero_desc: "Filtering the noise to deliver high-performance tools only.", btn_consultar: "Consult Core", title_featured: "Featured Systems", title_trends: "Neural Trends", news_cat1: "News", news_t1: "The End of Prompts?", news_d1: "Interpreting direct brain intention in 2026.", news_cat2: "Trivia", news_t2: "Energy", news_d2: "Consumption like charging a phone for 48h.", news_cat3: "Entertainment", news_t3: "Synthetic Cinema", news_d3: "AI-generated movies winning festivals.", inst_m: "Mission", inst_m_desc: "Filtering digital noise for elite global development.", inst_v: "Vision", inst_v_desc: "Bridge between complexity and productivity.", inst_va: "Values", inst_va_desc: "Digital transparency and algorithmic ethics.", foot_priv: "Privacy", btn_exec: "Run", btn_acc: "Access", q_place: "What to automate?"
+                hero_desc: "Rigorous technical curation and high-performance tools filtered for the global market.",
+                btn_consultar: "Process Request", title_featured: "Featured Systems", title_trends: "Neural Trends",
+                news_cat1: "News", news_t1: "Neural Interoperability", news_d1: "Unified protocol for 2026 AIs announced.",
+                news_cat2: "Trivia", news_t2: "Post-Silicon Era", news_d2: "Bio-computers reduce energy consumption by 95%.",
+                news_cat3: "Creativity", news_t3: "Hollywood 2.0", news_d3: "Autonomous entity wins Best Direction Oscar.",
+                inst_m: "Mission", inst_m_desc: "Infrastructure for professionals in the synthetic economy.",
+                inst_v: "Vision", inst_v_desc: "Global reference for neural technology filtering.",
+                inst_va: "Values", inst_va_desc: "Editorial independence and technical rigor.",
+                foot_terms: "Terms and Privacy", btn_exec: "Run", btn_acc: "Access", q_place: "What do you want to automate today?"
             },
             es: {
-                nav_academy: "Academia", nav_news: "Tendencias", nav_inst: "Institucional", hero_desc: "Filtramos el ruido para entregar solo herramientas de élite.", btn_consultar: "Consultar Núcleo", title_featured: "Sistemas Destacados", title_trends: "Tendencias", news_cat1: "Noticias", news_t1: "¿El Fin de los Prompts?", news_d1: "Interpretan intención cerebral en 2026.", news_cat2: "Curiosidades", news_t2: "Energía", news_d2: "Consumo como cargar un móvil por 48h.", news_cat3: "Entretenimiento", news_t3: "Cine Sintético", news_d3: "Películas IA ganando festivais.", inst_m: "Misión", inst_m_desc: "Filtramos el ruido para entregar solo la élite global.", inst_v: "Visión", inst_v_desc: "Puente entre complejidad y productividad.", inst_va: "Valores", inst_va_desc: "Transparencia digital y ética algorítmica.", foot_priv: "Privacidad", btn_exec: "Ejecutar", btn_acc: "Acceder", q_place: "¿Qué automatizar?"
+                hero_desc: "Curaduría técnica rigurosa y herramientas de alto rendimiento para el mercado global.",
+                btn_consultar: "Procesar Solicitud", title_featured: "Sistemas Destacados", title_trends: "Tendencias",
+                news_cat1: "Noticias", news_t1: "Interoperabilidad Neural", news_d1: "Protocolo único anunciado para IAs en 2026.",
+                news_cat2: "Curiosidades", news_t2: "Era del Post-Silicio", news_d2: "Bio-computadoras reducen el consumo en un 95%.",
+                news_cat3: "Creatividad", news_t3: "Hollywood 2.0", news_d3: "Entidad autónoma gana Oscar a la mejor dirección.",
+                inst_m: "Misión", inst_m_desc: "Conocimiento para profesionales en la economía sintética.",
+                inst_v: "Visión", inst_v_desc: "Referencia global para el filtrado de tecnología neural.",
+                inst_va: "Valores", inst_va_desc: "Independencia editorial y rigor técnico.",
+                foot_terms: "Términos y Privacidad", btn_exec: "Ejecutar", btn_acc: "Acceder", q_place: "¿Qué desea automatizar hoy?"
             }
         };
 
@@ -157,11 +204,11 @@
                     return { cat: c[0], nome: c[1], desc: c[2], link: c[3], img: c[4] || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600', rat: c[6] || 4.9 };
                 }).filter(i => i);
                 changeLang('pt');
-            } catch(e) { console.error("Erro."); }
+            } catch(e) { console.error("Error connecting to neural data."); }
         }
 
         function changeLang(lang) {
-            currentLang = lang;
+            curLang = lang;
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(`btn-${lang}`).classList.add('active');
             document.querySelectorAll('[data-t]').forEach(el => el.innerText = i18n[lang][el.getAttribute('data-t')]);
@@ -173,52 +220,52 @@
 
         function render(list) {
             document.getElementById('ia-grid').innerHTML = list.map(ia => `
-                <div class="glass overflow-hidden flex flex-col group h-full">
-                    <div class="relative">
+                <div class="glass overflow-hidden flex flex-col group h-full hover:border-cyan-400/40 transition-all">
+                    <div class="relative overflow-hidden">
                         <img src="${ia.img}" class="img-card">
-                        <div class="absolute top-2 right-2 flex gap-2">
-                            <span onclick="window.open('https://wa.me/?text=${encodeURIComponent(ia.link)}')" class="share-icon">🟢</span>
-                            <span onclick="window.open('https://t.me/share/url?url=${encodeURIComponent(ia.link)}')" class="share-icon">🔵</span>
+                        <div class="absolute top-4 right-4 flex gap-3">
+                            <a href="https://wa.me/?text=${encodeURIComponent(ia.nome + ': ' + ia.link)}" target="_blank" class="share-btn share-wa"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://t.me/share/url?url=${encodeURIComponent(ia.link)}" target="_blank" class="share-btn share-tg"><i class="fa-brands fa-telegram"></i></a>
                         </div>
                     </div>
-                    <div class="p-5 flex flex-col grow">
-                        <div class="flex justify-between text-[9px] mb-2">
-                            <span class="text-cyan-400 font-bold uppercase">${ia.cat}</span>
+                    <div class="p-6 flex flex-col grow">
+                        <div class="flex justify-between text-[10px] mb-3">
+                            <span class="text-cyan-400 font-bold uppercase tracking-wider">${ia.cat}</span>
                             <span class="text-white">★ ${ia.rat}</span>
                         </div>
-                        <h4 class="text-white font-bold text-sm mb-2">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] line-clamp-2 mb-4">${ia.desc}</p>
-                        <a href="${ia.link}" target="_blank" class="mt-auto btn-elite">${i18n[currentLang].btn_exec}</a>
+                        <h4 class="text-white font-bold text-base mb-3 uppercase tracking-tight">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[12px] line-clamp-2 leading-relaxed mb-6 font-medium">${ia.desc}</p>
+                        <a href="${ia.link}" target="_blank" class="mt-auto btn-elite">${i18n[curLang].btn_exec}</a>
                     </div>
                 </div>`).join('');
         }
 
         function renderFeatured(list) {
             document.getElementById('featured-grid').innerHTML = list.map(ia => `
-                <div class="glass overflow-hidden group">
-                    <img src="${ia.img}" class="img-card h-[130px]">
+                <div class="glass overflow-hidden group border-b-4 border-cyan-500/30">
+                    <img src="${ia.img}" class="img-card h-[150px]">
                     <div class="p-6">
-                        <span class="text-cyan-400 font-bold text-[9px] uppercase">${ia.cat}</span>
-                        <h4 class="text-white font-bold my-2 text-sm uppercase">${ia.nome}</h4>
-                        <a href="${ia.link}" target="_blank" class="btn-elite py-1 px-4 text-[9px]">${i18n[currentLang].btn_acc}</a>
+                        <span class="text-cyan-400 font-bold text-[10px] uppercase">${ia.cat}</span>
+                        <h4 class="text-white font-bold my-2 text-lg uppercase">${ia.nome}</h4>
+                        <a href="${ia.link}" target="_blank" class="btn-elite py-1 px-4 text-[10px]">${i18n[curLang].btn_acc}</a>
                     </div>
                 </div>`).join('');
         }
 
         function renderAcademy() {
             const courses = [
-                {n: "Harvard AI", i: "https://images.unsplash.com/photo-1590012314607-cda9d9b6a919?w=500", l: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python"},
-                {n: "NVIDIA Gen", i: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=500", l: "https://www.nvidia.com/en-us/training/online/"},
-                {n: "Google Path", i: "https://images.unsplash.com/photo-1573163281530-5be9c294873c?w=500", l: "https://www.cloudskillsboost.google/paths/118"},
-                {n: "Azure Fund.", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500", l: "https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/"},
-                {n: "IBM Skills", i: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500", l: "https://skillsbuild.org/students/course-catalog/digital-literacy/artificial-intelligence"}
+                {n: "Harvard University", i: "https://images.unsplash.com/photo-1590012314607-cda9d9b6a919?w=600", l: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python", d: "Fundamentos de Python e redes neurais profundas."},
+                {n: "NVIDIA Deep Learning", i: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600", l: "https://www.nvidia.com/en-us/training/online/", d: "Otimização de hardware e inferência em tempo real."},
+                {n: "Google Cloud AI", i: "https://images.unsplash.com/photo-1573163281530-5be9c294873c?w=600", l: "https://www.cloudskillsboost.google/paths/118", d: "Integração de modelos generativos via API Cloud."},
+                {n: "Microsoft Learn", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600", l: "https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/", d: "Desenvolvimento de soluções inteligentes no Azure."}
             ];
             document.getElementById('academy-grid').innerHTML = courses.map(c => `
-                <div class="glass overflow-hidden flex flex-col group">
-                    <img src="${c.i}" class="img-card h-[140px]">
-                    <div class="p-4 flex flex-col grow">
-                        <h4 class="text-white font-bold text-xs mb-3 uppercase">${c.n}</h4>
-                        <a href="${c.l}" target="_blank" class="mt-auto btn-elite text-[9px] uppercase">Grátis</a>
+                <div class="glass overflow-hidden flex flex-col group border border-white/5">
+                    <img src="${c.i}" class="img-card h-[150px] grayscale group-hover:grayscale-0">
+                    <div class="p-6 flex flex-col grow">
+                        <h4 class="text-white font-bold text-sm mb-2 uppercase">${c.n}</h4>
+                        <p class="text-slate-500 text-[10px] mb-4">${c.d}</p>
+                        <a href="${c.l}" target="_blank" class="mt-auto btn-elite text-[9px] py-2">Certificação</a>
                     </div>
                 </div>`).join('');
         }
@@ -228,15 +275,15 @@
             const resBox = document.getElementById('aiResponse');
             if(!q) return;
             resBox.classList.remove('hidden');
-            resBox.innerText = "...";
+            resBox.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Processando no Núcleo Mundo das IA\'s...';
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`, {
                     method: "POST", headers: {"Content-Type":"application/json"},
-                    body: JSON.stringify({contents:[{parts:[{text: `Be short. Recommend AI for: ${q}`}]}]})
+                    body: JSON.stringify({contents:[{parts:[{text: `Você é o oráculo do Mundo das IA's. Responda em ${curLang} de forma técnica sobre: ${q}`}]}]})
                 });
                 const d = await res.json();
                 resBox.innerText = d.candidates[0].content.parts[0].text;
-            } catch(e) { resBox.innerText = "Error."; }
+            } catch(e) { resBox.innerText = "Falha na sincronização neural."; }
         }
 
         function toggleModal(id) {
