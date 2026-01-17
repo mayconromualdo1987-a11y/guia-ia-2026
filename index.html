@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Ecossistema Neural 2026</title>
+    <title>Mundo das IA's | Ecossistema de Inteligência Sintética</title>
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%226%22/><text y=%22.7em%22 x=%2250%25%22 text-anchor=%22middle%22 font-family=%22Orbitron%22 font-size=%2250%22 fill=%22%2300f2ff%22 font-weight=%22bold%22>M</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%226%22/><path d=%22M30 70V30L50 50L70 30V70%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22 stroke-linecap=%22round%22/></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
@@ -18,149 +18,102 @@
         .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; }
         .img-card { height: 180px; width: 100%; object-fit: cover; border-radius: 1rem 1rem 0 0; }
         .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px; border-radius: 4px; transition: 0.3s; cursor: pointer; text-align: center; border: none; width: 100%; display: block; }
-        .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); transform: scale(1.02); }
-        .lang-btn { cursor: pointer; height: 18px; opacity: 0.5; transition: 0.3s; }
+        .btn-elite:hover { box-shadow: 0 0 25px var(--cyan); transform: translateY(-2px); }
+        .lang-btn { cursor: pointer; height: 18px; opacity: 0.4; transition: 0.3s; }
         .lang-btn.active { opacity: 1; outline: 1px solid var(--cyan); outline-offset: 4px; }
-        #modal-terms { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .star { color: #fbbf24; font-size: 0.7rem; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .share-link { transition: 0.3s; color: rgba(255,255,255,0.4); }
+        .share-link:hover { color: var(--cyan); }
     </style>
 </head>
 <body>
 
     <nav class="p-6 border-b border-white/5 sticky top-0 bg-slate-950/90 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="logo-font text-xl font-black uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></div>
+            <div class="logo-font text-xl font-black uppercase tracking-widest">MUNDO DAS <span class="text-cyan-400">IA'S</span></div>
             <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
+                <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-[2px]">
+                    <a href="#destaques" class="hover:text-cyan-400">Destaques</a>
                     <a href="#ia-grid" class="hover:text-cyan-400">Arsenal</a>
                     <a href="#academy" class="hover:text-cyan-400">Academy</a>
-                    <a href="#news" class="hover:text-cyan-400">News</a>
                 </div>
                 <div class="flex gap-4 border-l border-white/10 pl-6">
-                    <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" onclick="changeLang('pt')" id="l-pt">
-                    <img src="https://flagcdn.com/w40/us.png" class="lang-btn" onclick="changeLang('en')" id="l-en">
+                    <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" onclick="changeLang('pt')" id="b-pt">
+                    <img src="https://flagcdn.com/w40/us.png" class="lang-btn" onclick="changeLang('en')" id="b-en">
+                    <img src="https://flagcdn.com/w40/es.png" class="lang-btn" onclick="changeLang('es')" id="b-es">
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto p-6 md:p-12">
-        <section class="mb-24 text-center">
-            <h1 class="logo-font text-6xl mb-6 uppercase italic leading-tight" data-t="h1">Ecossistema <br><span class="text-cyan-400">Neural.</span></h1>
-            <p class="text-slate-400 text-xl max-w-2xl mx-auto" data-t="hero_d">A curadoria definitiva de inteligência artificial em 2026. Processamento estático para máxima velocidade.</p>
+        <header class="mb-24 text-center">
+            <h1 class="logo-font text-6xl mb-6 uppercase italic leading-tight" data-t="h1">Fronteira <br><span class="text-cyan-400">Sintética.</span></h1>
+            <p class="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed" data-t="hero_d">Curadoria de alta precisão em modelos neurais e arquiteturas de automação inteligente.</p>
+        </header>
+
+        <section id="destaques" class="mb-24">
+            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[15px]" data-t="t1">Top Destaques</h3>
+            <div id="destaque-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                </div>
         </section>
 
-        <div class="mb-24">
-            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t1">Arsenal em Destaque</h3>
-            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                </div>
+        <div id="ia-grid-section" class="mb-24 pt-16 border-t border-white/5">
+            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[15px]" data-t="t_ars">Arsenal Completo</h3>
+            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
         </div>
 
         <section id="academy" class="pt-16 border-t border-white/5 mb-24">
-            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t2">Neural Academy</h3>
+            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[15px]" data-t="t2">Neural Academy</h3>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="glass overflow-hidden flex flex-col h-full">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" class="img-card">
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" class="img-card group-hover:scale-105 transition duration-500">
                     <div class="p-6 flex flex-col grow">
-                        <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">Google Cloud</span>
-                        <h4 class="text-white font-bold mb-3 uppercase text-sm">Intro to Generative AI</h4>
-                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">Curso oficial do Google sobre os fundamentos de modelos de linguagem e aplicações práticas.</p>
-                        <a href="https://www.cloudskillsboost.google/course_templates/539" target="_blank" class="mt-auto btn-elite">Acessar Curso</a>
-                    </div>
-                </div>
-                <div class="glass overflow-hidden flex flex-col h-full">
-                    <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600" class="img-card">
-                    <div class="p-6 flex flex-col grow">
-                        <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">DeepLearning.AI</span>
-                        <h4 class="text-white font-bold mb-3 uppercase text-sm">Prompt Engineering</h4>
-                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">Domine a arte de conversar com LLMs com os maiores especialistas do mundo.</p>
-                        <a href="https://www.deeplearning.ai/short-courses/" target="_blank" class="mt-auto btn-elite">Acessar Curso</a>
+                        <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">Fundamental</span>
+                        <h4 class="text-white font-bold mb-3 uppercase text-sm">Generative AI Intro</h4>
+                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">Capacitação técnica em modelos de larga escala e aplicações em fluxos de trabalho reais.</p>
+                        <a href="#" class="mt-auto btn-elite">Acessar</a>
                     </div>
                 </div>
                 </div>
         </section>
 
         <section id="news" class="pt-16 border-t border-white/5 mb-24">
-            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t3">IA News</h3>
+            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[15px]" data-t="t3">Últimas Atualizações</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <article class="glass p-6 border-t-2 border-cyan-400">
-                    <span class="text-[9px] text-slate-500 uppercase font-bold">17 Jan 2026</span>
-                    <h4 class="text-white font-bold my-4 uppercase leading-tight">Gemini 3.0 Ultra redefine o processamento multimodal</h4>
-                    <p class="text-slate-400 text-sm mb-6">Novas capacidades de vídeo em tempo real colocam o Google na liderança absoluta da robótica cognitiva.</p>
-                    <a href="#" class="text-cyan-400 text-[10px] font-bold uppercase hover:underline">Ler Análise →</a>
-                </article>
-                <article class="glass p-6 border-t-2 border-slate-700">
-                    <span class="text-[9px] text-slate-500 uppercase font-bold">15 Jan 2026</span>
-                    <h4 class="text-white font-bold my-4 uppercase leading-tight">Apple integra Neural Engine 5 no novo ecossistema</h4>
-                    <p class="text-slate-400 text-sm mb-6">A privacidade local ganha força com a nova arquitetura que processa 100 trilhões de operações por segundo.</p>
-                    <a href="#" class="text-cyan-400 text-[10px] font-bold uppercase hover:underline">Ler Análise →</a>
+                <article class="glass p-8 border-l-2 border-cyan-400">
+                    <h4 class="text-white font-bold mb-4 uppercase text-lg">Avanço Multimodal</h4>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Novos modelos processam múltiplos canais de dados simultâneos com eficiência energética inédita.</p>
+                    <a href="#" class="text-cyan-400 text-[10px] font-bold uppercase hover:underline">Detalhes →</a>
                 </article>
             </div>
         </section>
 
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-20 border-t border-white/5">
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Missão</h4>
-                <p class="text-slate-400 text-sm">Nossa missão é 2026: simplificar a transição tecnológica para a era da inteligência sintética.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase" data-t="m_t">Missão Técnica</h4>
+                <p class="text-slate-400 text-sm leading-relaxed" data-t="m_d">Decodificar o ecossistema tecnológico para fornecer ferramentas de vantagem competitiva inegociável.</p>
             </div>
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Visão</h4>
-                <p class="text-slate-400 text-sm">Ser o portal de referência mundial em curadoria de modelos neurais e aplicações práticas.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase" data-t="v_t">Visão Sistêmica</h4>
+                <p class="text-slate-400 text-sm leading-relaxed" data-t="v_d">Liderar a curadoria neural estabelecendo padrões globais de eficiência e precisão técnica.</p>
             </div>
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Valores</h4>
-                <p class="text-slate-400 text-sm">Transparência, velocidade e precisão técnica em cada recomendação do nosso arsenal.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase" data-t="va_t">Pilar Ético</h4>
+                <p class="text-slate-400 text-sm leading-relaxed" data-t="va_d">Compromisso total com a transparência de fontes e a integridade de dados em cada análise.</p>
             </div>
         </section>
     </main>
 
     <footer class="p-12 border-t border-white/5 text-center">
-        <div class="flex justify-center gap-8 mb-6">
-            <button onclick="toggleModal()" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400">Privacidade</button>
-            <span class="text-[10px] font-bold uppercase text-slate-400">suporte@mundodasias.com.br</span>
+        <div class="flex justify-center gap-12 mb-8">
+            <button onclick="openModal('m-priv')" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400">Privacidade</button>
+            <button onclick="openModal('m-terms')" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400">Termos</button>
         </div>
-        <p class="logo-font text-[9px] opacity-20 tracking-widest">MUNDO DAS IA'S © 2026</p>
+        <p class="logo-font text-[9px] opacity-20 tracking-[10px]">MUNDO DAS IA'S © ATEMPORAL</p>
     </footer>
 
-    <div id="modal-terms" onclick="toggleModal()">
-        <div class="glass p-10 max-w-lg w-full" onclick="event.stopPropagation()">
-            <h3 class="logo-font text-cyan-400 mb-4 uppercase">Termos e Privacidade</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-4">Referência: Janeiro de 2026.</p>
-            <p class="text-slate-400 text-sm leading-relaxed">Este site utiliza Google AdSense e curadoria técnica. Não coletamos dados pessoais sensíveis.</p>
-            <button onclick="toggleModal()" class="btn-elite mt-8">Fechar</button>
-        </div>
-    </div>
-
-    <script>
-        // CARREGAMENTO APENAS PARA AS IAs DA PLANILHA
-        async function init() {
-            const urlIA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv";
-            try {
-                const res = await fetch(urlIA);
-                const csv = await res.text();
-                const data = csv.split('\n').slice(1).map(r => {
-                    const c = r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    return c[1] ? { cat: c[0], nome: c[1], desc: c[2], link: c[3], img: c[4] } : null;
-                }).filter(i => i);
-                
-                document.getElementById('ia-grid').innerHTML = data.map(i => `
-                    <div class="glass overflow-hidden flex flex-col h-full">
-                        <img src="${i.img}" class="img-card" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
-                        <div class="p-6 flex flex-col grow">
-                            <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">${i.cat}</span>
-                            <h4 class="text-white font-bold mb-3 uppercase text-sm">${i.nome}</h4>
-                            <p class="text-slate-500 text-xs mb-6 line-clamp-3">${i.desc}</p>
-                            <a href="${i.link}" target="_blank" class="mt-auto btn-elite">Executar</a>
-                        </div>
-                    </div>`).join('');
-            } catch(e) { console.error("Erro no Arsenal"); }
-        }
-
-        function toggleModal() { 
-            const m = document.getElementById('modal-terms'); 
-            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex'; 
-        }
-
-        window.onload = init;
-    </script>
-</body>
-</html>
+    <div id="m-priv" class="modal" onclick="closeModal('m-priv')">
+        <div class="glass p-12 max-w-2xl w-full" onclick="event.stopPropagation()">
+            <h3 class="logo-
