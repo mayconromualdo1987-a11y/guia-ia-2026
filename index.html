@@ -5,181 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo das IA's | Arsenal Neural</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
-
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2240%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><path d=%22M30 50 L70 50 M50 30 L50 70%22 stroke=%22%237000ff%22 stroke-width=%228%22/></svg>">
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
     
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
         
         .card-base { 
-            background: rgba(15, 23, 42, 0.4); 
+            background: rgba(15, 23, 42, 0.6); 
             border: 1px solid rgba(255, 255, 255, 0.05); 
             border-radius: 24px; 
             backdrop-filter: blur(12px);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0, 242, 255, 0.15); }
 
         .btn-nav { background: rgba(0, 242, 255, 0.1); border: 1px solid var(--cyan); color: var(--cyan); padding: 8px 16px; border-radius: 10px; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
-        .btn-nav:hover { background: var(--cyan); color: black; box-shadow: 0 0 15px var(--cyan); }
+        .btn-nav:hover { background: var(--cyan); color: black; box-shadow: 0 0 20px var(--cyan); }
         
-        .lang-select { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: var(--cyan); font-size: 10px; font-weight: 800; padding: 5px; border-radius: 8px; outline: none; cursor: pointer; }
+        .lang-select { background: #0f172a; border: 1px solid var(--cyan); color: var(--cyan); font-size: 11px; padding: 6px; rounded: 8px; outline: none; }
         
-        .modal-active { display: flex !important; animation: fadeIn 0.3s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        .rating-chip { background: rgba(0, 242, 255, 0.1); color: var(--cyan); font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(0, 242, 255, 0.2); }
-        
-        .highlight-card { border: 1px solid var(--purple); background: linear-gradient(135deg, rgba(112, 0, 255, 0.1) 0%, transparent 100%); }
-        .glow-icon { filter: drop-shadow(0 0 8px var(--cyan)); }
+        .highlight-card { border: 2px solid var(--purple); background: linear-gradient(145deg, rgba(112, 0, 255, 0.2), transparent); }
+        .share-btn { opacity: 0; transform: translateY(10px); transition: 0.3s; }
+        .card-base:hover .share-btn { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-2xl border-b border-white/5 z-[100] px-6 py-4">
+    <nav class="fixed top-0 w-full bg-black/95 backdrop-blur-xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer flex items-center gap-4" onclick="window.location.reload()">
-                <div class="glow-icon">
-                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="40" height="40" rx="8" fill="url(#paint0_linear)"/>
-                        <path d="M20 10L12 20H28L20 30V10Z" fill="white" fill-opacity="0.9"/>
-                        <defs>
-                            <linearGradient id="paint0_linear" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#00F2FF"/><stop offset="1" stop-color="#7000FF"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
-                </div>
-                <div class="hidden sm:block">
-                    <h1 class="text-white text-xl font-black leading-none uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
-                    <span class="text-slate-500 text-[8px] tracking-[0.4em] uppercase block font-bold">The Neural Hub</span>
+                <img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" class="w-10 h-10 animate-pulse" alt="Logo">
+                <div class="hidden md:block">
+                    <h1 class="text-white text-xl font-black uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
+                    <span class="text-slate-500 text-[8px] tracking-[0.4em] uppercase block font-bold">The Neural Hub 2026</span>
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
                 <select class="lang-select" onchange="changeLang(this.value)">
-                    <option value="pt">🇧🇷 PT-BR</option>
-                    <option value="en">🇺🇸 EN-US</option>
-                    <option value="es">🇪🇸 ES-ES</option>
+                    <option value="pt">🇧🇷 BR</option>
+                    <option value="en">🇺🇸 EN</option>
+                    <option value="es">🇪🇸 ES</option>
                 </select>
-                <button onclick="scrollToId('academy')" class="btn-nav">Academy</button>
+                <button onclick="document.getElementById('academy').scrollIntoView()" class="btn-nav">Academy</button>
             </div>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center bg-gradient-to-br from-cyan-500/5 to-transparent border-cyan-400/10">
-                <h2 id="hero-title" class="text-5xl md:text-7xl font-black logo-font uppercase mb-4">Arsenal <span class="text-cyan-400">Neural.</span></h2>
-                <p id="hero-desc" class="text-slate-400 text-lg font-medium">Sua inteligência amplificada. O diretório das ferramentas que dominam o mercado.</p>
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+            <div class="lg:col-span-2 card-base p-12 flex flex-col justify-center border-cyan-400/20">
+                <h2 id="hero-title" class="text-6xl md:text-8xl font-black logo-font uppercase mb-4 leading-none">Arsenal <br><span class="text-cyan-400">Neural.</span></h2>
+                <p id="hero-desc" class="text-slate-400 text-xl max-w-xl">Inteligência Artificial minerada em tempo real para o seu workflow.</p>
             </div>
             
-            <div class="card-base p-8 border-purple-500/20">
-                <div class="flex items-center gap-3 mb-6">
-                    <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                    <h3 class="logo-font text-[10px] text-white uppercase tracking-widest">Feed de Inovação</h3>
-                </div>
-                <div class="space-y-4">
+            <div class="card-base p-8 border-purple-500/30">
+                <h3 class="logo-font text-xs text-purple-400 mb-6 uppercase tracking-widest flex items-center gap-2">
+                    <span class="w-2 h-2 bg-purple-500 rounded-full"></span> Insider News
+                </h3>
+                <div class="space-y-6">
                     <div class="group cursor-pointer">
-                        <span class="text-[9px] text-cyan-400 font-bold uppercase">Notícias</span>
-                        <p class="text-xs text-white font-bold group-hover:text-cyan-400 transition">Nova IA da OpenAI promete raciocínio humano.</p>
+                        <span class="text-[9px] text-cyan-400 font-bold uppercase">Tendência</span>
+                        <p class="text-sm text-white font-bold group-hover:text-cyan-400">Agentes autônomos começam a substituir tarefas de gestão.</p>
                     </div>
                     <div class="group cursor-pointer">
-                        <span class="text-[9px] text-purple-400 font-bold uppercase">Curiosidades</span>
-                        <p class="text-xs text-white font-bold group-hover:text-purple-400 transition">Como a IA está lendo pensamentos de pacientes.</p>
-                    </div>
-                    <div class="group cursor-pointer">
-                        <span class="text-[9px] text-green-400 font-bold uppercase">Entretenimento</span>
-                        <p class="text-xs text-white font-bold group-hover:text-green-400 transition">O filme criado 100% por algoritmos em 2026.</p>
+                        <span class="text-[9px] text-purple-400 font-bold uppercase">Curiosidade</span>
+                        <p class="text-sm text-white font-bold group-hover:text-purple-400">IA processa 1 trilhão de parâmetros em milissegundos.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h3 id="label-market" class="logo-font text-purple-400 text-xs mb-8 uppercase tracking-[0.3em] flex items-center gap-4">
-            <span class="h-px bg-purple-400/20 flex-grow"></span> IA'S LÍDERES DE MERCADO <span class="h-px bg-purple-400/20 flex-grow"></span>
-        </h3>
-        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"></div>
+        <h3 class="logo-font text-purple-400 text-xs mb-8 uppercase tracking-[0.4em] text-center">--- MARKET LEADERS ---</h3>
+        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"></div>
 
-        <section class="card-base p-6 mb-12 border-white/10">
-            <div class="flex flex-col md:flex-row gap-6">
-                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-8 py-5 rounded-2xl text-cyan-400 outline-none font-bold text-xs uppercase tracking-widest" placeholder="Buscar no Arsenal...">
-                <div class="flex gap-3">
-                    <button onclick="setSort('rel')" id="sort-rel" class="px-4 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-cyan-400">Ranking</button>
-                    <button onclick="setSort('recent')" id="sort-recent" class="px-4 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-slate-500">Recentes</button>
-                    <button onclick="setSort('hits')" id="sort-hits" class="px-4 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-slate-500">Acessos</button>
+        <section class="mb-12">
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-slate-900/50 border border-white/10 px-6 py-4 rounded-2xl text-cyan-400 focus:border-cyan-400 outline-none font-bold" placeholder="Filtrar ferramentas...">
+                <div class="flex gap-2">
+                    <button onclick="setSort('rel')" id="sort-rel" class="px-6 py-4 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-cyan-400 bg-cyan-400/5">Ranking</button>
+                    <button onclick="setSort('recent')" id="sort-recent" class="px-6 py-4 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500">Recentes</button>
                 </div>
             </div>
         </section>
 
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24"></div>
 
-        <section id="academy" class="pt-10">
-            <h3 class="logo-font text-cyan-400 text-xs mb-8 uppercase tracking-[0.3em] flex items-center gap-4">
-                <span class="h-px bg-cyan-400/20 flex-grow"></span> ACADEMY: CURSOS GRATUITOS <span class="h-px bg-cyan-400/20 flex-grow"></span>
-            </h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <a href="https://www.cloudskillsboost.google/course_templates/539" target="_blank" class="card-base p-8 hover:border-cyan-400 group">
-                    <h4 class="text-white font-bold mb-2">Google Generative AI</h4>
-                    <p class="text-slate-500 text-xs mb-4">Aprenda os fundamentos da IA generativa direto da fonte oficial.</p>
-                    <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">INICIAR AGORA →</span>
+        <section id="academy" class="py-20 border-t border-white/5">
+            <h3 class="logo-font text-cyan-400 text-xs mb-12 uppercase tracking-widest text-center">Academy & Certificações</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="https://www.cloudskillsboost.google" target="_blank" class="card-base p-8 hover:border-cyan-400 group text-center">
+                    <img src="https://www.gstatic.com/images/branding/product/2x/google_cloud_64dp.png" class="w-12 mx-auto mb-4">
+                    <h4 class="text-white font-bold mb-2 uppercase">Google Cloud AI</h4>
+                    <p class="text-slate-500 text-xs">Cursos oficiais sobre modelos LLM e GenAI.</p>
                 </a>
-                <a href="https://learn.microsoft.com/pt-br/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="card-base p-8 hover:border-cyan-400 group">
-                    <h4 class="text-white font-bold mb-2">Microsoft Azure AI</h4>
-                    <p class="text-slate-500 text-xs mb-4">Certificação gratuita em fundamentos de IA na nuvem.</p>
-                    <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">INICIAR AGORA →</span>
-                </a>
-                <a href="https://www.nvidia.com/pt-br/training/" target="_blank" class="card-base p-8 hover:border-cyan-400 group">
-                    <h4 class="text-white font-bold mb-2">NVIDIA Learning</h4>
-                    <p class="text-slate-500 text-xs mb-4">Cursos de Deep Learning para quem busca performance máxima.</p>
-                    <span class="text-cyan-400 text-[10px] font-black group-hover:pl-2 transition-all">INICIAR AGORA →</span>
+                <a href="https://learn.microsoft.com" target="_blank" class="card-base p-8 hover:border-cyan-400 group text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="w-12 mx-auto mb-4 grayscale group-hover:grayscale-0">
+                    <h4 class="text-white font-bold mb-2 uppercase">Microsoft Azure</h4>
+                    <p class="text-slate-500 text-xs">Treinamentos técnicos para engenharia de prompt.</p>
                 </a>
             </div>
         </section>
 
     </main>
 
-    <footer class="py-20 border-t border-white/5 bg-black/40 px-6">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                <button onclick="openTab('termos')">Termos</button>
-                <button onclick="openTab('privacidade')">Privacidade</button>
-                <button onclick="openTab('sugestoes')">Sugestões</button>
-                <button onclick="openTab('institucional')">Sobre</button>
-            </div>
-            <p class="logo-font text-[9px] opacity-20 text-white uppercase tracking-[1em]">Arsenal Neural | 2026</p>
+    <footer class="py-12 bg-black/60 border-t border-white/5 text-center">
+        <div class="flex justify-center gap-8 mb-8 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+            <a href="#" class="hover:text-cyan-400">Termos</a>
+            <a href="#" class="hover:text-cyan-400">Privacidade</a>
+            <a href="#" class="hover:text-cyan-400">Sugestões</a>
         </div>
+        <p class="logo-font text-[9px] opacity-30 text-white tracking-[1em]">MUNDO DAS IA'S © 2026</p>
     </footer>
 
-    <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-2xl p-6 items-center justify-center">
-        <div class="max-w-2xl w-full bg-[#0a101f] p-10 border border-cyan-400/20 rounded-[40px]">
-            <div id="modalBody" class="text-slate-400 text-sm leading-relaxed"></div>
-            <button onclick="closeTab()" class="mt-10 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase text-[10px] logo-font">FECHAR</button>
-        </div>
-    </div>
-
     <script>
-        const translations = {
-            pt: { title: "Arsenal <span class='text-cyan-400'>Neural.</span>", desc: "Sua inteligência amplificada. O diretório das ferramentas que dominam o mercado.", market: "IA'S LÍDERES DE MERCADO" },
-            en: { title: "Neural <span class='text-cyan-400'>Arsenal.</span>", desc: "Your intelligence amplified. The directory of market-leading tools.", market: "MARKET LEADERS" },
-            es: { title: "Arsenal <span class='text-cyan-400'>Neural.</span>", desc: "Tu inteligencia amplificada. El directorio de herramientas líderes.", market: "LÍDERES DE MERCADO" }
-        };
-
-        function changeLang(lang) {
-            document.getElementById('hero-title').innerHTML = translations[lang].title;
-            document.getElementById('hero-desc').innerText = translations[lang].desc;
-            document.getElementById('label-market').innerText = translations[lang].market;
-        }
-
         let todasIAs = [];
         let sortType = 'rel';
+
+        const placeholderImgs = [
+            "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500",
+            "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500",
+            "https://images.unsplash.com/photo-1675271591211-126ad94e495d?w=500"
+        ];
 
         async function init() {
             const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
@@ -187,87 +141,98 @@
                 const res = await fetch(urlCSV);
                 const data = await res.text();
                 const rows = data.split(/\r?\n/).slice(1);
+                
                 todasIAs = rows.map((row, index) => {
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!col[1]) return null;
                     
-                    // Melhora o texto da descrição se for o padrão do robô
-                    let descricao = col[2]?.replace(/"/g, '') || "Ferramenta de IA avançada para automação e produtividade.";
-                    if(descricao.includes("Ferramenta de IA detectada")) {
-                        descricao = "Inovação em inteligência artificial focada em otimização de fluxos de trabalho e escala digital.";
+                    let nome = col[1]?.replace(/"/g, '');
+                    let desc = col[2]?.replace(/"/g, '');
+                    let img = col[4]?.replace(/"/g, '');
+
+                    // CORREÇÃO: Se o robô trouxe descrições iguais, criamos uma dinâmica
+                    if(desc.length < 10 || desc.includes("detectada")) {
+                        desc = `Solução avançada de IA para ${col[0]?.replace(/"/g, '') || 'automação'}, otimizada para aumentar a eficiência no seu ecossistema digital.`;
+                    }
+
+                    // CORREÇÃO: Se não tiver imagem, usa uma tecnológica aleatória
+                    if(!img || img.length < 10) {
+                        img = placeholderImgs[index % 3];
                     }
 
                     return { 
                         id: index,
-                        cat: col[0]?.replace(/"/g, '') || "Geral", 
-                        nome: col[1]?.replace(/"/g, ''), 
-                        desc: descricao, 
+                        cat: col[0]?.replace(/"/g, '') || "Tech", 
+                        nome: nome, 
+                        desc: desc, 
                         link: col[3]?.replace(/"/g, ''), 
-                        img: col[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500", 
-                        hits: parseInt(col[5]) || 0, 
-                        rating: (4.4 + Math.random() * 0.6).toFixed(1)
+                        img: img, 
+                        hits: parseInt(col[5]) || 0,
+                        rating: (4.2 + Math.random() * 0.7).toFixed(1)
                     };
                 }).filter(i => i);
                 
                 renderHighlights();
                 filterAndSort();
-            } catch(e) { console.error("Erro."); }
+            } catch(e) { console.log("Erro de conexão."); }
         }
 
         function renderHighlights() {
-            const eliteNames = ["CHATGPT", "CLAUDE", "GEMINI", "MIDJOURNEY", "CANVA", "SORA"];
-            let highlights = todasIAs.filter(ia => eliteNames.some(name => ia.nome.toUpperCase().includes(name)));
+            const elite = ["CHATGPT", "CLAUDE", "GEMINI", "MIDJOURNEY", "SORA"];
+            let highlights = todasIAs.filter(ia => elite.some(e => ia.nome.toUpperCase().includes(e)));
+            
             if(highlights.length === 0) highlights = [...todasIAs].sort((a,b) => b.hits - a.hits).slice(0, 3);
 
             document.getElementById('highlights-grid').innerHTML = highlights.slice(0, 3).map(ia => `
-                <div class="card-base p-6 highlight-card flex flex-col items-center text-center">
-                    <img src="${ia.img}" class="w-20 h-20 rounded-2xl object-cover mb-4 border border-purple-500/40">
-                    <h4 class="logo-font text-white font-bold text-sm uppercase">${ia.nome}</h4>
-                    <p class="text-[10px] text-slate-500 my-3 line-clamp-2">${ia.desc}</p>
-                    <a href="${ia.link}" target="_blank" class="text-purple-400 text-[10px] font-black uppercase hover:text-cyan-400 transition">Executar Arsenal →</a>
-                </div>
-            `).join('');
+                <div class="card-base p-8 highlight-card text-center flex flex-col items-center">
+                    <img src="${ia.img}" class="w-24 h-24 rounded-3xl object-cover mb-4 border-2 border-purple-500 shadow-lg shadow-purple-500/20">
+                    <h4 class="logo-font text-white text-lg font-bold">${ia.nome}</h4>
+                    <p class="text-slate-500 text-[11px] my-3 line-clamp-2">${ia.desc}</p>
+                    <a href="${ia.link}" target="_blank" class="text-purple-400 font-black text-[10px] uppercase hover:text-white transition">Acessar Líder →</a>
+                </div>`).join('');
         }
 
         function filterAndSort() {
             const s = document.getElementById('iaSearch').value.toLowerCase();
             let lista = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s));
             
-            if(sortType === 'hits') lista.sort((a,b) => b.hits - a.hits);
-            else if(sortType === 'recent') lista.sort((a,b) => b.id - a.id);
-            else lista.sort((a,b) => b.rating - a.rating);
+            if(sortType === 'recent') lista.sort((a,b) => b.id - a.id);
+            else lista.sort((a,b) => b.hits - a.hits);
 
             document.getElementById('ia-grid').innerHTML = lista.map(ia => `
-                <div class="card-base flex flex-col h-full group">
-                    <div class="h-44 overflow-hidden rounded-t-[24px] relative">
-                        <img src="${ia.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                        <div class="absolute bottom-3 left-3 rating-chip">★ ${ia.rating}</div>
+                <div class="card-base flex flex-col group relative">
+                    <div class="h-48 overflow-hidden rounded-t-[24px] relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute top-4 right-4 flex gap-2 share-btn">
+                            <button onclick="share('wa','${ia.nome}','${ia.link}')" class="bg-green-600 p-2 rounded-lg text-white text-[8px] font-bold">WA</button>
+                            <button onclick="share('tw','${ia.nome}','${ia.link}')" class="bg-sky-500 p-2 rounded-lg text-white text-[8px] font-bold">TW</button>
+                        </div>
                     </div>
-                    <div class="p-8 flex flex-col flex-grow">
-                        <span class="text-[9px] font-bold text-cyan-400/50 uppercase mb-2 tracking-widest">${ia.cat}</span>
-                        <h4 class="text-white font-bold text-base mb-4 logo-font">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] mb-8 line-clamp-3 leading-relaxed font-semibold">${ia.desc}</p>
-                        <div class="mt-auto flex justify-between items-center pt-6 border-t border-white/5">
-                            <span class="text-[9px] font-bold text-slate-700 uppercase">${ia.hits} Pulsos</span>
-                            <a href="${ia.link}" target="_blank" class="text-cyan-400 text-[10px] font-black uppercase">Acessar</a>
+                    <div class="p-6 flex flex-col flex-grow">
+                        <span class="text-[9px] text-cyan-400 font-bold uppercase mb-2">${ia.cat}</span>
+                        <h4 class="text-white font-bold logo-font text-base mb-3">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6">${ia.desc}</p>
+                        <div class="mt-auto pt-4 border-t border-white/5 flex justify-between items-center">
+                            <span class="text-[9px] text-slate-600 font-bold">${ia.hits} PULSOS</span>
+                            <a href="${ia.link}" target="_blank" class="btn-nav text-[9px]">Executar</a>
                         </div>
                     </div>
                 </div>`).join('');
         }
 
-        function setSort(type) { 
-            sortType = type; 
-            ['rel', 'recent', 'hits'].forEach(t => {
-                const btn = document.getElementById(`sort-${t}`);
-                btn.classList.toggle('text-cyan-400', type === t);
-                btn.classList.toggle('text-slate-500', type !== t);
-            });
-            filterAndSort(); 
+        function setSort(type) {
+            sortType = type;
+            document.getElementById('sort-rel').className = type === 'rel' ? 'px-6 py-4 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'px-6 py-4 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500';
+            document.getElementById('sort-recent').className = type === 'recent' ? 'px-6 py-4 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'px-6 py-4 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500';
+            filterAndSort();
         }
 
-        function scrollToId(id) { document.getElementById(id).scrollIntoView({ behavior: 'smooth' }); }
-        function openTab(t) { document.getElementById('mainModal').classList.add('modal-active'); }
-        function closeTab() { document.getElementById('mainModal').classList.remove('modal-active'); }
+        function share(plt, name, link) {
+            const url = encodeURIComponent(link);
+            const msg = encodeURIComponent(`Olha essa IA que encontrei no Mundo das IA's: ${name}`);
+            if(plt === 'wa') window.open(`https://api.whatsapp.com/send?text=${msg}%20${url}`);
+            if(plt === 'tw') window.open(`https://twitter.com/intent/tweet?text=${msg}&url=${url}`);
+        }
 
         window.onload = init;
     </script>
