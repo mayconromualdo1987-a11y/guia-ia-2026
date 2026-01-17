@@ -5,54 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo das IA's | Arsenal Neural</title>
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23020617%22/><path d=%22M30 50 L70 50 M50 30 L50 70%22 stroke=%22%2300f2ff%22 stroke-width=%228%22 stroke-linecap=%22round%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22none%22 stroke=%22%237000ff%22 stroke-width=%225%22/></svg>">
-    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%222%22/><path d=%22M50 20 L50 80 M20 50 L80 50%22 stroke=%22%2300f2ff%22 stroke-width=%228%22 stroke-linecap=%22round%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
         
         .card-base { 
-            background: rgba(15, 23, 42, 0.7); 
+            background: rgba(15, 23, 42, 0.8); 
             border: 1px solid rgba(0, 242, 255, 0.1); 
             border-radius: 24px; 
-            backdrop-filter: blur(15px);
-            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.2); }
 
-        .btn-action { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; transition: 0.3s; }
-        .btn-action:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.1); }
+        .btn-action { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+        .btn-action:hover { box-shadow: 0 0 25px var(--cyan); filter: brightness(1.2); }
         
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-        .modal-active { display: flex; }
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
+        .modal-active { display: flex; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        .share-badge { background: rgba(0,0,0,0.7); border: 1px solid rgba(255,255,255,0.1); padding: 6px; rounded: 8px; transition: 0.3s; }
-        .share-badge:hover { border-color: var(--cyan); background: var(--dark); }
+        .share-btn { background: rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1); padding: 8px; border-radius: 50%; transition: 0.3s; display: flex; items-center; justify-center; }
+        .share-btn:hover { border-color: var(--cyan); transform: scale(1.1); }
+        
+        .elite-glow { border: 2px solid var(--purple); box-shadow: 0 0 20px rgba(112, 0, 255, 0.2); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur-xl border-b border-cyan-900/30 z-[100] px-6 py-4">
+    <nav class="fixed top-0 w-full bg-slate-950/95 backdrop-blur-2xl border-b border-cyan-900/40 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font cursor-pointer flex items-center gap-3" onclick="window.location.reload()">
-                <div class="w-10 h-10 bg-gradient-to-br from-cyan-400 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-cyan-500/20">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
+                <svg width="40" height="40" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00f2ff" stroke-width="2"/>
+                    <path d="M50 20 L50 80 M20 50 L80 50" stroke="#00f2ff" stroke-width="8" stroke-linecap="round"/>
+                    <circle cx="50" cy="50" r="15" fill="#7000ff"/>
+                </svg>
                 <h1 class="text-white text-xl font-black uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
             </div>
             
             <div class="flex items-center gap-4">
-                <select id="langSelect" class="bg-transparent border border-cyan-900 text-cyan-400 text-xs p-2 rounded-lg outline-none">
-                    <option value="pt">🇧🇷 PT</option>
-                    <option value="en">🇺🇸 EN</option>
-                    <option value="es">🇪🇸 ES</option>
+                <select id="langSelect" onchange="window.location.reload()" class="bg-slate-900 border border-cyan-900 text-cyan-400 text-xs p-2 rounded-lg outline-none cursor-pointer">
+                    <option value="pt">🇧🇷 PT-BR</option>
+                    <option value="en">🇺🇸 EN-US</option>
+                    <option value="es">🇪🇸 ES-ES</option>
                 </select>
-                <button onclick="document.getElementById('academy').scrollIntoView({behavior:'smooth'})" class="hidden md:block text-xs font-bold text-slate-400 hover:text-cyan-400 transition">ACADEMY</button>
             </div>
         </div>
     </nav>
@@ -60,100 +65,67 @@
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center border-l-4 border-l-cyan-400">
-                <h2 class="text-5xl md:text-7xl font-black logo-font uppercase mb-4 leading-none text-white">Arsenal <br><span class="text-cyan-400">Neural.</span></h2>
-                <p class="text-slate-400 text-lg max-w-xl">Curadoria inteligente de ferramentas de IA atualizada em tempo real para 2026.</p>
+            <div class="lg:col-span-2 card-base p-12 flex flex-col justify-center border-l-8 border-l-cyan-400">
+                <h2 class="text-6xl md:text-8xl font-black logo-font uppercase mb-4 leading-none text-white">Arsenal <br><span class="text-cyan-400">Neural.</span></h2>
+                <p class="text-slate-400 text-xl font-medium">As IAs que definem 2026, mineradas e validadas.</p>
             </div>
             
-            <div class="card-base p-8">
-                <h3 class="logo-font text-[10px] text-purple-400 mb-6 uppercase tracking-widest flex items-center gap-2 font-bold">
-                    <span class="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span> Tech Trends
-                </h3>
-                <div class="space-y-4">
-                    <a href="https://techcrunch.com/category/artificial-intelligence/" target="_blank" class="block group">
-                        <span class="text-[9px] text-cyan-400 font-bold uppercase">Breaking</span>
-                        <p class="text-xs text-white font-bold group-hover:underline">Acompanhe as últimas rodadas de investimento em IA.</p>
-                    </a>
-                    <a href="https://www.theverge.com/ai-artificial-intelligence" target="_blank" class="block group">
-                        <span class="text-[9px] text-purple-400 font-bold uppercase">Insights</span>
-                        <p class="text-xs text-white font-bold group-hover:underline">O impacto da IA generativa no entretenimento global.</p>
-                    </a>
+            <div class="card-base p-8 flex flex-col justify-between">
+                <div>
+                    <h3 class="logo-font text-[10px] text-purple-400 mb-6 uppercase tracking-widest font-bold">Inovação Hoje</h3>
+                    <p class="text-white font-bold text-sm mb-4">Sora e Gemini Ultra dominam a criação de conteúdo multimodais este mês.</p>
                 </div>
+                <button onclick="openModal('sugestoes')" class="btn-action w-full">Sugerir Nova IA</button>
             </div>
         </div>
 
-        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"></div>
+        <h3 class="logo-font text-cyan-400 text-center text-xs mb-10 uppercase tracking-[0.5em]">--- Principais do Mercado ---</h3>
+        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24"></div>
 
-        <section class="mb-12">
-            <div class="flex flex-col md:flex-row gap-4">
-                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-slate-900/50 border border-cyan-900/30 px-6 py-4 rounded-2xl text-cyan-400 outline-none" placeholder="Buscar no Arsenal Neural...">
-                <div class="flex gap-2">
-                    <button onclick="setSort('rel')" id="sort-rel" class="px-6 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400">Ranking</button>
-                    <button onclick="setSort('recent')" id="sort-recent" class="px-6 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500">Recentes</button>
-                </div>
+        <div class="flex flex-col md:flex-row gap-4 mb-12">
+            <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-slate-900/50 border border-cyan-900/30 px-6 py-5 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400 transition-all" placeholder="O que você quer criar hoje?">
+            <div class="flex gap-2">
+                <button onclick="setSort('hits')" id="sort-hits" class="px-8 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5">Top Acessos</button>
+                <button onclick="setSort('recent')" id="sort-recent" class="px-8 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500">Recentes</button>
             </div>
-        </section>
+        </div>
 
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
 
-        <section id="academy" class="py-20 border-t border-cyan-900/20">
-            <h3 class="logo-font text-cyan-400 text-center text-xs mb-12 uppercase tracking-[0.4em]">--- Academy 2026 ---</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="https://www.cloudskillsboost.google" target="_blank" class="card-base p-8 text-center hover:border-cyan-400">
-                    <div class="text-4xl mb-4">🎓</div>
-                    <h4 class="text-white font-bold mb-2">Google AI Training</h4>
-                    <p class="text-slate-500 text-xs">Aprenda os segredos da IA Generativa oficial.</p>
-                </a>
-                <a href="https://learn.microsoft.com" target="_blank" class="card-base p-8 text-center hover:border-cyan-400">
-                    <div class="text-4xl mb-4">💻</div>
-                    <h4 class="text-white font-bold mb-2">Microsoft Azure</h4>
-                    <p class="text-slate-500 text-xs">Certificações de IA na nuvem mais valorizadas.</p>
-                </a>
-                <a href="https://www.deeplearning.ai" target="_blank" class="card-base p-8 text-center hover:border-cyan-400">
-                    <div class="text-4xl mb-4">🚀</div>
-                    <h4 class="text-white font-bold mb-2">DeepLearning.AI</h4>
-                    <p class="text-slate-500 text-xs">Engenharia de Prompt e Especializações.</p>
-                </a>
-            </div>
-        </section>
     </main>
 
-    <footer class="py-12 bg-slate-950 border-t border-cyan-900/30">
+    <footer class="py-16 bg-slate-950 border-t border-cyan-900/40 mt-20">
         <div class="max-w-7xl mx-auto px-6 text-center">
-            <div class="flex flex-wrap justify-center gap-8 mb-10 text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                <button onclick="openModal('termos')" class="hover:text-cyan-400 transition">Termos</button>
-                <button onclick="openModal('privacidade')" class="hover:text-cyan-400 transition">Privacidade</button>
-                <button onclick="openModal('sugestoes')" class="hover:text-cyan-400 transition">Sugestões</button>
-                <button onclick="openModal('sobre')" class="hover:text-cyan-400 transition">Responsabilidades</button>
+            <div class="flex flex-wrap justify-center gap-10 mb-10 text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                <button onclick="openModal('termos')" class="hover:text-cyan-400">Termos</button>
+                <button onclick="openModal('privacidade')" class="hover:text-cyan-400">Privacidade</button>
+                <button onclick="openModal('sobre')" class="hover:text-cyan-400">Responsabilidades</button>
             </div>
             <p class="logo-font text-[9px] opacity-20 text-white tracking-[1em]">MUNDO DAS IA'S © 2026</p>
         </div>
     </footer>
 
     <div id="infoModal" class="modal-overlay">
-        <div class="max-w-xl w-full bg-slate-900 p-10 rounded-[32px] border border-cyan-400/20 relative">
+        <div class="max-w-xl w-full bg-slate-900 p-10 rounded-[40px] border border-cyan-400/30 relative">
             <div id="modalContent" class="text-slate-400 text-sm leading-relaxed"></div>
-            <button onclick="closeModal()" class="mt-8 w-full btn-action">ENTENDIDO</button>
+            <button onclick="closeModal()" class="mt-8 w-full btn-action">FECHAR JANELA</button>
         </div>
     </div>
 
     <script>
-        const infoData = {
-            termos: "<h2>Termos de Uso</h2><p class='mt-4'>Este diretório é um agregador de tecnologias. Não temos vínculo direto com as ferramentas citadas.</p>",
-            privacidade: "<h2>Privacidade</h2><p class='mt-4'>Utilizamos cookies para análise de tráfego e personalização de anúncios via Google AdSense.</p>",
-            sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Envie sua indicação de ferramenta para: <span class='text-cyan-400'>contato@mundodasias.com.br</span></p>",
-            sobre: "<h2>Responsabilidades</h2><p class='mt-4'>O uso de cada IA é regido pelos termos de seus respectivos desenvolvedores.</p>"
+        const modalTexts = {
+            termos: "<h2>Termos de Uso</h2><p class='mt-4'>O Mundo das IA's é um catálogo independente. Não nos responsabilizamos pelo conteúdo gerado em ferramentas de terceiros.</p>",
+            privacidade: "<h2>Privacidade</h2><p class='mt-4'>Respeitamos seus dados. Utilizamos apenas cookies essenciais para anúncios do Google AdSense.</p>",
+            sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Envie o link da ferramenta para: <b class='text-cyan-400'>contato@mundodasias.com.br</b></p>",
+            sobre: "<h2>Responsabilidades</h2><p class='mt-4'>As marcas e logos exibidos pertencem aos seus respectivos proprietários.</p>"
         };
 
         let todasIAs = [];
-        let sortType = 'rel';
-        
-        // Banco de imagens fallback (tecnológicas)
-        const fallbacks = [
-            "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500",
-            "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500",
-            "https://images.unsplash.com/photo-1675271591211-126ad94e495d?w=500",
-            "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=500"
+        let sortType = 'hits';
+        const fallbackImgs = [
+            "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
+            "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600",
+            "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=600"
         ];
 
         async function init() {
@@ -167,43 +139,52 @@
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!col[1]) return null;
                     
+                    let nome = col[1]?.replace(/"/g, '');
+                    let desc = col[2]?.replace(/"/g, '');
                     let img = col[4]?.replace(/"/g, '');
-                    if(!img || img.length < 10) img = fallbacks[index % fallbacks.length];
+
+                    // CORREÇÃO DE DESCRIÇÕES GENÉRICAS
+                    if(!desc || desc.length < 15 || desc.includes("detectada")) {
+                        desc = `Plataforma de IA especializada em ${col[0]?.replace(/"/g, '') || 'automação'}, focada em acelerar processos criativos e produtividade.`;
+                    }
+
+                    // CORREÇÃO DE IMAGENS FALTANTES
+                    if(!img || img.length < 10) img = fallbackImgs[index % 3];
 
                     return { 
                         id: index,
-                        cat: col[0]?.replace(/"/g, '') || "TECH", 
-                        nome: col[1]?.replace(/"/g, ''), 
-                        desc: col[2]?.replace(/"/g, '') || "Ferramenta otimizada para produtividade e inteligência digital.", 
-                        link: col[3]?.replace(/"/g, ''), 
-                        img: img, 
+                        cat: col[0]?.replace(/"/g, '') || "Geral", 
+                        nome: nome, desc: desc, link: col[3]?.replace(/"/g, ''), img: img, 
                         hits: parseInt(col[5]) || 0
                     };
                 }).filter(i => i);
                 
                 renderHighlights();
                 filterAndSort();
-            } catch(e) { console.log("Erro de rede neural."); }
+            } catch(e) { console.log("Erro no link com a planilha."); }
         }
 
         function renderHighlights() {
-            // ELITE: ChatGPT, Gemini, Midjourney, Claude, Canva
-            const elite = ["CHATGPT", "GEMINI", "MIDJOURNEY", "CLAUDE", "CANVA", "SORA"];
-            let display = todasIAs.filter(ia => elite.some(name => ia.nome.toUpperCase().includes(name))).slice(0, 3);
+            // FORÇA OS DESTAQUES DAS MAIS FAMOSAS
+            const elite = ["CHATGPT", "GEMINI", "MIDJOURNEY", "SORA", "CLAUDE", "CANVA"];
+            let display = todasIAs.filter(ia => elite.some(name => ia.nome.toUpperCase().includes(name)));
+            
+            // Se não encontrar os nomes, pega por hits
             if(display.length === 0) display = [...todasIAs].sort((a,b) => b.hits - a.hits).slice(0, 3);
+            else display = display.sort((a,b) => b.hits - a.hits).slice(0, 3);
 
             document.getElementById('highlights-grid').innerHTML = display.map(ia => `
-                <div class="card-base p-8 border-purple-500/30 flex flex-col items-center text-center">
-                    <img src="${ia.img}" class="w-20 h-20 rounded-2xl object-cover mb-4 border border-purple-400">
-                    <h4 class="logo-font text-white font-bold uppercase">${ia.nome}</h4>
-                    <p class="text-[10px] text-slate-500 my-4 line-clamp-2 italic font-semibold">${ia.desc}</p>
-                    <a href="${ia.link}" target="_blank" class="text-cyan-400 font-black text-[10px] tracking-widest hover:text-white uppercase transition">Explorar Tecnologia →</a>
+                <div class="card-base p-10 elite-glow text-center flex flex-col items-center">
+                    <img src="${ia.img}" class="w-24 h-24 rounded-3xl object-cover mb-6 border-2 border-cyan-400">
+                    <h4 class="logo-font text-white text-lg font-bold uppercase">${ia.nome}</h4>
+                    <p class="text-xs text-slate-500 my-4 line-clamp-2">${ia.desc}</p>
+                    <a href="${ia.link}" target="_blank" class="text-cyan-400 font-black text-xs hover:text-white transition">ACESSAR LÍDER →</a>
                 </div>`).join('');
         }
 
         function filterAndSort() {
             const s = document.getElementById('iaSearch').value.toLowerCase();
-            let list = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s) || ia.cat.toLowerCase().includes(s));
+            let list = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s));
             
             if(sortType === 'recent') list.sort((a,b) => b.id - a.id);
             else list.sort((a,b) => b.hits - a.hits);
@@ -211,22 +192,22 @@
             document.getElementById('ia-grid').innerHTML = list.map(ia => `
                 <div class="card-base flex flex-col group overflow-hidden">
                     <div class="h-44 relative overflow-hidden">
-                        <img src="${ia.img}" class="w-full h-full object-cover transition-all group-hover:scale-110">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
-                            <button onclick="share('wa','${ia.nome}','${ia.link}')" class="share-badge">
-                                <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.292 0-4.156 1.864-4.156 4.156 0 2.292 1.864 4.156 4.156 4.156 2.292 0 4.156-1.864 4.156-4.156 0-2.292-1.864-4.156-4.156-4.156zm0 1.25c1.604 0 2.906 1.302 2.906 2.906s-1.302 2.906-2.906 2.906-2.906-1.302-2.906-2.906 1.302-2.906 2.906-2.906zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                        <img src="${ia.img}" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
+                            <button onclick="share('wa','${ia.nome}','${ia.link}')" class="share-btn">
+                                <svg width="20" height="20" fill="#25D366" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.557-5.332 11.892-11.891 11.892-1.999 0-3.956-.503-5.69-1.448l-6.305 1.666zm6.347-4.139l.363.216c1.55.922 3.33 1.409 5.18 1.409 5.465 0 9.91-4.444 9.91-9.91s-4.445-9.91-9.91-9.91-9.91 4.445-9.91 9.91c0 2.062.639 4.077 1.848 5.756l.236.327-1.127 4.113 4.211-1.111z"/></svg>
                             </button>
-                            <button onclick="share('tw','${ia.nome}','${ia.link}')" class="share-badge">
-                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                            <button onclick="share('tg','${ia.nome}','${ia.link}')" class="share-btn">
+                                <svg width="20" height="20" fill="#0088cc" viewBox="0 0 24 24"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm4.513 6.645l-9.018 3.479c-.611.246-.606.586-.11.739l2.313.722 5.36-3.379c.253-.154.484-.071.294.098l-4.342 3.921-.168 2.516c.247 0 .356-.113.494-.247l1.189-1.156 2.473 1.827c.456.251.785.122.898-.423l1.623-7.647c.166-.665-.254-.967-.686-.75z"/></svg>
                             </button>
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <span class="text-[9px] text-cyan-400 font-black uppercase mb-2 tracking-widest">${ia.cat}</span>
                         <h4 class="text-white font-bold mb-3 uppercase text-sm">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] line-clamp-2 mb-6 font-semibold">${ia.desc}</p>
+                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6 font-semibold">${ia.desc}</p>
                         <div class="mt-auto pt-4 border-t border-cyan-900/20 flex justify-between items-center">
-                            <span class="text-[9px] text-slate-600 font-bold uppercase">${ia.hits} Pulsos</span>
+                            <span class="text-[9px] text-slate-700 font-bold uppercase">${ia.hits} Pulsos</span>
                             <a href="${ia.link}" target="_blank" class="btn-action text-[9px]">Executar</a>
                         </div>
                     </div>
@@ -235,19 +216,19 @@
 
         function setSort(type) {
             sortType = type;
-            document.getElementById('sort-rel').className = type === 'rel' ? 'px-6 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'px-6 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500';
-            document.getElementById('sort-recent').className = type === 'recent' ? 'px-6 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'px-6 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500';
+            document.getElementById('sort-hits').className = type === 'hits' ? 'px-8 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'px-8 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500';
+            document.getElementById('sort-recent').className = type === 'recent' ? 'px-8 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5' : 'px-8 rounded-2xl text-[10px] font-bold uppercase border border-white/10 text-slate-500';
             filterAndSort();
         }
 
         function share(plt, name, link) {
             const url = encodeURIComponent(link);
-            const msg = encodeURIComponent(`Incrível essa IA: ${name}`);
-            if(plt === 'wa') window.open(`https://api.whatsapp.com/send?text=${msg}%20${url}`);
-            if(plt === 'tw') window.open(`https://twitter.com/intent/tweet?text=${msg}&url=${url}`);
+            const text = encodeURIComponent(`Olha que incrível essa IA: ${name}`);
+            if(plt === 'wa') window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`);
+            if(plt === 'tg') window.open(`https://t.me/share/url?url=${url}&text=${text}`);
         }
 
-        function openModal(id) { document.getElementById('modalContent').innerHTML = infoData[id]; document.getElementById('infoModal').classList.add('modal-active'); }
+        function openModal(id) { document.getElementById('modalContent').innerHTML = modalTexts[id]; document.getElementById('infoModal').classList.add('modal-active'); }
         function closeModal() { document.getElementById('infoModal').classList.remove('modal-active'); }
 
         window.onload = init;
