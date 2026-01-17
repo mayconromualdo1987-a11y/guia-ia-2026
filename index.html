@@ -26,60 +26,64 @@
         }
         .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.1); }
 
-        .btn-main { background: var(--cyan); color: black; font-weight: 900; font-size: 10px; padding: 12px 24px; border-radius: 12px; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+        .btn-main { background: var(--cyan); color: black; font-weight: 900; font-size: 10px; padding: 12px 24px; border-radius: 12px; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; }
         .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.1); }
         
         .modal-active { display: flex !important; animation: fadeIn 0.3s ease-out; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .rating-chip { background: rgba(0, 242, 255, 0.1); color: var(--cyan); font-size: 10px; font-weight: 900; padding: 2px 8px; border-radius: 6px; border: 1px solid rgba(0, 242, 255, 0.2); }
-        .highlight-card { border: 1px solid var(--purple); background: linear-gradient(to bottom right, rgba(112, 0, 255, 0.1), transparent); }
+        
+        /* Estilo para Destaques Principais */
+        .highlight-card { border: 1px solid var(--purple); background: linear-gradient(135deg, rgba(112, 0, 255, 0.15) 0%, transparent 100%); position: relative; overflow: hidden; }
+        .highlight-card::before { content: "ELITE"; position: absolute; top: 10px; right: -25px; background: var(--purple); color: white; font-size: 8px; font-weight: 900; padding: 2px 30px; transform: rotate(45deg); }
     </style>
 </head>
 <body class="antialiased">
 
     <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-2xl border-b border-white/5 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="logo-font cursor-pointer flex items-center gap-3" onclick="window.location.reload()">
-                <div class="p-2 bg-cyan-400/10 rounded-lg border border-cyan-400/20">
-                    <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            <div class="logo-font cursor-pointer flex items-center gap-4" onclick="window.location.reload()">
+                <div class="w-10 h-10 flex items-center justify-center bg-cyan-400/20 rounded-xl border border-cyan-400/40 shadow-[0_0_15px_rgba(0,242,255,0.3)]">
+                    <svg class="w-6 h-6 text-cyan-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M11 3a1 1 0 10-2 0v1a1 1 0 102 0V3zM15.657 5.757a1 1 0 00-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zM5 10a1 1 0 01-1 1H3a1 1 0 110-2h1a1 1 0 011 1zM8 16v-1h4v1a2 2 0 11-4 0zM12 14c.015-.34.208-.646.477-.859C13.487 12.333 14 11.238 14 10a4 4 0 00-8 0c0 1.238.513 2.333 1.523 3.141.269.213.462.519.477.859h4z"></path>
+                    </svg>
                 </div>
                 <div>
                     <h1 class="text-white text-xl font-black leading-none uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
                     <span class="text-slate-500 text-[8px] tracking-[0.4em] uppercase block font-bold">The Neural Hub</span>
                 </div>
             </div>
-            <div class="flex items-center gap-6">
-                <button onclick="openTab('cursos')" class="btn-main">Academy</button>
-            </div>
+            <button onclick="openTab('cursos')" class="btn-main">Academy</button>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
-            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center bg-gradient-to-br from-cyan-500/5 to-transparent">
+            <div class="lg:col-span-2 card-base p-10 flex flex-col justify-center bg-gradient-to-br from-cyan-500/5 to-transparent border-cyan-400/10">
                 <h2 class="text-5xl md:text-7xl font-black logo-font uppercase mb-4">Arsenal <span class="text-cyan-400">Neural.</span></h2>
-                <p class="text-slate-400 text-lg font-medium italic">Curadoria estratégica de ferramentas inteligentes para evolução profissional.</p>
+                <p class="text-slate-400 text-lg font-medium">Curadoria estratégica das ferramentas mais poderosas do mercado.</p>
             </div>
             
             <div class="card-base p-8">
                 <div class="flex items-center gap-3 mb-6">
                     <span class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></span>
-                    <h3 class="logo-font text-[10px] text-white uppercase tracking-widest">Global Insights</h3>
+                    <h3 class="logo-font text-[10px] text-white uppercase tracking-widest">Status do Sistema</h3>
                 </div>
                 <div id="news-feed" class="space-y-5"></div>
             </div>
         </div>
 
         <h3 class="logo-font text-purple-400 text-xs mb-8 uppercase tracking-[0.3em] flex items-center gap-4">
-            <span class="h-px bg-purple-400/20 flex-grow"></span> IA'S DE ALTO IMPACTO NO MERCADO <span class="h-px bg-purple-400/20 flex-grow"></span>
+            <span class="h-px bg-purple-400/20 flex-grow"></span> IA'S LÍDERES DE MERCADO <span class="h-px bg-purple-400/20 flex-grow"></span>
         </h3>
-        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"></div>
+        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            </div>
 
         <section class="card-base p-6 mb-12 border-white/10">
             <div class="flex flex-col md:flex-row gap-6">
-                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-8 py-5 rounded-2xl text-cyan-400 outline-none font-bold text-xs uppercase tracking-widest" placeholder="Buscar ferramenta no Arsenal...">
+                <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-black/40 border border-white/10 px-8 py-5 rounded-2xl text-cyan-400 outline-none font-bold text-xs uppercase tracking-widest" placeholder="Buscar no Arsenal Neural...">
                 <div class="flex gap-3">
                     <button onclick="setSort('rel')" id="sort-rel" class="px-6 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-cyan-400 transition">Ranking</button>
                     <button onclick="setSort('recent')" id="sort-recent" class="px-6 py-2 rounded-xl text-[10px] font-bold uppercase border border-white/10 text-slate-500 hover:text-cyan-400 transition">Recentes</button>
@@ -98,7 +102,7 @@
                 <button onclick="openTab('termos')" class="hover:text-cyan-400">Termos</button>
                 <button onclick="openTab('privacidade')" class="hover:text-cyan-400">Privacidade</button>
                 <button onclick="openTab('sugestoes')" class="hover:text-cyan-400">Sugestões</button>
-                <button onclick="openTab('institucional')" class="hover:text-cyan-400">Sobre o Hub</button>
+                <button onclick="openTab('institucional')" class="hover:text-cyan-400">Sobre</button>
             </div>
             <p class="logo-font text-[9px] opacity-20 text-center text-white uppercase tracking-[1em]">Mundo das IA's | Atemporal</p>
         </div>
@@ -107,17 +111,17 @@
     <div id="mainModal" class="fixed inset-0 z-[200] hidden bg-black/95 backdrop-blur-2xl p-6 items-center justify-center">
         <div class="max-w-2xl w-full bg-[#0a101f] p-10 border border-cyan-400/20 rounded-[40px] shadow-2xl">
             <div id="modalBody" class="text-slate-400 text-sm leading-relaxed"></div>
-            <button onclick="closeTab()" class="mt-10 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase text-[10px] logo-font transition">FECHAR</button>
+            <button onclick="closeTab()" class="mt-10 w-full py-5 bg-cyan-400 text-black font-black rounded-2xl uppercase text-[10px] logo-font">VOLTAR AO ARSENAL</button>
         </div>
     </div>
 
     <script>
         const i18n = {
-            termos: "<h2>Termos de Uso</h2><p class='mt-4'>O Mundo das IA's é um diretório informativo. Não garantimos a disponibilidade das ferramentas externas.</p>",
-            privacidade: "<h2>Privacidade</h2><p class='mt-4'>Utilizamos cookies do Google AdSense para anúncios e métricas de tráfego.</p>",
-            sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Envie novas IAs para: <b class='text-cyan-400'>contato@mundodasias.com.br</b></p>",
-            institucional: "<h2>Sobre o Hub</h2><p class='mt-4'>Conectamos utilizadores às tecnologias mais impactantes do mundo.</p>",
-            cursos: "<h2>Academy</h2><p class='mt-4'>Trilhas Google, Microsoft e NVIDIA.</p>"
+            termos: "<h2>Termos de Uso</h2><p class='mt-4'>Diretório informativo. O uso das ferramentas é de responsabilidade de seus provedores.</p>",
+            privacidade: "<h2>Privacidade</h2><p class='mt-4'>Utilizamos cookies para anúncios (AdSense) e melhoria da experiência.</p>",
+            sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Mande sua ideia para: <b class='text-cyan-400'>contato@mundodasias.com.br</b></p>",
+            institucional: "<h2>Sobre</h2><p class='mt-4'>O hub definitivo para quem busca as IAs que estão moldando o futuro.</p>",
+            cursos: "<h2>Academy</h2><p class='mt-4'>Trilhas gratuitas das gigantes de tecnologia: Google, Microsoft e NVIDIA.</p>"
         };
 
         let todasIAs = [];
@@ -147,23 +151,31 @@
                 renderHighlights();
                 filterAndSort();
                 renderNews();
-            } catch(e) { console.error("Erro na conexão."); }
+            } catch(e) { console.error("Falha na rede neural."); }
         }
 
         function renderHighlights() {
-            // DESTAQUES FIXOS: Filtramos as mais famosas se estiverem na lista
-            const famosos = ["ChatGPT", "Midjourney", "Claude", "Gemini", "Sora", "Canva"];
-            const highlights = todasIAs.filter(ia => famosos.some(f => ia.nome.includes(f))).slice(0, 3);
+            // LISTA DE ELITE: Procuramos por estes nomes exatos
+            const eliteNames = ["ChatGPT", "Claude", "Gemini", "Midjourney", "Sora", "Canva"];
             
-            // Se não encontrar famosos, pega os 3 melhores ratings
-            const display = highlights.length > 0 ? highlights : [...todasIAs].sort((a,b) => b.rating - a.rating).slice(0, 3);
+            // Filtra as que estão na planilha e batem com os nomes da elite
+            let highlights = todasIAs.filter(ia => 
+                eliteNames.some(name => ia.nome.toUpperCase().includes(name.toUpperCase()))
+            );
 
-            document.getElementById('highlights-grid').innerHTML = display.map(ia => `
+            // Se a elite não for encontrada, pega as 3 mais clicadas (hits)
+            if(highlights.length === 0) {
+                highlights = [...todasIAs].sort((a,b) => b.hits - a.hits).slice(0, 3);
+            } else {
+                highlights = highlights.slice(0, 3); // Limita a 3 destaques
+            }
+
+            document.getElementById('highlights-grid').innerHTML = highlights.map(ia => `
                 <div class="card-base p-6 highlight-card flex flex-col items-center text-center">
-                    <img src="${ia.img}" class="w-16 h-16 rounded-xl object-cover mb-4 border border-purple-500/30">
-                    <h4 class="logo-font text-white font-bold text-sm uppercase">${ia.nome}</h4>
-                    <p class="text-[10px] text-slate-500 my-2 line-clamp-2">${ia.desc}</p>
-                    <a href="${ia.link}" target="_blank" class="text-purple-400 text-[9px] font-black uppercase tracking-widest mt-2 hover:text-white">Explorar →</a>
+                    <img src="${ia.img}" class="w-20 h-20 rounded-2xl object-cover mb-4 border border-purple-500/40">
+                    <h4 class="logo-font text-white font-bold text-sm uppercase tracking-tighter">${ia.nome}</h4>
+                    <p class="text-[10px] text-slate-500 my-3 line-clamp-2">${ia.desc}</p>
+                    <a href="${ia.link}" target="_blank" class="text-purple-400 text-[10px] font-black uppercase tracking-widest hover:text-cyan-400 transition">Executar Agora →</a>
                 </div>
             `).join('');
         }
@@ -188,7 +200,7 @@
                         <p class="text-slate-500 text-[11px] mb-8 line-clamp-3 leading-relaxed">${ia.desc}</p>
                         <div class="mt-auto flex justify-between items-center pt-6 border-t border-white/5">
                             <span class="text-[9px] font-bold text-slate-700 uppercase">${ia.hits} Pulsos</span>
-                            <a href="${ia.link}" target="_blank" class="text-cyan-400 text-[10px] font-black hover:text-white transition tracking-widest uppercase">Executar</a>
+                            <a href="${ia.link}" target="_blank" class="text-cyan-400 text-[10px] font-black hover:text-white transition tracking-widest uppercase">Acessar</a>
                         </div>
                     </div>
                 </div>`).join('');
@@ -198,15 +210,24 @@
             sortType = type; 
             ['rel', 'recent', 'hits'].forEach(t => {
                 const btn = document.getElementById(`sort-${t}`);
-                btn.classList.toggle('text-cyan-400', type === t);
-                btn.classList.toggle('text-slate-500', type !== t);
+                if(btn) {
+                    btn.classList.toggle('text-cyan-400', type === t);
+                    btn.classList.toggle('text-slate-500', type !== t);
+                }
             });
             filterAndSort(); 
         }
 
         function renderNews() {
-            const news = [{ t: "Mineração", d: "Robô neural ativo buscando novas IAs." }, { t: "Ranking", d: "Pulsos de acesso atualizados." }];
-            document.getElementById('news-feed').innerHTML = news.map(n => `<div class="border-l border-white/10 pl-4 py-1"><h5 class="text-white text-[11px] font-bold uppercase mb-1">${n.t}</h5><p class="text-slate-500 text-[10px] font-bold uppercase tracking-tighter">${n.d}</p></div>`).join('');
+            const logs = [
+                { t: "Mineração", d: "Robô neural varrendo a web em tempo real." },
+                { t: "Base de Dados", d: "Sincronização com Google Sheets ativa." }
+            ];
+            document.getElementById('news-feed').innerHTML = logs.map(n => `
+                <div class="border-l-2 border-cyan-400/30 pl-4 py-1">
+                    <h5 class="text-white text-[11px] font-bold uppercase">${n.t}</h5>
+                    <p class="text-slate-500 text-[10px] font-bold uppercase tracking-tighter">${n.d}</p>
+                </div>`).join('');
         }
 
         function openTab(t) { document.getElementById('modalBody').innerHTML = i18n[t]; document.getElementById('mainModal').classList.add('modal-active'); }
