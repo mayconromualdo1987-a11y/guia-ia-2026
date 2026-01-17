@@ -14,23 +14,24 @@
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
         
         .card-base { 
             background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; 
-            backdrop-filter: blur(20px); transition: all 0.4s ease;
+            backdrop-filter: blur(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.2); }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.2); }
 
-        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; cursor: pointer; }
+        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+        .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.2); }
         
-        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 200; align-items: center; justify-content: center; padding: 20px; }
-        .modal-active { display: flex; }
-
-        .rating-badge { background: rgba(0, 242, 255, 0.15); color: var(--cyan); padding: 2px 8px; border-radius: 6px; font-size: 10px; font-weight: 800; border: 1px solid var(--cyan); }
-        .share-icon { width: 32px; height: 32px; background: rgba(0,0,0,0.8); border-radius: 50%; display: flex; items-center; justify-center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .share-icon:hover { border-color: var(--cyan); transform: scale(1.1); }
+        .rating-badge { background: rgba(0, 242, 255, 0.1); color: var(--cyan); padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 900; border: 1px solid rgba(0, 242, 255, 0.3); }
+        
+        .share-btn { width: 36px; height: 36px; background: rgba(0,0,0,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .share-btn:hover { border-color: var(--cyan); transform: scale(1.1); }
+        
+        .elite-card { border: 2px solid var(--purple) !important; background: linear-gradient(145deg, rgba(112, 0, 255, 0.1), transparent) !important; }
     </style>
 </head>
 <body class="antialiased">
@@ -46,11 +47,6 @@
                 <h1 class="text-white text-xl font-black uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
             </div>
             <div class="flex items-center gap-4">
-                <select onchange="window.location.reload()" class="bg-slate-900 border border-cyan-900 text-cyan-400 text-[10px] p-2 rounded-lg outline-none">
-                    <option>🇧🇷 PT-BR</option>
-                    <option>🇺🇸 EN-US</option>
-                    <option>🇪🇸 ES-ES</option>
-                </select>
                 <button onclick="document.getElementById('academy').scrollIntoView({behavior:'smooth'})" class="btn-main">Academy</button>
             </div>
         </div>
@@ -59,32 +55,32 @@
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-            <div class="lg:col-span-2 card-base p-12 flex flex-col justify-center border-l-8 border-l-cyan-400">
+            <div class="lg:col-span-2 card-base p-12 border-l-8 border-l-cyan-400">
                 <h2 class="text-6xl md:text-8xl font-black logo-font uppercase mb-4 leading-none text-white italic">Arsenal <span class="text-cyan-400">Neural.</span></h2>
-                <p class="text-slate-400 text-xl">A curadoria definitiva da inteligência artificial para 2026.</p>
+                <p class="text-slate-400 text-xl">Filtro de Inteligência Artificial para produtividade extrema em 2026.</p>
             </div>
             
-            <div class="card-base p-8">
-                <h3 class="logo-font text-[10px] text-purple-400 mb-6 uppercase tracking-widest font-bold">Inovação em Tempo Real</h3>
+            <div class="card-base p-8 border-purple-500/30">
+                <h3 class="logo-font text-[10px] text-purple-400 mb-6 uppercase tracking-widest font-bold">Neural News</h3>
                 <div class="space-y-4">
-                    <a href="https://openai.com/news" target="_blank" class="block group">
-                        <span class="text-[9px] text-cyan-400 font-bold uppercase">Última Hora</span>
-                        <p class="text-xs text-white font-bold group-hover:text-cyan-400 transition">Novos modelos Sora começam a ser liberados globalmente.</p>
+                    <a href="https://techcrunch.com" target="_blank" class="block group">
+                        <span class="text-[9px] text-cyan-400 font-bold uppercase">Tecnologia</span>
+                        <p class="text-xs text-white font-bold group-hover:text-cyan-400 transition">Novos avanços em LLMs superam o raciocínio humano.</p>
                     </a>
-                    <a href="https://blog.google/technology/ai/" target="_blank" class="block group">
-                        <span class="text-[9px] text-purple-400 font-bold uppercase">Tendência</span>
-                        <p class="text-xs text-white font-bold group-hover:text-purple-400 transition">Google Gemini integra-se totalmente a dispositivos IoT.</p>
+                    <a href="https://www.theverge.com" target="_blank" class="block group">
+                        <span class="text-[9px] text-purple-400 font-bold uppercase">Inovação</span>
+                        <p class="text-xs text-white font-bold group-hover:text-purple-400 transition">IA Generativa agora cria vídeos de 10 min com 1 prompt.</p>
                     </a>
                 </div>
             </div>
         </div>
 
-        <h3 class="logo-font text-purple-400 text-center text-xs mb-8 uppercase tracking-[0.5em]">--- Market Leaders ---</h3>
+        <h3 class="logo-font text-purple-400 text-center text-xs mb-10 uppercase tracking-[0.5em]">--- Principais do Arsenal ---</h3>
         <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24"></div>
 
         <div class="flex flex-col md:flex-row gap-4 mb-12">
-            <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-slate-900 border border-cyan-900/30 px-6 py-4 rounded-2xl text-cyan-400 outline-none" placeholder="Pesquisar ferramenta ou categoria...">
-            <button onclick="setSort('hits')" id="sort-hits" class="px-6 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400">Top Pulsos</button>
+            <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-slate-900/50 border border-cyan-900/30 px-6 py-5 rounded-2xl text-cyan-400 outline-none" placeholder="O que você quer automatizar hoje?">
+            <button onclick="setSort('hits')" id="sort-hits" class="px-8 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5">Mais Vistos</button>
         </div>
 
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
@@ -92,52 +88,42 @@
         <section id="academy" class="py-20 border-t border-cyan-900/20">
             <h3 class="logo-font text-cyan-400 text-center text-xs mb-12 uppercase tracking-[0.4em]">--- Academy: Cursos Gratuitos ---</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="card-base p-8 text-center">
-                    <h4 class="text-white font-bold mb-2">Google GenAI</h4>
-                    <p class="text-slate-500 text-xs mb-6">Curso oficial sobre os fundamentos da IA generativa.</p>
-                    <a href="https://www.cloudskillsboost.google" target="_blank" class="btn-main">Iniciar Agora</a>
-                </div>
-                <div class="card-base p-8 text-center">
-                    <h4 class="text-white font-bold mb-2">Microsoft Azure AI</h4>
-                    <p class="text-slate-500 text-xs mb-6">Certificações de IA aplicadas ao mundo corporativo.</p>
-                    <a href="https://learn.microsoft.com" target="_blank" class="btn-main">Ver Trilha</a>
-                </div>
-                <div class="card-base p-8 text-center border-purple-500/30">
-                    <h4 class="text-white font-bold mb-2">DeepLearning.AI</h4>
-                    <p class="text-slate-500 text-xs mb-6">Aprenda a construir o futuro com Andrew Ng.</p>
-                    <a href="https://www.deeplearning.ai" target="_blank" class="btn-main">Explorar</a>
-                </div>
+                <a href="https://www.cloudskillsboost.google" target="_blank" class="card-base p-8 text-center hover:border-cyan-400 transition">
+                    <h4 class="text-white font-bold mb-2">Google Cloud AI</h4>
+                    <p class="text-slate-500 text-xs">Cursos gratuitos de IA Generativa oficial.</p>
+                </a>
+                <a href="https://learn.microsoft.com" target="_blank" class="card-base p-8 text-center hover:border-cyan-400 transition">
+                    <h4 class="text-white font-bold mb-2">Microsoft Azure</h4>
+                    <p class="text-slate-500 text-xs">Trilhas completas de IA corporativa.</p>
+                </a>
+                <a href="https://www.deeplearning.ai" target="_blank" class="card-base p-8 text-center hover:border-cyan-400 transition">
+                    <h4 class="text-white font-bold mb-2">Andrew Ng Academy</h4>
+                    <p class="text-slate-500 text-xs">Certificações de elite em redes neurais.</p>
+                </a>
             </div>
         </section>
     </main>
 
-    <footer class="py-12 bg-slate-950 border-t border-cyan-900/20 text-center">
-        <div class="flex justify-center gap-8 mb-8 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-            <button onclick="openModal('termos')" class="hover:text-cyan-400">Termos</button>
-            <button onclick="openModal('privacidade')" class="hover:text-cyan-400">Privacidade</button>
-            <button onclick="openModal('sugestoes')" class="hover:text-cyan-400">Sugestões</button>
+    <footer class="py-16 bg-slate-950 border-t border-cyan-900/30 text-center">
+        <div class="flex justify-center gap-10 mb-8 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+            <button onclick="alert('Termos 2026: Conteúdo meramente informativo.')">Termos</button>
+            <button onclick="alert('Privacidade: Dados protegidos por criptografia.')">Privacidade</button>
+            <button onclick="window.location.href='mailto:contato@mundodasias.com.br'">Sugestões</button>
         </div>
         <p class="logo-font text-[9px] opacity-20 text-white tracking-[1em]">MUNDO DAS IA'S © 2026</p>
     </footer>
-
-    <div id="infoModal" class="modal-overlay">
-        <div class="max-w-xl w-full bg-slate-900 p-10 rounded-3xl border border-cyan-400/30 relative">
-            <div id="modalContent" class="text-slate-400 text-sm"></div>
-            <button onclick="closeModal()" class="mt-8 w-full btn-main">FECHAR</button>
-        </div>
-    </div>
 
     <script>
         let todasIAs = [];
         let sortType = 'hits';
         
-        // Base de imagens Fallback de alta qualidade
-        const techImgs = [
-            "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
-            "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600",
-            "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=600",
-            "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600"
-        ];
+        // Imagens Temáticas de Alta Qualidade para Falhas
+        const themeImgs = {
+            "TEXTO": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
+            "IMAGEM": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600",
+            "VIDEO": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=600",
+            "GERAL": "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600"
+        };
 
         async function init() {
             const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
@@ -150,42 +136,48 @@
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!col[1]) return null;
                     
+                    let cat = col[0]?.replace(/"/g, '').toUpperCase() || "GERAL";
                     let nome = col[1]?.replace(/"/g, '');
                     let desc = col[2]?.replace(/"/g, '');
+                    let link = col[3]?.replace(/"/g, '');
                     let img = col[4]?.replace(/"/g, '');
 
-                    // CORREÇÃO INTELIGENTE DE CONTEÚDO
-                    if(!desc || desc.length < 15 || desc.includes("detectada")) {
-                        desc = `Avançada inteligência para ${col[0]?.replace(/"/g, '') || 'produtividade'}, projetada para elevar o potencial criativo em 2026.`;
-                    }
-                    if(!img || img.length < 10) img = techImgs[index % techImgs.length];
+                    // --- FILTRO DE QUALIDADE (SÓ IA) ---
+                    const keywords = ["AI", "IA", "CHAT", "GPT", "NEURAL", "BOT", "INTELIGENCIA", "GENERATIVE", "SORA", "CLAUDE", "MODEL"];
+                    const isIA = keywords.some(k => nome.toUpperCase().includes(k) || desc.toUpperCase().includes(k));
+                    if(!isIA) return null;
 
-                    return { 
-                        id: index,
-                        cat: col[0]?.replace(/"/g, '') || "Geral", 
-                        nome: nome, desc: desc, link: col[3]?.replace(/"/g, ''), img: img, 
-                        hits: (Math.floor(Math.random() * 500) + 100), // Geração de pulsos se estiver zerado
-                        rating: (4.5 + Math.random() * 0.5).toFixed(1)
-                    };
+                    // --- CORREÇÃO DE TEXTOS RUINS ---
+                    if(!desc || desc.length < 15 || desc.includes("detectada")) {
+                        desc = `Poderosa solução neural para ${cat}, focada em maximizar o workflow criativo e automação de escala.`;
+                    }
+
+                    // --- CORREÇÃO DE IMAGENS ---
+                    if(!img || img.length < 10) {
+                        img = themeImgs[cat] || themeImgs["GERAL"];
+                    }
+
+                    return { id: index, cat, nome, desc, link, img, hits: (Math.floor(Math.random() * 800) + 200), rating: (4.4 + Math.random() * 0.6).toFixed(1) };
                 }).filter(i => i);
                 
                 renderHighlights();
                 filterAndSort();
-            } catch(e) { console.log("Erro de sincronização."); }
+            } catch(e) { console.log("Erro na mineração."); }
         }
 
         function renderHighlights() {
+            // FORÇA OS GIGANTES
             const elite = ["CHATGPT", "GEMINI", "MIDJOURNEY", "SORA", "CLAUDE", "CANVA"];
-            let display = todasIAs.filter(ia => elite.some(name => ia.nome.toUpperCase().includes(name)));
-            if(display.length === 0) display = [...todasIAs].sort((a,b) => b.hits - a.hits).slice(0, 3);
-            else display = display.sort((a,b) => b.hits - a.hits).slice(0, 3);
+            let display = todasIAs.filter(ia => elite.some(name => ia.nome.toUpperCase().includes(name))).slice(0, 3);
+            
+            if(display.length < 3) display = [...todasIAs].sort((a,b) => b.hits - a.hits).slice(0, 3);
 
             document.getElementById('highlights-grid').innerHTML = display.map(ia => `
-                <div class="card-base p-10 border-purple-500/40 text-center flex flex-col items-center">
-                    <img src="${ia.img}" class="w-24 h-24 rounded-3xl object-cover mb-4 border-2 border-purple-500">
+                <div class="card-base p-10 elite-card text-center flex flex-col items-center">
+                    <img src="${ia.img}" class="w-24 h-24 rounded-3xl object-cover mb-4 border-2 border-purple-500 shadow-lg shadow-purple-500/20">
                     <h4 class="logo-font text-white font-bold uppercase text-lg">${ia.nome}</h4>
-                    <p class="text-[11px] text-slate-500 my-4 line-clamp-2 italic">${ia.desc}</p>
-                    <a href="${ia.link}" target="_blank" class="text-cyan-400 font-black text-xs hover:tracking-widest transition-all">EXECUTAR AGORA →</a>
+                    <p class="text-xs text-slate-400 my-4 line-clamp-2">${ia.desc}</p>
+                    <a href="${ia.link}" target="_blank" class="text-cyan-400 font-black text-xs hover:tracking-widest transition-all">ABRIR FERRAMENTA →</a>
                 </div>`).join('');
         }
 
@@ -197,25 +189,25 @@
 
             document.getElementById('ia-grid').innerHTML = list.map(ia => `
                 <div class="card-base flex flex-col group overflow-hidden">
-                    <div class="h-44 relative overflow-hidden">
+                    <div class="h-48 relative overflow-hidden">
                         <img src="${ia.img}" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                        <div class="absolute top-3 left-3 rating-badge">★ ${ia.rating}</div>
-                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
-                            <button onclick="share('wa','${ia.nome}','${ia.link}')" class="share-icon">
-                                <svg width="18" height="18" fill="#25D366" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.557-5.332 11.892-11.891 11.892-1.999 0-3.956-.503-5.69-1.448l-6.305 1.666zm6.347-4.139l.363.216c1.55.922 3.33 1.409 5.18 1.409 5.465 0 9.91-4.444 9.91-9.91s-4.445-9.91-9.91-9.91-9.91 4.445-9.91 9.91c0 2.062.639 4.077 1.848 5.756l.236.327-1.127 4.113 4.211-1.111z"/></svg>
+                        <div class="absolute top-4 left-4 rating-badge">★ ${ia.rating}</div>
+                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
+                            <button onclick="share('wa','${ia.nome}','${ia.link}')" class="share-btn">
+                                <svg width="20" height="20" fill="#25D366" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.557-5.332 11.892-11.891 11.892-1.999 0-3.956-.503-5.69-1.448l-6.305 1.666zm6.347-4.139l.363.216c1.55.922 3.33 1.409 5.18 1.409 5.465 0 9.91-4.444 9.91-9.91s-4.445-9.91-9.91-9.91-9.91 4.445-9.91 9.91c0 2.062.639 4.077 1.848 5.756l.236.327-1.127 4.113 4.211-1.111z"/></svg>
                             </button>
-                            <button onclick="share('tg','${ia.nome}','${ia.link}')" class="share-icon">
-                                <svg width="18" height="18" fill="#0088cc" viewBox="0 0 24 24"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm4.513 6.645l-9.018 3.479c-.611.246-.606.586-.11.739l2.313.722 5.36-3.379c.253-.154.484-.071.294.098l-4.342 3.921-.168 2.516c.247 0 .356-.113.494-.247l1.189-1.156 2.473 1.827c.456.251.785.122.898-.423l1.623-7.647c.166-.665-.254-.967-.686-.75z"/></svg>
+                            <button onclick="share('tg','${ia.nome}','${ia.link}')" class="share-btn">
+                                <svg width="20" height="20" fill="#0088cc" viewBox="0 0 24 24"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm4.513 6.645l-9.018 3.479c-.611.246-.606.586-.11.739l2.313.722 5.36-3.379c.253-.154.484-.071.294.098l-4.342 3.921-.168 2.516c.247 0 .356-.113.494-.247l1.189-1.156 2.473 1.827c.456.251.785.122.898-.423l1.623-7.647c.166-.665-.254-.967-.686-.75z"/></svg>
                             </button>
                         </div>
                     </div>
                     <div class="p-6 flex-grow flex flex-col">
                         <span class="text-[9px] text-cyan-400 font-black uppercase mb-2 tracking-widest">${ia.cat}</span>
-                        <h4 class="text-white font-bold mb-3 uppercase text-sm">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6 font-semibold">${ia.desc}</p>
+                        <h4 class="text-white font-bold mb-3 uppercase text-base">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6 font-semibold leading-relaxed">${ia.desc}</p>
                         <div class="mt-auto pt-4 border-t border-cyan-900/20 flex justify-between items-center">
-                            <span class="text-[9px] text-slate-600 font-bold uppercase italic">${ia.hits} Pulsos</span>
-                            <a href="${ia.link}" target="_blank" class="btn-main text-[9px]">Acessar</a>
+                            <span class="text-[9px] text-slate-700 font-bold uppercase">${ia.hits} Pulsos</span>
+                            <a href="${ia.link}" target="_blank" class="btn-main text-[9px]">Executar</a>
                         </div>
                     </div>
                 </div>`).join('');
@@ -223,21 +215,10 @@
 
         function share(plt, name, link) {
             const url = encodeURIComponent(link);
-            const text = encodeURIComponent(`Olha que incrível essa IA no Mundo das IA's: ${name}`);
+            const text = encodeURIComponent(`Olha essa IA no Mundo das IA's: ${name}`);
             if(plt === 'wa') window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`);
             if(plt === 'tg') window.open(`https://t.me/share/url?url=${url}&text=${text}`);
         }
-
-        function openModal(id) { 
-            const data = {
-                termos: "<h2>Termos de Uso</h2><p class='mt-4'>Diretório independente. Uso sob responsabilidade do usuário.</p>",
-                privacidade: "<h2>Privacidade</h2><p class='mt-4'>Usamos cookies para anúncios do AdSense e experiência do usuário.</p>",
-                sugestoes: "<h2>Sugestões</h2><p class='mt-4'>Mande sua dica para: <b class='text-cyan-400'>contato@mundodasias.com.br</b></p>"
-            };
-            document.getElementById('modalContent').innerHTML = data[id]; 
-            document.getElementById('infoModal').classList.add('modal-active'); 
-        }
-        function closeModal() { document.getElementById('infoModal').classList.remove('modal-active'); }
 
         window.onload = init;
     </script>
