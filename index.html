@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Ecossistema Neural</title>
+    <title>Mundo das IA's | Ecossistema Neural 2026</title>
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22/><text y=%22.7em%22 x=%2250%25%22 text-anchor=%22middle%22 font-family=%22Orbitron%22 font-size=%2250%22 fill=%22%2300f2ff%22 font-weight=%22bold%22>M</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%226%22/><text y=%22.7em%22 x=%2250%25%22 text-anchor=%22middle%22 font-family=%22Orbitron%22 font-size=%2250%22 fill=%22%2300f2ff%22 font-weight=%22bold%22>M</text></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
@@ -17,10 +17,11 @@
         .logo-font { font-family: 'Orbitron', sans-serif; }
         .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; }
         .img-card { height: 180px; width: 100%; object-fit: cover; border-radius: 1rem 1rem 0 0; }
-        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px; border-radius: 4px; transition: 0.3s; cursor: pointer; text-align: center; border: none; width: 100%; }
-        .lang-btn { cursor: pointer; height: 18px; filter: grayscale(1); opacity: 0.5; transition: 0.3s; }
-        .lang-btn.active { filter: grayscale(0); opacity: 1; outline: 1px solid var(--cyan); outline-offset: 4px; }
-        #modal-terms { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px; border-radius: 4px; transition: 0.3s; cursor: pointer; text-align: center; border: none; width: 100%; display: block; }
+        .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); transform: scale(1.02); }
+        .lang-btn { cursor: pointer; height: 18px; opacity: 0.5; transition: 0.3s; }
+        .lang-btn.active { opacity: 1; outline: 1px solid var(--cyan); outline-offset: 4px; }
+        #modal-terms { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
     </style>
 </head>
 <body>
@@ -37,130 +38,128 @@
                 <div class="flex gap-4 border-l border-white/10 pl-6">
                     <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" onclick="changeLang('pt')" id="l-pt">
                     <img src="https://flagcdn.com/w40/us.png" class="lang-btn" onclick="changeLang('en')" id="l-en">
-                    <img src="https://flagcdn.com/w40/es.png" class="lang-btn" onclick="changeLang('es')" id="l-es">
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto p-6 md:p-12">
-        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-center">
-            <div>
-                <h1 class="logo-font text-5xl mb-6 uppercase italic leading-tight" data-t="h1">Curadoria <br><span class="text-cyan-400">Sintética.</span></h1>
-                <p class="text-slate-400 text-lg leading-relaxed" data-t="hero_d">Referência técnica em 2026 para implementação de IA aplicada.</p>
-            </div>
-            <div class="glass p-8 border-l-4 border-l-cyan-600">
-                <h3 class="text-[10px] text-cyan-400 font-bold uppercase mb-4 tracking-widest" data-t="ia_t">Consultor Neural</h3>
-                <input type="text" id="aiQuery" class="w-full bg-black/40 border border-white/10 p-4 rounded text-cyan-400 outline-none mb-4" placeholder="...">
-                <button onclick="askGemini()" class="btn-elite" data-t="btn_q">Interrogar</button>
-                <div id="aiResponse" class="hidden mt-4 p-4 bg-slate-900/50 text-xs italic text-slate-300 border border-white/5 rounded"></div>
-            </div>
+        <section class="mb-24 text-center">
+            <h1 class="logo-font text-6xl mb-6 uppercase italic leading-tight" data-t="h1">Ecossistema <br><span class="text-cyan-400">Neural.</span></h1>
+            <p class="text-slate-400 text-xl max-w-2xl mx-auto" data-t="hero_d">A curadoria definitiva de inteligência artificial em 2026. Processamento estático para máxima velocidade.</p>
         </section>
 
-        <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t1">Arsenal em Destaque</h3>
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"></div>
+        <div class="mb-24">
+            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t1">Arsenal em Destaque</h3>
+            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                </div>
+        </div>
 
-        <section id="academy" class="pt-16 border-t border-white/5">
+        <section id="academy" class="pt-16 border-t border-white/5 mb-24">
             <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t2">Neural Academy</h3>
-            <div id="academy-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-24"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="glass overflow-hidden flex flex-col h-full">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" class="img-card">
+                    <div class="p-6 flex flex-col grow">
+                        <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">Google Cloud</span>
+                        <h4 class="text-white font-bold mb-3 uppercase text-sm">Intro to Generative AI</h4>
+                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">Curso oficial do Google sobre os fundamentos de modelos de linguagem e aplicações práticas.</p>
+                        <a href="https://www.cloudskillsboost.google/course_templates/539" target="_blank" class="mt-auto btn-elite">Acessar Curso</a>
+                    </div>
+                </div>
+                <div class="glass overflow-hidden flex flex-col h-full">
+                    <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600" class="img-card">
+                    <div class="p-6 flex flex-col grow">
+                        <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">DeepLearning.AI</span>
+                        <h4 class="text-white font-bold mb-3 uppercase text-sm">Prompt Engineering</h4>
+                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">Domine a arte de conversar com LLMs com os maiores especialistas do mundo.</p>
+                        <a href="https://www.deeplearning.ai/short-courses/" target="_blank" class="mt-auto btn-elite">Acessar Curso</a>
+                    </div>
+                </div>
+                </div>
         </section>
 
-        <section id="news" class="pt-16 border-t border-white/5">
+        <section id="news" class="pt-16 border-t border-white/5 mb-24">
             <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]" data-t="t3">IA News</h3>
-            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="glass p-6 border-t-2 border-cyan-400">
+                    <span class="text-[9px] text-slate-500 uppercase font-bold">17 Jan 2026</span>
+                    <h4 class="text-white font-bold my-4 uppercase leading-tight">Gemini 3.0 Ultra redefine o processamento multimodal</h4>
+                    <p class="text-slate-400 text-sm mb-6">Novas capacidades de vídeo em tempo real colocam o Google na liderança absoluta da robótica cognitiva.</p>
+                    <a href="#" class="text-cyan-400 text-[10px] font-bold uppercase hover:underline">Ler Análise →</a>
+                </article>
+                <article class="glass p-6 border-t-2 border-slate-700">
+                    <span class="text-[9px] text-slate-500 uppercase font-bold">15 Jan 2026</span>
+                    <h4 class="text-white font-bold my-4 uppercase leading-tight">Apple integra Neural Engine 5 no novo ecossistema</h4>
+                    <p class="text-slate-400 text-sm mb-6">A privacidade local ganha força com a nova arquitetura que processa 100 trilhões de operações por segundo.</p>
+                    <a href="#" class="text-cyan-400 text-[10px] font-bold uppercase hover:underline">Ler Análise →</a>
+                </article>
+            </div>
         </section>
 
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-20 border-t border-white/5">
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase" data-t="m_t">Missão</h4>
-                <p class="text-slate-400 text-sm leading-relaxed" data-t="m_d">Filtrar a complexidade da IA para gerar produtividade real e acessível.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Missão</h4>
+                <p class="text-slate-400 text-sm">Nossa missão é 2026: simplificar a transição tecnológica para a era da inteligência sintética.</p>
             </div>
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase" data-t="v_t">Visão</h4>
-                <p class="text-slate-400 text-sm leading-relaxed" data-t="v_d">Ser o oráculo técnico para a simbiose entre humanos e algoritmos.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Visão</h4>
+                <p class="text-slate-400 text-sm">Ser o portal de referência mundial em curadoria de modelos neurais e aplicações práticas.</p>
             </div>
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase" data-t="va_t">Valores</h4>
-                <p class="text-slate-400 text-sm leading-relaxed" data-t="va_d">Independência técnica, ética de dados e transparência radical.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Valores</h4>
+                <p class="text-slate-400 text-sm">Transparência, velocidade e precisão técnica em cada recomendação do nosso arsenal.</p>
             </div>
         </section>
     </main>
 
-    <footer class="p-12 border-t border-white/5 flex flex-col items-center gap-6">
-        <button onclick="toggleModal()" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400">Termos & Privacidade</button>
+    <footer class="p-12 border-t border-white/5 text-center">
+        <div class="flex justify-center gap-8 mb-6">
+            <button onclick="toggleModal()" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400">Privacidade</button>
+            <span class="text-[10px] font-bold uppercase text-slate-400">suporte@mundodasias.com.br</span>
+        </div>
+        <p class="logo-font text-[9px] opacity-20 tracking-widest">MUNDO DAS IA'S © 2026</p>
     </footer>
 
     <div id="modal-terms" onclick="toggleModal()">
         <div class="glass p-10 max-w-lg w-full" onclick="event.stopPropagation()">
-            <h3 class="logo-font text-cyan-400 mb-4 uppercase">Privacidade</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">O Mundo das IA's utiliza cookies para o Google AdSense e processamento efêmero de dados via API Gemini. Seus dados não são armazenados em nossos servidores.</p>
+            <h3 class="logo-font text-cyan-400 mb-4 uppercase">Termos e Privacidade</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-4">Referência: Janeiro de 2026.</p>
+            <p class="text-slate-400 text-sm leading-relaxed">Este site utiliza Google AdSense e curadoria técnica. Não coletamos dados pessoais sensíveis.</p>
             <button onclick="toggleModal()" class="btn-elite mt-8">Fechar</button>
         </div>
     </div>
 
     <script>
-        const API_KEY = "SUA_CHAVE_AQUI";
-        let curL = 'pt';
-        const i18n = {
-            pt: { h1: "Curadoria Sintética.", hero_d: "Referência técnica em 2026.", ia_t: "Consultor Neural", btn_q: "Interrogar", t1: "Arsenal em Destaque", t2: "Neural Academy", t3: "IA News", m_t: "Missão", m_d: "Produtividade real e acessível.", v_t: "Visão", v_d: "Oráculo da simbiose humana.", va_t: "Valores", va_d: "Ética e transparência." },
-            en: { h1: "Synthetic Curation.", hero_d: "Technical reference in 2026.", ia_t: "Neural Consultant", btn_q: "Query", t1: "Featured Arsenal", t2: "Neural Academy", t3: "AI News", m_t: "Mission", m_d: "Real and accessible productivity.", v_t: "Vision", v_d: "Oracle of human symbiosis.", va_t: "Values", va_d: "Ethics and transparency." },
-            es: { h1: "Curaduría Sintética.", hero_d: "Referencia técnica en 2026.", ia_t: "Consultor Neural", btn_q: "Consultar", t1: "Arsenal Destacado", t2: "Neural Academy", t3: "Noticias IA", m_t: "Misión", m_d: "Productividad real y accesible.", v_t: "Visión", v_d: "Oráculo de la simbiosis.", va_t: "Valores", va_d: "Ética y transparencia." }
-        };
-
+        // CARREGAMENTO APENAS PARA AS IAs DA PLANILHA
         async function init() {
-            const urls = {
-                ia: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv",
-                ac: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=1864115082&output=csv",
-                nw: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=584623157&output=csv"
-            };
+            const urlIA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv";
             try {
-                const [r1, r2, r3] = await Promise.all([fetch(urls.ia), fetch(urls.ac), fetch(urls.nw)]);
-                render('ia-grid', await r1.text(), 'Executar');
-                render('academy-grid', await r2.text(), 'Acessar');
-                render('news-grid', await r3.text(), 'Ler');
-            } catch(e) { console.error("Sync Error"); }
+                const res = await fetch(urlIA);
+                const csv = await res.text();
+                const data = csv.split('\n').slice(1).map(r => {
+                    const c = r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    return c[1] ? { cat: c[0], nome: c[1], desc: c[2], link: c[3], img: c[4] } : null;
+                }).filter(i => i);
+                
+                document.getElementById('ia-grid').innerHTML = data.map(i => `
+                    <div class="glass overflow-hidden flex flex-col h-full">
+                        <img src="${i.img}" class="img-card" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
+                        <div class="p-6 flex flex-col grow">
+                            <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">${i.cat}</span>
+                            <h4 class="text-white font-bold mb-3 uppercase text-sm">${i.nome}</h4>
+                            <p class="text-slate-500 text-xs mb-6 line-clamp-3">${i.desc}</p>
+                            <a href="${i.link}" target="_blank" class="mt-auto btn-elite">Executar</a>
+                        </div>
+                    </div>`).join('');
+            } catch(e) { console.error("Erro no Arsenal"); }
         }
 
-        function render(id, csv, bText) {
-            const data = csv.split('\n').slice(1).map(r => {
-                const c = r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                return c[1] ? { cat: c[0], nome: c[1], desc: c[2], link: c[3], img: c[4] } : null;
-            }).filter(i => i);
-            document.getElementById(id).innerHTML = data.map(i => `
-                <div class="glass overflow-hidden flex flex-col h-full">
-                    <img src="${i.img}" class="img-card" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
-                    <div class="p-6 flex flex-col grow">
-                        <span class="text-cyan-400 text-[9px] font-bold uppercase mb-2">${i.cat}</span>
-                        <h4 class="text-white font-bold mb-3 uppercase text-sm">${i.nome}</h4>
-                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">${i.desc}</p>
-                        <a href="${i.link}" target="_blank" class="mt-auto btn-elite">${bText}</a>
-                    </div>
-                </div>`).join('');
+        function toggleModal() { 
+            const m = document.getElementById('modal-terms'); 
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex'; 
         }
 
-        async function askGemini() {
-            const q = document.getElementById('aiQuery').value;
-            const resB = document.getElementById('aiResponse');
-            if(!q) return;
-            resB.classList.remove('hidden'); resB.innerText = "Processando...";
-            try {
-                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
-                    method: "POST", headers: {"Content-Type":"application/json"},
-                    body: JSON.stringify({contents:[{parts:[{text: `Seja técnico e curto em ${curL}: ${q}`}]}]})
-                });
-                const j = await r.json();
-                resB.innerText = j.candidates[0].content.parts[0].text;
-            } catch(e) { resB.innerText = "Erro na conexão."; }
-        }
-
-        function changeLang(l) {
-            curL = l;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`l-${l}`).classList.add('active');
-            document.querySelectorAll('[data-t]').forEach(el => el.innerText = i18n[l][el.getAttribute('data-t')]);
-        }
-
-        function toggleModal() { const m = document.getElementById('modal-terms'); m.style.display = (m.style.display === 'flex') ? 'none' : 'flex'; }
         window.onload = init;
     </script>
 </body>
