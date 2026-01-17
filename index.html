@@ -3,95 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Arsenal de Elite</title>
+    <title>Mundo das IA's | 2026 Elite</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { background: #020617; color: #f8fafc; font-family: 'Rajdhani', sans-serif; }
-        .logo-font { font-family: 'Orbitron', sans-serif; }
-        .card-ia { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; transition: 0.4s; overflow: hidden; }
-        .card-ia:hover { border-color: #00f2ff; transform: translateY(-5px); }
+        body { background: #020617; color: #fff; font-family: 'Rajdhani', sans-serif; }
+        .logo { font-family: 'Orbitron', sans-serif; color: #00f2ff; }
+        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 20px; transition: 0.3s; height: 100%; }
+        .card:hover { border-color: #00f2ff; transform: translateY(-5px); }
     </style>
 </head>
 <body>
 
-    <nav class="p-6 border-b border-white/5 bg-slate-950/50 backdrop-blur-xl sticky top-0 z-50">
+    <nav class="p-6 border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="logo-font text-xl text-cyan-400">NEURAL<span class="text-white">INDEX</span></h1>
-            <div class="flex gap-4">
-                <input type="text" id="searchInput" onkeyup="filterContent()" placeholder="Buscar IA de elite..." class="bg-slate-900 border border-white/10 px-4 py-2 rounded-lg text-sm focus:border-cyan-400 outline-none">
-            </div>
+            <h1 class="logo text-2xl tracking-tighter">NEURAL<span class="text-white">INDEX</span></h1>
+            <input type="text" id="search" onkeyup="search()" placeholder="Consultar Arsenal..." class="bg-slate-900 border border-white/10 px-6 py-2 rounded-full text-sm outline-none focus:border-cyan-400 w-64">
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto p-6">
-        <div class="mb-12 text-center">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="auto"></ins>
+        <div class="my-8 flex justify-center">
+            <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="auto"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="loading" class="text-center py-20 text-cyan-400 animate-pulse">Sincronizando com a Rede Neural...</div>
-        
-        <div id="grid-ias" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            </div>
+        <div id="status" class="text-center py-20 text-cyan-400">Iniciando Protocolos Neurais...</div>
+        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
     </main>
 
     <script>
-        let iasBackup = [];
-        const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+        let db = [];
+        // URL da sua planilha publicada como CSV
+        const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
 
-        async function loadData() {
+        async function start() {
             try {
-                const response = await fetch(csvUrl);
-                const data = await response.text();
-                const rows = data.split('\n').slice(1);
+                const res = await fetch(url);
+                const text = await res.text();
+                const rows = text.split('\n');
                 
-                iasBackup = rows.map(row => {
-                    const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if (cols.length < 4) return null;
+                db = rows.slice(1).map(row => {
+                    // Regex avançada para separar por vírgula mas ignorar vírgulas dentro de aspas
+                    const parts = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if (parts.length < 4) return null;
                     return {
-                        cat: cols[0].replace(/"/g,''),
-                        nome: cols[1].replace(/"/g,''),
-                        desc: cols[2].replace(/"/g,''),
-                        link: cols[3].replace(/"/g,''),
-                        img: cols[4]?.replace(/"/g,'') || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500"
+                        cat: parts[0].replace(/"/g, ''),
+                        nome: parts[1].replace(/"/g, ''),
+                        desc: parts[2].replace(/"/g, ''),
+                        link: parts[3].replace(/"/g, ''),
+                        img: parts[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400"
                     };
-                }).filter(x => x && x.nome !== "");
+                }).filter(x => x && x.nome.length > 1);
 
-                render(iasBackup);
-                document.getElementById('loading').classList.add('hidden');
+                show(db);
+                document.getElementById('status').style.display = 'none';
             } catch (e) {
-                document.getElementById('loading').innerText = "Erro ao carregar dados. Verifique a publicação da planilha.";
+                document.getElementById('status').innerText = "Erro Crítico: Verifique a publicação da planilha.";
             }
         }
 
-        function render(items) {
-            const grid = document.getElementById('grid-ias');
-            grid.innerHTML = items.map(ia => `
-                <div class="card-ia flex flex-col">
-                    <img src="${ia.img}" class="h-48 w-full object-cover opacity-80">
-                    <div class="p-6 flex-grow">
-                        <span class="text-[10px] text-cyan-400 font-bold uppercase tracking-widest">${ia.cat}</span>
-                        <h3 class="text-lg font-bold mb-2 text-white">${ia.nome}</h3>
-                        <p class="text-slate-400 text-xs mb-6 line-clamp-3">${ia.desc}</p>
-                        <a href="${ia.link}" target="_blank" class="block text-center bg-cyan-500 hover:bg-white text-black font-bold py-2 rounded-xl transition text-xs uppercase">Acessar IA</a>
+        function show(data) {
+            const container = document.getElementById('grid');
+            container.innerHTML = data.map(i => `
+                <div class="card overflow-hidden flex flex-col">
+                    <img src="${i.img}" class="h-40 w-full object-cover grayscale hover:grayscale-0 transition duration-500">
+                    <div class="p-5 flex-grow">
+                        <p class="text-[10px] text-cyan-400 font-bold mb-1 uppercase tracking-tighter">${i.cat}</p>
+                        <h2 class="text-white font-bold text-lg mb-2">${i.nome}</h2>
+                        <p class="text-slate-400 text-xs line-clamp-3 mb-4">${i.desc}</p>
+                        <a href="${i.link}" target="_blank" class="block w-full text-center bg-white text-black py-2 rounded-lg font-black text-[10px] uppercase hover:bg-cyan-400 transition">Acessar Sistema</a>
                     </div>
                 </div>
             `).join('');
         }
 
-        function filterContent() {
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = iasBackup.filter(ia => 
-                ia.nome.toLowerCase().includes(term) || 
-                ia.desc.toLowerCase().includes(term) || 
-                ia.cat.toLowerCase().includes(term)
-            );
-            render(filtered);
+        function search() {
+            const q = document.getElementById('search').value.toLowerCase();
+            show(db.filter(i => i.nome.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q)));
         }
 
-        window.onload = loadData;
+        window.onload = start;
     </script>
 </body>
 </html>
