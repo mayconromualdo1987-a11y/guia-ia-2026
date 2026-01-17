@@ -6,7 +6,7 @@
     <meta name="description" content="Mundo das IA's: A principal autoridade em curadoria de inteligência artificial generativa, análise de modelos LLM e formação técnica.">
     <title>Mundo das IA's | Inteligência Artificial e Engenharia de Prompt</title>
     
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-SEU_CODIGO_AQUI" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
 
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%226%22/><path d=%22M30 70V30L50 50L70 30V70%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22 stroke-linecap=%22round%22/></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,6 +24,24 @@
         .lang-btn { cursor: pointer; width: 22px; height: 14px; opacity: 0.3; transition: 0.3s; filter: grayscale(1); }
         .lang-btn.active { opacity: 1; filter: grayscale(0); border: 1px solid var(--cyan); transform: scale(1.1); }
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+
+        /* --- NEXUS AI CHAT UI --- */
+        #neural-trigger { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: var(--cyan); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2000; box-shadow: 0 0 30px rgba(0,242,255,0.4); transition: 0.3s; animation: pulse 3s infinite; }
+        #neural-trigger i { color: #000; font-size: 24px; }
+        #neural-interface { display: none; position: fixed; bottom: 100px; right: 30px; width: 350px; height: 500px; background: rgba(2, 6, 23, 0.98); backdrop-filter: blur(20px); border: 1px solid var(--cyan); border-radius: 20px; z-index: 2000; flex-direction: column; overflow: hidden; box-shadow: 0 10px 50px rgba(0,0,0,0.9); animation: bootUp 0.3s ease-out; }
+        .chat-header { background: rgba(0, 242, 255, 0.1); padding: 15px; border-bottom: 1px solid rgba(0,242,255,0.2); display: flex; justify-content: space-between; align-items: center; }
+        .chat-body { flex: 1; padding: 15px; overflow-y: auto; font-size: 13px; scroll-behavior: smooth; display: flex; flex-direction: column; gap: 12px; }
+        .chat-input-area { padding: 15px; border-top: 1px solid rgba(0,242,255,0.1); display: flex; gap: 10px; }
+        .chat-input { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 10px; border-radius: 8px; color: #fff; outline: none; }
+        .chat-input:focus { border-color: var(--cyan); }
+        .msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; line-height: 1.5; animation: slideIn 0.3s; word-wrap: break-word; }
+        .msg.bot { background: rgba(0, 242, 255, 0.08); border-left: 3px solid var(--cyan); color: #cbd5e1; align-self: flex-start; }
+        .msg.user { background: var(--cyan); color: #000; align-self: flex-end; font-weight: 600; }
+        .typing { font-size: 10px; color: var(--cyan); margin-left: 15px; display: none; padding-bottom: 5px; }
+        @keyframes pulse { 0% {box-shadow: 0 0 0 0 rgba(0,242,255, 0.4);} 70% {box-shadow: 0 0 0 15px rgba(0,242,255, 0);} 100% {box-shadow: 0 0 0 0 rgba(0,242,255, 0);} }
+        @keyframes bootUp { from { opacity: 0; transform: translateY(20px) scale(0.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+        @media (max-width: 480px) { #neural-interface { width: 90%; right: 5%; bottom: 90px; height: 70vh; } }
     </style>
 </head>
 <body>
@@ -119,103 +137,4 @@
 
     <footer class="bg-slate-950 border-t border-white/5 p-16 text-center">
         <div class="flex flex-wrap justify-center gap-10 mb-12 text-[11px] font-bold uppercase text-slate-500 tracking-[3px]">
-            <button onclick="openModal('m-priv')" class="hover:text-cyan-400">Diretrizes de Privacidade</button>
-            <button onclick="openModal('m-terms')" class="hover:text-cyan-400">Termos e Licenciamento</button>
-            <button onclick="openModal('m-about')" class="hover:text-cyan-400">Manifesto Editorial</button>
-        </div>
-        <p class="logo-font text-[10px] opacity-20 tracking-[15px]">MUNDO DAS IA'S • ESTRUTURA NEURAL</p>
-    </footer>
-
-    <div id="m-priv" class="modal" onclick="closeModal('m-priv')">
-        <div class="glass p-10 max-w-xl w-full" onclick="event.stopPropagation()">
-            <h2 class="logo-font text-cyan-400 text-2xl mb-6 uppercase">Privacidade</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-8">Nossa infraestrutura utiliza cookies técnicos para otimização de entrega via Google AdSense e análise demográfica agregada, garantindo o anonimato e a segurança dos dados.</p>
-            <button onclick="closeModal('m-priv')" class="btn-elite">Confirmar Leitura</button>
-        </div>
-    </div>
-    <div id="m-terms" class="modal" onclick="closeModal('m-terms')">
-        <div class="glass p-10 max-w-xl w-full" onclick="event.stopPropagation()">
-            <h2 class="logo-font text-cyan-400 text-2xl mb-6 uppercase">Termos de Uso</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-8">O Mundo das IA's atua como uma plataforma de curadoria e análise técnica independente. O acesso às ferramentas de terceiros é regido por seus respectivos contratos.</p>
-            <button onclick="closeModal('m-terms')" class="btn-elite">Aceitar Termos</button>
-        </div>
-    </div>
-    <div id="m-about" class="modal" onclick="closeModal('m-about')">
-        <div class="glass p-10 max-w-xl w-full" onclick="event.stopPropagation()">
-            <h2 class="logo-font text-cyan-400 text-2xl mb-6 uppercase">Manifesto</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-8">Nascemos com a missão de filtrar o ruído do crescimento exponencial das IAs. Somos um ponto de convergência para profissionais que buscam soberania digital e eficiência sintética.</p>
-            <button onclick="closeModal('m-about')" class="btn-elite">Entendido</button>
-        </div>
-    </div>
-
-    <script>
-        let rawData = [];
-        const i18n = {
-            pt: { h1: "Curadoria Neural Elite.", hero_d: "Monitoramento estratégico e auditoria técnica das tecnologias que lideram a revolução sintética global.", t1: "Top Relevância", t_ars: "Ecossistema Ativo", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expanda o Arsenal" },
-            en: { h1: "Elite Neural Curation.", hero_d: "Strategic monitoring and technical auditing of the technologies leading the global synthetic revolution.", t1: "High Relevance", t_ars: "Active Ecosystem", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expand the Arsenal" },
-            es: { h1: "Curaduría Neural Élite.", hero_d: "Monitoreo estratégico y auditoría técnica de las tecnologías que lideran la revolución sintética global.", t1: "Alta Relevancia", t_ars: "Ecosistema Activo", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expandir el Arsenal" }
-        };
-
-        async function init() {
-            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv";
-            try {
-                const res = await fetch(url);
-                const csv = await res.text();
-                const lines = csv.split('\n').slice(1);
-                const seenLinks = new Set();
-                rawData = lines.map(line => {
-                    const c = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if (!c[1]) return null;
-                    const link = c[3].trim();
-                    if(seenLinks.has(link)) return null;
-                    seenLinks.add(link);
-                    return { cat: c[0].replace(/"/g,''), nome: c[1].replace(/"/g,''), desc: c[2].replace(/"/g,''), link: link, img: c[4], nota: parseInt(c[6]) || 5 };
-                }).filter(i => i);
-                renderGrids(rawData);
-            } catch (e) { console.error("Neural Interface Failure."); }
-        }
-
-        function renderGrids(data) {
-            document.getElementById('destaque-grid').innerHTML = data.slice(0, 2).map(i => cardHTML(i)).join('');
-            document.getElementById('ia-grid').innerHTML = data.map(i => cardHTML(i)).join('');
-        }
-
-        function cardHTML(i) {
-            return `
-            <div class="glass overflow-hidden flex flex-col h-full group">
-                <div class="relative overflow-hidden">
-                    <img src="${i.img}" class="img-card group-hover:scale-105 transition duration-700" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
-                    <div class="absolute top-4 right-4">
-                        <a href="https://wa.me/?text=Análise Técnica: ${encodeURIComponent(i.link)}" target="_blank" class="w-10 h-10 glass flex items-center justify-center text-white/40 hover:text-cyan-400 transition"><i class="fa-brands fa-whatsapp text-lg"></i></a>
-                    </div>
-                </div>
-                <div class="p-7 flex flex-col grow">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-cyan-400 text-[10px] font-bold uppercase tracking-[2px] bg-cyan-400/10 px-3 py-1 rounded">${i.cat}</span>
-                        <div class="text-yellow-500 text-[9px]">${'<i class="fa-solid fa-star"></i>'.repeat(i.nota)}</div>
-                    </div>
-                    <h3 class="text-white font-bold mb-4 uppercase text-base group-hover:text-cyan-400 transition">${i.nome}</h3>
-                    <p class="text-slate-500 text-sm mb-8 line-clamp-3 leading-relaxed">${i.desc}</p>
-                    <a href="${i.link}" target="_blank" class="mt-auto btn-elite">Acessar Documentação</a>
-                </div>
-            </div>`;
-        }
-
-        function changeLang(l) {
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`btn-${l}`).classList.add('active');
-            document.querySelectorAll('[data-t]').forEach(el => el.innerText = i18n[l][el.getAttribute('data-t')]);
-        }
-
-        function filterIAs() {
-            const term = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = rawData.filter(i => i.nome.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
-            renderGrids(filtered);
-        }
-
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
-        window.onload = init;
-    </script>
-</body>
-</html>
+            <button onclick="openModal('m-priv')" class="hover:text-cyan-400
