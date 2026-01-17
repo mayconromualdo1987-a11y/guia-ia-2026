@@ -3,88 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | 2026 Elite</title>
+    <title>Mundo das IA's | Arsenal Neural</title>
+    
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { background: #020617; color: #fff; font-family: 'Rajdhani', sans-serif; }
-        .logo { font-family: 'Orbitron', sans-serif; color: #00f2ff; }
-        .card { background: #0f172a; border: 1px solid #1e293b; border-radius: 20px; transition: 0.3s; height: 100%; }
-        .card:hover { border-color: #00f2ff; transform: translateY(-5px); }
+        :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
+        .logo-font { font-family: 'Orbitron', sans-serif; }
+        .card-base { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; backdrop-filter: blur(20px); transition: all 0.4s ease; }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.2); }
+        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; transition: 0.3s; }
+        .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.2); }
+        .rating-badge { background: rgba(0, 242, 255, 0.1); color: var(--cyan); padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 900; border: 1px solid rgba(0, 242, 255, 0.3); }
+        .elite-card { border: 2px solid var(--purple) !important; background: linear-gradient(145deg, rgba(112, 0, 255, 0.1), transparent) !important; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <nav class="p-6 border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+    <nav class="fixed top-0 w-full bg-slate-950/95 backdrop-blur-2xl border-b border-cyan-900/40 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="logo text-2xl tracking-tighter">NEURAL<span class="text-white">INDEX</span></h1>
-            <input type="text" id="search" onkeyup="search()" placeholder="Consultar Arsenal..." class="bg-slate-900 border border-white/10 px-6 py-2 rounded-full text-sm outline-none focus:border-cyan-400 w-64">
+            <div class="logo-font cursor-pointer flex items-center gap-3" onclick="window.location.reload()">
+                <h1 class="text-white text-xl font-black uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
+            </div>
+            <button onclick="document.getElementById('academy').scrollIntoView()" class="btn-main">Academy</button>
         </div>
     </nav>
 
-    <main class="max-w-7xl mx-auto p-6">
-        <div class="my-8 flex justify-center">
-            <ins class="adsbygoogle" style="display:block;width:100%" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="auto"></ins>
+    <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+            <div class="lg:col-span-2 card-base p-12 border-l-8 border-l-cyan-400">
+                <h2 class="text-6xl md:text-8xl font-black logo-font uppercase mb-4 text-white italic">Arsenal <span class="text-cyan-400">Neural.</span></h2>
+                <p class="text-slate-400 text-xl">Filtro de Inteligência Artificial para produtividade extrema em 2026.</p>
+            </div>
+
+            <div class="card-base p-8 border-purple-500/40">
+                <h3 class="logo-font text-[10px] text-purple-400 mb-4 uppercase tracking-widest font-bold italic">IA Consultora Gemini</h3>
+                <input type="text" id="aiInput" class="w-full bg-black/50 border border-white/10 p-4 rounded-xl text-xs outline-none focus:border-cyan-400 mb-4" placeholder="Pergunte ao Gemini sobre uma IA...">
+                <button onclick="perguntarIA()" id="btnIA" class="w-full btn-main mb-4">Consultar Engine</button>
+                <div id="aiOutput" class="text-[11px] text-slate-400 leading-relaxed italic hidden border-t border-white/5 pt-4"></div>
+            </div>
+        </div>
+
+        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24"></div>
+
+        <div class="flex flex-col md:flex-row gap-4 mb-12">
+            <input type="text" id="iaSearch" onkeyup="renderGrid()" class="flex-grow bg-slate-900/50 border border-cyan-900/30 px-6 py-5 rounded-2xl text-cyan-400 outline-none" placeholder="O que você quer automatizar hoje?">
+            <button class="px-8 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5">Ativos de Elite</button>
+        </div>
+
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
+
+        <div class="my-20 flex justify-center">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
-        <div id="status" class="text-center py-20 text-cyan-400">Iniciando Protocolos Neurais...</div>
-        <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
     </main>
 
+    <footer id="academy" class="py-16 bg-slate-950 border-t border-cyan-900/30 text-center">
+        <p class="logo-font text-[9px] opacity-20 text-white tracking-[1em]">MUNDO DAS IA'S © 2026</p>
+    </footer>
+
     <script>
-        let db = [];
-        // URL da sua planilha publicada como CSV
-        const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
+        let todasIAs = [];
+        const GEMINI_KEY = "SUA_CHAVE_API_AQUI"; // Chave necessária para o chat no site
 
-        async function start() {
+        async function init() {
+            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
             try {
-                const res = await fetch(url);
-                const text = await res.text();
-                const rows = text.split('\n');
+                const res = await fetch(urlCSV);
+                const data = await res.text();
+                const rows = data.split(/\r?\n/).slice(1);
                 
-                db = rows.slice(1).map(row => {
-                    // Regex avançada para separar por vírgula mas ignorar vírgulas dentro de aspas
-                    const parts = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if (parts.length < 4) return null;
+                todasIAs = rows.map((row, index) => {
+                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                    if(!col[1]) return null;
                     return {
-                        cat: parts[0].replace(/"/g, ''),
-                        nome: parts[1].replace(/"/g, ''),
-                        desc: parts[2].replace(/"/g, ''),
-                        link: parts[3].replace(/"/g, ''),
-                        img: parts[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400"
+                        cat: col[0].replace(/"/g, ''),
+                        nome: col[1].replace(/"/g, ''),
+                        desc: col[2].replace(/"/g, ''),
+                        link: col[3].replace(/"/g, ''),
+                        img: col[4]?.replace(/"/g, '') || "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
+                        hits: 200 + Math.floor(Math.random() * 500)
                     };
-                }).filter(x => x && x.nome.length > 1);
-
-                show(db);
-                document.getElementById('status').style.display = 'none';
-            } catch (e) {
-                document.getElementById('status').innerText = "Erro Crítico: Verifique a publicação da planilha.";
-            }
+                }).filter(i => i);
+                
+                renderHighlights();
+                renderGrid();
+            } catch(e) { console.error("Falha ao carregar Arsenal."); }
         }
 
-        function show(data) {
-            const container = document.getElementById('grid');
-            container.innerHTML = data.map(i => `
-                <div class="card overflow-hidden flex flex-col">
-                    <img src="${i.img}" class="h-40 w-full object-cover grayscale hover:grayscale-0 transition duration-500">
-                    <div class="p-5 flex-grow">
-                        <p class="text-[10px] text-cyan-400 font-bold mb-1 uppercase tracking-tighter">${i.cat}</p>
-                        <h2 class="text-white font-bold text-lg mb-2">${i.nome}</h2>
-                        <p class="text-slate-400 text-xs line-clamp-3 mb-4">${i.desc}</p>
-                        <a href="${i.link}" target="_blank" class="block w-full text-center bg-white text-black py-2 rounded-lg font-black text-[10px] uppercase hover:bg-cyan-400 transition">Acessar Sistema</a>
+        async function perguntarIA() {
+            const input = document.getElementById('aiInput').value;
+            const output = document.getElementById('aiOutput');
+            const btn = document.getElementById('btnIA');
+            if(!input) return;
+
+            output.classList.remove('hidden');
+            output.innerText = "Pensando...";
+            btn.innerText = "Sincronizando...";
+
+            const prompt = `Usuário quer saber: "${input}". Use sua base de 2026 e recomende IAs adequadas de forma muito breve.`;
+
+            try {
+                const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_KEY}`, {
+                    method: "POST", headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                });
+                const data = await res.json();
+                output.innerText = "GEMINI: " + data.candidates[0].content.parts[0].text;
+            } catch(e) { output.innerText = "Conexão Neural Offline. Verifique a API Key."; }
+            finally { btn.innerText = "Consultar Engine"; }
+        }
+
+        function renderGrid() {
+            const search = document.getElementById('iaSearch').value.toLowerCase();
+            const grid = document.getElementById('ia-grid');
+            const filtered = todasIAs.filter(i => i.nome.toLowerCase().includes(search) || i.desc.toLowerCase().includes(search));
+
+            grid.innerHTML = filtered.map(ia => `
+                <div class="card-base flex flex-col group overflow-hidden">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                     </div>
-                </div>
-            `).join('');
+                    <div class="p-6 flex-grow flex flex-col">
+                        <span class="text-[9px] text-cyan-400 font-black uppercase mb-2 tracking-widest">${ia.cat}</span>
+                        <h4 class="text-white font-bold mb-3 uppercase text-base">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6 leading-relaxed">${ia.desc}</p>
+                        <div class="mt-auto pt-4 border-t border-cyan-900/20 flex justify-between items-center">
+                            <span class="text-[9px] text-slate-700 font-bold uppercase">${ia.hits} Pulsos</span>
+                            <a href="${ia.link}" target="_blank" class="btn-main text-[9px]">Acessar</a>
+                        </div>
+                    </div>
+                </div>`).join('');
         }
 
-        function search() {
-            const q = document.getElementById('search').value.toLowerCase();
-            show(db.filter(i => i.nome.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q)));
+        function renderHighlights() {
+            const elite = ["CHATGPT", "GEMINI", "MIDJOURNEY", "SORA", "CLAUDE"];
+            const h = todasIAs.filter(ia => elite.some(e => ia.nome.toUpperCase().includes(e))).slice(0, 3);
+            document.getElementById('highlights-grid').innerHTML = h.map(ia => `
+                <div class="card-base p-10 elite-card text-center">
+                    <img src="${ia.img}" class="w-20 h-20 rounded-2xl mx-auto mb-4 object-cover">
+                    <h4 class="logo-font text-white font-bold uppercase text-lg">${ia.nome}</h4>
+                    <p class="text-[10px] text-slate-400 my-4">${ia.desc}</p>
+                    <a href="${ia.link}" target="_blank" class="text-cyan-400 font-black text-xs">SISTEMA ATIVO →</a>
+                </div>`).join('');
         }
 
-        window.onload = start;
+        window.onload = init;
     </script>
 </body>
 </html>
