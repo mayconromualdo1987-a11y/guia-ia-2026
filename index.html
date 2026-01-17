@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Arsenal 2026</title>
+    <title>Mundo das IA's | Arsenal Neural 2026</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
 
@@ -12,45 +12,59 @@
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .card-base { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; transition: 0.4s; }
-        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 242, 255, 0.15); }
-        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; transition: 0.3s; cursor: pointer; }
+        .card-base { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.2); }
+        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; transition: 0.3s; cursor: pointer; border: none; }
+        .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.1); }
+        .pulse-tag { background: rgba(0, 242, 255, 0.1); color: var(--cyan); padding: 2px 8px; border-radius: 6px; font-size: 9px; font-weight: bold; border: 1px solid rgba(0, 242, 255, 0.2); }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur-md border-b border-cyan-900/40 z-[100] px-6 py-4">
+    <nav class="fixed top-0 w-full bg-slate-950/90 backdrop-blur-xl border-b border-cyan-900/40 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <h1 class="logo-font text-white text-xl font-black">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
-            <div class="hidden md:flex gap-6 text-[11px] font-bold uppercase tracking-widest text-slate-400">
-                <a href="#" class="hover:text-cyan-400">Início</a>
-                <a href="#ia-grid" class="hover:text-cyan-400">Arsenal</a>
-                <a href="#" class="hover:text-cyan-400">Academy</a>
-            </div>
+            <h1 class="logo-font text-white text-xl font-black tracking-tighter cursor-pointer" onclick="window.location.reload()">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
+            <button onclick="document.getElementById('ia-grid').scrollIntoView()" class="btn-main">Explorar Arsenal</button>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
         
-        <div class="card-base p-8 mb-16 border-purple-500/30 flex flex-col md:flex-row gap-6 items-center">
-            <div class="flex-grow">
-                <h2 class="logo-font text-purple-400 text-xs mb-2 uppercase tracking-widest">Consultoria Neural Gemini</h2>
-                <input type="text" id="aiInput" class="w-full bg-black/40 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-cyan-400" placeholder="Busca inteligente: 'Qual a melhor IA para arquitetos?'">
+        <div class="card-base p-8 mb-16 border-purple-500/30 bg-slate-950/50">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+                <div class="flex-grow w-full">
+                    <h2 class="logo-font text-purple-400 text-[10px] mb-2 uppercase tracking-[0.3em] font-bold">Consultoria Neural 2026</h2>
+                    <input type="text" id="aiInput" class="w-full bg-black/40 border border-white/10 p-4 rounded-xl text-sm outline-none focus:border-cyan-400 text-cyan-50" placeholder="Qual tarefa você deseja automatizar hoje?">
+                </div>
+                <button onclick="perguntarGemini()" id="aiBtn" class="btn-main h-14 px-10 w-full md:w-auto">Consultar Engine</button>
             </div>
-            <button onclick="perguntarIA()" id="aiBtn" class="btn-main h-full px-12">Consultar</button>
+            <div id="aiResponse" class="hidden mt-6 p-5 bg-purple-500/5 border-l-2 border-purple-500 text-xs italic text-slate-300 leading-relaxed"></div>
         </div>
-        <div id="aiResponse" class="hidden mb-12 p-6 bg-cyan-400/5 border-l-4 border-cyan-400 text-xs italic text-slate-300"></div>
+
+        <div class="mb-12 flex flex-col md:flex-row gap-4">
+            <input type="text" id="searchInput" onkeyup="filterCards()" class="flex-grow bg-slate-900/50 border border-cyan-900/30 px-6 py-4 rounded-2xl text-cyan-400 outline-none focus:border-cyan-400" placeholder="Filtrar por nome ou profissão...">
+        </div>
 
         <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             </div>
 
+        <div class="mt-20 flex justify-center">
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6123538599368354" data-ad-slot="AUTO" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+
     </main>
+
+    <footer class="py-12 bg-slate-950 border-t border-cyan-900/20 text-center">
+        <p class="logo-font text-[9px] opacity-30 text-white tracking-[1em] uppercase">Mundo das IA's © 2026</p>
+    </footer>
 
     <script>
         const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
-        const GEMINI_KEY = "SUA_CHAVE_API_AQUI";
+        const GEMINI_KEY = "SUA_CHAVE_API_AQUI"; // Substitua pela sua chave no site
+        let baseIAs = [];
 
         async function init() {
             try {
@@ -58,42 +72,70 @@
                 const data = await res.text();
                 const rows = data.split(/\r?\n/).slice(1);
                 
-                const grid = document.getElementById('ia-grid');
-                grid.innerHTML = rows.map(row => {
+                baseIAs = rows.map(row => {
                     const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if(!col[1]) return '';
-                    return `
-                        <div class="card-base overflow-hidden flex flex-col">
-                            <img src="${col[4]}" class="w-full h-40 object-cover opacity-80">
-                            <div class="p-6 flex-grow">
-                                <span class="text-[9px] text-cyan-400 font-bold uppercase tracking-tighter">${col[0]}</span>
-                                <h4 class="text-white font-bold my-2 uppercase">${col[1]}</h4>
-                                <p class="text-slate-500 text-[11px] line-clamp-3 mb-4">${col[2]}</p>
-                                <div class="flex justify-between items-center mt-auto border-t border-white/5 pt-4">
-                                    <span class="text-[9px] text-slate-600 font-bold">${col[5] || 0} PULSOS</span>
-                                    <a href="${col[3]}" target="_blank" class="btn-main text-[9px]">Acessar</a>
-                                </div>
-                            </div>
-                        </div>`;
-                }).join('');
-            } catch(e) { console.error("Erro ao carregar arsenal."); }
+                    if(!col[1]) return null;
+                    return {
+                        cat: col[0]?.replace(/"/g, ''),
+                        nome: col[1]?.replace(/"/g, ''),
+                        desc: col[2]?.replace(/"/g, ''),
+                        link: col[3]?.replace(/"/g, ''),
+                        img: col[4]?.replace(/"/g, ''),
+                        pulsos: col[5] || 0
+                    };
+                }).filter(i => i);
+                
+                renderCards(baseIAs);
+            } catch(e) { console.error("Falha na sincronização do Arsenal."); }
         }
 
-        async function perguntarIA() {
-            const query = document.getElementById('aiInput').value;
-            const resBox = document.getElementById('aiResponse');
-            if(!query) return;
+        function renderCards(lista) {
+            const grid = document.getElementById('ia-grid');
+            grid.innerHTML = lista.map(ia => `
+                <div class="card-base overflow-hidden flex flex-col group">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="${ia.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-90">
+                        <div class="absolute top-3 right-3 pulse-tag">${ia.pulsos} Pulsos</div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <span class="text-[9px] text-cyan-400 font-bold uppercase tracking-widest">${ia.cat}</span>
+                        <h4 class="text-white font-bold my-2 uppercase text-sm">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6">${ia.desc}</p>
+                        <div class="mt-auto pt-4 border-t border-white/5">
+                            <a href="${ia.link}" target="_blank" class="btn-main text-[9px] w-full block text-center">Acessar Sistema</a>
+                        </div>
+                    </div>
+                </div>`).join('');
+        }
 
+        function filterCards() {
+            const val = document.getElementById('searchInput').value.toLowerCase();
+            const filtrados = baseIAs.filter(ia => 
+                ia.nome.toLowerCase().includes(val) || 
+                ia.cat.toLowerCase().includes(val)
+            );
+            renderCards(filtrados);
+        }
+
+        async function perguntarGemini() {
+            const q = document.getElementById('aiInput').value;
+            const resBox = document.getElementById('aiResponse');
+            const btn = document.getElementById('aiBtn');
+            if(!q) return;
+
+            btn.innerText = "Sincronizando...";
             resBox.classList.remove('hidden');
-            resBox.innerText = "Sincronizando com a rede neural...";
+            resBox.innerText = "O Gemini está analisando o arsenal de 2026...";
 
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_KEY}`, {
-                    method: "POST", body: JSON.stringify({contents:[{parts:[{text: `Usuário busca: ${query}. Indique uma IA ideal para isso em 2026.`}]}]})
+                    method: "POST", headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({contents: [{parts: [{text: `Aja como o guia do site Mundo das IAs em 2026. O usuário quer saber: ${q}. Seja breve e técnico.`}]}]})
                 });
                 const data = await res.json();
-                resBox.innerText = "GEMINI: " + data.candidates[0].content.parts[0].text;
-            } catch(e) { resBox.innerText = "IA Offline. Verifique sua chave."; }
+                resBox.innerText = "IA: " + data.candidates[0].content.parts[0].text;
+            } catch(e) { resBox.innerText = "Erro na rede neural. Verifique sua chave API."; }
+            finally { btn.innerText = "Consultar Engine"; }
         }
 
         window.onload = init;
