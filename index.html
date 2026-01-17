@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Mundo das IA's: O arsenal definitivo de inteligência artificial, cursos e notícias do ecossistema de 2026.">
-    <title>Mundo das IA's | Inteligência Artificial e Curadoria</title>
+    <meta name="description" content="Mundo das IA's: Curadoria técnica avançada de inteligência artificial em 2026.">
+    <title>Mundo das IA's | Inteligência Artificial</title>
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-SEU_CODIGO_AQUI" crossorigin="anonymous"></script>
 
@@ -17,12 +17,12 @@
         :root { --cyan: #00f2ff; --dark: #020617; }
         body { background: var(--dark); color: #f1f5f9; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; transition: 0.3s; }
         .img-card { aspect-ratio: 16/9; width: 100%; object-fit: cover; border-radius: 0.75rem 0.75rem 0 0; }
-        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 11px; padding: 12px; border-radius: 6px; text-align: center; display: block; width: 100%; cursor: pointer; transition: 0.3s; border: none; }
-        .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); transform: translateY(-2px); }
-        .lang-btn { cursor: pointer; width: 22px; height: 14px; opacity: 0.3; transition: 0.3s; border: 1px solid transparent; }
-        .lang-btn.active { opacity: 1; border-color: var(--cyan); transform: scale(1.1); }
+        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 11px; padding: 12px; border-radius: 6px; text-align: center; display: block; width: 100%; cursor: pointer; border: none; }
+        .btn-elite:hover { box-shadow: 0 0 15px var(--cyan); transform: translateY(-2px); }
+        .lang-btn { cursor: pointer; width: 22px; height: 14px; opacity: 0.3; transition: 0.3s; }
+        .lang-btn.active { opacity: 1; border: 1px solid var(--cyan); transform: scale(1.1); }
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 1000; align-items: center; justify-content: center; padding: 15px; }
     </style>
 </head>
@@ -31,13 +31,11 @@
     <nav class="sticky top-0 z-50 bg-slate-950/95 border-b border-white/5 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
             <a href="#" class="logo-font text-xl font-black text-white tracking-tighter">MUNDO <span class="text-cyan-400">IA'S</span></a>
-            
             <div class="flex gap-4 items-center">
                 <div class="hidden lg:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-                    <a href="#ia-grid-section" class="hover:text-cyan-400">Arsenal</a>
+                    <a href="#destaques" class="hover:text-cyan-400">Destaques</a>
                     <a href="#academy" class="hover:text-cyan-400">Academy</a>
                     <a href="#news" class="hover:text-cyan-400">Notícias</a>
-                    <a href="#contato" class="hover:text-cyan-400">Contato</a>
                 </div>
                 <div class="flex gap-2 border-l border-white/10 pl-4">
                     <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="changeLang('pt')">
@@ -51,17 +49,22 @@
     <main class="max-w-7xl mx-auto px-4 md:px-8 pt-10 pb-20">
         
         <header class="text-center mb-16">
-            <h1 class="logo-font text-4xl md:text-7xl mb-6 leading-none uppercase italic" data-t="h1">Curadoria <br><span class="text-cyan-400">Neural 2026.</span></h1>
-            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto" data-t="hero_d">Referência técnica no ecossistema de inteligência artificial e modelos generativos.</p>
+            <h1 class="logo-font text-4xl md:text-7xl mb-6 leading-none uppercase italic" data-t="h1">Curadoria Neural 2026.</h1>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto" data-t="hero_d">Análise técnica rigorosa das ferramentas que definem o ecossistema de inteligência artificial.</p>
         </header>
 
         <div class="relative max-w-xl mx-auto mb-20">
             <i class="fa-solid fa-magnifying-glass absolute left-5 top-1/2 -translate-y-1/2 text-cyan-400/50"></i>
-            <input type="text" id="searchInput" onkeyup="filterIAs()" placeholder="Pesquisar arsenal tecnológico..." class="w-full bg-slate-900/50 border border-cyan-400/30 p-4 pl-12 rounded-full text-white outline-none focus:border-cyan-400 transition">
+            <input type="text" id="searchInput" onkeyup="filterIAs()" placeholder="Pesquisar arsenal..." class="w-full bg-slate-900/50 border border-cyan-400/30 p-4 pl-12 rounded-full text-white outline-none focus:border-cyan-400 transition">
         </div>
 
-        <section id="ia-grid-section" class="mb-24">
-            <h2 class="logo-font text-center text-lg mb-10 uppercase tracking-[12px]" data-t="t_ars">Arsenal Tecnológico</h2>
+        <section id="destaques" class="mb-24">
+            <h2 class="logo-font text-center text-lg mb-10 uppercase tracking-[12px] text-cyan-400/80" data-t="t1">Top Relevância</h2>
+            <div id="destaque-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+        </section>
+
+        <section id="ia-grid-section" class="mb-24 pt-16 border-t border-white/5">
+            <h2 class="logo-font text-center text-lg mb-10 uppercase tracking-[12px]" data-t="t_ars">Arsenal Ativo</h2>
             <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
         </section>
 
@@ -71,43 +74,42 @@
                 <div class="glass p-6">
                     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" class="img-card mb-4">
                     <h3 class="font-bold text-white uppercase text-sm mb-2">Google Cloud AI</h3>
-                    <p class="text-slate-500 text-xs mb-4">Treinamentos oficiais sobre infraestrutura e modelos Gemini para desenvolvedores.</p>
-                    <a href="https://www.cloudskillsboost.google/" target="_blank" class="btn-elite">Acessar</a>
+                    <p class="text-slate-500 text-xs mb-4">Treinamentos oficiais sobre infraestrutura e modelos Gemini.</p>
+                    <a href="https://www.cloudskillsboost.google/" target="_blank" class="btn-elite">Acessar Curso</a>
                 </div>
                 <div class="glass p-6">
                     <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600" class="img-card mb-4">
                     <h3 class="font-bold text-white uppercase text-sm mb-2">DeepLearning.AI</h3>
-                    <p class="text-slate-500 text-xs mb-4">Aprenda engenharia de prompt e redes neurais com os maiores especialistas do mundo.</p>
-                    <a href="https://www.deeplearning.ai/" target="_blank" class="btn-elite">Acessar</a>
+                    <p class="text-slate-500 text-xs mb-4">Engenharia de prompt e redes neurais de alto nível.</p>
+                    <a href="https://www.deeplearning.ai/" target="_blank" class="btn-elite">Acessar Curso</a>
                 </div>
                 <div class="glass p-6">
                     <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600" class="img-card mb-4">
-                    <h3 class="font-bold text-white uppercase text-sm mb-2">OpenAI Developers</h3>
-                    <p class="text-slate-500 text-xs mb-4">Documentação técnica e cursos sobre implementação de APIs e GPTs customizados.</p>
-                    <a href="https://platform.openai.com/docs" target="_blank" class="btn-elite">Acessar</a>
+                    <h3 class="font-bold text-white uppercase text-sm mb-2">OpenAI Docs</h3>
+                    <p class="text-slate-500 text-xs mb-4">Guia oficial para desenvolvedores de GPTs e APIs.</p>
+                    <a href="https://platform.openai.com/docs" target="_blank" class="btn-elite">Acessar Curso</a>
                 </div>
             </div>
         </section>
 
         <section id="news" class="mb-24 pt-16 border-t border-white/5">
-            <h2 class="logo-font text-center text-lg mb-10 uppercase tracking-[12px]" data-t="t3">Inteligência Global</h2>
+            <h2 class="logo-font text-center text-lg mb-10 uppercase tracking-[12px]" data-t="t3">Fronteira Global</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="glass p-8 border-l-4 border-cyan-400">
-                    <h3 class="text-white font-bold uppercase text-lg mb-4">A Ascensão dos Agentes Locais</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Em 2026, a privacidade torna-se o pilar central, com modelos rodando 100% offline em hardware dedicado.</p>
-                    <a href="#" class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Ler Análise Técnica</a>
+                    <h3 class="text-white font-bold uppercase text-lg mb-4">IAs Locais em 2026</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">A soberania digital avança com modelos rodando 100% offline em hardware doméstico.</p>
+                    <a href="https://openai.com/news" target="_blank" class="text-cyan-400 text-xs font-bold uppercase hover:underline">Ler Mais</a>
                 </div>
                 <div class="glass p-8 border-l-4 border-slate-700">
-                    <h3 class="text-white font-bold uppercase text-lg mb-4">Multimodalidade em Tempo Real</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed mb-4">A integração entre visão, voz e texto atinge níveis de latência imperceptíveis em sistemas operacionais.</p>
-                    <a href="#" class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Ler Análise Técnica</a>
+                    <h3 class="text-white font-bold uppercase text-lg mb-4">Agentes Autônomos</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Sistemas que não apenas respondem, mas executam tarefas complexas entre apps.</p>
+                    <a href="https://blog.google/technology/ai/" target="_blank" class="text-cyan-400 text-xs font-bold uppercase hover:underline">Ler Mais</a>
                 </div>
             </div>
         </section>
 
         <section id="contato" class="glass p-10 text-center border-dashed border-2 border-cyan-400/20">
             <h2 class="logo-font text-white text-xl mb-4 uppercase" data-t="t4">Sugira uma IA</h2>
-            <p class="text-slate-400 text-sm mb-8">Nossa curadoria é alimentada pela comunidade. Envie sugestões de novas ferramentas para análise.</p>
             <a href="mailto:contato@mundodasias.com.br" class="inline-block px-10 py-3 border border-cyan-400 text-cyan-400 font-bold uppercase text-[10px] hover:bg-cyan-400 hover:text-black transition">Enviar Sugestão</a>
         </section>
 
@@ -122,34 +124,16 @@
         <p class="logo-font text-[9px] opacity-20 tracking-[10px]">MUNDO DAS IA'S © 2026</p>
     </footer>
 
-    <div id="m-priv" class="modal" onclick="closeModal('m-priv')">
-        <div class="glass p-8 max-w-xl w-full" onclick="event.stopPropagation()">
-            <h2 class="logo-font text-cyan-400 text-xl mb-4 uppercase">Privacidade</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6">Utilizamos cookies para otimizar anúncios via Google AdSense e métricas de navegação. Seus dados de interação são protegidos e anônimos.</p>
-            <button onclick="closeModal('m-priv')" class="btn-elite">Fechar</button>
-        </div>
-    </div>
-    <div id="m-terms" class="modal" onclick="closeModal('m-terms')">
-        <div class="glass p-8 max-w-xl w-full" onclick="event.stopPropagation()">
-            <h2 class="logo-font text-cyan-400 text-xl mb-4 uppercase">Termos de Uso</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6">As ferramentas listadas são propriedades de terceiros. Este site atua apenas como curadoria informativa e não se responsabiliza pelo uso das mesmas.</p>
-            <button onclick="closeModal('m-terms')" class="btn-elite">Aceitar</button>
-        </div>
-    </div>
-    <div id="m-about" class="modal" onclick="closeModal('m-about')">
-        <div class="glass p-8 max-w-xl w-full" onclick="event.stopPropagation()">
-            <h2 class="logo-font text-cyan-400 text-xl mb-4 uppercase">Sobre</h2>
-            <p class="text-slate-400 text-sm leading-relaxed mb-6">Mundo das IA's é um portal independente dedicado ao mapeamento do avanço da inteligência sintética e automação avançada.</p>
-            <button onclick="closeModal('m-about')" class="btn-elite">Fechar</button>
-        </div>
-    </div>
+    <div id="m-priv" class="modal" onclick="closeModal('m-priv')"><div class="glass p-8 max-w-xl w-full" onclick="event.stopPropagation()"><h2 class="logo-font text-cyan-400 text-xl mb-4 uppercase">Privacidade</h2><p class="text-slate-400 text-sm mb-6">Cookies ativos para AdSense e métricas.</p><button onclick="closeModal('m-priv')" class="btn-elite">Fechar</button></div></div>
+    <div id="m-terms" class="modal" onclick="closeModal('m-terms')"><div class="glass p-8 max-w-xl w-full" onclick="event.stopPropagation()"><h2 class="logo-font text-cyan-400 text-xl mb-4 uppercase">Termos</h2><p class="text-slate-400 text-sm mb-6">Curadoria informativa de terceiros.</p><button onclick="closeModal('m-terms')" class="btn-elite">Aceitar</button></div></div>
+    <div id="m-about" class="modal" onclick="closeModal('m-about')"><div class="glass p-8 max-w-xl w-full" onclick="event.stopPropagation()"><h2 class="logo-font text-cyan-400 text-xl mb-4 uppercase">Sobre</h2><p class="text-slate-400 text-sm mb-6">Portal de curadoria de IA de 2026.</p><button onclick="closeModal('m-about')" class="btn-elite">Fechar</button></div></div>
 
     <script>
         let rawData = [];
         const i18n = {
-            pt: { h1: "Curadoria Neural 2026.", hero_d: "Referência técnica no ecossistema de inteligência artificial e modelos generativos.", t_ars: "Arsenal Tecnológico", t2: "Neural Academy", t3: "Inteligência Global", t4: "Sugira uma IA" },
-            en: { h1: "Neural Curation 2026.", hero_d: "Technical reference in the artificial intelligence and generative models ecosystem.", t_ars: "Tech Arsenal", t2: "Neural Academy", t3: "Global Intelligence", t4: "Suggest an AI" },
-            es: { h1: "Curaduría Neural 2026.", hero_d: "Referencia técnica en el ecosistema de inteligencia artificial y modelos generativos.", t_ars: "Arsenal Técnico", t2: "Neural Academy", t3: "Noticias Globales", t4: "Sugiere una IA" }
+            pt: { h1: "Curadoria Neural 2026.", hero_d: "Análise técnica rigorosa das ferramentas de IA.", t1: "Top Relevância", t_ars: "Arsenal Ativo", t2: "Neural Academy", t3: "Fronteira Global", t4: "Sugira uma IA" },
+            en: { h1: "Neural Curation 2026.", hero_d: "Rigorous technical analysis of AI tools.", t1: "Top Relevance", t_ars: "Tech Arsenal", t2: "Neural Academy", t3: "Global Frontier", t4: "Suggest an AI" },
+            es: { h1: "Curaduría Neural 2026.", hero_d: "Análisis técnico riguroso de herramientas IA.", t1: "Top Relevancia", t_ars: "Arsenal Técnico", t2: "Neural Academy", t3: "Frontera Global", t4: "Sugiere una IA" }
         };
 
         async function init() {
@@ -158,9 +142,8 @@
                 const res = await fetch(url);
                 const csv = await res.text();
                 const lines = csv.split('\n').slice(1);
-                
-                // DEDUPLICAÇÃO REAL
                 const seenLinks = new Set();
+                
                 rawData = lines.map(line => {
                     const c = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if (!c[1]) return null;
@@ -171,23 +154,35 @@
                 }).filter(i => i);
 
                 renderGrids(rawData);
-            } catch (e) { console.error("Erro na sincronização."); }
+            } catch (e) { console.error("Sync Error"); }
         }
 
         function renderGrids(data) {
-            document.getElementById('ia-grid').innerHTML = data.map(i => `
+            // Render Destaques (2 primeiros)
+            document.getElementById('destaque-grid').innerHTML = data.slice(0, 2).map(i => cardHTML(i)).join('');
+            // Render Arsenal (Todos)
+            document.getElementById('ia-grid').innerHTML = data.map(i => cardHTML(i)).join('');
+        }
+
+        function cardHTML(i) {
+            return `
             <div class="glass overflow-hidden flex flex-col h-full group">
-                <img src="${i.img}" class="img-card group-hover:scale-105 transition duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
+                <div class="relative overflow-hidden">
+                    <img src="${i.img}" class="img-card group-hover:scale-105 transition duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
+                    <div class="absolute top-3 right-3">
+                        <a href="https://wa.me/?text=IA Sugerida: ${encodeURIComponent(i.link)}" target="_blank" class="w-8 h-8 glass flex items-center justify-center text-white/40 hover:text-cyan-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
                 <div class="p-5 flex flex-col grow">
                     <div class="flex justify-between items-center mb-3">
-                        <span class="text-cyan-400 text-[9px] font-bold uppercase tracking-widest">${i.cat}</span>
+                        <span class="text-cyan-400 text-[9px] font-bold uppercase tracking-widest bg-cyan-400/10 px-2 py-1 rounded">${i.cat}</span>
                         <div class="text-yellow-500 text-[8px]">${'<i class="fa-solid fa-star"></i>'.repeat(i.nota)}</div>
                     </div>
                     <h3 class="text-white font-bold mb-3 uppercase text-sm">${i.nome}</h3>
                     <p class="text-slate-500 text-xs mb-6 line-clamp-3">${i.desc}</p>
                     <a href="${i.link}" target="_blank" class="mt-auto btn-elite">Acessar</a>
                 </div>
-            </div>`).join('');
+            </div>`;
         }
 
         function changeLang(l) {
@@ -204,7 +199,6 @@
 
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
-        
         window.onload = init;
     </script>
 </body>
