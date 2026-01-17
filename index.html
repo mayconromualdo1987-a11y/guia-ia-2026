@@ -14,212 +14,82 @@
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--dark); color: #e2e8f0; font-family: 'Rajdhani', sans-serif; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        
-        .card-base { 
-            background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; 
-            backdrop-filter: blur(20px); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .card-base:hover { border-color: var(--cyan); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 242, 255, 0.2); }
-
-        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 11px; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .btn-main:hover { box-shadow: 0 0 20px var(--cyan); filter: brightness(1.2); }
-        
-        .rating-badge { background: rgba(0, 242, 255, 0.1); color: var(--cyan); padding: 4px 10px; border-radius: 8px; font-size: 10px; font-weight: 900; border: 1px solid rgba(0, 242, 255, 0.3); }
-        
-        .share-btn { width: 36px; height: 36px; background: rgba(0,0,0,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
-        .share-btn:hover { border-color: var(--cyan); transform: scale(1.1); }
-        
-        .elite-card { border: 2px solid var(--purple) !important; background: linear-gradient(145deg, rgba(112, 0, 255, 0.1), transparent) !important; }
+        .card-base { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 24px; backdrop-filter: blur(20px); transition: 0.3s; }
+        .card-base:hover { border-color: var(--cyan); transform: translateY(-5px); }
+        .btn-main { background: var(--cyan); color: #000; font-weight: 800; padding: 10px 20px; border-radius: 12px; font-size: 10px; text-transform: uppercase; }
+        .share-btn { width: 32px; height: 32px; background: rgba(0,0,0,0.8); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); }
     </style>
 </head>
 <body class="antialiased">
 
     <nav class="fixed top-0 w-full bg-slate-950/95 backdrop-blur-2xl border-b border-cyan-900/40 z-[100] px-6 py-4">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="logo-font cursor-pointer flex items-center gap-3" onclick="window.location.reload()">
-                <svg width="35" height="35" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" fill="none" stroke="#00f2ff" stroke-width="2"/>
-                    <path d="M50 20 L50 80 M20 50 L80 50" stroke="#00f2ff" stroke-width="8" stroke-linecap="round"/>
-                    <circle cx="50" cy="50" r="15" fill="#7000ff"/>
-                </svg>
-                <h1 class="text-white text-xl font-black uppercase tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
+            <div class="logo-font flex items-center gap-3 cursor-pointer" onclick="window.location.reload()">
+                <svg width="35" height="35" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="none" stroke="#00f2ff" stroke-width="2"/><path d="M50 20 L50 80 M20 50 L80 50" stroke="#00f2ff" stroke-width="8" stroke-linecap="round"/><circle cx="50" cy="50" r="15" fill="#7000ff"/></svg>
+                <h1 class="text-white text-xl font-black">MUNDO DAS <span class="text-cyan-400">IA'S</span></h1>
             </div>
-            <div class="flex items-center gap-4">
-                <button onclick="document.getElementById('academy').scrollIntoView({behavior:'smooth'})" class="btn-main">Academy</button>
-            </div>
+            <button onclick="document.getElementById('ia-grid').scrollIntoView()" class="btn-main">Explorar</button>
         </div>
     </nav>
 
     <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
-            <div class="lg:col-span-2 card-base p-12 border-l-8 border-l-cyan-400">
-                <h2 class="text-6xl md:text-8xl font-black logo-font uppercase mb-4 leading-none text-white italic">Arsenal <span class="text-cyan-400">Neural.</span></h2>
-                <p class="text-slate-400 text-xl">Filtro de Inteligência Artificial para produtividade extrema em 2026.</p>
-            </div>
-            
-            <div class="card-base p-8 border-purple-500/30">
-                <h3 class="logo-font text-[10px] text-purple-400 mb-6 uppercase tracking-widest font-bold">Neural News</h3>
-                <div class="space-y-4">
-                    <a href="https://techcrunch.com" target="_blank" class="block group">
-                        <span class="text-[9px] text-cyan-400 font-bold uppercase">Tecnologia</span>
-                        <p class="text-xs text-white font-bold group-hover:text-cyan-400 transition">Novos avanços em LLMs superam o raciocínio humano.</p>
-                    </a>
-                    <a href="https://www.theverge.com" target="_blank" class="block group">
-                        <span class="text-[9px] text-purple-400 font-bold uppercase">Inovação</span>
-                        <p class="text-xs text-white font-bold group-hover:text-purple-400 transition">IA Generativa agora cria vídeos de 10 min com 1 prompt.</p>
-                    </a>
-                </div>
-            </div>
+        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"></div>
+        <div class="flex gap-4 mb-12">
+            <input type="text" id="iaSearch" onkeyup="render()" class="flex-grow bg-slate-900 border border-cyan-900/30 px-6 py-4 rounded-2xl text-cyan-400 outline-none" placeholder="Pesquisar por IA ou Categoria...">
         </div>
-
-        <h3 class="logo-font text-purple-400 text-center text-xs mb-10 uppercase tracking-[0.5em]">--- Principais do Arsenal ---</h3>
-        <div id="highlights-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24"></div>
-
-        <div class="flex flex-col md:flex-row gap-4 mb-12">
-            <input type="text" id="iaSearch" onkeyup="filterAndSort()" class="flex-grow bg-slate-900/50 border border-cyan-900/30 px-6 py-5 rounded-2xl text-cyan-400 outline-none" placeholder="O que você quer automatizar hoje?">
-            <button onclick="setSort('hits')" id="sort-hits" class="px-8 rounded-2xl text-[10px] font-bold uppercase border border-cyan-400 text-cyan-400 bg-cyan-400/5">Mais Vistos</button>
-        </div>
-
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20"></div>
-
-        <section id="academy" class="py-20 border-t border-cyan-900/20">
-            <h3 class="logo-font text-cyan-400 text-center text-xs mb-12 uppercase tracking-[0.4em]">--- Academy: Cursos Gratuitos ---</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="https://www.cloudskillsboost.google" target="_blank" class="card-base p-8 text-center hover:border-cyan-400 transition">
-                    <h4 class="text-white font-bold mb-2">Google Cloud AI</h4>
-                    <p class="text-slate-500 text-xs">Cursos gratuitos de IA Generativa oficial.</p>
-                </a>
-                <a href="https://learn.microsoft.com" target="_blank" class="card-base p-8 text-center hover:border-cyan-400 transition">
-                    <h4 class="text-white font-bold mb-2">Microsoft Azure</h4>
-                    <p class="text-slate-500 text-xs">Trilhas completas de IA corporativa.</p>
-                </a>
-                <a href="https://www.deeplearning.ai" target="_blank" class="card-base p-8 text-center hover:border-cyan-400 transition">
-                    <h4 class="text-white font-bold mb-2">Andrew Ng Academy</h4>
-                    <p class="text-slate-500 text-xs">Certificações de elite em redes neurais.</p>
-                </a>
-            </div>
-        </section>
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
     </main>
 
-    <footer class="py-16 bg-slate-950 border-t border-cyan-900/30 text-center">
-        <div class="flex justify-center gap-10 mb-8 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-            <button onclick="alert('Termos 2026: Conteúdo meramente informativo.')">Termos</button>
-            <button onclick="alert('Privacidade: Dados protegidos por criptografia.')">Privacidade</button>
-            <button onclick="window.location.href='mailto:contato@mundodasias.com.br'">Sugestões</button>
-        </div>
-        <p class="logo-font text-[9px] opacity-20 text-white tracking-[1em]">MUNDO DAS IA'S © 2026</p>
-    </footer>
-
     <script>
-        let todasIAs = [];
-        let sortType = 'hits';
-        
-        // Imagens Temáticas de Alta Qualidade para Falhas
-        const themeImgs = {
-            "TEXTO": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600",
-            "IMAGEM": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600",
-            "VIDEO": "https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?w=600",
-            "GERAL": "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600"
-        };
+        let data = [];
+        const fallback = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600";
 
         async function init() {
-            const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
-            try {
-                const res = await fetch(urlCSV);
-                const data = await res.text();
-                const rows = data.split(/\r?\n/).slice(1);
-                
-                todasIAs = rows.map((row, index) => {
-                    const col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-                    if(!col[1]) return null;
-                    
-                    let cat = col[0]?.replace(/"/g, '').toUpperCase() || "GERAL";
-                    let nome = col[1]?.replace(/"/g, '');
-                    let desc = col[2]?.replace(/"/g, '');
-                    let link = col[3]?.replace(/"/g, '');
-                    let img = col[4]?.replace(/"/g, '');
-
-                    // --- FILTRO DE QUALIDADE (SÓ IA) ---
-                    const keywords = ["AI", "IA", "CHAT", "GPT", "NEURAL", "BOT", "INTELIGENCIA", "GENERATIVE", "SORA", "CLAUDE", "MODEL"];
-                    const isIA = keywords.some(k => nome.toUpperCase().includes(k) || desc.toUpperCase().includes(k));
-                    if(!isIA) return null;
-
-                    // --- CORREÇÃO DE TEXTOS RUINS ---
-                    if(!desc || desc.length < 15 || desc.includes("detectada")) {
-                        desc = `Poderosa solução neural para ${cat}, focada em maximizar o workflow criativo e automação de escala.`;
-                    }
-
-                    // --- CORREÇÃO DE IMAGENS ---
-                    if(!img || img.length < 10) {
-                        img = themeImgs[cat] || themeImgs["GERAL"];
-                    }
-
-                    return { id: index, cat, nome, desc, link, img, hits: (Math.floor(Math.random() * 800) + 200), rating: (4.4 + Math.random() * 0.6).toFixed(1) };
-                }).filter(i => i);
-                
-                renderHighlights();
-                filterAndSort();
-            } catch(e) { console.log("Erro na mineração."); }
+            const res = await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv");
+            const text = await res.text();
+            data = text.split('\n').slice(1).map(row => {
+                const cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+                return { cat: cols[0], nome: cols[1], desc: cols[2], link: cols[3], img: cols[4] || fallback, hits: parseInt(cols[5]) || 0 };
+            }).filter(i => i.nome);
+            render();
         }
 
-        function renderHighlights() {
-            // FORÇA OS GIGANTES
-            const elite = ["CHATGPT", "GEMINI", "MIDJOURNEY", "SORA", "CLAUDE", "CANVA"];
-            let display = todasIAs.filter(ia => elite.some(name => ia.nome.toUpperCase().includes(name))).slice(0, 3);
+        function render() {
+            const search = document.getElementById('iaSearch').value.toLowerCase();
+            const filtered = data.filter(i => (i.nome + i.cat).toLowerCase().includes(search));
             
-            if(display.length < 3) display = [...todasIAs].sort((a,b) => b.hits - a.hits).slice(0, 3);
-
-            document.getElementById('highlights-grid').innerHTML = display.map(ia => `
-                <div class="card-base p-10 elite-card text-center flex flex-col items-center">
-                    <img src="${ia.img}" class="w-24 h-24 rounded-3xl object-cover mb-4 border-2 border-purple-500 shadow-lg shadow-purple-500/20">
-                    <h4 class="logo-font text-white font-bold uppercase text-lg">${ia.nome}</h4>
-                    <p class="text-xs text-slate-400 my-4 line-clamp-2">${ia.desc}</p>
-                    <a href="${ia.link}" target="_blank" class="text-cyan-400 font-black text-xs hover:tracking-widest transition-all">ABRIR FERRAMENTA →</a>
+            // Destaques (Elite)
+            const eliteNames = ["CHATGPT", "GEMINI", "MIDJOURNEY", "SORA", "CLAUDE"];
+            const highlights = data.filter(i => eliteNames.some(e => i.nome.toUpperCase().includes(e))).slice(0,3);
+            
+            document.getElementById('highlights-grid').innerHTML = highlights.map(i => `
+                <div class="card-base p-8 text-center border-purple-500/50">
+                    <img src="${i.img}" class="w-20 h-20 rounded-full mx-auto mb-4 border-2 border-purple-500 object-cover">
+                    <h3 class="logo-font text-white font-bold uppercase">${i.nome}</h3>
+                    <p class="text-xs text-slate-500 my-4 line-clamp-2">${i.desc}</p>
+                    <a href="${i.link}" target="_blank" class="text-cyan-400 text-[10px] font-black italic tracking-widest">EXECUTAR AGORA</a>
                 </div>`).join('');
-        }
 
-        function filterAndSort() {
-            const s = document.getElementById('iaSearch').value.toLowerCase();
-            let list = todasIAs.filter(ia => ia.nome.toLowerCase().includes(s));
-            
-            list.sort((a,b) => b.hits - a.hits);
-
-            document.getElementById('ia-grid').innerHTML = list.map(ia => `
-                <div class="card-base flex flex-col group overflow-hidden">
-                    <div class="h-48 relative overflow-hidden">
-                        <img src="${ia.img}" class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110">
-                        <div class="absolute top-4 left-4 rating-badge">★ ${ia.rating}</div>
-                        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
-                            <button onclick="share('wa','${ia.nome}','${ia.link}')" class="share-btn">
-                                <svg width="20" height="20" fill="#25D366" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.557-5.332 11.892-11.891 11.892-1.999 0-3.956-.503-5.69-1.448l-6.305 1.666zm6.347-4.139l.363.216c1.55.922 3.33 1.409 5.18 1.409 5.465 0 9.91-4.444 9.91-9.91s-4.445-9.91-9.91-9.91-9.91 4.445-9.91 9.91c0 2.062.639 4.077 1.848 5.756l.236.327-1.127 4.113 4.211-1.111z"/></svg>
-                            </button>
-                            <button onclick="share('tg','${ia.nome}','${ia.link}')" class="share-btn">
-                                <svg width="20" height="20" fill="#0088cc" viewBox="0 0 24 24"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10zm4.513 6.645l-9.018 3.479c-.611.246-.606.586-.11.739l2.313.722 5.36-3.379c.253-.154.484-.071.294.098l-4.342 3.921-.168 2.516c.247 0 .356-.113.494-.247l1.189-1.156 2.473 1.827c.456.251.785.122.898-.423l1.623-7.647c.166-.665-.254-.967-.686-.75z"/></svg>
+            document.getElementById('ia-grid').innerHTML = filtered.map(i => `
+                <div class="card-base flex flex-col overflow-hidden group">
+                    <div class="h-44 relative">
+                        <img src="${i.img}" onerror="this.src='${fallback}'" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all flex items-center justify-center gap-4">
+                            <button onclick="window.open('https://api.whatsapp.com/send?text=Veja essa IA: ${i.link}')" class="share-btn">
+                                <svg width="16" height="16" fill="#25D366" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.588-5.946 0-6.556 5.332-11.891 11.891-11.891 3.181 0 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.481 8.403 0 6.557-5.332 11.892-11.891 11.892-1.999 0-3.956-.503-5.69-1.448l-6.305 1.666zm6.347-4.139l.363.216c1.55.922 3.33 1.409 5.18 1.409 5.465 0 9.91-4.444 9.91-9.91s-4.445-9.91-9.91-9.91-9.91 4.445-9.91 9.91c0 2.062.639 4.077 1.848 5.756l.236.327-1.127 4.113 4.211-1.111z"/></svg>
                             </button>
                         </div>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <span class="text-[9px] text-cyan-400 font-black uppercase mb-2 tracking-widest">${ia.cat}</span>
-                        <h4 class="text-white font-bold mb-3 uppercase text-base">${ia.nome}</h4>
-                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6 font-semibold leading-relaxed">${ia.desc}</p>
-                        <div class="mt-auto pt-4 border-t border-cyan-900/20 flex justify-between items-center">
-                            <span class="text-[9px] text-slate-700 font-bold uppercase">${ia.hits} Pulsos</span>
-                            <a href="${ia.link}" target="_blank" class="btn-main text-[9px]">Executar</a>
-                        </div>
+                    <div class="p-6">
+                        <span class="text-[9px] text-cyan-400 font-bold uppercase tracking-widest">${i.cat}</span>
+                        <h4 class="text-white font-bold my-2">${i.nome}</h4>
+                        <p class="text-slate-500 text-[11px] line-clamp-3 mb-6">${i.desc}</p>
+                        <a href="${i.link}" target="_blank" class="btn-main block text-center">Abrir</a>
                     </div>
                 </div>`).join('');
         }
-
-        function share(plt, name, link) {
-            const url = encodeURIComponent(link);
-            const text = encodeURIComponent(`Olha essa IA no Mundo das IA's: ${name}`);
-            if(plt === 'wa') window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`);
-            if(plt === 'tg') window.open(`https://t.me/share/url?url=${url}&text=${text}`);
-        }
-
         window.onload = init;
     </script>
 </body>
