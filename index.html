@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | Ecossistema de Inteligência</title>
+    <title>Mundo das IA's | Ecossistema Neural</title>
     
-    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2103/2103633.png">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
@@ -13,28 +13,31 @@
     
     <style>
         :root { --cyan: #00f2ff; --purple: #7000ff; --dark: #020617; }
-        body { background: var(--dark); color: #f8fafc; font-family: 'Rajdhani', sans-serif; }
+        body { background: var(--dark); color: #f8fafc; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 1rem; }
+        .glass { background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; }
         .img-card { height: 160px; width: 100%; object-fit: cover; border-radius: 1rem 1rem 0 0; }
-        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px 24px; border-radius: 4px; transition: 0.3s; cursor: pointer; border:none; width: 100%; display: block; text-align: center; }
-        .lang-btn { cursor: pointer; height: 18px; opacity: 0.5; transition: 0.3s; border-radius: 2px; }
+        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px; border-radius: 4px; transition: 0.3s; cursor: pointer; border:none; width: 100%; display: block; text-align: center; }
+        .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); transform: translateY(-2px); }
+        .lang-btn { cursor: pointer; height: 18px; opacity: 0.5; transition: 0.3s; filter: drop-shadow(0 0 2px black); }
         .lang-btn.active { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 3px; }
         .star { color: #fbbf24; font-size: 0.7rem; }
-        .share-icon { font-size: 1rem; color: rgba(255,255,255,0.3); transition: 0.3s; }
-        .share-icon:hover { color: var(--cyan); }
+        
+        /* Modal Independente (Não-Popup) */
+        #modal-terms { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 100; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 40px; border: 1px solid var(--cyan); }
     </style>
 </head>
 <body>
 
-    <nav class="p-6 border-b border-white/5">
+    <nav class="p-6 border-b border-white/5 sticky top-0 bg-dark/90 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="logo-font text-xl font-black uppercase">MUNDO DAS <span class="text-cyan-400">IA'S</span></div>
             <div class="flex items-center gap-6">
                 <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
-                    <a href="#ia-grid" class="hover:text-cyan-400">Arsenal</a>
+                    <a href="#ia-section" class="hover:text-cyan-400">Arsenal</a>
                     <a href="#academy" class="hover:text-cyan-400">Academy</a>
-                    <a href="#sobre" class="hover:text-cyan-400">Sobre</a>
+                    <a href="#news" class="hover:text-cyan-400">News</a>
                 </div>
                 <div class="flex gap-4 border-l border-white/10 pl-6">
                     <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" onclick="changeLang('pt')" id="b-pt">
@@ -48,61 +51,87 @@
     <main class="max-w-7xl mx-auto p-6 md:p-12">
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
             <div>
-                <h1 class="logo-font text-5xl mb-6 uppercase italic leading-tight">Inteligência <br><span class="text-cyan-400">Sintética.</span></h1>
-                <p class="text-slate-400 text-lg leading-relaxed max-w-md">Curadoria técnica rigorosa e ferramentas de alta performance.</p>
+                <h1 class="logo-font text-5xl mb-6 uppercase italic leading-tight">Núcleo <br><span class="text-cyan-400">Cognitivo.</span></h1>
+                <p class="text-slate-400 text-lg leading-relaxed">Curadoria independente com processamento neural em tempo real. Bem-vindo ao futuro.</p>
             </div>
             <div class="glass p-8 border-l-4 border-l-purple-600 bg-purple-900/5">
-                <h3 class="text-[10px] text-purple-400 font-bold uppercase mb-4 tracking-widest">Consultor Neural</h3>
-                <input type="text" id="aiQuery" class="w-full bg-black/40 border border-white/10 p-4 rounded text-cyan-400 outline-none mb-4" placeholder="O que deseja automatizar?">
-                <button onclick="askGemini()" class="btn-elite bg-purple-600 text-white">Interrogar</button>
-                <div id="aiResponse" class="hidden mt-4 p-4 bg-black/60 text-xs italic text-slate-300 border border-white/5 rounded"></div>
+                <h3 class="text-[10px] text-purple-400 font-bold uppercase mb-4 tracking-widest">Interrogar Consultor</h3>
+                <input type="text" id="aiQuery" class="w-full bg-black/40 border border-white/10 p-4 rounded text-cyan-400 outline-none mb-4" placeholder="Como posso otimizar seu workflow hoje?">
+                <button onclick="askGemini()" class="btn-elite bg-purple-600 text-white">Processar Consulta</button>
+                <div id="aiResponse" class="hidden mt-4 p-4 bg-black/60 text-xs italic text-slate-300 border border-white/5 rounded leading-relaxed"></div>
             </div>
         </section>
 
-        <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]">Arsenal em Destaque</h3>
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24"></div>
+        <div id="ia-section" class="mb-24">
+            <h3 class="logo-font text-xl mb-10 uppercase tracking-[10px] text-center">Ferramentas de Elite</h3>
+            <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+        </div>
 
         <section id="academy" class="mb-24 pt-16 border-t border-white/5">
-            <h3 class="logo-font text-center text-xl mb-12 uppercase tracking-[10px]">Neural Academy</h3>
+            <h3 class="logo-font text-center text-xl mb-10 uppercase tracking-[10px]">Neural Academy</h3>
             <div id="academy-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6"></div>
         </section>
 
-        <section id="sobre" class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-20 border-t border-white/5">
+        <section id="news" class="mb-24 pt-16 border-t border-white/5">
+            <h3 class="logo-font text-center text-xl mb-10 uppercase tracking-[10px]">Neural News</h3>
+            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-20 border-t border-white/5">
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Missão</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">Nossa missão é filtrar a complexidade tecnológica para entregar ferramentas que amplificam a produtividade humana.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Missão Técnica</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Decodificar as fronteiras da IA para entregar aplicações práticas que amplificam a inteligência sintética e humana de forma simbiótica.</p>
             </div>
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Visão</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">Ser o hub global definitivo de inteligência aplicada, definindo padrões de curadoria e eficiência.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Visão Neural</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Estabelecer o Mundo das IA's como o principal oráculo de curadoria tecnológica no hemisfério sul até o final da década.</p>
             </div>
             <div class="glass p-8">
-                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Valores</h4>
-                <p class="text-slate-400 text-sm leading-relaxed">Transparência radical, ética algorítmica e compromisso inegociável com a integridade dos dados.</p>
+                <h4 class="logo-font text-cyan-400 text-sm mb-4 uppercase">Valores Éticos</h4>
+                <p class="text-slate-400 text-sm leading-relaxed">Independência algorítmica total, transparência de fontes e compromisso inegociável com a verdade técnica.</p>
             </div>
         </section>
     </main>
 
     <footer class="max-w-7xl mx-auto p-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="flex gap-8">
-            <button onclick="alert('Políticas de Privacidade v1.0 - Mundo das IAs')" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400">Privacidade</button>
-            <span class="text-[10px] font-bold uppercase text-slate-400">Contato: suporte@mundodasias.com.br</span>
+            <button onclick="toggleModal()" class="text-[10px] font-bold uppercase text-slate-500 hover:text-cyan-400 underline decoration-cyan-400/30">Privacidade & Termos</button>
+            <span class="text-[10px] font-bold uppercase text-slate-400">Suporte: contato@mundodasias.com.br</span>
         </div>
         <p class="logo-font text-[9px] opacity-20 tracking-widest">MUNDO DAS IA'S © 2026</p>
     </footer>
+
+    <div id="modal-terms" onclick="toggleModal()">
+        <div class="modal-content glass" onclick="event.stopPropagation()">
+            <h3 class="logo-font text-cyan-400 text-xl mb-6 uppercase">Termos e Privacidade</h3>
+            <div class="text-slate-400 text-sm space-y-4">
+                <p><strong>1. Coleta de Dados:</strong> O Mundo das IA's utiliza cookies essenciais para personalização via Google AdSense.</p>
+                <p><strong>2. Curadoria:</strong> Todas as ferramentas listadas passam por auditoria técnica automatizada a cada 6 horas.</p>
+                <p><strong>3. Responsabilidade:</strong> Não nos responsabilizamos pelo conteúdo externo de links de terceiros.</p>
+                <p><strong>4. Contato:</strong> Para remoção de conteúdo, envie um e-mail para suporte@mundodasias.com.br.</p>
+            </div>
+            <button onclick="toggleModal()" class="btn-elite mt-8">Fechar Janela</button>
+        </div>
+    </div>
 
     <script>
         const API_KEY = "SUA_CHAVE_AQUI"; 
         let curL = 'pt';
 
         async function init() {
-            const uIA = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv";
-            const uAC = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=1864115082&output=csv";
+            // GIDs corrigidos para suas abas
+            const urls = {
+                ia: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv",
+                ac: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=1864115082&output=csv",
+                nw: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=584623157&output=csv"
+            };
+
             try {
-                const [r1, r2] = await Promise.all([fetch(uIA), fetch(uAC)]);
+                const [r1, r2, r3] = await Promise.all([fetch(urls.ia), fetch(urls.ac), fetch(urls.nw)]);
                 renderGrid('ia-grid', parse(await r1.text()), 'Executar');
                 renderGrid('academy-grid', parse(await r2.text()), 'Acessar');
-            } catch(e) { console.error("Erro Sync"); }
+                renderGrid('news-grid', parse(await r3.text()), 'Ler Notícia');
+            } catch(e) { console.error("Falha na sincronização."); }
         }
 
         function parse(t) {
@@ -114,12 +143,12 @@
 
         function renderGrid(id, data, btnText) {
             document.getElementById(id).innerHTML = data.map(i => `
-                <div class="glass overflow-hidden flex flex-col h-full">
-                    <div class="relative">
-                        <img src="${i.img}" class="img-card" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <div class="relative overflow-hidden">
+                        <img src="${i.img}" class="img-card group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600'">
                         <div class="absolute top-3 right-3 flex gap-2">
-                            <a href="https://wa.me/?text=${encodeURIComponent(i.link)}" target="_blank" class="share-icon"><i class="fa-brands fa-whatsapp"></i></a>
-                            <a href="https://t.me/share/url?url=${encodeURIComponent(i.link)}" target="_blank" class="share-icon"><i class="fa-brands fa-telegram"></i></a>
+                            <a href="https://wa.me/?text=${encodeURIComponent(i.link)}" target="_blank" class="text-white/30 hover:text-cyan-400"><i class="fa-brands fa-whatsapp"></i></a>
+                            <a href="https://t.me/share/url?url=${encodeURIComponent(i.link)}" target="_blank" class="text-white/30 hover:text-cyan-400"><i class="fa-brands fa-telegram"></i></a>
                         </div>
                     </div>
                     <div class="p-6 flex flex-col grow">
@@ -128,7 +157,7 @@
                             <div class="flex">${'<i class="fa-solid fa-star star"></i>'.repeat(i.nota)}</div>
                         </div>
                         <h4 class="text-white font-bold mb-3 uppercase text-sm">${i.nome}</h4>
-                        <p class="text-slate-500 text-xs mb-6 line-clamp-3">${i.desc}</p>
+                        <p class="text-slate-500 text-[12px] mb-6 line-clamp-3 leading-relaxed">${i.desc}</p>
                         <a href="${i.link}" target="_blank" class="mt-auto btn-elite">${btnText}</a>
                     </div>
                 </div>`).join('');
@@ -138,22 +167,27 @@
             const q = document.getElementById('aiQuery').value;
             const resB = document.getElementById('aiResponse');
             if(!q) return;
-            resB.classList.remove('hidden'); resB.innerText = "Consultando rede neural...";
+            resB.classList.remove('hidden'); resB.innerText = "Consultando Núcleo Cognitivo...";
             try {
-                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`, {
+                const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
                     method: "POST", headers: {"Content-Type":"application/json"},
-                    body: JSON.stringify({contents:[{parts:[{text: `Seja técnico e direto em ${curL}. Recomende IAs para: ${q}`}]}]})
+                    body: JSON.stringify({contents:[{parts:[{text: `Você é o oráculo do Mundo das IA's. Responda em ${curL}: ${q}`}]}]})
                 });
                 const j = await r.json();
                 resB.innerText = j.candidates[0].content.parts[0].text;
-            } catch(e) { resB.innerText = "Erro de conexão neural."; }
+            } catch(e) { resB.innerText = "Falha na conexão neural. Verifique sua API Key."; }
+        }
+
+        function toggleModal() {
+            const m = document.getElementById('modal-terms');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
         }
 
         function changeLang(l) {
             curL = l;
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(`b-${l}`).classList.add('active');
-            init(); // Recarrega com os dados
+            init();
         }
 
         window.onload = init;
