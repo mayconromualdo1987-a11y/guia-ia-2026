@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo das IA's | O Arsenal Definitivo de Inteligência Artificial</title>
+    <title>Mundo das IA's | Elite Neural 2026</title>
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%222%22/><circle cx=%2250%22 cy=%2250%22 r=%2215%22 fill=%22%237000ff%22/></svg>">
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
     
@@ -16,101 +18,135 @@
         .logo-font { font-family: 'Orbitron', sans-serif; }
         .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; }
         
-        /* Correção das Imagens da Academy */
-        .img-fix { height: 200px; width: 100%; object-fit: cover; border-radius: 1rem 1rem 0 0; background: #000; }
-        
-        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px 20px; border-radius: 4px; transition: 0.3s; cursor: pointer; border: none; }
-        .btn-elite:hover { box-shadow: 0 0 25px var(--cyan); transform: translateY(-2px); }
+        /* Imagens dos Cards */
+        .img-card { height: 180px; width: 100%; object-fit: cover; border-radius: 1rem 1rem 0 0; opacity: 0.8; transition: 0.5s; }
+        .group:hover .img-card { opacity: 1; transform: scale(1.03); }
 
-        .lang-btn { cursor: pointer; transition: 0.3s; height: 16px; width: 24px; object-fit: cover; opacity: 0.5; border-radius: 2px; }
+        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 10px; padding: 12px 20px; border-radius: 4px; transition: 0.3s; cursor: pointer; text-align: center; }
+        .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); }
+
+        .lang-btn { cursor: pointer; transition: 0.3s; height: 14px; width: 22px; object-fit: cover; opacity: 0.4; }
         .lang-btn.active { opacity: 1; outline: 2px solid var(--cyan); outline-offset: 3px; }
-        
-        .footer-link { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; transition: 0.3s; }
-        .footer-link:hover { color: var(--cyan); }
+
+        .footer-link { font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; font-family: 'Rajdhani'; }
     </style>
 </head>
 <body class="p-4 md:p-10">
 
     <nav class="max-w-7xl mx-auto mb-10 flex justify-between items-center glass p-6">
-        <div class="logo-font text-2xl font-black tracking-tighter">
-            MUNDO DAS <span class="text-cyan-400">IA'S</span>
-        </div>
-        
-        <div class="flex items-center gap-8">
+        <div class="logo-font text-2xl font-black">MUNDO DAS <span class="text-cyan-400">IA'S</span></div>
+        <div class="flex items-center gap-6">
             <div class="hidden md:flex gap-8 text-[11px] font-bold uppercase tracking-[3px]">
-                <a href="#academy" class="hover:text-cyan-400 transition">Academy</a>
-                <a href="#institucional" class="hover:text-cyan-400 transition">Institucional</a>
+                <a href="#academy" class="hover:text-cyan-400">Academy</a>
+                <a href="#institucional" class="hover:text-cyan-400">Institucional</a>
             </div>
             <div class="flex gap-4 border-l border-white/10 pl-6">
-                <img src="https://flagcdn.com/br.svg" class="lang-btn active" onclick="setLang('pt')" id="b-pt">
-                <img src="https://flagcdn.com/us.svg" class="lang-btn" onclick="setLang('en')" id="b-en">
-                <img src="https://flagcdn.com/es.svg" class="lang-btn" onclick="setLang('es')" id="b-es">
+                <img src="https://flagcdn.com/br.svg" class="lang-btn active" onclick="setLang('pt')" id="btn-pt">
+                <img src="https://flagcdn.com/us.svg" class="lang-btn" onclick="setLang('en')" id="btn-en">
+                <img src="https://flagcdn.com/es.svg" class="lang-btn" onclick="setLang('es')" id="btn-es">
             </div>
         </div>
     </nav>
 
     <main class="max-w-7xl mx-auto">
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            <div class="glass p-12 flex flex-col justify-center border-l-4 border-l-cyan-500">
-                <h1 class="logo-font text-5xl mb-6 leading-tight uppercase italic">
-                    O Futuro é <br><span class="text-cyan-400">Sintético.</span>
-                </h1>
-                <p class="text-slate-400 text-xl max-w-md leading-relaxed">
-                    Bem-vindo ao <strong>Mundo das IA's</strong>, o epicentro da curadoria inteligente onde ferramentas obsoletas são descartadas e apenas a elite neural sobrevive.
-                </p>
+            <div class="glass p-12 border-l-4 border-l-cyan-500">
+                <h1 class="logo-font text-5xl mb-6 uppercase italic">Elite <span class="text-cyan-400">Neural.</span></h1>
+                <p class="text-slate-400 text-xl leading-relaxed">No <strong>Mundo das IA's</strong>, filtramos o ruído para entregar apenas ferramentas de alta performance.</p>
             </div>
-            <div class="glass p-8 border-l-4 border-l-purple-600 bg-purple-900/5">
-                <h3 class="text-[10px] text-purple-400 font-black uppercase mb-4 tracking-widest">Núcleo de Processamento Gemini</h3>
-                <input type="text" id="aiQuery" class="w-full bg-black/50 border border-white/10 p-5 rounded-lg text-sm text-cyan-400 outline-none mb-4 focus:border-cyan-400" placeholder="Descreva sua necessidade técnica...">
-                <button onclick="askGemini()" class="btn-elite w-full bg-purple-600 text-white hover:bg-purple-500">Consultar Arsenal</button>
-                <div id="aiResponse" class="hidden mt-4 p-5 bg-black/80 text-xs italic text-slate-400 border border-white/5 rounded-lg leading-relaxed"></div>
+            <div class="glass p-8 border-l-4 border-l-purple-600">
+                <h3 class="text-[10px] text-purple-400 font-black uppercase mb-4 tracking-widest">Consultor Gemini 2026</h3>
+                <input type="text" id="aiQuery" class="w-full bg-black/50 border border-white/10 p-4 rounded text-sm text-cyan-400 outline-none mb-4" placeholder="O que deseja automatizar?">
+                <button onclick="askGemini()" class="btn-elite w-full bg-purple-600 text-white">Consultar Núcleo</button>
+                <div id="aiResponse" class="hidden mt-4 p-4 bg-black/60 text-xs italic text-slate-400 border border-white/5 rounded"></div>
             </div>
         </section>
 
-        <div class="mb-20">
-            <h3 class="text-[11px] font-black uppercase tracking-[6px] text-slate-500 mb-8 border-b border-white/5 pb-4">
-                Sistemas em Destaque | Mundo das IA's <span class="text-cyan-500">2026</span>
-            </h3>
+        <div class="mb-12">
+            <h3 class="text-[11px] font-black uppercase tracking-[5px] text-slate-500 mb-8">Sistemas em Destaque | Mundo das IA's</h3>
             <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
         </div>
 
-        <section id="academy" class="mb-24 py-16 border-t border-white/5">
-            <h2 class="logo-font text-center text-3xl mb-12 uppercase tracking-[15px]">NEURAL <span class="text-cyan-400">ACADEMY</span></h2>
-            <div id="academy-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+            </div>
+
+        <section id="academy" class="py-20 border-t border-white/5">
+            <h3 class="logo-font text-center text-3xl mb-12 uppercase tracking-[10px]">Neural <span class="text-cyan-400">Academy</span></h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500" class="img-card">
+                    <div class="p-5 flex flex-col grow">
+                        <p class="text-[8px] text-red-500 font-bold uppercase">Harvard</p>
+                        <h4 class="text-white font-bold text-xs my-2">CS50 Intro to AI</h4>
+                        <a href="https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python" target="_blank" class="mt-auto btn-elite">Acessar</a>
+                    </div>
                 </div>
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4628c9757?w=500" class="img-card">
+                    <div class="p-5 flex flex-col grow">
+                        <p class="text-[8px] text-green-500 font-bold uppercase">NVIDIA</p>
+                        <h4 class="text-white font-bold text-xs my-2">Generative AI</h4>
+                        <a href="https://www.nvidia.com/en-us/training/online/" target="_blank" class="mt-auto btn-elite">Acessar</a>
+                    </div>
+                </div>
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <img src="https://images.unsplash.com/photo-1573163281530-5be9c294873c?w=500" class="img-card">
+                    <div class="p-5 flex flex-col grow">
+                        <p class="text-[8px] text-blue-500 font-bold uppercase">Google Cloud</p>
+                        <h4 class="text-white font-bold text-xs my-2">Gen AI Path</h4>
+                        <a href="https://www.cloudskillsboost.google/paths/118" target="_blank" class="mt-auto btn-elite">Acessar</a>
+                    </div>
+                </div>
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=500" class="img-card">
+                    <div class="p-5 flex flex-col grow">
+                        <p class="text-[8px] text-blue-400 font-bold uppercase">Microsoft</p>
+                        <h4 class="text-white font-bold text-xs my-2">Azure AI Basis</h4>
+                        <a href="https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/" target="_blank" class="mt-auto btn-elite">Acessar</a>
+                    </div>
+                </div>
+                <div class="glass overflow-hidden flex flex-col h-full group">
+                    <img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=500" class="img-card">
+                    <div class="p-5 flex flex-col grow">
+                        <p class="text-[8px] text-orange-500 font-bold uppercase">IBM</p>
+                        <h4 class="text-white font-bold text-xs my-2">AI Fundamentals</h4>
+                        <a href="https://skillsbuild.org/students/course-catalog/digital-literacy/artificial-intelligence" target="_blank" class="mt-auto btn-elite">Acessar</a>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section id="institucional" class="grid grid-cols-1 md:grid-cols-3 gap-16 py-20 border-t border-white/5">
+        <section id="institucional" class="grid grid-cols-1 md:grid-cols-3 gap-16 py-24 border-t border-white/5">
             <div>
-                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6">Nossa Missão</h4>
-                <p class="text-slate-400 leading-relaxed">O <strong>Mundo das IA's</strong> nasceu para democratizar o acesso à tecnologia de ponta, servindo como o filtro definitivo entre o ruído digital e as ferramentas que realmente geram valor e performance em 2026.</p>
+                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6">Mundo das IA's: Missão</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Nossa missão em 2026 é ser o portal definitivo de curadoria tecnológica, eliminando ferramentas de baixo desempenho e promovendo apenas a elite do desenvolvimento neural global.</p>
             </div>
             <div>
-                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6">Nossa Visão</h4>
-                <p class="text-slate-400 leading-relaxed">Ser o ecossistema central de referência em Inteligência Artificial na América Latina, conectando humanos e sistemas inteligentes de forma ética, produtiva e inovadora.</p>
+                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6">Mundo das IA's: Visão</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Consolidar-se como o maior ecossistema de inteligência artificial aplicada, servindo como ponte entre a complexidade algorítmica e a produtividade humana.</p>
             </div>
             <div>
-                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6">Responsabilidade</h4>
-                <p class="text-slate-400 leading-relaxed">Todo conteúdo é curado para fins informativos. No <strong>Mundo das IA's</strong>, priorizamos a transparência algorítmica e o foco em resultados reais para o mercado profissional.</p>
+                <h4 class="text-[11px] text-cyan-400 font-black uppercase tracking-[4px] mb-6">Mundo das IA's: Valores</h4>
+                <p class="text-sm text-slate-400 leading-relaxed">Transparência digital, curadoria técnica rigorosa e democratização do conhecimento avançado em sistemas inteligentes.</p>
             </div>
         </section>
     </main>
 
     <footer class="max-w-7xl mx-auto py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div class="flex gap-10 items-center">
-            <button onclick="showTerms()" class="footer-link">Termos de Uso</button>
-            <button onclick="showPrivacy()" class="footer-link">Privacidade AdSense</button>
+        <div class="flex gap-8 items-center">
+            <button onclick="openModal('Temos de Uso', 'O Mundo das IA\'s é uma plataforma de curadoria. O uso das ferramentas listadas é de responsabilidade do usuário final.')" class="footer-link hover:text-cyan-400 transition">Termos</button>
+            <button onclick="openModal('Privacidade AdSense', 'Utilizamos cookies para personalizar anúncios e analisar nosso tráfego conforme as normas do Google AdSense 2026.')" class="footer-link hover:text-cyan-400 transition">Privacidade</button>
             <span class="footer-link">|</span>
-            <span class="footer-link">Suporte: <a href="mailto:contato@mundodasias.com.br" class="text-slate-300">contato@mundodasias.com.br</a></span>
+            <span class="footer-link">Suporte: contato@mundodasias.com.br</span>
         </div>
         <p class="logo-font text-[10px] opacity-30 tracking-[1em]">MUNDO DAS IA'S © 2026</p>
     </footer>
 
-    <div id="modal" class="hidden fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-6 backdrop-blur-xl">
-        <div class="glass p-10 max-w-2xl w-full border-cyan-400/20 max-h-[80vh] overflow-y-auto">
-            <h3 id="m-title" class="logo-font text-cyan-400 text-xl mb-6 uppercase"></h3>
-            <div id="m-content" class="text-sm text-slate-400 space-y-4 leading-relaxed font-medium"></div>
-            <button onclick="closeModal()" class="btn-elite w-full mt-10">Entendido e Fechar</button>
+    <div id="modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6">
+        <div class="glass p-10 max-w-lg w-full">
+            <h3 id="m-title" class="logo-font text-cyan-400 mb-4 uppercase"></h3>
+            <p id="m-content" class="text-sm text-slate-400 mb-8 leading-relaxed"></p>
+            <button onclick="closeModal()" class="btn-elite w-full">Fechar</button>
         </div>
     </div>
 
@@ -127,53 +163,40 @@
                 rawData = rows.map(r => {
                     const c = r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if(!c[1]) return null;
-                    return { cat: c[0], nome: c[1], desc: c[2], link: c[3], img: c[4] || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600', rating: c[6] || 4.9 };
+                    return { cat: c[0], nome: c[1], desc: c[2], link: c[3], img: c[4] || 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600', rating: c[6] || 4.8 };
                 }).filter(i => i);
                 
+                render(rawData);
                 renderFeatured([...rawData].sort(() => 0.5 - Math.random()).slice(0,3));
-                renderAcademy();
-            } catch(e) { console.error("Erro no carregamento do Mundo das IA's"); }
+            } catch(e) { console.error("Falha no carregamento"); }
+        }
+
+        function render(list) {
+            document.getElementById('ia-grid').innerHTML = list.map(ia => `
+                <div class="glass overflow-hidden flex flex-col group h-full transition-all hover:border-cyan-400/30">
+                    <img src="${ia.img}" class="img-card">
+                    <div class="p-6 flex flex-col grow">
+                        <div class="flex justify-between text-[9px] mb-3">
+                            <span class="text-cyan-400 font-black uppercase">${ia.cat}</span>
+                            <span class="text-white">★ ${ia.rating}</span>
+                        </div>
+                        <h4 class="text-white font-bold mb-3 uppercase text-sm">${ia.nome}</h4>
+                        <p class="text-slate-500 text-[11px] line-clamp-2 leading-relaxed mb-6">${ia.desc}</p>
+                        <a href="${ia.link}" target="_blank" class="mt-auto btn-elite py-2 text-center">Executar</a>
+                    </div>
+                </div>`).join('');
         }
 
         function renderFeatured(list) {
             document.getElementById('featured-grid').innerHTML = list.map(ia => `
-                <div class="glass overflow-hidden group hover:border-cyan-400/50 transition-all duration-500">
-                    <img src="${ia.img}" class="img-fix opacity-60 group-hover:opacity-100 transition duration-700">
-                    <div class="p-8">
-                        <span class="text-[9px] text-cyan-400 font-black uppercase tracking-widest">${ia.cat}</span>
-                        <h4 class="text-white font-bold my-3 text-lg uppercase">${ia.nome}</h4>
-                        <p class="text-slate-500 text-sm mb-6 line-clamp-2">${ia.desc}</p>
-                        <a href="${ia.link}" target="_blank" class="btn-elite inline-block">Acessar Sistema</a>
+                <div class="glass overflow-hidden group">
+                    <img src="${ia.img}" class="img-card h-[140px]">
+                    <div class="p-6">
+                        <span class="text-[9px] text-cyan-400 font-bold uppercase">${ia.cat}</span>
+                        <h4 class="text-white font-bold my-2 uppercase text-sm">${ia.nome}</h4>
+                        <a href="${ia.link}" target="_blank" class="btn-elite inline-block py-1 px-4 text-[9px]">Acessar</a>
                     </div>
                 </div>`).join('');
-        }
-
-        function renderAcademy() {
-            const courses = [
-                {n: "Deep Learning Institute", i: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=600", l: "https://www.nvidia.com/en-us/training/online/", t: "NVIDIA TRAINING"},
-                {n: "Harvard University", i: "https://images.unsplash.com/photo-1590012314607-cda9d9b6a919?w=600", l: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python", t: "CS50'S INTRO TO AI"},
-                {n: "Stanford Online", i: "https://images.unsplash.com/photo-1541339907198-e08759df9a13?w=600", l: "https://www.coursera.org/specializations/machine-learning-introduction", t: "AI GRADUATE PROGRAM"},
-                {n: "Microsoft Learn", i: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600", l: "https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/", t: "AZURE AI FUNDAMENTALS"},
-                {n: "Google Cloud", i: "https://images.unsplash.com/photo-1573163281530-5be9c294873c?w=600", l: "https://www.cloudskillsboost.google/paths/118", t: "GEN AI LEARNING PATH"}
-            ];
-            document.getElementById('academy-grid').innerHTML = courses.map(c => `
-                <div class="glass overflow-hidden flex flex-col group">
-                    <img src="${c.i}" class="h-40 w-full object-cover grayscale group-hover:grayscale-0 transition duration-500">
-                    <div class="p-5 flex-grow">
-                        <p class="text-[8px] text-cyan-500 font-bold uppercase">${c.n}</p>
-                        <h4 class="text-white font-bold text-xs my-2">${c.t}</h4>
-                        <a href="${c.l}" target="_blank" class="btn-elite w-full text-center block mt-4">Grátis</a>
-                    </div>
-                </div>`).join('');
-        }
-
-        // FUNÇÕES DE MODAL (ADSENSE COMPLIANCE)
-        function showTerms() {
-            openModal("Termos de Uso 2026", "Todo o conteúdo do Mundo das IA's é fornecido para fins educacionais e informativos. Não nos responsabilizamos por perdas de dados ou implementações de automação sem supervisão humana. O uso das ferramentas listadas está sujeito aos termos de seus respectivos desenvolvedores.");
-        }
-
-        function showPrivacy() {
-            openModal("Política de Privacidade e Cookies", "O Mundo das IA's utiliza cookies e identificadores para personalizar anúncios através do Google AdSense. Nós não coletamos informações sensíveis de identificação pessoal. Ao navegar, você concorda com o processamento de dados para fins analíticos e publicitários.");
         }
 
         function openModal(t, c) {
@@ -181,23 +204,26 @@
             document.getElementById('m-content').innerText = c;
             document.getElementById('modal').classList.remove('hidden');
         }
-
         function closeModal() { document.getElementById('modal').classList.add('hidden'); }
+        function setLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+        }
 
         async function askGemini() {
             const q = document.getElementById('aiQuery').value;
             const resBox = document.getElementById('aiResponse');
             if(!q) return;
             resBox.classList.remove('hidden');
-            resBox.innerText = "Sincronizando com o Mundo das IA's...";
+            resBox.innerText = "Mundo das IA's processando requisição...";
             try {
                 const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`, {
                     method: "POST", headers: {"Content-Type":"application/json"},
-                    body: JSON.stringify({contents:[{parts:[{text: `Você é o consultor oficial do Mundo das IA's. Responda de forma técnica e curta sobre: ${q}`}]}]})
+                    body: JSON.stringify({contents:[{parts:[{text: `Seja curto: recomende IAs para ${q}`}]}]})
                 });
                 const d = await res.json();
                 resBox.innerText = d.candidates[0].content.parts[0].text;
-            } catch(e) { resBox.innerText = "Falha na conexão neural."; }
+            } catch(e) { resBox.innerText = "Erro na rede neural."; }
         }
 
         window.onload = init;
