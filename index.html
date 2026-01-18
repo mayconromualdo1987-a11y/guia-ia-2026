@@ -18,111 +18,111 @@
         :root { --cyan: #00f2ff; --dark: #020617; }
         body { background: var(--dark); color: #f1f5f9; font-family: 'Rajdhani', sans-serif; scroll-behavior: smooth; overflow-x: hidden; }
         .logo-font { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .glass { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(0, 242, 255, 0.1); border-radius: 1rem; transition: 0.4s; }
         .img-card { aspect-ratio: 16/9; width: 100%; object-fit: cover; border-radius: 0.75rem 0.75rem 0 0; }
-        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; text-transform: uppercase; font-size: 11px; padding: 12px; border-radius: 6px; text-align: center; display: block; width: 100%; cursor: pointer; border: none; transition: 0.3s; }
+        .btn-elite { background: var(--cyan); color: #000; font-weight: 800; font-size: 11px; padding: 12px; border-radius: 6px; display: block; width: 100%; transition: 0.3s; text-transform: uppercase; }
         .btn-elite:hover { box-shadow: 0 0 20px var(--cyan); transform: translateY(-3px); }
-        .lang-btn { cursor: pointer; width: 22px; height: 14px; opacity: 0.3; transition: 0.3s; filter: grayscale(1); }
-        .lang-btn.active { opacity: 1; filter: grayscale(0); border: 1px solid var(--cyan); transform: scale(1.1); }
-        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; align-items: center; justify-content: center; }
     </style>
 </head>
 
 <body>
-<!-- TODO O HTML ORIGINAL PERMANECE IGUAL -->
-<!-- (nav, main, sections, footer e modais — SEM ALTERAÇÕES) -->
+
+<nav class="sticky top-0 z-50 bg-slate-950/98 border-b border-white/5 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between">
+        <span class="logo-font text-xl">MUNDO <span class="text-cyan-400">IA'S</span></span>
+    </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-6 py-20">
+
+    <section id="destaques" class="mb-20">
+        <h2 class="logo-font text-center mb-12 uppercase tracking-[10px] text-cyan-400">Top Relevância</h2>
+        <div id="destaque-grid" class="grid md:grid-cols-2 gap-10"></div>
+    </section>
+
+    <section class="border-t border-white/10 pt-20">
+        <h2 class="logo-font text-center mb-12 uppercase tracking-[10px] opacity-60">Ecossistema Ativo</h2>
+        <div id="ia-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"></div>
+    </section>
+
+</main>
 
 <script>
 let rawData = [];
-const i18n = {
-    pt: { h1: "Curadoria Neural Elite.", hero_d: "Monitoramento estratégico e auditoria técnica das tecnologias que lideram a revolução sintética global.", t1: "Top Relevância", t_ars: "Ecossistema Ativo", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expanda o Arsenal" },
-    en: { h1: "Elite Neural Curation.", hero_d: "Strategic monitoring and technical auditing of the technologies leading the global synthetic revolution.", t1: "High Relevance", t_ars: "Active Ecosystem", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expand the Arsenal" },
-    es: { h1: "Curaduría Neural Élite.", hero_d: "Monitoreo estratégico y auditoría técnica de las tecnologías que lideran la revolución sintética global.", t1: "Alta Relevancia", t_ars: "Ecosistema Activo", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expandir el Arsenal" }
-};
 
-async function init() {
-    const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv";
-    const seenLinks = new Set();
-
-    try {
-        const res = await fetch(url);
-        const csv = await res.text();
-        const lines = csv.split('\n').slice(1);
-
-        rawData = lines.map(line => {
-            const c = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            if (!c[1]) return null;
-            const link = c[3]?.trim();
-            if (!link || seenLinks.has(link)) return null;
-            seenLinks.add(link);
-            return {
-                cat: c[0].replace(/"/g,''),
-                nome: c[1].replace(/"/g,''),
-                desc: c[2].replace(/"/g,''),
-                link,
-                img: c[4],
-                nota: parseInt(c[6]) || 5
-            };
-        }).filter(Boolean);
-
-        const novosCursos = [
-            {
-                cat: "Deep Learning",
-                nome: "Generative AI Explained",
-                desc: "Fundamentos da IA generativa e aplicações reais em larga escala.",
-                link: "https://www.nvidia.com/en-us/training/",
-                img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
-                nota: 5
-            },
-            {
-                cat: "Data Science",
-                nome: "CS50 Introduction to AI",
-                desc: "Curso oficial de Harvard sobre IA, redes neurais e busca inteligente.",
-                link: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python",
-                img: "https://images.unsplash.com/photo-1590012314607-cda9d9b6a919?w=800",
-                nota: 5
-            },
-            {
-                cat: "Fundamentos",
-                nome: "AI For Everyone",
-                desc: "Visão estratégica, ética e impacto corporativo da IA.",
-                link: "https://www.coursera.org/learn/ai-for-everyone",
-                img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
-                nota: 5
-            },
-            {
-                cat: "Especialização",
-                nome: "Machine Learning Specialization",
-                desc: "Especialização em ML supervisionado, redes neurais e recomendação.",
-                link: "https://www.coursera.org/specializations/machine-learning-introduction",
-                img: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=800",
-                nota: 5
-            },
-            {
-                cat: "Vanguarda",
-                nome: "Prompt Engineering for ChatGPT",
-                desc: "Engenharia avançada de prompts para modelos GPT.",
-                link: "https://www.coursera.org/learn/prompt-engineering",
-                img: "https://images.unsplash.com/photo-1673188509351-76435c425712?w=800",
-                nota: 5
-            }
-        ];
-
-        novosCursos.forEach(c => {
-            if (!seenLinks.has(c.link)) {
-                seenLinks.add(c.link);
-                rawData.push(c);
-            }
-        });
-
-        renderGrids(rawData);
-
-    } catch (e) {
-        console.error("Neural Interface Failure", e);
-    }
+function cardHTML(i) {
+    return `
+    <div class="glass overflow-hidden flex flex-col">
+        <img src="${i.img}" class="img-card" loading="lazy"
+             onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800'">
+        <div class="p-6 flex flex-col grow">
+            <span class="text-cyan-400 text-xs uppercase mb-2">${i.cat}</span>
+            <h3 class="font-bold mb-4">${i.nome}</h3>
+            <p class="text-slate-400 text-sm mb-6">${i.desc}</p>
+            <a href="${i.link}" target="_blank" class="btn-elite mt-auto">Acessar</a>
+        </div>
+    </div>`;
 }
 
-window.onload = init;
+function renderGrids(data) {
+    document.getElementById('destaque-grid').innerHTML = data.slice(0,2).map(cardHTML).join('');
+    document.getElementById('ia-grid').innerHTML = data.map(cardHTML).join('');
+}
+
+async function init() {
+    const seen = new Set();
+
+    const extras = [
+        {
+            cat: "Deep Learning",
+            nome: "Generative AI Explained",
+            desc: "Fundamentos da IA generativa e aplicações reais.",
+            link: "https://www.nvidia.com/en-us/training/",
+            img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800"
+        },
+        {
+            cat: "Data Science",
+            nome: "CS50 Introduction to AI",
+            desc: "Curso oficial de Harvard sobre inteligência artificial.",
+            link: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python",
+            img: "https://images.unsplash.com/photo-1590012314607-cda9d9b6a919?w=800"
+        },
+        {
+            cat: "Fundamentos",
+            nome: "AI For Everyone",
+            desc: "Impacto estratégico e visão executiva da IA.",
+            link: "https://www.coursera.org/learn/ai-for-everyone",
+            img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800"
+        },
+        {
+            cat: "Especialização",
+            nome: "Machine Learning Specialization",
+            desc: "ML supervisionado, redes neurais e recomendação.",
+            link: "https://www.coursera.org/specializations/machine-learning-introduction",
+            img: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=800"
+        },
+        {
+            cat: "Vanguarda",
+            nome: "Prompt Engineering for ChatGPT",
+            desc: "Engenharia avançada de prompts para LLMs.",
+            link: "https://www.coursera.org/learn/prompt-engineering",
+            img: "https://images.unsplash.com/photo-1673188509351-76435c425712?w=800"
+        }
+    ];
+
+    extras.forEach(c => {
+        if (!seen.has(c.link)) {
+            seen.add(c.link);
+            rawData.push(c);
+        }
+    });
+
+    renderGrids(rawData);
+}
+
+document.addEventListener("DOMContentLoaded", init);
 </script>
+
 </body>
 </html>
