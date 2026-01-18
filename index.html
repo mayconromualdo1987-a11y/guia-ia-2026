@@ -162,17 +162,78 @@
                 const res = await fetch(url);
                 const csv = await res.text();
                 const lines = csv.split('\n').slice(1);
-                const seenLinks = new Set();
+
                 rawData = lines.map(line => {
                     const c = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if (!c[1]) return null;
-                    const link = c[3].trim();
-                    if(seenLinks.has(link)) return null;
-                    seenLinks.add(link);
-                    return { cat: c[0].replace(/"/g,''), nome: c[1].replace(/"/g,''), desc: c[2].replace(/"/g,''), link: link, img: c[4], nota: parseInt(c[6]) || 5 };
-                }).filter(i => i);
+                    const link = (c[3] || '').trim();
+                    return { cat: (c[0]||'').replace(/"/g,''), nome: (c[1]||'').replace(/"/g,''), desc: (c[2]||'').replace(/"/g,''), link: link, img: (c[4]||'').replace(/"/g,''), nota: parseInt(c[6]) || 5 };
+                }).filter(i => i && i.link);
+
+                // Build a set of existing links including the fixed Academy cards to avoid duplicates
+                const existingLinks = new Set(rawData.map(i => i.link));
+                // Hardcoded links present in the HTML (do not add duplicates of these)
+                const hardcodedLinks = [
+                    "https://www.cloudskillsboost.google/",
+                    "https://www.deeplearning.ai/",
+                    "https://platform.openai.com/docs"
+                ];
+                hardcodedLinks.forEach(l => existingLinks.add(l));
+
+                // Additional courses provided — serão adicionados somente se não existirem por link
+                const extraCourses = [
+                    {
+                        cat: "Deep Learning",
+                        nome: "Generative AI Explained",
+                        desc: "Entenda os fundamentos da IA generativa e como ela transforma a criação de conteúdo digital em escala global.",
+                        link: "https://www.nvidia.com/en-us/training/",
+                        img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+                        nota: 5
+                    },
+                    {
+                        cat: "Data Science",
+                        nome: "CS50 Introduction to AI",
+                        desc: "O curso mais renomado de Harvard adaptado para os conceitos fundamentais de redes neurais e busca inteligente.",
+                        link: "https://pll.harvard.edu/course/cs50s-introduction-artificial-intelligence-python",
+                        img: "https://images.unsplash.com/photo-1590012314607-cda9d9b6a919?w=800",
+                        nota: 5
+                    },
+                    {
+                        cat: "Fundamentos",
+                        nome: "AI For Everyone",
+                        desc: "Ementa não técnica focada no impacto estratégico da IA. Ideal para gestores que buscam compreender o fluxo de trabalho de ciência de dados e ética algorítmica.",
+                        link: "https://www.coursera.org/learn/ai-for-everyone",
+                        img: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800",
+                        nota: 4
+                    },
+                    {
+                        cat: "Especialização",
+                        nome: "Machine Learning Specialization",
+                        desc: "Programa rigoroso cobrindo aprendizagem supervisionada, redes neurais e sistemas de recomendação. Base teórica e prática com os maiores nomes da área.",
+                        link: "https://www.coursera.org/specializations/machine-learning-introduction",
+                        img: "https://images.unsplash.com/photo-1507146426996-ef05306b995a?w=800",
+                        nota: 5
+                    },
+                    {
+                        cat: "Vanguarda",
+                        nome: "Prompt Engineering for ChatGPT",
+                        desc: "Técnicas avançadas de engenharia de prompt para extrair máxima performance de modelos GPT-4, focando em segurança, lógica e estruturação de dados.",
+                        link: "https://www.coursera.org/learn/prompt-engineering",
+                        img: "https://images.unsplash.com/photo-1673188509351-76435c425712?w=800",
+                        nota: 4
+                    }
+                ];
+
+                // Merge extras only if their link is not present
+                extraCourses.forEach(c => {
+                    if (!existingLinks.has(c.link)) {
+                        rawData.push(c);
+                        existingLinks.add(c.link);
+                    }
+                });
+
                 renderGrids(rawData);
-            } catch (e) { console.error("Neural Interface Failure."); }
+            } catch (e) { console.error("Neural Interface Failure.", e); }
         }
 
         function renderGrids(data) {
@@ -192,7 +253,7 @@
                 <div class="p-7 flex flex-col grow">
                     <div class="flex justify-between items-center mb-4">
                         <span class="text-cyan-400 text-[10px] font-bold uppercase tracking-[2px] bg-cyan-400/10 px-3 py-1 rounded">${i.cat}</span>
-                        <div class="text-yellow-500 text-[9px]">${'<i class="fa-solid fa-star"></i>'.repeat(i.nota)}</div>
+                        <div class="text-yellow-500 text-[9px]">${'<i class="fa-solid fa-star"></i>'.repeat(i.nota || 5)}</div>
                     </div>
                     <h3 class="text-white font-bold mb-4 uppercase text-base group-hover:text-cyan-400 transition">${i.nome}</h3>
                     <p class="text-slate-500 text-sm mb-8 line-clamp-3 leading-relaxed">${i.desc}</p>
