@@ -24,19 +24,23 @@
         .lang-btn { cursor: pointer; width: 22px; height: 14px; opacity: 0.3; transition: 0.3s; filter: grayscale(1); }
         .lang-btn.active { opacity: 1; filter: grayscale(0); border: 1px solid var(--cyan); transform: scale(1.1); }
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 1000; align-items: center; justify-content: center; padding: 20px; }
+        
+        /* News Specific Style */
+        .news-card { border-left: 4px solid var(--cyan); }
+        .news-card:nth-child(even) { border-left: 4px solid #64748b; }
     </style>
 </head>
 <body>
 
     <nav class="sticky top-0 z-50 bg-slate-950/98 border-b border-white/5 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 md:px-8 py-4 flex justify-between items-center">
-            <a href="#" class="logo-font text-xl font-black text-white tracking-tighter">MUNDO <span class="text-cyan-400">IA'S</span></a>
+            <a href="#" class="logo-font text-xl font-black text-white tracking-tighter">MUNDO DAS <span class="text-cyan-400">IA'S</span></a>
             <div class="flex gap-4 items-center">
                 <div class="hidden lg:flex gap-8 text-[10px] font-bold uppercase tracking-[2px] text-slate-400">
                     <a href="#destaques" class="hover:text-cyan-400 transition">Destaques</a>
                     <a href="#academy" class="hover:text-cyan-400 transition">Academy</a>
                     <a href="#news" class="hover:text-cyan-400 transition">Intelligence</a>
-                    <a href="#contato" class="hover:text-cyan-400 transition">Network</a>
+                    <a href="#fun" class="hover:text-cyan-400 transition">Curiosidades</a>
                 </div>
                 <div class="flex gap-2 border-l border-white/10 pl-6">
                     <img src="https://flagcdn.com/w40/br.png" class="lang-btn active" id="btn-pt" onclick="changeLang('pt')">
@@ -61,7 +65,8 @@
 
         <section id="destaques" class="mb-28">
             <h2 class="logo-font text-center text-lg mb-12 uppercase tracking-[15px] text-cyan-400" data-t="t1">Top Relevância</h2>
-            <div id="destaque-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10"></div>
+            <div id="destaque-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                </div>
         </section>
 
         <section id="ia-grid-section" class="mb-28 pt-20 border-t border-white/5">
@@ -71,42 +76,20 @@
 
         <section id="academy" class="mb-28 pt-20 border-t border-white/5">
             <h2 class="logo-font text-center text-lg mb-12 uppercase tracking-[15px]" data-t="t2">Neural Academy</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="glass p-7">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600" class="img-card mb-6">
-                    <h3 class="font-bold text-white uppercase text-base mb-3">Google Cloud Professional</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">Capacitação avançada em infraestrutura Vertex AI e implementação empresarial do ecossistema Gemini Pro.</p>
-                    <a href="https://www.cloudskillsboost.google/" target="_blank" class="btn-elite">Certificação Oficial</a>
+            <div id="academy-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 </div>
-                <div class="glass p-7">
-                    <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=600" class="img-card mb-6">
-                    <h3 class="font-bold text-white uppercase text-base mb-3">Mastering Deep Learning</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">Aprofundamento em arquiteturas Transformer e redes neurais profundas com metodologia de ponta.</p>
-                    <a href="https://www.deeplearning.ai/" target="_blank" class="btn-elite">Matrícula Aberta</a>
-                </div>
-                <div class="glass p-7">
-                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600" class="img-card mb-6">
-                    <h3 class="font-bold text-white uppercase text-base mb-3">OpenAI Engineering</h3>
-                    <p class="text-slate-500 text-sm mb-6 leading-relaxed">Workshop técnico para o desenvolvimento de agentes autônomos e integração de APIs multimodais.</p>
-                    <a href="https://platform.openai.com/docs" target="_blank" class="btn-elite">Documentação Técnica</a>
-                </div>
-            </div>
         </section>
 
         <section id="news" class="mb-28 pt-20 border-t border-white/5">
             <h2 class="logo-font text-center text-lg mb-12 uppercase tracking-[15px] text-slate-500" data-t="t3">Global Intelligence</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div class="glass p-10 border-l-4 border-cyan-400">
-                    <h3 class="text-white font-bold uppercase text-xl mb-5">Soberania dos SLMs</h3>
-                    <p class="text-slate-400 text-base leading-relaxed mb-6">A descentralização tecnológica redefine o mercado. Modelos compactos oferecem performance de alta fidelidade rodando localmente, garantindo privacidade corporativa.</p>
-                    <a href="https://openai.com/news" target="_blank" class="text-cyan-400 text-xs font-bold uppercase tracking-[3px] hover:text-white transition">Full Analysis →</a>
+            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-10">
                 </div>
-                <div class="glass p-10 border-l-4 border-slate-700">
-                    <h3 class="text-white font-bold uppercase text-xl mb-5">Multimodalidade Nativa</h3>
-                    <p class="text-slate-400 text-base leading-relaxed mb-6">A compreensão simultânea de vídeo, áudio e telemetria redefine a interface homem-máquina, eliminando as barreiras da linguagem textual.</p>
-                    <a href="https://blog.google/technology/ai/" target="_blank" class="text-cyan-400 text-xs font-bold uppercase tracking-[3px] hover:text-white transition">Full Analysis →</a>
+        </section>
+
+        <section id="fun" class="mb-28 pt-20 border-t border-white/5">
+            <h2 class="logo-font text-center text-lg mb-12 uppercase tracking-[15px] text-yellow-500">Curiosidades Sintéticas</h2>
+            <div id="fun-grid" class="grid grid-cols-1 md:grid-cols-4 gap-6">
                 </div>
-            </div>
         </section>
 
         <section id="contato" class="glass p-12 text-center border-dashed border-2 border-cyan-400/20">
@@ -149,38 +132,94 @@
     </div>
 
     <script>
-        let rawData = [];
+        // CONFIGURAÇÃO DOS GIDS (Identificadores das Abas)
+        const SHEET_ID = '1JWFx-YfcyHPvsbI9RYO6YGUfHlS37TmoB6jcyYVzRFo';
+        const GID_IAS = '0';
+        const GID_CURSOS = '2105151522'; 
+        const GID_NEWS = '925708535';  
+
+        let rawDataIA = [];
+        let rawDataCursos = [];
+        let rawDataNews = [];
+
+        // TRADUÇÕES
         const i18n = {
             pt: { h1: "Curadoria Neural Elite.", hero_d: "Monitoramento estratégico e auditoria técnica das tecnologias que lideram a revolução sintética global.", t1: "Top Relevância", t_ars: "Ecossistema Ativo", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expanda o Arsenal" },
             en: { h1: "Elite Neural Curation.", hero_d: "Strategic monitoring and technical auditing of the technologies leading the global synthetic revolution.", t1: "High Relevance", t_ars: "Active Ecosystem", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expand the Arsenal" },
             es: { h1: "Curaduría Neural Élite.", hero_d: "Monitoreo estratégico y auditoría técnica de las tecnologías que lideram a revolução sintética global.", t1: "Alta Relevancia", t_ars: "Ecosistema Activo", t2: "Neural Academy", t3: "Global Intelligence", t4: "Expandir el Arsenal" }
         };
 
-        async function init() {
-            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?gid=0&output=csv";
+        // FETCH GENÉRICO PARA CSV
+        async function fetchSheet(gid) {
+            const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?gid=${gid}&output=csv`;
             try {
                 const res = await fetch(url);
                 const csv = await res.text();
-                const lines = csv.split('\n').slice(1);
-                const seenLinks = new Set();
-                rawData = lines.map(line => {
+                return csv.split('\n').slice(1).map(line => {
                     const c = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
                     if (!c[1]) return null;
-                    const link = c[3].trim();
-                    if(seenLinks.has(link)) return null;
-                    seenLinks.add(link);
-                    return { cat: c[0].replace(/"/g,''), nome: c[1].replace(/"/g,''), desc: c[2].replace(/"/g,''), link: link, img: c[4], nota: parseInt(c[6]) || 5 };
+                    return {
+                        cat: c[0].replace(/"/g,''),
+                        nome: c[1].replace(/"/g,''),
+                        desc: c[2].replace(/"/g,''),
+                        link: c[3].trim(),
+                        img: c[4],
+                        nota: parseInt(c[6]) || 5
+                    };
                 }).filter(i => i);
-                renderGrids(rawData);
-            } catch (e) { console.error("Neural Interface Failure."); }
+            } catch (e) { return []; }
         }
 
-        function renderGrids(data) {
-            document.getElementById('destaque-grid').innerHTML = data.slice(0, 2).map(i => cardHTML(i)).join('');
-            document.getElementById('ia-grid').innerHTML = data.map(i => cardHTML(i)).join('');
+        async function init() {
+            try {
+                // Carrega tudo em paralelo
+                [rawDataIA, rawDataCursos, rawDataNews] = await Promise.all([
+                    fetchSheet(GID_IAS),
+                    fetchSheet(GID_CURSOS),
+                    fetchSheet(GID_NEWS)
+                ]);
+                
+                renderAll();
+            } catch (e) { console.error("Falha na Interface Neural."); }
         }
 
-        function cardHTML(i) {
+        function renderAll() {
+            // Render IAs
+            document.getElementById('destaque-grid').innerHTML = rawDataIA.slice(0, 2).map(i => cardHTML(i)).join('');
+            document.getElementById('ia-grid').innerHTML = rawDataIA.map(i => cardHTML(i)).join('');
+            
+            // Render Cursos
+            document.getElementById('academy-grid').innerHTML = rawDataCursos.slice(0, 6).map(i => cardHTML(i, "Certificação Oficial")).join('');
+            
+            // Render News (Layout diferente)
+            document.getElementById('news-grid').innerHTML = rawDataNews.slice(0, 4).map(i => `
+                <div class="glass p-10 news-card flex flex-col justify-between h-full">
+                    <div>
+                        <h3 class="text-white font-bold uppercase text-xl mb-5">${i.nome}</h3>
+                        <p class="text-slate-400 text-base leading-relaxed mb-6">${i.desc}</p>
+                    </div>
+                    <a href="${i.link}" target="_blank" class="text-cyan-400 text-xs font-bold uppercase tracking-[3px] hover:text-white transition">Full Analysis →</a>
+                </div>
+            `).join('');
+
+            // Render Curiosidades (Static Data)
+            const curiosidades = [
+                { t: "Primeira IA", d: "Em 1951, Marvin Minsky criou o SNARC, a primeira máquina de rede neural.", i: "fa-robot" },
+                { t: "Alucinação", d: "IAs não 'mentem', elas 'alucinam' padrões que não existem devido a lacunas probabilísticas.", i: "fa-brain" },
+                { t: "Teste de Turing", d: "Criado em 1950, propõe que se uma máquina enganar um humano, ela é inteligente.", i: "fa-user-secret" },
+                { t: "AlphaGo", d: "Em 2016, a IA do Google venceu o campeão mundial de Go em uma jogada considerada 'criativa'.", i: "fa-chess-board" }
+            ];
+            
+            document.getElementById('fun-grid').innerHTML = curiosidades.map(c => `
+                <div class="glass p-6 text-center hover:bg-white/5 transition">
+                    <i class="fa-solid ${c.i} text-3xl text-yellow-500 mb-4"></i>
+                    <h3 class="text-white font-bold uppercase text-sm mb-2">${c.t}</h3>
+                    <p class="text-slate-500 text-xs leading-relaxed">${c.d}</p>
+                </div>
+            `).join('');
+        }
+
+        function cardHTML(i, btnText = "Acessar Documentação") {
             return `
             <div class="glass overflow-hidden flex flex-col h-full group">
                 <div class="relative overflow-hidden">
@@ -196,7 +235,7 @@
                     </div>
                     <h3 class="text-white font-bold mb-4 uppercase text-base group-hover:text-cyan-400 transition">${i.nome}</h3>
                     <p class="text-slate-500 text-sm mb-8 line-clamp-3 leading-relaxed">${i.desc}</p>
-                    <a href="${i.link}" target="_blank" class="mt-auto btn-elite">Acessar Documentação</a>
+                    <a href="${i.link}" target="_blank" class="mt-auto btn-elite">${btnText}</a>
                 </div>
             </div>`;
         }
@@ -204,17 +243,20 @@
         function changeLang(l) {
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(`btn-${l}`).classList.add('active');
-            document.querySelectorAll('[data-t]').forEach(el => el.innerText = i18n[l][el.getAttribute('data-t')]);
+            if(i18n[l]) {
+                document.querySelectorAll('[data-t]').forEach(el => el.innerText = i18n[l][el.getAttribute('data-t')]);
+            }
         }
 
         function filterIAs() {
             const term = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = rawData.filter(i => i.nome.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
-            renderGrids(filtered);
+            const filtered = rawDataIA.filter(i => i.nome.toLowerCase().includes(term) || i.cat.toLowerCase().includes(term));
+            document.getElementById('ia-grid').innerHTML = filtered.map(i => cardHTML(i)).join('');
         }
 
         function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
+        
         window.onload = init;
     </script>
 </body>
