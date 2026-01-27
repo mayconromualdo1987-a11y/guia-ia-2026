@@ -1,109 +1,53 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-
-    <!-- 🔧 VIEWPORT CORRIGIDO (OBRIGATÓRIO) -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-
-    <!-- SEO -->
-    <meta name="description" content="Mundo das IA's é uma plataforma editorial independente dedicada à curadoria, análise técnica e educação em inteligência artificial, LLMs e engenharia de prompt.">
-    <meta name="robots" content="index, follow">
-
-    <title>Mundo das IA's | Inteligência Artificial e Engenharia de Prompt</title>
-
-    <!-- 🔒 GOOGLE ADSENSE (INALTERADO) -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6123538599368354" crossorigin="anonymous"></script>
-
-    <!-- Assets -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2245%22 fill=%22%23020617%22 stroke=%22%2300f2ff%22 stroke-width=%226%22/><path d=%22M30 70V30L50 50L70 30V70%22 fill=%22none%22 stroke=%22%2300f2ff%22 stroke-width=%228%22 stroke-linecap=%22round%22/></svg>">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        :root { --cyan: #00f2ff; --dark: #020617; }
-        body { background: var(--dark); color: #f1f5f9; font-family: 'Rajdhani', sans-serif; overflow-x: hidden; }
-        .logo-font { font-family: 'Orbitron', sans-serif; }
-        .glass { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(0,242,255,0.12); border-radius: 1rem; }
-        .img-card { aspect-ratio: 16/9; width: 100%; object-fit: cover; }
-        .btn-elite { background: var(--cyan); color:#000; font-weight:800; font-size:11px; padding:12px; border-radius:6px; text-align:center; }
-        .modal { display:none; position:fixed; inset:0; background:#000; z-index:1000; align-items:center; justify-content:center; }
-    </style>
-</head>
-
-<body>
-
-<nav class="sticky top-0 z-50 bg-slate-950/95 border-b border-white/5">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="/" class="logo-font text-xl font-black">MUNDO <span class="text-cyan-400">IA'S</span></a>
-    </div>
-</nav>
-
-<main class="max-w-7xl mx-auto px-6 pt-14 pb-24">
-
-    <!-- 🔑 BLOCO EDITORIAL INDEXÁVEL (CRÍTICO PARA ADSENSE) -->
-    <section class="max-w-3xl mx-auto text-center mb-24">
-        <h1 class="logo-font text-5xl mb-6 uppercase">Curadoria Neural Elite</h1>
-        <p class="text-slate-400 text-lg leading-relaxed">
-            O Mundo das IA's é uma plataforma editorial independente dedicada à análise,
-            curadoria técnica e educação em inteligência artificial. Nosso objetivo é
-            fornecer informações claras, imparciais e úteis para profissionais, estudantes
-            e entusiastas da tecnologia.
-        </p>
-    </section>
-
-    <!-- 🔒 BLOCO DE ANÚNCIO (LOCAL PERMITIDO) -->
-    <section class="my-16 text-center">
-        <ins class="adsbygoogle"
-            style="display:block"
-            data-ad-client="ca-pub-6123538599368354"
-            data-ad-slot="1234567890"
-            data-ad-format="auto"
-            data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </section>
-
-    <!-- GRID DINÂMICO -->
-    <section aria-label="Ferramentas de Inteligência Artificial">
-        <div id="ia-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            <noscript>
-                <article class="glass p-6">
-                    <h2 class="font-bold">Conteúdo indisponível</h2>
-                    <p class="text-slate-400 text-sm">
-                        Ative o JavaScript para visualizar a curadoria completa de ferramentas de inteligência artificial.
-                    </p>
-                </article>
-            </noscript>
-        </div>
-    </section>
-
-    <!-- AVISO EDITORIAL -->
-    <section class="max-w-3xl mx-auto mt-24 text-sm text-slate-500 leading-relaxed">
-        <p>
-            Este site não representa empresas listadas nem garante resultados financeiros.
-            As ferramentas mencionadas pertencem a terceiros e seguem seus próprios termos.
-            O conteúdo aqui publicado possui caráter informativo e educacional.
-        </p>
-    </section>
-
-</main>
-
-<footer class="border-t border-white/5 py-14 text-center text-xs text-slate-500">
-    <p class="mb-4">© 2026 • Mundo das IA's</p>
-    <p>
-        Este site utiliza cookies e tecnologias similares, incluindo Google AdSense,
-        para exibição de anúncios e análise agregada de audiência.
-    </p>
-</footer>
-
-<!-- 🔒 SEU SCRIPT ORIGINAL (INALTERADO NA LÓGICA) -->
 <script>
-    /* TODO: seu JS permanece exatamente como está */
-</script>
+    const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTpSTfK25-ua58vCKKZ7IxNGn4ZQ2EaoqOD261M4fhTJkvA-slW2kL8hAL5jWTq2rbcSkAhVB5nqekW/pub?output=csv";
 
-</body>
-</html>
+    function parseCSV(text) {
+        // Esta função ignora vírgulas problemáticas
+        const lines = text.split(/\r?\n/);
+        return lines.map(line => {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            for (let char of line) {
+                if (char === '"') inQuotes = !inQuotes;
+                else if (char === ',' && !inQuotes) {
+                    result.push(current);
+                    current = '';
+                } else current += char;
+            }
+            result.push(current);
+            return result;
+        });
+    }
+
+    async function carregarIAs() {
+        try {
+            const response = await fetch(urlCSV);
+            const text = await response.text();
+            const data = parseCSV(text).slice(1); // Pula cabeçalho
+            const container = document.getElementById('cards-container');
+            
+            if (data.length === 0) throw new Error("Sem dados");
+            container.innerHTML = ""; 
+
+            data.forEach(col => {
+                if (col.length >= 4 && col[1].trim() !== "") {
+                    const [profissao, nome, desc, link] = col;
+                    container.innerHTML += `
+                        <div class="bg-white p-6 rounded-2xl shadow-md border border-slate-200 hover:scale-105 transition-transform duration-300 flex flex-col justify-between text-left">
+                            <div>
+                                <span class="bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full uppercase">${profissao}</span>
+                                <h3 class="text-2xl font-bold mt-4 text-slate-800">${nome}</h3>
+                                <p class="text-slate-600 mt-2 mb-6 line-clamp-3">${desc}</p>
+                            </div>
+                            <a href="${link}" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-xl block text-center font-bold shadow-lg transition mt-auto">Acessar IA</a>
+                        </div>
+                    `;
+                }
+            });
+        } catch (e) {
+            document.getElementById('loading-msg').innerText = "Erro ao carregar dados. Verifique se a planilha está publicada.";
+        }
+    }
+    carregarIAs();
+</script>
